@@ -8,8 +8,7 @@ Specific times unlocked items
 - Teacher (Davis?) ask to sit down
 - Meet new girl
 - Teacher tells them to stop talking
-- Explosion, smoke + dust
-- Black out
+- Lights out, environment changes
 ## Room 1
 - Locked in classroom
 - Find keys
