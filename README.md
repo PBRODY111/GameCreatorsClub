@@ -5,7 +5,7 @@ Specific times unlocked items
 
 ## Intro
 - New student
-- Teacher (Davis?) ask to sit down
+- Teacher (Davis?!?!?!?!?!) ask to sit down
 - Meet new girl
 - Teacher tells them to stop talking
 - Lights out, environment changes
