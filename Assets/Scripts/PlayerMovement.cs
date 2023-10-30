@@ -103,8 +103,12 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(moveDirection.normalized * moveSpeed * 500f * Time.deltaTime, ForceMode.Force);
 
         // in air
-        else if(!grounded)
+        //else if (!grounded && Physics.Raycast(transform.position, moveDirection.normalized, 0.5f))
+        else{
             rb.AddForce(moveDirection.normalized * moveSpeed * 500f * airMultiplier * Time.deltaTime, ForceMode.Force);
+            
+        }
+
     }
 
     private void SpeedControl()
