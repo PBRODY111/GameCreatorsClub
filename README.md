@@ -14,19 +14,23 @@ Specific times unlocked items
 - Find keys
 - Move specific items to reveal other items
 - Padlock code
-- Master key to open room
+- Series of keys to open key items
+- Pry open vent at very end (screwdriver/crowbar) to proceed
 ## Room 2
-- Locked in classroom
+- Locked in classroom (science room)
 - Monster "arm" enters through one of five windows every 30 secs
+- Door connecting two classrooms in need of opening
 ## Room 3
-- Locked in lab
+- Locked in chem lab
 - Small gremlin will chase you around for 30 sec periods before resting in closets
 - Find Myra in one of the closets
+- Exit through main door to hall
 ## Room 4
 - Locked in library
 - Flying bat crawls across ceiling and jumps down at random
 - Find series of books according to letters to open
 - Myra helps fend off bat
+- Go downstairs to cafeteria
 ## Room 5
 - Full Cerberus 
 - Chase through cafeteria
