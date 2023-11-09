@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class InventoryUI : MonoBehaviour
 
     void Update()
     {
+
         if (Input.GetKeyDown(InventoryKey))
         {
             _canvas.gameObject.SetActive(!_canvas.gameObject.activeSelf);

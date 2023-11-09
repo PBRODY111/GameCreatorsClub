@@ -28,6 +28,8 @@ public class InventoryItemController : MonoBehaviour
             case InventoryItem.ItemType.Battery:
                 Debug.Log("charging +1000");
                 Player.Instance.GetComponent<HeadLamp>().Charge(1000);
+                Inventory.Instance.Remove(item);
+                RemoveItem();
                 break;
 
         }
