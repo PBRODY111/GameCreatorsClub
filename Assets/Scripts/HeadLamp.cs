@@ -1,0 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class HeadLamp : MonoBehaviour
+{
+    private float _batteryLife = 3999f;
+    public float batteryDrain = 100f;
+    private int _lightStage = 4;
+    [SerializeField] private GameObject _lightParent;
+    private Light[] _lights;
+
+    void Start()
+    {
+        _lights = new Light[_lightParent.transform.childCount];
+        for (int i = 0; i < _lights.Length; i++)
+        {
+            _lights[i] = _lightParent.transform.GetChild(i).GetComponent<Light>();
+        }
+    }
+    void Update()
+    {
+            _batteryLife -= Time.deltaTime * batteryDrain;
+            _lightStage = Mathf.FloorToInt(_batteryLife / 1000) + 1;
+            _lights[0].intensity = 0.5f * _lightStage;
+            _lights[1].intensity = 0.1f * _lightStage;
+            _lights[2].intensity = 0.1f * _lightStage;
+    }
+
+    public void Charge(float charge)
+    {
+        _batteryLife += charge;
+    }
+}
