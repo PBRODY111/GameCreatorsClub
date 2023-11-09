@@ -1342,7 +1342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 172091947}
   m_Layer: 0
-  m_Name: Enviornment
+  m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14426,6 +14426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: 98
   cubePrefab: {fileID: 1959663424}
+  deskSpam: {fileID: 1339309162}
 --- !u!95 &1981617489
 Animator:
   serializedVersion: 5
