@@ -10,10 +10,7 @@ public class Inventory : MonoBehaviour
     public List<InventoryItem> Items = new List<InventoryItem>();
 
     public Transform itemContent;
-    public Transform itemContent2;
     public GameObject InventoryItem;
-
-    public InventoryItemController[] inventoryItems;
 
     // Start is called before the first frame update
     private void Awake()
@@ -24,9 +21,10 @@ public class Inventory : MonoBehaviour
     public void Add(InventoryItem item)
     {
         Items.Add(item);
-        Debug.Log("Added Item: "+item.itemName);
-        CleanList();
-        ListItems();
+        GameObject obj = Instantiate(InventoryItem, itemContent);
+        obj.transform.Find("Name").GetComponent<TMP_Text>().text = Items.Count+":"+item.itemName;
+        obj.transform.Find("Image").GetComponent<Image>().sprite = item.icon;
+        obj.GetComponent<InventoryItemController>().AddItem(item);
     }
 
     public void Remove(InventoryItem item)
@@ -46,32 +44,14 @@ public class Inventory : MonoBehaviour
 
     public void ListItems()
     {
-        CleanList();
+        int i = 0;
         foreach (var item in Items)
         {
-            //Hotbar
+            i++;
             GameObject obj = Instantiate(InventoryItem, itemContent);
-            var itemName = obj.transform.Find("Name").GetComponent<TMP_Text>();
-            var itemIcon = obj.transform.Find("Image").GetComponent<Image>();
-            itemName.text = item.itemName;
-            itemIcon.sprite = item.icon;
-            //Inventory
-            GameObject obj2 = Instantiate(InventoryItem, itemContent2);
-            var itemName2 = obj2.transform.Find("Name").GetComponent<TMP_Text>();
-            var itemIcon2 = obj2.transform.Find("Image").GetComponent<Image>();
-            itemName2.text = item.itemName;
-            itemIcon2.sprite = item.icon;
-        }
-        SetInventoryItems();
-        
-    }
-
-    public void SetInventoryItems()
-    {
-        inventoryItems = itemContent2.GetComponentsInChildren<InventoryItemController>();
-        for (int i = 0; i < Items.Count; i++)
-        {
-            inventoryItems[i].AddItem(Items[i]);
+            obj.transform.Find("Name").GetComponent<TMP_Text>().text = i+":"+item.itemName;
+            obj.transform.Find("Image").GetComponent<Image>().sprite = item.icon;
+            obj.GetComponent<InventoryItemController>().AddItem(item);
         }
     }
 }
