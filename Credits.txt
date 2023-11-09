@@ -16,3 +16,7 @@ https://www.highclap.com/the-star-spangled-banner-united-states-of-america-natio
 "Ceiling Fan" (https://skfb.ly/6WTBY) by Ankush Gupta is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
 Sound Effects:
+https://pixabay.com/sound-effects/door-creak-02-79920/
+
+Scripts:
+https://github.com/staffantan/unity-vhsglitch
