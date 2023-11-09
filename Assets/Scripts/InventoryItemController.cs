@@ -12,13 +12,10 @@ public class InventoryItemController : MonoBehaviour
     public void RemoveItem()
     {
         Inventory.Instance.Remove(item);
-        Destroy(gameObject);
-
     }
 
     public void AddItem(InventoryItem newItem)
     {
-        Debug.Log("Item Added to "+gameObject.name);
         item = newItem;
     }
 
@@ -27,12 +24,9 @@ public class InventoryItemController : MonoBehaviour
         switch (item.itemType)
         {
             case InventoryItem.ItemType.Battery:
-                Debug.Log("charging +1000");
                 Player.Instance.GetComponent<HeadLamp>().Charge(1000);
-                Inventory.Instance.Remove(item);
                 RemoveItem();
                 break;
-
         }
     }
 }

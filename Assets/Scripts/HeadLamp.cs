@@ -22,11 +22,12 @@ public class HeadLamp : MonoBehaviour
     }
     void Update()
     {
-            _batteryLife -= Time.deltaTime * batteryDrain;
-            _lightStage = Mathf.FloorToInt(_batteryLife / 1000) + 1;
-            _lights[0].intensity = 0.5f * _lightStage;
-            _lights[1].intensity = 0.1f * _lightStage;
-            _lights[2].intensity = 0.1f * _lightStage;
+            if(_batteryLife > -1000f)
+                _batteryLife -= Time.deltaTime * batteryDrain;
+            _lightStage = Mathf.CeilToInt(_batteryLife / 1000f);
+            _lights[0].intensity = 0.5f * (_lightStage+1);
+            _lights[1].intensity = 0.1f * (_lightStage + 1);
+            _lights[2].intensity = 0.1f * (_lightStage + 1);
             if (_canvas.transform.GetChild(0).childCount != _lightStage + 1)
             {
                 int temp = _canvas.transform.GetChild(0).childCount;
@@ -34,8 +35,7 @@ public class HeadLamp : MonoBehaviour
                 {
                     Destroy(_canvas.transform.GetChild(0).GetChild(i).gameObject);
                 }
-                Debug.Log("Destroyed+"+temp+"Adding : "+(_lightStage+1));
-            for (int i = 0; i < (_lightStage + 1); i++)
+            for (int i = 0; i < (_lightStage+1); i++)
                 {
                     Instantiate(_batteryBarPrefab, _canvas.transform.GetChild(0));
                 }
