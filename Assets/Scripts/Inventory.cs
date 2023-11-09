@@ -10,6 +10,7 @@ public class Inventory : MonoBehaviour
     public List<InventoryItem> Items = new List<InventoryItem>();
 
     public Transform itemContent;
+    public Transform itemContent2;
     public GameObject InventoryItem;
 
     public InventoryItemController[] inventoryItems;
@@ -24,11 +25,15 @@ public class Inventory : MonoBehaviour
     {
         Items.Add(item);
         Debug.Log("Added Item: "+item.itemName);
+        CleanList();
+        ListItems();
     }
 
     public void Remove(InventoryItem item)
     {
         Items.Remove(item);
+        CleanList();
+        ListItems();
     }
 
     public void CleanList()
@@ -44,12 +49,18 @@ public class Inventory : MonoBehaviour
         CleanList();
         foreach (var item in Items)
         {
+            //Hotbar
             GameObject obj = Instantiate(InventoryItem, itemContent);
             var itemName = obj.transform.Find("Name").GetComponent<TMP_Text>();
             var itemIcon = obj.transform.Find("Image").GetComponent<Image>();
-
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
+            //Inventory
+            GameObject obj2 = Instantiate(InventoryItem, itemContent2);
+            var itemName2 = obj2.transform.Find("Name").GetComponent<TMP_Text>();
+            var itemIcon2 = obj2.transform.Find("Image").GetComponent<Image>();
+            itemName2.text = item.itemName;
+            itemIcon2.sprite = item.icon;
         }
         SetInventoryItems();
         
@@ -57,7 +68,7 @@ public class Inventory : MonoBehaviour
 
     public void SetInventoryItems()
     {
-        inventoryItems = itemContent.GetComponentsInChildren<InventoryItemController>();
+        inventoryItems = itemContent2.GetComponentsInChildren<InventoryItemController>();
         for (int i = 0; i < Items.Count; i++)
         {
             inventoryItems[i].AddItem(Items[i]);

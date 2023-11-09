@@ -8,6 +8,8 @@ public class HeadLamp : MonoBehaviour
     public float batteryDrain = 100f;
     private int _lightStage = 4;
     [SerializeField] private GameObject _lightParent;
+    [SerializeField] private Canvas _canvas;
+    [SerializeField] private GameObject _batteryBarPrefab;
     private Light[] _lights;
 
     void Start()
@@ -25,10 +27,29 @@ public class HeadLamp : MonoBehaviour
             _lights[0].intensity = 0.5f * _lightStage;
             _lights[1].intensity = 0.1f * _lightStage;
             _lights[2].intensity = 0.1f * _lightStage;
+            if (_canvas.transform.GetChild(0).childCount != _lightStage + 1)
+            {
+                int temp = _canvas.transform.GetChild(0).childCount;
+                for (int i = 0; i < (temp); i++)
+                {
+                    Destroy(_canvas.transform.GetChild(0).GetChild(i).gameObject);
+                }
+                Debug.Log("Destroyed+"+temp+"Adding : "+(_lightStage+1));
+            for (int i = 0; i < (_lightStage + 1); i++)
+                {
+                    Instantiate(_batteryBarPrefab, _canvas.transform.GetChild(0));
+                }
+            }
+
+
     }
 
     public void Charge(float charge)
     {
         _batteryLife += charge;
+        if (_batteryLife > 4000f)
+        {
+            _batteryLife = 4000f;
+        }
     }
 }

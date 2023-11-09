@@ -6,14 +6,10 @@ public class MakeCube : MonoBehaviour
 {
     [SerializeField] private KeyCode key = KeyCode.Space;
     [SerializeField] private GameObject cubePrefab;
-    private int cubeCount = 0;
-    // Update is called once per frame
+    [SerializeField] private Transform deskSpam;
     void Update()
     {
         if (Input.GetKey(key))
-        {
-            Instantiate(cubePrefab, new Vector3(0,0.5f,0), new Quaternion());
-            Debug.Log(cubeCount++);
-        }
+            Instantiate(cubePrefab,new Vector3(0f,0.5f,0f), new Quaternion(),deskSpam);
     }
 }
