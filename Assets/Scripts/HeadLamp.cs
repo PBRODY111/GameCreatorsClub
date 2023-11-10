@@ -6,7 +6,7 @@ public class HeadLamp : MonoBehaviour
 {
     private float _batteryLife = 3999f;
     public float batteryDrain = 100f;
-    private int _lightStage = 4;
+    public int _lightStage = 4;
     [SerializeField] private GameObject _lightParent;
     [SerializeField] private Canvas _canvas;
     [SerializeField] private GameObject _batteryBarPrefab;
