@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ public class DebugUI : MonoBehaviour
     [SerializeField] private Canvas canvas;
     [SerializeField] private KeyCode debugKey = KeyCode.F3;
     [SerializeField] private Button button1;
+    [SerializeField] private TMP_Text _fps;
     [SerializeField] private Light sun; 
     private float sunIntensity = 1.0f;
 
@@ -34,5 +36,6 @@ public class DebugUI : MonoBehaviour
             sun.intensity -= sunIntensity;
             Debug.Log("Sun clicked. Intensity set to:"+sun.intensity);
         });
+        _fps.text = "FPS: "+(1.0f / Time.deltaTime).ToString("0.00");
     }
 }

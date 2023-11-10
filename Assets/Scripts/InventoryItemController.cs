@@ -24,7 +24,7 @@ public class InventoryItemController : MonoBehaviour
         switch (item.itemType)
         {
             case InventoryItem.ItemType.Battery:
-                Player.Instance.GetComponent<HeadLamp>().Charge(1000);
+                Player.Instance.GetComponent<HeadLamp>().Charge(5000);
                 RemoveItem();
                 break;
         }
