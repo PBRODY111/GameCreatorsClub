@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 8c1ee9db25f03074cbc52d63b0528a4f, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -8209,7 +8209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1244458879
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14617,6 +14617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   batteryDrain: 50
+  _lightStage: 4
   _lightParent: {fileID: 1972437050}
   _canvas: {fileID: 938915109}
   _batteryBarPrefab: {fileID: 7657791715483782647, guid: 61874500c04ac13409f054662e477f86, type: 3}
