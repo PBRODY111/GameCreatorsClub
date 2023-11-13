@@ -7,12 +7,16 @@ public class MainMenu : MonoBehaviour
 {
     Animator animator;
     Animator animator2;
+    Animator animator3;
+    Animator animator4;
     AudioSource audioData;
     AudioSource audioSource;
     // Start is called before the first frame update
     void Start(){
         animator = GameObject.Find("cer").GetComponent<Animator>();
         animator2 = GameObject.Find("door").transform.GetChild(0).gameObject.GetComponent<Animator>();
+        animator3 = GameObject.Find("Canvas").GetComponent<Animator>();
+        animator4 = GameObject.Find("Canvas2").transform.GetChild(0).gameObject.GetComponent<Animator>();
         audioData = GameObject.Find("door").transform.GetChild(0).gameObject.GetComponent<AudioSource>();
         audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
     }
@@ -27,6 +31,7 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(fadeMusic());
         animator.SetBool("isStart", true);
         animator2.SetBool("isStart", true);
+        animator3.SetBool("isStart", true);
         audioData.Play(0);
         StartCoroutine(loadStart());
         
@@ -45,7 +50,9 @@ public class MainMenu : MonoBehaviour
     }
     IEnumerator loadStart()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds((float) 1.5);
+        animator4.SetBool("isStart", true);
+        yield return new WaitForSeconds((float) 2.5);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
     public void QuitGame ()
