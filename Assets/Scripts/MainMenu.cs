@@ -5,27 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    Animator animator;
-    Animator animator2;
-    Animator animator3;
-    Animator animator4;
-    AudioSource audioData;
-    AudioSource audioSource;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Animator animator2;
+    [SerializeField] private Animator animator3;
+    [SerializeField] private Animator animator4;
+    [SerializeField] private AudioSource audioData;
+    [SerializeField] private AudioSource audioSource;
     // Start is called before the first frame update
-    void Start(){
-        animator = GameObject.Find("cer").GetComponent<Animator>();
-        animator2 = GameObject.Find("door").transform.GetChild(0).gameObject.GetComponent<Animator>();
-        animator3 = GameObject.Find("Canvas").GetComponent<Animator>();
-        animator4 = GameObject.Find("Canvas2").transform.GetChild(0).gameObject.GetComponent<Animator>();
-        audioData = GameObject.Find("door").transform.GetChild(0).gameObject.GetComponent<AudioSource>();
-        audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
-    }
-    /*
-    void Update(){
-        bool isStart = animator.GetBool("isStart");
-        bool isStart2 = animator2.GetBool("isStart");
-    }
-    */
     public void StartNew ()
     {
         StartCoroutine(fadeMusic());

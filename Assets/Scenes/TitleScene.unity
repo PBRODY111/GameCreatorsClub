@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.06538023, g: 0.07909002, b: 0.10602962, a: 1}
+  m_IndirectSpecularColor: {r: 0.065380216, g: 0.07909001, b: 0.10602959, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -253,12 +253,14 @@ VideoPlayer:
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 0
-  m_TargetAudioSources: []
-  m_DirectAudioVolumes: []
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
   m_Url: 
-  m_EnabledAudioTracks: 
-  m_DirectAudioMutes: 
-  m_ControlledAudioTrackCount: 0
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 1
@@ -2004,6 +2006,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1b7a57611f64d62b62cf5c6dc34fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1385615267}
+  animator2: {fileID: 2082412524}
+  animator3: {fileID: 1945494128}
+  animator4: {fileID: 1368804191}
+  audioData: {fileID: 2082412529}
+  audioSource: {fileID: 2141817036}
 --- !u!1001 &1479362114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3239,6 +3247,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1b7a57611f64d62b62cf5c6dc34fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  animator2: {fileID: 0}
+  animator3: {fileID: 0}
+  animator4: {fileID: 0}
+  audioData: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!95 &1945494128
 Animator:
   serializedVersion: 5
@@ -3611,6 +3625,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1b7a57611f64d62b62cf5c6dc34fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  animator2: {fileID: 0}
+  animator3: {fileID: 0}
+  animator4: {fileID: 0}
+  audioData: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!82 &2082412529
 AudioSource:
   m_ObjectHideFlags: 0
