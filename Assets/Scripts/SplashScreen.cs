@@ -13,7 +13,7 @@ public class SplashScreen : MonoBehaviour
 
     IEnumerator splashScreen()
     {
-        yield return new WaitForSeconds((float) 4.5);
+        yield return new WaitForSeconds((float) 5.0);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 }
