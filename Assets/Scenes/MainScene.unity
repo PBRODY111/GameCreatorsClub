@@ -16136,6 +16136,7 @@ GameObject:
   - component: {fileID: 1981617489}
   - component: {fileID: 1981617490}
   - component: {fileID: 1981617491}
+  - component: {fileID: 1981617492}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -16264,6 +16265,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hotbar: {fileID: 1327178679}
+--- !u!114 &1981617492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981617483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83f53ff46009b84ca170d3f4ca15113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 98
+  cubePrefab: {fileID: 1959663424}
+  deskSpam: {fileID: 1339309162}
 --- !u!1 &1986140015 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1740405261953631394, guid: ac32902191b3b4f6fb7834fd762bd511, type: 3}
