@@ -40,6 +40,8 @@ public class door : MonoBehaviour
             } else {
                 intText.SetActive(false);
             }
+        } else{
+            intText.SetActive(false);
         }
     }
 }
