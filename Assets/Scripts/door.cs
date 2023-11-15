@@ -12,7 +12,7 @@ public class door : MonoBehaviour
     void Start()
     {
         intText.SetActive(false);
-        doorAudio = GameObject.Find("Sounds").transform.GetChild(1).gameObject.GetComponent<AudioSource>();
+        doorAudio = GameObject.Find("Sounds").transform.GetChild(0).gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -38,10 +38,10 @@ public class door : MonoBehaviour
                     }
                 }
             } else {
-                intText.SetActive(false);
+                //intText.SetActive(false);
             }
         } else{
-            intText.SetActive(false);
+            //intText.SetActive(false);
         }
     }
 }
