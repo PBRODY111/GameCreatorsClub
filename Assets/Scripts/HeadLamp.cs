@@ -25,9 +25,9 @@ public class HeadLamp : MonoBehaviour
             if(_batteryLife > -1000f)
                 _batteryLife -= Time.deltaTime * batteryDrain;
             _lightStage = Mathf.CeilToInt(_batteryLife / 1000f);
-            _lights[0].intensity = 0.5f * (_lightStage+1);
-            _lights[1].intensity = 0.1f * (_lightStage + 1);
-            _lights[2].intensity = 0.1f * (_lightStage + 1);
+            _lights[0].intensity = 0.2f * (_lightStage+1);
+            _lights[1].intensity = 0.07f * (_lightStage + 1);
+            _lights[2].intensity = 0.07f * (_lightStage + 1);
             if (_canvas.transform.GetChild(0).childCount != _lightStage + 1)
             {
                 int temp = _canvas.transform.GetChild(0).childCount;

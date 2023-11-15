@@ -5510,10 +5510,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.898211, b: 0.740566, a: 1}
-  m_Intensity: 1.5
+  m_Intensity: 1
   m_Range: 20
-  m_SpotAngle: 50
-  m_InnerSpotAngle: 5
+  m_SpotAngle: 60
+  m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -7097,9 +7097,9 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.898211, b: 0.740566, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 0.35
   m_Range: 20
-  m_SpotAngle: 35
+  m_SpotAngle: 45
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -9122,9 +9122,9 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.898211, b: 0.740566, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 0.35
   m_Range: 20
-  m_SpotAngle: 35
+  m_SpotAngle: 45
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -16708,7 +16708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf8b3218eb54264b8216cad7b31c15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batteryDrain: 50
+  batteryDrain: 16.67
   _lightStage: 4
   _lightParent: {fileID: 1972437050}
   _canvas: {fileID: 938915109}
