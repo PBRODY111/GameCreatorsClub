@@ -21,16 +21,21 @@ public class DialLock : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit, interactionDistance)){
             if(hit.collider.gameObject.name == dialLock.name){
-                Debug.Log("Radio Hovered!");
                 intText.SetActive(true);
                 if(Input.GetKeyDown(KeyCode.E)){
                     dialUI.SetActive(true);
+                    Cursor.lockState = CursorLockMode.None;
                 }
             } else {
                 intText.SetActive(false);
             }
         } else{
             intText.SetActive(false);
+        }
+        if(dialUI.activeInHierarchy){
+            Cursor.lockState = CursorLockMode.None;
+        } else{
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }
