@@ -985,6 +985,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cabinet-0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 16118a28d4b304de59318930127fd8b5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2967010201306662796, guid: 16118a28d4b304de59318930127fd8b5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1194,6 +1198,27 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5779197439840542771, guid: b12295213fc444a9d904dde628e06c0e, type: 3}
+--- !u!95 &57174890
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57174885}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 27dde7299a1774914a43a5c28aeeda96, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &72806055 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3610160282910863069, guid: ac32902191b3b4f6fb7834fd762bd511, type: 3}
@@ -16211,7 +16236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b12295213fc444a9d904dde628e06c0e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.137
+      value: 11.315
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b12295213fc444a9d904dde628e06c0e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16260,6 +16285,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4423045620967985251, guid: b12295213fc444a9d904dde628e06c0e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 57174889}
+    - targetCorrespondingSourceObject: {fileID: 4423045620967985251, guid: b12295213fc444a9d904dde628e06c0e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 57174890}
   m_SourcePrefab: {fileID: 100100000, guid: b12295213fc444a9d904dde628e06c0e, type: 3}
 --- !u!1001 &1890911617
 PrefabInstance:
@@ -17152,6 +17180,13 @@ MonoBehaviour:
   dialUI: {fileID: 1761290839}
   interactionDistance: 1.5
   intText: {fileID: 1092012639}
+  dialSlider: {fileID: 1679617268}
+  doorOpenAnimName: unlock
+  dialSliderGet: 0
+  firstValue: 0
+  secondValue: 0
+  thirdValue: 0
+  tempValue: 0
 --- !u!1 &1981617483
 GameObject:
   m_ObjectHideFlags: 0
