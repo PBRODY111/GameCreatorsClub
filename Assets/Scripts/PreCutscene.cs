@@ -1,36 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PreCutscene : MonoBehaviour
-{
-    // Start is called before the first frame update
+{   
+    [SerializeField] private GameObject rose;
+    private typewriterUI typewriterUi;
+    private string[] text =
+    {
+        "DAD, CAN YOU HEAR ME?",
+        "Where are you? Where have you been?",
+        "I miss you.",
+        "Please come home.",
+        "I'm trapped in this nightmare.",
+        "I'm so alone.",
+        "I'm so scared.",
+        "So scared..."
+    };
     void Start()
     {
-        GameObject.Find("Canvas").transform.GetChild(10).gameObject.SetActive(false);
+        typewriterUi = transform.GetComponent<typewriterUI>();
         StartCoroutine(cutScene());
     }
 
     IEnumerator cutScene()
     {
-        yield return new WaitForSeconds((float) 6.0);
-        GameObject.Find("Canvas").transform.GetChild(2).gameObject.SetActive(false);
-        yield return new WaitForSeconds((float) 6.0);
-        GameObject.Find("Canvas").transform.GetChild(3).gameObject.SetActive(false);
-        yield return new WaitForSeconds((float) 4.0);
-        GameObject.Find("Canvas").transform.GetChild(4).gameObject.SetActive(false);
-        yield return new WaitForSeconds((float) 4.0);
-        GameObject.Find("Canvas").transform.GetChild(5).gameObject.SetActive(false);
-        yield return new WaitForSeconds((float) 6.0);
-        GameObject.Find("Canvas").transform.GetChild(6).gameObject.SetActive(false);
-        yield return new WaitForSeconds((float) 4.0);
-        GameObject.Find("Canvas").transform.GetChild(7).gameObject.SetActive(false);
-        yield return new WaitForSeconds((float) 4.0);
-        GameObject.Find("Canvas").transform.GetChild(8).gameObject.SetActive(false);
-        yield return new WaitForSeconds((float) 3.5);
-        GameObject.Find("Canvas").transform.GetChild(10).gameObject.SetActive(true);
-        yield return new WaitForSeconds((float) 0.5);
+        foreach (var line in text)
+        {
+            typewriterUi.setText(line);
+            typewriterUi.Write();
+            yield return new WaitForSeconds(typewriterUi.getTimeBetween() * line.Length + 1f);
+        }
+        rose.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 }
