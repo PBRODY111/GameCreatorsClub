@@ -37,7 +37,7 @@ public class DialLock : MonoBehaviour
                     Cursor.lockState = CursorLockMode.None;
                 }
             } else {
-                intText.SetActive(false);
+                //intText.SetActive(false);
             }
         } else{
             intText.SetActive(false);
