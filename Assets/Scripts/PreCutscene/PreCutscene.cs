@@ -9,6 +9,7 @@ public class PreCutscene : MonoBehaviour
 {   
     [SerializeField] private GameObject rose;
     [SerializeField] private GameObject zagreus;
+    [SerializeField] private GameObject liar;
     [SerializeField] private AudioSource audio;
     [SerializeField] private AudioSource audio2;
     private typewriterUI typewriterUi;
@@ -47,7 +48,10 @@ public class PreCutscene : MonoBehaviour
         zagreus.SetActive(false);
         typewriterUi.setText("There is no escape.");
         typewriterUi.Write();
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(3f);
+        liar.SetActive(true);
+        yield return new WaitForSeconds(7f);
+        liar.SetActive(false);
         rose.SetActive(false);
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
