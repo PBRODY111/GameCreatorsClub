@@ -10,14 +10,15 @@ public class PreCutscene : MonoBehaviour
     [SerializeField] private GameObject rose;
     [SerializeField] private GameObject zagreus;
     [SerializeField] private AudioSource audio;
+    [SerializeField] private AudioSource audio2;
     private typewriterUI typewriterUi;
     private string[] text =
     {
         "Dad, can you hear me?",
-        "Where are you? Where have you been?",
+        "Where are you?",
         "Please come home.",
         "I'm trapped in this nightmare.",
-        "There's something that's after me.",
+        "There's something after me.",
         "I don't know what it is.",
         "I'm so alone.",
         "I'm so scared.",
@@ -33,6 +34,7 @@ public class PreCutscene : MonoBehaviour
 
     IEnumerator cutScene()
     {
+        yield return new WaitForSeconds(0.5f);
         foreach (var line in text)
         {
             typewriterUi.setText(line);
@@ -40,9 +42,14 @@ public class PreCutscene : MonoBehaviour
             yield return new WaitForSeconds(typewriterUi.getTimeBetween() * line.Length + 1f);
         }
         audio.Stop();
+        audio2.Play();
         rose.SetActive(true);
         zagreus.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
+        typewriterUi.setText("There is no escape.");
+        typewriterUi.Write();
+        yield return new WaitForSeconds(10f);
+        rose.SetActive(false);
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 }

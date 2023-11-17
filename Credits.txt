@@ -19,6 +19,8 @@ https://www.highclap.com/the-star-spangled-banner-united-states-of-america-natio
 Sound Effects:
 https://pixabay.com/sound-effects/door-creak-02-79920/
 https://pixabay.com/sound-effects/door-2-6841/
+https://pixabay.com/sound-effects/click-button-140881/
+https://pixabay.com/sound-effects/glitchmaizer-64691/
 
 Scripts:
 https://github.com/staffantan/unity-vhsglitch
