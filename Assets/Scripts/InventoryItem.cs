@@ -12,6 +12,7 @@ public class InventoryItem : ScriptableObject
     public enum ItemType
     {
         Misc,
-        Battery
+        Battery,
+        Box
     };
 }

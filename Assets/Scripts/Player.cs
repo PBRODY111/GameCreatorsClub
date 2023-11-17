@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
     [SerializeField] private GameObject _hotbar;
+
+    [SerializeField] public GameObject _stoolPrefab;
     void Awake(){
         Instance = this;
     }
@@ -35,9 +37,9 @@ public class Player : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Alpha0))
                 _hotbar.transform.GetChild(9).GetComponent<InventoryItemController>().UseItem();
         }
-        catch (System.Exception)
+        catch (System.Exception e)
         {
-            Debug.Log("No Item in Slot");
+            Debug.Log("No Item in Slot" + e);
         }
        
     }

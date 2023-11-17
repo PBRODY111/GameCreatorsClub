@@ -71,9 +71,9 @@ public class DialLock : MonoBehaviour
                 firstValue = secondValue = thirdValue = 0;
             }
         }
-        Debug.Log("firstValue: "+firstValue);
-        Debug.Log("secondValue: "+secondValue);
-        Debug.Log("thirdValue: "+thirdValue);
+        //Debug.Log("firstValue: "+firstValue);
+        //Debug.Log("secondValue: "+secondValue);
+        //Debug.Log("thirdValue: "+thirdValue);
     }
 
     void ValueChangeCheck()

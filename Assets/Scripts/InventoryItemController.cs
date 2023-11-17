@@ -9,6 +9,7 @@ public class InventoryItemController : MonoBehaviour
 
     public Button RemoveButton;
 
+
     public void RemoveItem()
     {
         Inventory.Instance.Remove(item);
@@ -21,6 +22,7 @@ public class InventoryItemController : MonoBehaviour
 
     public void UseItem()
     {
+        Debug.Log("Using " + item.itemName);
         switch (item.itemType)
         {
             case InventoryItem.ItemType.Battery:
@@ -29,6 +31,11 @@ public class InventoryItemController : MonoBehaviour
                     RemoveItem();
                     
                 }
+                break;
+            case InventoryItem.ItemType.Box:
+                Debug.Log("Should be ");
+                Instantiate(Player.Instance._stoolPrefab,Player.Instance.transform.position + Player.Instance.transform.forward,Quaternion.Euler(-90f, 0f, 0f));
+                RemoveItem();
                 break;
         }
     }
