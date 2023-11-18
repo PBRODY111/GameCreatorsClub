@@ -13,6 +13,7 @@ public class InventoryItem : ScriptableObject
     {
         Misc,
         Battery,
-        Box
+        Box,
+        Pick
     };
 }
