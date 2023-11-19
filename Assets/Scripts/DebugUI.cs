@@ -10,6 +10,7 @@ public class DebugUI : MonoBehaviour
     [SerializeField] private Canvas canvas;
     [SerializeField] private KeyCode debugKey = KeyCode.F3;
     [SerializeField] private Button button1;
+    [SerializeField] private Button button2;
     [SerializeField] private TMP_Text _fps;
     [SerializeField] private Light sun; 
     private float sunIntensity = 1.0f;
@@ -35,6 +36,11 @@ public class DebugUI : MonoBehaviour
             sunIntensity = sun.intensity - sunIntensity;
             sun.intensity -= sunIntensity;
             Debug.Log("Sun clicked. Intensity set to:"+sun.intensity);
+        });
+        button2.onClick.AddListener(() => 
+        {
+            Player.Instance.GetComponent<Rigidbody>().useGravity = !Player.Instance.GetComponent<Rigidbody>().useGravity;
+            Player.Instance.transform.GetChild(0).GetComponent<CapsuleCollider>().enabled = !Player.Instance.transform.GetChild(0).GetComponent<CapsuleCollider>().enabled;
         });
         _fps.text = "FPS: "+(1.0f / Time.deltaTime).ToString("0.00");
     }
