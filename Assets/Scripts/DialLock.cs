@@ -40,7 +40,7 @@ public class DialLock : MonoBehaviour
                 //intText.SetActive(false);
             }
         } else{
-            intText.SetActive(false);
+            //intText.SetActive(false);
         }
 
         if(dialUI.activeInHierarchy){
