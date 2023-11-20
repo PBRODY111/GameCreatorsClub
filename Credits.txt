@@ -22,6 +22,7 @@ https://pixabay.com/sound-effects/door-2-6841/
 https://pixabay.com/sound-effects/click-button-140881/
 https://pixabay.com/sound-effects/glitchmaizer-64691/
 https://pixabay.com/sound-effects/demonic-woman-scream-6333/
+https://pixabay.com/sound-effects/door-unlocking-101333/
 
 Scripts:
 https://github.com/staffantan/unity-vhsglitch

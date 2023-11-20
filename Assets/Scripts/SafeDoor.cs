@@ -13,6 +13,7 @@ public class SafeDoor : MonoBehaviour
     private float sliderPreviousValue;
     private int currentDialValueIndex = 0;
     private bool isUnlocked = false;
+    [SerializeField] private AudioSource unlockAudio;
 
     void Awake()
     {
@@ -62,6 +63,7 @@ public class SafeDoor : MonoBehaviour
                     if (currentDialValueIndex >= dialValues.Length)
                     {
                         safeAnimator.SetBool("unlock", true);
+                        unlockAudio.Play();
                         dialUI.SetActive(false);
                         Cursor.lockState = CursorLockMode.Locked;
                         isUnlocked = true;
