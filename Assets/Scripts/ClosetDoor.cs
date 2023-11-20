@@ -18,6 +18,7 @@ public class ClosetDoor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && IsWithinReach())
         {
             doorAudio.pitch *= -1;
+            doorAudio.timeSamples = doorAudio.pitch > 0 ? 0 : doorAudio.clip.samples - 1;
             doorAudio.Play(0);
             _doorAnim.SetBool("isOpen", !_doorAnim.GetBool("isOpen"));
         }
