@@ -24,6 +24,16 @@ https://pixabay.com/sound-effects/click-button-140881/
 https://pixabay.com/sound-effects/glitchmaizer-64691/
 https://pixabay.com/sound-effects/demonic-woman-scream-6333/
 https://pixabay.com/sound-effects/door-unlocking-101333/
+https://pixabay.com/sound-effects/tv-glitch-6245/
+https://pixabay.com/sound-effects/electric-drill-154590/
+https://pixabay.com/sound-effects/hammer-6145/
+https://pixabay.com/sound-effects/gear-spinning-loop-6981/
 
 Scripts:
 https://github.com/staffantan/unity-vhsglitch
+
+Voices:
+Technicians
+- Alex Rivas
+Cerberus
+- Raihan Bhuiya
