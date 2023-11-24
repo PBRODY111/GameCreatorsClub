@@ -9,6 +9,9 @@ public class Computer : MonoBehaviour
     [SerializeField] private GameObject computerUI;
     [SerializeField] private GameObject loginPage;
     [SerializeField] private GameObject homePage;
+    [SerializeField] private GameObject emails;
+    [SerializeField] private GameObject notes;
+    [SerializeField] private GameObject trash;
     public InputField pwdField;
     [SerializeField] private float reach;
     [SerializeField] private string password;
@@ -57,10 +60,34 @@ public class Computer : MonoBehaviour
         if (input == password){
             loginPage.SetActive(false);
             homePage.SetActive(true);
+            pwdField.Select();
+            pwdField.text = "";
         }
     }
     public void LogOut(){
         loginPage.SetActive(true);
+        homePage.SetActive(false);
+    }
+
+    public void Desktop(){
+        emails.SetActive(false);
+        notes.SetActive(false);
+        trash.SetActive(false);
+        homePage.SetActive(true);
+    }
+
+    public void EmailApp(){
+        emails.SetActive(true);
+        homePage.SetActive(false);
+    }
+
+    public void NoteApp(){
+        notes.SetActive(true);
+        homePage.SetActive(false);
+    }
+
+    public void TrashApp(){
+        trash.SetActive(true);
         homePage.SetActive(false);
     }
 
