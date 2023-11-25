@@ -15,6 +15,7 @@ public class Phone : MonoBehaviour
     [SerializeField] private string numb5;
     [SerializeField] private AudioSource numb1Audio;
     [SerializeField] private AudioSource numb2Audio;
+    [SerializeField] private AudioSource numb5Audio;
     private string entered = "";
     private bool isUnlocked = false;
     
@@ -60,6 +61,8 @@ public class Phone : MonoBehaviour
                 numb1Audio.Play();
             } else if(entered == numb2){
                 numb2Audio.Play();
+            } else if(entered == numb5){
+                numb5Audio.Play();
             }
             phoneUI.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
