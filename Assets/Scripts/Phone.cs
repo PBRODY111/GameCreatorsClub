@@ -13,9 +13,12 @@ public class Phone : MonoBehaviour
     [SerializeField] private string numb3;
     [SerializeField] private string numb4;
     [SerializeField] private string numb5;
+    [SerializeField] private AudioSource dial;
+    [SerializeField] private AudioSource call;
     [SerializeField] private AudioSource numb1Audio;
     [SerializeField] private AudioSource numb2Audio;
     [SerializeField] private AudioSource numb5Audio;
+    [SerializeField] private AudioSource incomplete;
     private string entered = "";
     private bool isUnlocked = false;
     
@@ -55,8 +58,12 @@ public class Phone : MonoBehaviour
     }
 
     public void AddNumb(Button button){
+        dial.Play();
         entered += button.name;
         if(entered.Length >= 7){
+            call.Play();
+            StartCoroutine(waitDial());
+            /*
             if(entered == numb1){
                 numb1Audio.Play();
             } else if(entered == numb2){
@@ -67,7 +74,24 @@ public class Phone : MonoBehaviour
             phoneUI.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             entered = "";
+            */
         }
+    }
+    IEnumerator waitDial()
+    {
+        phoneUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        yield return new WaitForSeconds(8.0f);
+        if(entered == numb1){
+            numb1Audio.Play();
+        } else if(entered == numb2){
+            numb2Audio.Play();
+        } else if(entered == numb5){
+            numb5Audio.Play();
+        } else{
+            incomplete.Play();
+        }
+        entered = "";
     }
 
     bool IsWithinReach()

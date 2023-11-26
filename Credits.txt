@@ -33,6 +33,8 @@ https://pixabay.com/sound-effects/electric-drill-154590/
 https://pixabay.com/sound-effects/hammer-6145/
 https://pixabay.com/sound-effects/gear-spinning-loop-6981/
 https://pixabay.com/sound-effects/muffled-talking-6161/
+https://pixabay.com/sound-effects/telephone-dial-and-call-ring-21151/
+https://pixabay.com/sound-effects/your-call-cannot-be-completed-as-dialed-please-check-the-number-and-dial-again-103202/
 
 Scripts:
 https://github.com/staffantan/unity-vhsglitch
