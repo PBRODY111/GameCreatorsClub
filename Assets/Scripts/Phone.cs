@@ -15,10 +15,8 @@ public class Phone : MonoBehaviour
     [SerializeField] private string numb5;
     [SerializeField] private AudioSource dial;
     [SerializeField] private AudioSource call;
-    [SerializeField] private AudioSource numb1Audio;
-    [SerializeField] private AudioSource numb2Audio;
-    [SerializeField] private AudioSource numb5Audio;
-    [SerializeField] private AudioSource incomplete;
+    [SerializeField] private AudioSource numbAudio;
+    public AudioClip[] numbers;
     private string entered = "";
     private bool isUnlocked = false;
     
@@ -83,13 +81,17 @@ public class Phone : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         yield return new WaitForSeconds(8.0f);
         if(entered == numb1){
-            numb1Audio.Play();
+            numbAudio.clip = numbers[1];
+            numbAudio.Play();
         } else if(entered == numb2){
-            numb2Audio.Play();
+            numbAudio.clip = numbers[2];
+            numbAudio.Play();
         } else if(entered == numb5){
-            numb5Audio.Play();
+            numbAudio.clip = numbers[3];
+            numbAudio.Play();
         } else{
-            incomplete.Play();
+            numbAudio.clip = numbers[0];
+            numbAudio.Play();
         }
         entered = "";
     }
