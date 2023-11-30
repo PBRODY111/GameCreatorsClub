@@ -61,18 +61,6 @@ public class Phone : MonoBehaviour
         if(entered.Length >= 7){
             call.Play();
             StartCoroutine(waitDial());
-            /*
-            if(entered == numb1){
-                numb1Audio.Play();
-            } else if(entered == numb2){
-                numb2Audio.Play();
-            } else if(entered == numb5){
-                numb5Audio.Play();
-            }
-            phoneUI.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            entered = "";
-            */
         }
     }
     IEnumerator waitDial()
