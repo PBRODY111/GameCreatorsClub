@@ -15,6 +15,7 @@ public class InventoryItem : ScriptableObject
         Misc,
         Battery,
         Box,
-        Pick
+        Pick,
+        Screwdriver
     };
 }
