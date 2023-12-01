@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
     [SerializeField] private GameObject _hotbar;
-
-    [SerializeField] public GameObject _stoolPrefab;
+    public Camera mainCamera;
+    public GameObject stoolPrefab;
     void Awake(){
         Instance = this;
     }

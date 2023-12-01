@@ -34,7 +34,7 @@ public class InventoryItemController : MonoBehaviour
                 break;
             case InventoryItem.ItemType.Box:
                 Debug.Log("Should be ");
-                Instantiate(Player.Instance._stoolPrefab,Player.Instance.transform.position + Player.Instance.transform.forward,Quaternion.Euler(-90f, 0f, 0f));
+                Instantiate(Player.Instance.stoolPrefab,Player.Instance.transform.position + Player.Instance.transform.forward,Quaternion.Euler(-90f, 0f, 0f));
                 RemoveItem();
                 break;
         }

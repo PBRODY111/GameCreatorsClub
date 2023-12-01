@@ -3,24 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class tutorial : MonoBehaviour
+public class Tutorial : MonoBehaviour
 {
-    [SerializeField] private GameObject entire;
-    [SerializeField] private GameObject page1;
-    [SerializeField] private GameObject page2;
-    [SerializeField] private GameObject page3;
-    [SerializeField] private GameObject ui0;
-    [SerializeField] private GameObject ui1;
-    [SerializeField] private GameObject ui2;
-    [SerializeField] private GameObject ui3;
-    [SerializeField] private Animator animator;
-    // Start is called before the first frame update
+    private GameObject page1;
+    private GameObject page2;
+    private GameObject page3;
+    [SerializeField] private GameObject UI;
+
     void Start()
     {
+        UI.SetActive(false);
+        page1 = transform.GetChild(0).gameObject;
+        page2 = transform.GetChild(1).gameObject;
+        page3 = transform.GetChild(2).gameObject;
+        this.gameObject.SetActive(true);
         page1.SetActive(true);
+
+        page1.GetComponentInChildren<Button>().onClick.AddListener(goPage2);
+        page2.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(goPage1);
+        page2.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(goPage3);
+        page3.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(goPage2);
+        page3.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(hide);
+        Player.Instance.mainCamera.GetComponent<PlayerCam>().enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+
     }
 
-    // Update is called once per frame
     public void goPage1()
     {
         page1.SetActive(true);
@@ -41,22 +49,10 @@ public class tutorial : MonoBehaviour
     }
     public void hide()
     {
-        entire.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        animator.SetBool("tutorialClose", true);
-        ui0.SetActive(true);
-        ui0.GetComponent<Animator>().Play("Room1Preload");
-        ui1.SetActive(true);
-        ui1.GetComponent<Animator>().Play("Room1Preload");
-        ui2.SetActive(true);
-        ui2.GetComponent<Animator>().Play("Room1Preload");
-        ui3.SetActive(true);
-        ui3.GetComponent<Animator>().Play("Room1Preload");
+        this.gameObject.SetActive(false);
+        Time.timeScale = 1;
+        Player.Instance.mainCamera.GetComponent<PlayerCam>().enabled = true;
+        UI.SetActive(true);
     }
 
-    void Update(){
-        if(entire.activeInHierarchy){
-            Cursor.lockState = CursorLockMode.None;
-        }
-    }
 }
