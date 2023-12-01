@@ -20,9 +20,39 @@ public class InventoryItemController : MonoBehaviour
         item = newItem;
     }
 
+    public void HoldItem()
+    {
+        ToggleColor();
+        if (Player.Instance.selectedslot == -1)
+        {
+            Player.Instance.selectedslot = transform.GetSiblingIndex();
+        }
+        else if (Player.Instance.selectedslot == transform.GetSiblingIndex())
+        {
+            Player.Instance.selectedslot = -1;
+        }
+        else
+        {
+            transform.parent.GetChild(Player.Instance.selectedslot).GetComponent<InventoryItemController>().ToggleColor();
+            Player.Instance.selectedslot = transform.GetSiblingIndex();
+        }
+            
+        
+        
+    }
+
+    private void ToggleColor()
+    {
+        if (GetComponent<Image>().color == new Color(1f, 1f, 1f))
+            GetComponent<Image>().color = new Color(20 / 255f, 50 / 255f, 20 / 255f);
+        else
+            GetComponent<Image>().color = new Color(1f, 1f, 1f);
+    }
     public void UseItem()
     {
         Debug.Log("Using " + item.itemName);
+        if(item.deselectOnUse)
+            HoldItem();
         switch (item.itemType)
         {
             case InventoryItem.ItemType.Battery:
@@ -33,7 +63,6 @@ public class InventoryItemController : MonoBehaviour
                 }
                 break;
             case InventoryItem.ItemType.Box:
-                Debug.Log("Should be ");
                 Instantiate(Player.Instance.stoolPrefab,Player.Instance.transform.position + Player.Instance.transform.forward,Quaternion.Euler(-90f, 0f, 0f));
                 RemoveItem();
                 break;

@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: Battery
   icon: {fileID: 21300000, guid: bd360b313691c4a1faaf2304ca5f042b, type: 3}
   itemType: 1
+  deselectOnUse: 1
