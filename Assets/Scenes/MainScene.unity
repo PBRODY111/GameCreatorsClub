@@ -10202,10 +10202,10 @@ PrefabInstance:
       addedObject: {fileID: 548225393}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa9a85646216142a5acfe3b88923c1de, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 548225395}
+      addedObject: {fileID: 548225400}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa9a85646216142a5acfe3b88923c1de, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 548225394}
+      addedObject: {fileID: 548225399}
   m_SourcePrefab: {fileID: 100100000, guid: fa9a85646216142a5acfe3b88923c1de, type: 3}
 --- !u!1 &548225392 stripped
 GameObject:
@@ -10233,14 +10233,12 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.03844706, y: 0.3099467, z: 0.03844705}
   m_Center: {x: 0.0000002385975, y: 0.003745094, z: -4.656613e-10}
-<<<<<<< Updated upstream
 --- !u!4 &548225396 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fa9a85646216142a5acfe3b88923c1de, type: 3}
   m_PrefabInstance: {fileID: 548225391}
   m_PrefabAsset: {fileID: 0}
-=======
---- !u!114 &548225394
+--- !u!114 &548225399
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10253,7 +10251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Item: {fileID: 11400000, guid: 5486c5d7dcc044daabdbccb28f049e61, type: 2}
---- !u!114 &548225395
+--- !u!114 &548225400
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10266,7 +10264,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 5486c5d7dcc044daabdbccb28f049e61, type: 2}
->>>>>>> Stashed changes
 --- !u!1001 &553051323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21306,7 +21303,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5e2d3dc34f0794207aa59fe7addc9cde, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -36478,7 +36475,6 @@ MonoBehaviour:
   _hotbar: {fileID: 1327178679}
   mainCamera: {fileID: 1972437052}
   stoolPrefab: {fileID: 205041033105215615, guid: 850ca12dc3cfb624bb324c69fa8c3bf5, type: 3}
-  selectedslot: -1
 --- !u!114 &1981617492
 MonoBehaviour:
   m_ObjectHideFlags: 0
