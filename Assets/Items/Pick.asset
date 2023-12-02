@@ -15,4 +15,3 @@ MonoBehaviour:
   itemName: Lock Pick
   icon: {fileID: 21300000, guid: f52aff8640e78481eb0cb1ac2487c7d0, type: 3}
   itemType: 3
-  deselectOnUse: 1
