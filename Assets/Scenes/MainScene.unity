@@ -21303,7 +21303,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5e2d3dc34f0794207aa59fe7addc9cde, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -36475,6 +36475,7 @@ MonoBehaviour:
   _hotbar: {fileID: 1327178679}
   mainCamera: {fileID: 1972437052}
   stoolPrefab: {fileID: 205041033105215615, guid: 850ca12dc3cfb624bb324c69fa8c3bf5, type: 3}
+  selectedslot: -1
 --- !u!114 &1981617492
 MonoBehaviour:
   m_ObjectHideFlags: 0
