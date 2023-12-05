@@ -10,6 +10,7 @@ public class Computer : MonoBehaviour
     [SerializeField] private GameObject loginPage;
     [SerializeField] private GameObject homePage;
     [SerializeField] private GameObject emails;
+    [SerializeField] private GameObject email1;
     [SerializeField] private GameObject notes;
     [SerializeField] private GameObject trash;
     public InputField pwdField;
@@ -76,9 +77,18 @@ public class Computer : MonoBehaviour
         homePage.SetActive(true);
     }
 
+    // Emails
+
     public void EmailApp(){
         emails.SetActive(true);
         homePage.SetActive(false);
+    }
+    public void Email1(){
+        //GetComponent<Image>().color = Color.red;
+        email1.SetActive(true);
+    }
+    public void ReturnEmail1(){
+        email1.SetActive(false);
     }
 
     public void NoteApp(){
