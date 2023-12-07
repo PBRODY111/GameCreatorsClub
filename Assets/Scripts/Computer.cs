@@ -64,8 +64,8 @@ public class Computer : MonoBehaviour
         if (input == password){
             loginPage.SetActive(false);
             homePage.SetActive(true);
-            pwdField.Select();
-            pwdField.text = "";
+            //pwdField.Select();
+            //pwdField.text = "";
         }
     }
     public void LogOut(){
