@@ -38,6 +38,9 @@ https://pixabay.com/sound-effects/gear-spinning-loop-6981/
 https://pixabay.com/sound-effects/muffled-talking-6161/
 https://pixabay.com/sound-effects/telephone-dial-and-call-ring-21151/
 https://pixabay.com/sound-effects/your-call-cannot-be-completed-as-dialed-please-check-the-number-and-dial-again-103202/
+https://pixabay.com/sound-effects/door-knocking-175163/
+https://pixabay.com/sound-effects/wooden-chair-move-86869/
+https://pixabay.com/sound-effects/mech-keyboard-02-102918/
 
 Scripts:
 https://github.com/staffantan/unity-vhsglitch

@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Animator animator4;
     [SerializeField] private AudioSource audioData;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource click;
     [SerializeField] private GameObject mainCanvas;
     [SerializeField] private GameObject extras;
     [SerializeField] private GameObject options;
@@ -41,6 +42,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartNew ()
     {
+        click.Play();
         StartCoroutine(fadeMusic());
         animator.SetBool("isStart", true);
         animator2.SetBool("isStart", true);
@@ -51,6 +53,7 @@ public class MainMenu : MonoBehaviour
     }
     public void Continue ()
     {
+        click.Play();
         StartCoroutine(fadeMusic());
         animator.SetBool("isStart", true);
         animator2.SetBool("isStart", true);
@@ -62,6 +65,7 @@ public class MainMenu : MonoBehaviour
 
     // OPTIONS
     public void OptionsMenu(){
+        click.Play();
         if(optionsOn == false){
             mainCanvas.SetActive(false);
             options.SetActive(true);
@@ -93,6 +97,7 @@ public class MainMenu : MonoBehaviour
 
     // EXTRAS
     public void ExtrasMenu(){
+        click.Play();
         if(extrasOn == false){
             mainCanvas.SetActive(false);
             extras.SetActive(true);
