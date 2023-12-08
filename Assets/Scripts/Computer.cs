@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Computer : MonoBehaviour
 {
     [SerializeField] private GameObject intText;
+    [SerializeField] private GameObject pwdText;
     [SerializeField] private GameObject computerUI;
     [SerializeField] private GameObject loginPage;
     [SerializeField] private GameObject homePage;
@@ -18,13 +19,21 @@ public class Computer : MonoBehaviour
     [SerializeField] private GameObject trash;
     public InputField pwdField;
     [SerializeField] private float reach;
-    [SerializeField] private string password;
+    public string password = "";
     private bool isUnlocked = false;
     private string input;
+    string[] Alphabet = new string[26] {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
     // Start is called before the first frame update
     void Start()
     {
-        
+        for(int i = 0; i<3; i++){
+            password += Alphabet[Random.Range(0, Alphabet.Length)];
+        }
+        for(int i = 0; i<3; i++){
+            password += Random.Range(0, 10);
+        }
+        TextMeshPro textObject = pwdText.GetComponent<TextMeshProUGUI>();
+        textObject.text = password;
     }
 
     void OnMouseOver()
@@ -39,6 +48,10 @@ public class Computer : MonoBehaviour
         }
 
 
+    }
+    void OnMouseExit()
+    {
+        intText.SetActive(false);
     }
 
     // Update is called once per frame

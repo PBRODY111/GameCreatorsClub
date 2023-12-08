@@ -8,10 +8,10 @@ public class Phone : MonoBehaviour
     [SerializeField] private GameObject phoneUI;
     [SerializeField] private GameObject intText;
     [SerializeField] private float reach;
-    [SerializeField] private string numb1;
-    [SerializeField] private string numb2;
-    [SerializeField] private string numb3;
-    [SerializeField] private string numb4;
+    public string numb1;
+    public string numb2;
+    public string numb3;
+    public string numb4;
     [SerializeField] private string numb5;
     [SerializeField] private AudioSource dial;
     [SerializeField] private AudioSource call;
@@ -23,7 +23,34 @@ public class Phone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        /*
+        HashSet<string> set = new HashSet<string>() {
+            numb1, numb2, numb3, numb4, "2211814"
+        };  
+        */
+        //while(set.Count != 4){
+        //}
+        for(int i = 0; i<7; i++){
+            numb1 += Random.Range(0, 10);
+        }
+        while(numb2 == "" || numb2 == numb1 || numb2 == numb5){
+            numb2 = "";
+            for(int i = 0; i<7; i++){
+                numb2 += Random.Range(0, 10);
+            }
+        }
+        while(numb3 == "" || numb3 == numb2 || numb2 == numb5){
+            numb3 = "";
+            for(int i = 0; i<7; i++){
+                numb3 += Random.Range(0, 10);
+            }
+        }
+        while(numb4 == "" || numb4 == numb3 || numb2 == numb5){
+            numb4 = "";
+            for(int i = 0; i<7; i++){
+                numb4 += Random.Range(0, 10);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -39,6 +66,10 @@ public class Phone : MonoBehaviour
         }
 
 
+    }
+    void OnMouseExit()
+    {
+        intText.SetActive(false);
     }
 
     // Update is called once per frame

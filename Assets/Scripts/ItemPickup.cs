@@ -5,6 +5,8 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     public InventoryItem Item;
+    [SerializeField] private GameObject intText2;
+    [SerializeField] private float reach;
 
     void PickUp()
     {
@@ -12,8 +14,24 @@ public class ItemPickup : MonoBehaviour
         Destroy(gameObject);
     }
 
+    void OnMouseOver()
+    {
+        intText2.SetActive(IsWithinReach());
+    }
+
     private void OnMouseDown()
     {
-        PickUp();
+        if(IsWithinReach()){
+            PickUp();
+            intText2.SetActive(false);
+        }
+    }
+    void OnMouseExit()
+    {
+        intText2.SetActive(false);
+    }
+    bool IsWithinReach()
+    {
+        return Vector3.Distance(transform.position, Player.Instance.transform.position) <= reach;
     }
 }

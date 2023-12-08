@@ -35,6 +35,10 @@ public class SafeDoor2 : MonoBehaviour
 
 
     }
+    void OnMouseExit()
+    {
+        intText.SetActive(false);
+    }
 
     public void AddNumb(Button button){
         dial.Play();
