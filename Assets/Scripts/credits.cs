@@ -14,6 +14,7 @@ public class credits : MonoBehaviour
     // Update is called once per frame
     IEnumerator creditSequence()
     {
+        // if first two endings wait 22 seconds, third ending on start, may have to change animations
         yield return new WaitForSeconds((float) 22.0);
         creditsAudio.Play();
     }
