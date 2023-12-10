@@ -13,10 +13,16 @@ public class SafeDoor2 : MonoBehaviour
     private bool isUnlocked = false;
     [SerializeField] private AudioSource dial;
     [SerializeField] private AudioSource unlockAudio;
-    [SerializeField] private string code;
+    public string code;
     private string entered = "";
     
     // Start is called before the first frame update
+    void Start(){
+        for(int i = 0; i<5; i++){
+            code += Random.Range(0, 10);
+        }
+    }
+
     void Awake()
     {
         safeAnimator = GetComponentInChildren<Animator>();

@@ -5481,12 +5481,13 @@ MonoBehaviour:
     number to our support team if your lock breaks or needs repairing. The Engineer
     did tell me that there was a bug in the lock''s system, though I can''t really
     seem to be able to find it. Call me anyways and I''ll probably have it figured
-    out.
+    out. Also I think the code is 5 digits actually.
 
 
     Thanks,
 
-    Daedalus Lockworks'
+    Daedalus
+    Lockworks'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8174,7 +8175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &311760459
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9826,11 +9827,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phoneUI: {fileID: 420647903}
   intText: {fileID: 1092012639}
+  email3: {fileID: 311760458}
+  email4: {fileID: 807552630}
   reach: 2
   numb1: 
   numb2: 
   numb3: 
   numb4: 
+  num1E: {fileID: 1690324434}
+  num2E: {fileID: 1536703511}
+  num3E: {fileID: 148930337}
+  num4E: {fileID: 1276028040}
   numb5: 2211814
   dial: {fileID: 420647906}
   call: {fileID: 418379799}
@@ -9850,6 +9857,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 56469faf5e2fa4f57b21ab2b0ce3f9d7, type: 3}
   - {fileID: 8300000, guid: 643235859ad6744079dfbc494d456d74, type: 3}
   - {fileID: 8300000, guid: 907eefffd0dab4b6d9198aad4637d2be, type: 3}
+  safeCode: {fileID: 1369947864}
+  gotCode: 
 --- !u!82 &418379791
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15075,7 +15084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intText: {fileID: 1092012639}
-  pwdText: {fileID: 746403921}
+  pwdText: {fileID: 746403923}
   computerUI: {fileID: 940513888}
   loginPage: {fileID: 1883652286}
   homePage: {fileID: 1948985889}
@@ -16063,7 +16072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &807552631
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22021,7 +22030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1130500306
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26065,7 +26074,7 @@ MonoBehaviour:
   padlockUI: {fileID: 1408479096}
   dial: {fileID: 1369947866}
   unlockAudio: {fileID: 1369947865}
-  code: 12345
+  code: 
 --- !u!82 &1369947865
 AudioSource:
   m_ObjectHideFlags: 0
@@ -35179,7 +35188,7 @@ RectTransform:
   m_Father: {fileID: 104956874}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 4.5, y: 0}
   m_SizeDelta: {x: 19, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

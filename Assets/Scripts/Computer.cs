@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Computer : MonoBehaviour
 {
     [SerializeField] private GameObject intText;
-    [SerializeField] private GameObject pwdText;
+    [SerializeField] private TextMeshPro pwdText;
     [SerializeField] private GameObject computerUI;
     [SerializeField] private GameObject loginPage;
     [SerializeField] private GameObject homePage;
@@ -32,8 +33,8 @@ public class Computer : MonoBehaviour
         for(int i = 0; i<3; i++){
             password += Random.Range(0, 10);
         }
-        TextMeshPro textObject = pwdText.GetComponent<TextMeshProUGUI>();
-        textObject.text = password;
+        //pwdText = pwdText.GetComponent<TextMeshProUGUI>();
+        pwdText.text = password;
     }
 
     void OnMouseOver()

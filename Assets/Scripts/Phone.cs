@@ -2,16 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Phone : MonoBehaviour
 {
     [SerializeField] private GameObject phoneUI;
     [SerializeField] private GameObject intText;
+    [SerializeField] private GameObject email3;
+    [SerializeField] private GameObject email4;
     [SerializeField] private float reach;
     public string numb1;
     public string numb2;
     public string numb3;
     public string numb4;
+    [SerializeField] private TextMeshProUGUI num1E;
+    [SerializeField] private TextMeshProUGUI num2E;
+    [SerializeField] private TextMeshProUGUI num3E;
+    [SerializeField] private TextMeshProUGUI num4E;
     [SerializeField] private string numb5;
     [SerializeField] private AudioSource dial;
     [SerializeField] private AudioSource call;
@@ -19,6 +26,9 @@ public class Phone : MonoBehaviour
     public AudioClip[] numbers;
     private string entered = "";
     private bool isUnlocked = false;
+    [SerializeField] private SafeDoor2 safeCode;
+    public string gotCode;
+    private int currentNumb;
     
     // Start is called before the first frame update
     void Start()
@@ -51,6 +61,10 @@ public class Phone : MonoBehaviour
                 numb4 += Random.Range(0, 10);
             }
         }
+        num1E.text = numb1;
+        num2E.text = numb2;
+        num3E.text = numb3;
+        num4E.text = numb4;
     }
 
     // Update is called once per frame
@@ -103,8 +117,18 @@ public class Phone : MonoBehaviour
             numbAudio.clip = numbers[1];
             numbAudio.Play();
         } else if(entered == numb2){
+            email3.SetActive(true);
+            email4.SetActive(true);
             numbAudio.clip = numbers[2];
             numbAudio.Play();
+        } else if(entered == numb3){
+            gotCode = safeCode.code;
+            for(int i = 0; i < gotCode.Length; i++){
+                currentNumb = System.Int32.Parse(gotCode[i].ToString());
+                numbAudio.clip = numbers[currentNumb+4];
+                numbAudio.Play();
+                yield return new WaitForSeconds(1.5f);
+            }
         } else if(entered == numb5){
             numbAudio.clip = numbers[3];
             numbAudio.Play();
