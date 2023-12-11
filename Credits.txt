@@ -49,6 +49,10 @@ https://pixabay.com/sound-effects/mech-keyboard-02-102918/
 
 Scripts:
 https://github.com/staffantan/unity-vhsglitch
+https://gist.github.com/ftvs/5822103
+
+Fonts:
+https://www.dafont.com/a-dripping-marker.font
 
 Voices:
 Technicians

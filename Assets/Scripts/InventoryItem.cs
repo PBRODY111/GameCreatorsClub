@@ -15,7 +15,11 @@ public class InventoryItem : ScriptableObject
         Misc,
         Battery,
         Box,
+        Ladder,
         Pick,
-        Screwdriver
+        Screwdriver,
+        Crowbar,
+        Screws,
+        Poles
     };
 }
