@@ -14677,6 +14677,7 @@ GameObject:
   - component: {fileID: 694376007}
   - component: {fileID: 694376009}
   - component: {fileID: 694376008}
+  - component: {fileID: 694376010}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -14707,7 +14708,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694376006}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &694376009
 Camera:
   m_ObjectHideFlags: 0
@@ -14759,6 +14760,23 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &694376010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694376006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 577987dda945f45bbb0d8bfec6ba783e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cerCamera: {fileID: 694376009}
+  camTransform: {fileID: 694376007}
+  shakeDuration: -1
+  shakeAmount: 1
+  decreaseFactor: 1
 --- !u!4 &699410539 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 44c290232019f4398a6b69db9ad0fca2, type: 3}
@@ -31137,7 +31155,7 @@ AudioSource:
   m_GameObject: {fileID: 1581866950}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6796415577213131969, guid: e0ad90bb6b9ca475b8ce0ffef59f7f23, type: 2}
   m_audioClip: {fileID: 8300000, guid: 50ef8d093194f46f8843f545353d44be, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
