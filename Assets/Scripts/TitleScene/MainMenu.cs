@@ -24,6 +24,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     Resolution[] resolutions;
     void Start(){
+        Cursor.lockState = CursorLockMode.None;
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
