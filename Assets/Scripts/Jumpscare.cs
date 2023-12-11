@@ -9,11 +9,15 @@ public class Jumpscare : MonoBehaviour
     [SerializeField] private Animator cerAnimator;
     [SerializeField] private AudioSource jumpscareAudio;
     [SerializeField] private GameObject intText3;
+    [SerializeField] private GameObject playerModel;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private Camera cerCamera;
     [SerializeField] private float reach;
     // Start is called before the first frame update
     void Start()
     {
-        
+        mainCamera.enabled = true;
+        cerCamera.enabled = false;
     }
 
     void OnMouseOver()
@@ -37,10 +41,14 @@ public class Jumpscare : MonoBehaviour
     }
     IEnumerator jumpscareSequence()
     {
-        cer.transform.position = new Vector3(-8.5f, 0f, -4f);
+        mainCamera.enabled = false;
+        cerCamera.enabled = true;
+        cer.transform.position = new Vector3(-8.5f, 0.5f, -4f);
+        //cer.SetActive(true);
+        playerModel.transform.position = new Vector3(-6.5f, 0f, -4f);
         cerAnimator.SetBool("isScared", true);
         jumpscareAudio.Play();
-        yield return new WaitForSeconds((float) 2.5);
+        yield return new WaitForSeconds((float) 1.5);
         SceneManager.LoadScene(4);
     }
 
