@@ -34,6 +34,7 @@ public class SafeDoor : MonoBehaviour
         {
             intText.SetActive(false);
             dialUI.SetActive(!dialUI.activeSelf);
+            PauseMenu.isPaused = true;
             Cursor.lockState = dialUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
         }
 
@@ -53,6 +54,7 @@ public class SafeDoor : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 dialUI.SetActive(false);
+                PauseMenu.isPaused = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
             if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -65,6 +67,7 @@ public class SafeDoor : MonoBehaviour
                         safeAnimator.SetBool("unlock", true);
                         unlockAudio.Play();
                         dialUI.SetActive(false);
+                        PauseMenu.isPaused = false;
                         Cursor.lockState = CursorLockMode.Locked;
                         isUnlocked = true;
                     }

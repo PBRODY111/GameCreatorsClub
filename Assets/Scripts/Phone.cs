@@ -74,6 +74,8 @@ public class Phone : MonoBehaviour
             intText.SetActive(IsWithinReach());
         if (Input.GetKeyDown(KeyCode.E) && !isUnlocked && IsWithinReach())
         {
+            entered = "";
+            PauseMenu.isPaused = true;
             intText.SetActive(false);
             phoneUI.SetActive(true);
             Cursor.lockState = phoneUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
@@ -94,6 +96,7 @@ public class Phone : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 phoneUI.SetActive(false);
+                PauseMenu.isPaused = false;
                 Cursor.lockState = CursorLockMode.Locked;
                 entered = "";
             }
@@ -111,6 +114,7 @@ public class Phone : MonoBehaviour
     IEnumerator waitDial()
     {
         phoneUI.SetActive(false);
+        PauseMenu.isPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
         yield return new WaitForSeconds(8.0f);
         if(entered == numb1){

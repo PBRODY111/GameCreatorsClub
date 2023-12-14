@@ -21,17 +21,19 @@ public class PlayerCam : MonoBehaviour
 
     private void Update()
     {
-        // get mouse input
-        float mouseX = Input.GetAxis("Mouse X") * 0.02f * sensX;
-        float mouseY = Input.GetAxis("Mouse Y") * 0.02f * sensY;
+        if(!PauseMenu.isPaused){
+            // get mouse input
+            float mouseX = Input.GetAxis("Mouse X") * 0.02f * sensX;
+            float mouseY = Input.GetAxis("Mouse Y") * 0.02f * sensY;
 
-        yRotation += mouseX;
+            yRotation += mouseX;
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        // rotate cam and orientation
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);   
+            // rotate cam and orientation
+            transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+            orientation.rotation = Quaternion.Euler(0, yRotation, 0);   
+        }
     }
 }

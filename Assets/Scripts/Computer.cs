@@ -45,6 +45,8 @@ public class Computer : MonoBehaviour
         {
             intText.SetActive(false);
             computerUI.SetActive(true);
+            Time.timeScale = 0f;
+            PauseMenu.isPaused = true;
             Cursor.lockState = computerUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
         }
 
@@ -63,6 +65,8 @@ public class Computer : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 computerUI.SetActive(false);
+                Time.timeScale = 1f;
+                PauseMenu.isPaused = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
@@ -70,6 +74,8 @@ public class Computer : MonoBehaviour
 
     public void ShutDown(){
         computerUI.SetActive(false);
+        Time.timeScale = 1f;
+        PauseMenu.isPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -85,6 +91,9 @@ public class Computer : MonoBehaviour
     public void LogOut(){
         loginPage.SetActive(true);
         homePage.SetActive(false);
+        emails.SetActive(false);
+        notes.SetActive(false);
+        trash.SetActive(false);
     }
 
     public void Desktop(){

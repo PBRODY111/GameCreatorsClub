@@ -36,6 +36,7 @@ public class SafeDoor2 : MonoBehaviour
         {
             intText.SetActive(false);
             padlockUI.SetActive(!padlockUI.activeSelf);
+            PauseMenu.isPaused = true;
             Cursor.lockState = padlockUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
         }
 
@@ -57,6 +58,7 @@ public class SafeDoor2 : MonoBehaviour
             }
             entered = "";
             padlockUI.SetActive(false);
+            PauseMenu.isPaused = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
@@ -69,6 +71,7 @@ public class SafeDoor2 : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 padlockUI.SetActive(false);
+                PauseMenu.isPaused = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }

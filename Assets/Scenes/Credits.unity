@@ -336,6 +336,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creditsAudio: {fileID: 149238478}
+  img1: {fileID: 472217860}
+  img2: {fileID: 835946313}
+  img3: {fileID: 1711153315}
 --- !u!82 &149238478
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1677,7 +1680,7 @@ MonoBehaviour:
     DAVIS CLARKE
 
 
-    PARADOX
+    THE ENGINEER
 
     JAMES SONG
 

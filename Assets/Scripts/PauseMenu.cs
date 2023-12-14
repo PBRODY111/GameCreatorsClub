@@ -98,5 +98,6 @@ public class PauseMenu : MonoBehaviour
         clickAudio.Play();
         Time.timeScale = 1f;
         SceneManager.LoadScene(2);
+        isPaused = false;
     }
 }

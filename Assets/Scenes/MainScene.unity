@@ -9761,7 +9761,11 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'OBJECTIVE: FIND A WAY OUT
 
-    HINT: START BY CHECKING THE WALLS'
+    HINT: START BY CHECKING THE WALLS
+
+
+    F1
+    to open menu'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -12692,7 +12696,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -120, y: -124}
+  m_AnchoredPosition: {x: -120, y: -168}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &474532553
@@ -15824,7 +15828,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.8301887, g: 0.30153078, b: 0.30153078, a: 1}
     m_PressedColor: {r: 0.4811321, g: 0.083971165, b: 0.083971165, a: 1}
-    m_SelectedColor: {r: 0.33962262, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.01
@@ -28029,7 +28033,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8, y: 1, z: 5}
+  m_Size: {x: 8, y: 1, z: 4}
   m_Center: {x: 0, y: 10, z: 1.6}
 --- !u!65 &1210654112
 BoxCollider:
@@ -33828,7 +33832,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.8301887, g: 0.30153078, b: 0.30153078, a: 1}
     m_PressedColor: {r: 0.4811321, g: 0.083971165, b: 0.083971165, a: 1}
-    m_SelectedColor: {r: 0.33962262, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.01
@@ -37136,7 +37140,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 120, y: -124}
+  m_AnchoredPosition: {x: 120, y: -168}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1602725683
@@ -41903,7 +41907,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.8301887, g: 0.30153078, b: 0.30153078, a: 1}
     m_PressedColor: {r: 0.4811321, g: 0.083971165, b: 0.083971165, a: 1}
-    m_SelectedColor: {r: 0.33962262, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.01
