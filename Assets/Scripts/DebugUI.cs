@@ -15,6 +15,9 @@ public class DebugUI : MonoBehaviour
     [SerializeField] private Light sun; 
     private float sunIntensity = 1.0f;
 
+    float fpsUpdateTimer = 0f;
+    float fpsUpdateInterval = 0.1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +45,17 @@ public class DebugUI : MonoBehaviour
             Player.Instance.GetComponent<Rigidbody>().useGravity = !Player.Instance.GetComponent<Rigidbody>().useGravity;
             Player.Instance.transform.GetChild(0).GetComponent<CapsuleCollider>().enabled = !Player.Instance.transform.GetChild(0).GetComponent<CapsuleCollider>().enabled;
         });
-        _fps.text = "FPS: "+(1.0f / Time.deltaTime).ToString("0.00");
+        fpsUpdateTimer += Time.deltaTime;
+        if (fpsUpdateTimer >= fpsUpdateInterval)
+        {
+            UpdateFps();
+            fpsUpdateTimer = 0f; // Reset the timer
+        }
+    }
+
+    void UpdateFps()
+    {
+        int roundedFps = Mathf.FloorToInt(1.0f / Time.deltaTime);
+        _fps.text = "FPS: " + roundedFps.ToString();
     }
 }
