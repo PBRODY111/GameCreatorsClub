@@ -33,7 +33,6 @@ public class Toxin : MonoBehaviour
             } else{
                 SceneManager.LoadScene(4);
             }
-            Debug.Log(toxicLevel);
         }
     }
 
@@ -61,7 +60,6 @@ public class Toxin : MonoBehaviour
             }
         } else {
             toxinUI.SetActive(false);
-            Debug.Log(toxicLevel + " Hidden");
         }
     }
 }
