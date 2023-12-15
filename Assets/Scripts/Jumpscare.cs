@@ -49,7 +49,7 @@ public class Jumpscare : MonoBehaviour
         cerAnimator.SetBool("isScared", true);
         jumpscareAudio.Play();
         yield return new WaitForSeconds((float) 1.5);
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("GameOverScene");
     }
 
     bool IsWithinReach()

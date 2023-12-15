@@ -31,7 +31,7 @@ public class Toxin : MonoBehaviour
                     toxicLevel += 0.1f;
                 }
             } else{
-                SceneManager.LoadScene(4);
+                SceneManager.LoadScene("GameOverScene");
             }
         }
     }
