@@ -5,31 +5,19 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     public InventoryItem Item;
-    public GameObject intText2;
     [SerializeField] private float reach;
 
     void PickUp()
     {
         Inventory.Instance.Add(Item);
         Destroy(gameObject);
-        intText2.SetActive(false);
-    }
-
-    void OnMouseOver()
-    {
-        intText2.SetActive(IsWithinReach());
     }
 
     private void OnMouseDown()
     {
         if(IsWithinReach()){
             PickUp();
-            intText2.SetActive(false);
         }
-    }
-    void OnMouseExit()
-    {
-        intText2.SetActive(false);
     }
     bool IsWithinReach()
     {
