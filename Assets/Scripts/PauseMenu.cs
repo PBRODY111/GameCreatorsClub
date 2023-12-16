@@ -71,7 +71,6 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.F1)){
-            Debug.Log("HII");
             if(isPaused){
                 ResumeGame();
             } else{
@@ -83,6 +82,7 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame(){
         clickAudio.Play();
         pauseMenu.SetActive(true);
+        options.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f;
         isPaused = true;
@@ -90,6 +90,7 @@ public class PauseMenu : MonoBehaviour
     public void ResumeGame(){
         clickAudio.Play();
         pauseMenu.SetActive(false);
+        options.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
         isPaused = false;

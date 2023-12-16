@@ -2948,7 +2948,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 0
+  m_CharacterLimit: 1
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -22540,6 +22540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 940513889}
   - component: {fileID: 940513890}
+  - component: {fileID: 940513891}
   m_Layer: 0
   m_Name: ComputerUI
   m_TagString: Untagged
@@ -22582,6 +22583,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ascalUI: {fileID: 1188483073}
   ascalAudio: {fileID: 1188483075}
+  displayText: {fileID: 1486232317}
+  letterInput: {fileID: 47411206}
+  words:
+  - corruption
+  - calibration
+  - termination
+  - veracity
+  - weboflies
+  - betrayal
+  - deadliness
+  - bloodbath
+  string1: 
+  string2: 
+  string3: 
+--- !u!114 &940513891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940513888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af9bc6aeb4bcf49f2ae1592aeebf2340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1486232317}
+  timeBetween: 0.1
 --- !u!1 &953369644
 GameObject:
   m_ObjectHideFlags: 0
@@ -28240,7 +28269,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -7030253265326811054, guid: e0ad90bb6b9ca475b8ce0ffef59f7f23, type: 2}
   m_audioClip: {fileID: 8300000, guid: 51154e272a6374c57945a9df882f5dcf, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 0.65
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -28353,10 +28382,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -34960,7 +34989,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello there, you may call me Ascal.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
