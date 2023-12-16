@@ -2951,7 +2951,19 @@ MonoBehaviour:
   m_CharacterLimit: 1
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 940513890}
+        m_TargetAssemblyTypeName: Ascal, Assembly-CSharp
+        m_MethodName: getLetter
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -22583,20 +22595,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ascalUI: {fileID: 1188483073}
   ascalAudio: {fileID: 1188483075}
+  ascalEffects: {fileID: 1188483079}
+  effects:
+  - {fileID: 8300000, guid: 81a7c6b881a974dc7aded307e0df8af7, type: 3}
+  - {fileID: 8300000, guid: d1890371ca272445689d4033505eb93d, type: 3}
+  - {fileID: 8300000, guid: a91df691a897346d7ae34dd3303a7f1b, type: 3}
   displayText: {fileID: 1486232317}
   letterInput: {fileID: 47411206}
-  words:
+  words1:
+  - blood
+  - death
+  - tears
+  - petal
+  - roses
+  words2:
+  - sadness
+  - empire
+  - collapse
+  - destroy
+  - veracity
+  words3:
+  - nostalgia
+  - weboflies
   - corruption
   - calibration
-  - termination
-  - veracity
-  - weboflies
-  - betrayal
-  - deadliness
-  - bloodbath
+  - annihilation
   string1: 
   string2: 
   string3: 
+  currentString: 
 --- !u!114 &940513891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28227,6 +28254,7 @@ GameObject:
   - component: {fileID: 1188483077}
   - component: {fileID: 1188483076}
   - component: {fileID: 1188483075}
+  - component: {fileID: 1188483079}
   m_Layer: 0
   m_Name: CanvasAscal
   m_TagString: Untagged
@@ -28269,7 +28297,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -7030253265326811054, guid: e0ad90bb6b9ca475b8ce0ffef59f7f23, type: 2}
   m_audioClip: {fileID: 8300000, guid: 51154e272a6374c57945a9df882f5dcf, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.65
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -28416,6 +28444,102 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!82 &1188483079
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188483073}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 81a7c6b881a974dc7aded307e0df8af7, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.7
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1191619501 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8485746131218568070, guid: 44c290232019f4398a6b69db9ad0fca2, type: 3}
