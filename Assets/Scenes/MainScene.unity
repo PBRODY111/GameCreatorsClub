@@ -22600,6 +22600,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 81a7c6b881a974dc7aded307e0df8af7, type: 3}
   - {fileID: 8300000, guid: d1890371ca272445689d4033505eb93d, type: 3}
   - {fileID: 8300000, guid: a91df691a897346d7ae34dd3303a7f1b, type: 3}
+  - {fileID: 8300000, guid: 0429e3d12f25841c3954675951401933, type: 3}
   displayText: {fileID: 1486232317}
   letterInput: {fileID: 47411206}
   words1:
@@ -22624,6 +22625,14 @@ MonoBehaviour:
   string2: 
   string3: 
   currentString: 
+  safe3Pwd: 
+  colors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0.0848687, g: 0.6981132, b: 0, a: 1}
+  - {r: 0, g: 0.41304064, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0.9509735, a: 1}
+  - {r: 1, g: 0.84816134, b: 0, a: 1}
+  safe3Color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &940513891
 MonoBehaviour:
   m_ObjectHideFlags: 0
