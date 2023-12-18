@@ -20,7 +20,8 @@ public class Ascal : MonoBehaviour
     [SerializeField] private string string3;
     [SerializeField] private string currentString;
     public string safe3Pwd;
-    [SerializeField] private Color[] colors;
+    [SerializeField] private SafeDoor3_2 safeDoor32;
+    public Color[] colors;
     public Color safe3Color;
     private int letterIndex = 0;
     private typewriterUI typewriterUi;
@@ -49,7 +50,9 @@ public class Ascal : MonoBehaviour
         string2 = words2[Random.Range(0, words2.Length)];
         string3 = words3[Random.Range(0, words3.Length)];
         safe3Pwd = ""+string1[Random.Range(0, string1.Length)]+string2[Random.Range(0, string2.Length)]+string3[Random.Range(0, string3.Length)];
+        safeDoor32.code = safe3Pwd;
         safe3Color = colors[Random.Range(0, colors.Length)];
+        safeDoor32.selectColor = safe3Color;
         
         //scramble string 1
         char[] array = string1.ToCharArray();

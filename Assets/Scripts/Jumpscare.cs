@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Jumpscare : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class Jumpscare : MonoBehaviour
 
     void OnMouseOver()
     {
+        intText3.GetComponent<TMP_Text>().text = "CROWBAR NEEDED TO INTERACT";
         intText3.SetActive(IsWithinReach());
         if(Input.GetMouseButtonDown(1) && IsWithinReach()){
             Debug.Log("JUMPSCARE!!");

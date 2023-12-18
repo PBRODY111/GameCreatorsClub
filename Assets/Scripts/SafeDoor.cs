@@ -33,7 +33,7 @@ public class SafeDoor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && !isUnlocked && IsWithinReach())
         {
             intText.SetActive(false);
-            dialUI.SetActive(!dialUI.activeSelf);
+            dialUI.SetActive(true);
             PauseMenu.isPaused = true;
             Cursor.lockState = dialUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
         }
