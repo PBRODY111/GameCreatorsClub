@@ -33,7 +33,9 @@ public class SafeDoor3_1 : MonoBehaviour
         }
         if(Input.GetMouseButtonDown(1) && IsWithinReach()){
             safeAnimator.SetBool("unlock", true);
-            unlockAudio.Play();
+            if(!isUnlocked){
+                unlockAudio.Play();
+            }
             isUnlocked = true;
             intText3.SetActive(false);
         }

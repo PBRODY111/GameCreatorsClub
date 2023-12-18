@@ -50,12 +50,12 @@ public class SafeDoor3_2 : MonoBehaviour
         dial.Play();
         if(inputField.text == code && code != "" && button.GetComponent<Image>().color == selectColor){
             safeAnimator.SetBool("unlock", true);
-            unlockAudio.Play();
+            if(!isUnlocked){
+                unlockAudio.Play();
+            }
             isUnlocked = true;
             intText.SetActive(false);
-        } else{
-            Debug.Log(inputField.text);
-            Debug.Log(code);
+            colorlockUI.SetActive(false);
         }
         colorIndex++;
         if(colorIndex >= ascal.colors.Length){
