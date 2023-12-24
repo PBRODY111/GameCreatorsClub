@@ -20,6 +20,7 @@ public class InventoryItem : ScriptableObject
         Screwdriver,
         Crowbar,
         Screws,
-        Poles
+        Poles,
+        Mask
     };
 }

@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Screwdriver
   icon: {fileID: 21300000, guid: c9caa28d5dc354ad4b74c4305ec44df3, type: 3}
-  itemType: 4
+  itemType: 5
+  deselectOnUse: 0

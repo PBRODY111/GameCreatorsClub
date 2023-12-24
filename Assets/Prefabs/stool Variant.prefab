@@ -165,3 +165,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Item: {fileID: 11400000, guid: d81329d5d8435c44fbe007171ca16854, type: 2}
+  reach: 2

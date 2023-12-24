@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d4169c19d6cd2e47b4b4af2e495d007, type: 3}
-  m_Name: Pick
+  m_Name: Crowbar
   m_EditorClassIdentifier: 
-  itemName: Lock Pick
-  icon: {fileID: 21300000, guid: f52aff8640e78481eb0cb1ac2487c7d0, type: 3}
-  itemType: 4
+  itemName: Crowbar
+  icon: {fileID: 21300000, guid: f17c818c3da2d46449bf59858accd5c4, type: 3}
+  itemType: 6
   deselectOnUse: 0

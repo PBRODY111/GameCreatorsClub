@@ -6,9 +6,11 @@ using TMPro;
 public class Drawer : MonoBehaviour
 {
     [SerializeField] private GameObject intText3;
+    [SerializeField] private GameObject scare;
     [SerializeField] private float reach;
     [SerializeField] private AudioSource closetAudio;
     private Animator _drawerAnim;
+    private int probInt;
     
     // Start is called before the first frame update
     void Awake(){
@@ -25,11 +27,22 @@ public class Drawer : MonoBehaviour
             closetAudio.timeSamples = closetAudio.pitch > 0 ? 0 : closetAudio.clip.samples - 1;
             closetAudio.Play(0);
             _drawerAnim.SetBool("isOpen", !_drawerAnim.GetBool("isOpen"));
+            probInt = Random.Range(0, 9);
+            if(probInt == 1){
+                StartCoroutine(imgScare());
+            }
         }
     }
     void OnMouseExit()
     {
         intText3.SetActive(false);
+    }
+
+    IEnumerator imgScare(){
+        scare.SetActive(true);
+        scare.GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(1.5f);
+        scare.SetActive(false);
     }
 
     // Update is called once per frame
