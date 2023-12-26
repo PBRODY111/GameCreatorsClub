@@ -17,7 +17,9 @@ public class Poles : MonoBehaviour
 
     void OnMouseOver()
     {
-        intText.SetActive(IsWithinReach());
+        if(!ladderUI.activeSelf){
+            intText.SetActive(IsWithinReach());
+        }
         if (Input.GetKeyDown(KeyCode.E) && IsWithinReach())
         {
             ladderUI.SetActive(true);
