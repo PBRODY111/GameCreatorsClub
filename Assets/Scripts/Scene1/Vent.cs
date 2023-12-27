@@ -10,6 +10,8 @@ public class Vent : MonoBehaviour
     [SerializeField] private GameObject intText;
     [SerializeField] private GameObject intText3;
     [SerializeField] private GameObject ventUI;
+    [SerializeField] private Animator cerAnimator;
+    [SerializeField] private Attack1 attack1;
     public int unscrewed = 0;
     // Start is called before the first frame update
     void Start()
@@ -36,17 +38,21 @@ public class Vent : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
             }
         }
+        /*
         if(!IsWithinReach()){
             ventUI.SetActive(false);
         }
+        */
     }
     void OnMouseExit()
     {
         intText.SetActive(false);
         intText3.SetActive(false);
+        /*
         ventUI.SetActive(false);
         PauseMenu.isPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
+        */
     }
 
     void Update()
@@ -64,6 +70,9 @@ public class Vent : MonoBehaviour
             ventUI.SetActive(false);
             PauseMenu.isPaused = false;
             Cursor.lockState = CursorLockMode.Locked;
+            cerAnimator.SetBool("isLeaving", true);
+            attack1.jumpscare = true;
+            attack1.t = 0;
         }
     }
 

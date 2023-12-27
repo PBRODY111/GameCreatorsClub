@@ -28,6 +28,9 @@ public class Jumpscare : MonoBehaviour
         if(Input.GetMouseButtonDown(1) && IsWithinReach()){
             Debug.Log("JUMPSCARE!!");
             // this should only happen if the crowbar is used
+            cer.transform.position = new Vector3(-8.5f, 0.5f, -4f);
+            //cer.SetActive(true);
+            playerModel.transform.position = new Vector3(-6.5f, 0f, -4f);
             StartCoroutine(jumpscareSequence());
         }
     }
@@ -45,9 +48,6 @@ public class Jumpscare : MonoBehaviour
     {
         mainCamera.enabled = false;
         cerCamera.enabled = true;
-        cer.transform.position = new Vector3(-8.5f, 0.5f, -4f);
-        //cer.SetActive(true);
-        playerModel.transform.position = new Vector3(-6.5f, 0f, -4f);
         cerAnimator.SetBool("isScared", true);
         jumpscareAudio.Play();
         yield return new WaitForSeconds((float) 1.5);
