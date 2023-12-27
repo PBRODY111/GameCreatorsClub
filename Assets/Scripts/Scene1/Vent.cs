@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Vent : MonoBehaviour
@@ -19,7 +20,9 @@ public class Vent : MonoBehaviour
     void OnMouseOver()
     {
         if(unscrewed < 4){
-            intText.SetActive(IsWithinReach());
+            if(!ventUI.activeSelf){
+                intText.SetActive(IsWithinReach());
+            }
             if (Input.GetKeyDown(KeyCode.E) && IsWithinReach())
             {
                 ventUI.SetActive(true);
@@ -29,12 +32,21 @@ public class Vent : MonoBehaviour
         } else{
             intText3.GetComponent<TMP_Text>().text = "CROWBAR NEEDED TO INTERACT";
             intText3.SetActive(true);
+            if(Input.GetMouseButtonDown(1) && IsWithinReach()){
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+            }
+        }
+        if(!IsWithinReach()){
+            ventUI.SetActive(false);
         }
     }
     void OnMouseExit()
     {
         intText.SetActive(false);
         intText3.SetActive(false);
+        ventUI.SetActive(false);
+        PauseMenu.isPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
@@ -50,6 +62,8 @@ public class Vent : MonoBehaviour
         }
         if (unscrewed >= 4){
             ventUI.SetActive(false);
+            PauseMenu.isPaused = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
