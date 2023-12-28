@@ -8,7 +8,9 @@ public class Attack1 : MonoBehaviour
     [SerializeField] private Vector3 startPosition;
     public Vector3 target;
     [SerializeField] private float timeToReachTarget;
+    [SerializeField] private float rotationTime;
     public bool jumpscare = false;
+    private Quaternion _lookRotation;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,9 @@ public class Attack1 : MonoBehaviour
         if(jumpscare == true){
             transform.position = Vector3.Lerp(startPosition, target, t);
             startPosition = transform.position;
+            target = Player.Instance.transform.position;
+            _lookRotation = Quaternion.LookRotation(target);
+            transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * rotationTime);
         }
     }
 }

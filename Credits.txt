@@ -50,6 +50,8 @@ https://pixabay.com/sound-effects/scratch-38011/
 https://pixabay.com/sound-effects/mech-keyboard-02-102918/
 https://pixabay.com/sound-effects/drawer-open-98801/
 https://pixabay.com/sound-effects/peru-alert-alt-131654/
+https://pixabay.com/sound-effects/deep-monster-growl-86780/
+https://pixabay.com/sound-effects/doorhit-98828/
 
 Scripts:
 https://github.com/staffantan/unity-vhsglitch

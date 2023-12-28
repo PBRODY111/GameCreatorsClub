@@ -44,7 +44,7 @@ public class Jumpscare : MonoBehaviour
     {
         
     }
-    IEnumerator jumpscareSequence()
+    public IEnumerator jumpscareSequence()
     {
         mainCamera.enabled = false;
         cerCamera.enabled = true;

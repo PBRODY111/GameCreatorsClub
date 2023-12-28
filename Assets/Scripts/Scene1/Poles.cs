@@ -7,7 +7,7 @@ using TMPro;
 public class Poles : MonoBehaviour
 {
     [SerializeField] private float reach;
-    [SerializeField] private GameObject intText;
+    [SerializeField] private GameObject intText3;
     [SerializeField] private GameObject ladderUI;
     // Start is called before the first frame update
     void Start()
@@ -17,10 +17,13 @@ public class Poles : MonoBehaviour
 
     void OnMouseOver()
     {
+        intText3.GetComponent<TMP_Text>().text = "POLES NEEDED TO INTERACT";
         if(!ladderUI.activeSelf){
-            intText.SetActive(IsWithinReach());
+            intText3.SetActive(IsWithinReach());
+        } else{
+            intText3.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.E) && IsWithinReach())
+        if (Input.GetMouseButtonDown(1) && IsWithinReach())
         {
             ladderUI.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
@@ -29,7 +32,7 @@ public class Poles : MonoBehaviour
     }
     void OnMouseExit()
     {
-        intText.SetActive(false);
+        intText3.SetActive(false);
     }
 
     void Update()
