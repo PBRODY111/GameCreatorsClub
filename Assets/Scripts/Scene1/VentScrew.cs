@@ -38,6 +38,7 @@ public class VentScrew : MonoBehaviour
             }
             if(vent.unscrewed >= 4){
                 vent.doorSlam.Play();
+                vent.footsteps.Play();
             }
         }
     }

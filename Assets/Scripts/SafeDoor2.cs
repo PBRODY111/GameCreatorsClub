@@ -13,8 +13,11 @@ public class SafeDoor2 : MonoBehaviour
     private bool isUnlocked = false;
     [SerializeField] private AudioSource dial;
     [SerializeField] private AudioSource unlockAudio;
+    [SerializeField] private AudioSource errorAudio;
     public string code;
     private string entered = "";
+    private int incorrectTrials = 0;
+    private bool canUnlock = true;
     
     // Start is called before the first frame update
     void Start(){
@@ -34,10 +37,14 @@ public class SafeDoor2 : MonoBehaviour
             intText.SetActive(IsWithinReach());
         if (Input.GetKeyDown(KeyCode.E) && !isUnlocked && IsWithinReach())
         {
-            intText.SetActive(false);
-            padlockUI.SetActive(!padlockUI.activeSelf);
-            PauseMenu.isPaused = true;
-            Cursor.lockState = padlockUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
+            if(canUnlock){
+                intText.SetActive(false);
+                padlockUI.SetActive(!padlockUI.activeSelf);
+                PauseMenu.isPaused = true;
+                Cursor.lockState = padlockUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
+            } else{
+                errorAudio.Play();
+            }
         }
 
 
@@ -48,6 +55,7 @@ public class SafeDoor2 : MonoBehaviour
     }
 
     public void AddNumb(Button button){
+        Debug.Log("Hello!");
         dial.Play();
         entered += button.name;
         if(entered.Length >= 5){
@@ -55,6 +63,12 @@ public class SafeDoor2 : MonoBehaviour
                 safeAnimator.SetBool("unlock", true);
                 unlockAudio.Play();
                 isUnlocked = true;
+            } else{
+                incorrectTrials++;
+                if(incorrectTrials >= 3){
+                    canUnlock = false;
+                    StartCoroutine(untilReset());
+                }
             }
             entered = "";
             padlockUI.SetActive(false);
@@ -75,6 +89,12 @@ public class SafeDoor2 : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
+    }
+
+    IEnumerator untilReset(){
+        yield return new WaitForSeconds(300f);
+        canUnlock = true;
+        incorrectTrials = 0;
     }
 
     bool IsWithinReach()

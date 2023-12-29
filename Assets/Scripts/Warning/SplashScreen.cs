@@ -5,15 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class SplashScreen : MonoBehaviour
 {
+    [SerializeField] private Animator splashAnim;
     // Start is called before the first frame update
-    void Start()
+    void Update()
     {
-        StartCoroutine(splashScreen());
+        if(Input.GetMouseButtonDown(0)){
+            StartCoroutine(splashScreen());
+        }
     }
 
     IEnumerator splashScreen()
     {
-        yield return new WaitForSeconds((float) 5.0);
+        splashAnim.SetBool("isProceed", true);
+        yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 }

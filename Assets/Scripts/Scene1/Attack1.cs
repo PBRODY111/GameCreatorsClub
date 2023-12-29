@@ -25,9 +25,10 @@ public class Attack1 : MonoBehaviour
         if(jumpscare == true){
             transform.position = Vector3.Lerp(startPosition, target, t);
             startPosition = transform.position;
-            target = Player.Instance.transform.position;
+            target = new Vector3(Player.Instance.transform.position.x,0.4f,Player.Instance.transform.position.z);
             _lookRotation = Quaternion.LookRotation(target);
-            transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * rotationTime);
+            transform.LookAt(target);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * rotationTime);
         }
     }
 }

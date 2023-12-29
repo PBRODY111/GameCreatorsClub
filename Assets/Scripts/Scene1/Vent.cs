@@ -15,9 +15,11 @@ public class Vent : MonoBehaviour
     [SerializeField] private GameObject cer;
     [SerializeField] private GameObject gas;
     [SerializeField] private GameObject escapeText;
+    [SerializeField] private GameObject escapeUI;
     private AudioSource[] allAudioSources;
     public AudioSource growlAudio;
     public AudioSource doorSlam;
+    public AudioSource footsteps;
     public int unscrewed = 0;
     // Start is called before the first frame update
     void Start()
@@ -53,6 +55,7 @@ public class Vent : MonoBehaviour
     }
 
     IEnumerator escapeFunc(){
+        escapeUI.SetActive(true);
         cer.SetActive(false);
         gas.SetActive(false);
         allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];

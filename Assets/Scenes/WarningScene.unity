@@ -662,6 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c938e805e4b74d08874ec3f2dc29911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splashAnim: {fileID: 115876394}
 --- !u!1 &1923829424
 GameObject:
   m_ObjectHideFlags: 0
