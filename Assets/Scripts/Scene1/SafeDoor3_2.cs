@@ -56,6 +56,8 @@ public class SafeDoor3_2 : MonoBehaviour
             isUnlocked = true;
             intText.SetActive(false);
             colorlockUI.SetActive(false);
+            PauseMenu.isPaused = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
         colorIndex++;
         if(colorIndex >= ascal.colors.Length){

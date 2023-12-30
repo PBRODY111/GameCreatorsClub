@@ -188,7 +188,7 @@ public class Ascal : MonoBehaviour
         yield return new WaitForSeconds(3f);
         for(int i=0; i<string2.Length; i++){
             displayText.text = ""+string2[i];
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2.5f);
             displayText.text = "";
             yield return new WaitForSeconds(0.5f);
         }
@@ -222,7 +222,7 @@ public class Ascal : MonoBehaviour
         yield return new WaitForSeconds(3f);
         for(int i=0; i<string3.Length; i++){
             displayText.text = ""+string3[i];
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(3.5f);
             displayText.text = "";
             yield return new WaitForSeconds(0.5f);
         }
