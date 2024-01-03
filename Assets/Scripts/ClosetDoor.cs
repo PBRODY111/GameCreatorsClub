@@ -25,7 +25,7 @@ public class ClosetDoor : MonoBehaviour
             doorAudio.timeSamples = doorAudio.pitch > 0 ? 0 : doorAudio.clip.samples - 1;
             doorAudio.Play(0);
             _doorAnim.SetBool("isOpen", !_doorAnim.GetBool("isOpen"));
-            probInt = Random.Range(0, 9);
+            probInt = Random.Range(0, 5);
             if(probInt == 1){
                 StartCoroutine(imgScare());
             }

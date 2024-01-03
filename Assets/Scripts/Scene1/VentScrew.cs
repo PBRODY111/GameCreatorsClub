@@ -17,7 +17,7 @@ public class VentScrew : MonoBehaviour
     {
         intText3.GetComponent<TMP_Text>().text = "SCREWDRIVER NEEDED TO INTERACT";
         intText3.SetActive(true);
-        if(Input.GetMouseButtonDown(1) && IsWithinReach()){
+        if(Input.GetMouseButtonDown(1) && IsWithinReach() && InventoryItemController.item.itemName == "Screwdriver"){
             RotateButton(button);
         }
     }

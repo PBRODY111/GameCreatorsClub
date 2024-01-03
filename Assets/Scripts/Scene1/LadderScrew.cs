@@ -38,8 +38,10 @@ public class LadderScrew : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
 
     public void RotateButton(Button button){
-        button.GetComponent<RectTransform>().Rotate(new Vector3( 0, 0, 45 ));
-        button.GetComponent<AudioSource>().Play();
+        if(InventoryItemController.item.itemName == "Screwdriver"){
+            button.GetComponent<RectTransform>().Rotate(new Vector3( 0, 0, 45 ));
+            button.GetComponent<AudioSource>().Play();
+        }
     }
 
     // Update is called once per frame

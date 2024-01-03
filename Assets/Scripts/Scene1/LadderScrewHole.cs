@@ -29,7 +29,9 @@ public class LadderScrewHole : MonoBehaviour, IPointerEnterHandler, IPointerExit
         intText3.SetActive(false);
     }
     public void ShowScrew(GameObject button){
-        button2.SetActive(true);
-        button.SetActive(false);
+        if(InventoryItemController.item.itemName == "Screw"){
+            button2.SetActive(true);
+            button.SetActive(false);
+        }
     }
 }
