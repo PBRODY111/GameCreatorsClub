@@ -31,7 +31,7 @@ public class SafeDoor3_1 : MonoBehaviour
         } else{
             intText3.SetActive(false);
         }
-        if(Input.GetMouseButtonDown(1) && IsWithinReach()){
+        if(Input.GetMouseButtonDown(1) && IsWithinReach() && InventoryItemController.item.itemName == "Lock Pick"){
             safeAnimator.SetBool("unlock", true);
             if(!isUnlocked){
                 unlockAudio.Play();

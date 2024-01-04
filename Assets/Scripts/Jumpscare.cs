@@ -25,7 +25,7 @@ public class Jumpscare : MonoBehaviour
     {
         intText3.GetComponent<TMP_Text>().text = "CROWBAR NEEDED TO INTERACT";
         intText3.SetActive(IsWithinReach());
-        if(Input.GetMouseButtonDown(1) && IsWithinReach()){
+        if(Input.GetMouseButtonDown(1) && IsWithinReach() && InventoryItemController.item.itemName == "Crowbar"){
             Debug.Log("JUMPSCARE!!");
             // this should only happen if the crowbar is used
             cer.transform.position = new Vector3(-8.5f, 0.5f, -4f);
