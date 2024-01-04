@@ -60012,6 +60012,7 @@ MonoBehaviour:
   jumpKey: 32
   sprintKey: 304
   pauseKey: 27
+  goDownKey: 306
   playerHeight: 2
   ground:
     serializedVersion: 2

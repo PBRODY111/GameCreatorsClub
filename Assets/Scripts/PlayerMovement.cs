@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode pauseKey = KeyCode.Escape;
+    public KeyCode goDownKey = KeyCode.LeftControl;
 
 
     [Header("Ground Check")]
@@ -48,8 +49,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-
-        
         SpeedControl();
 
         // handle drag
@@ -90,8 +89,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-
-
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
@@ -106,9 +103,15 @@ public class PlayerMovement : MonoBehaviour
         //else if (!grounded && Physics.Raycast(transform.position, moveDirection.normalized, 0.5f))
         else{
             rb.AddForce(moveDirection.normalized * moveSpeed * 500f * airMultiplier * Time.deltaTime, ForceMode.Force);
-            
         }
 
+        bool epicModeEnabled = !rb.useGravity;
+        
+        if(Input.GetKey(goDownKey) && !grounded && epicModeEnabled)
+            rb.AddForce(-transform.up * moveSpeed * 500f * Time.deltaTime, ForceMode.Force);
+
+        if(Input.GetKey(jumpKey) && epicModeEnabled)
+            rb.AddForce(transform.up * moveSpeed * 500f * Time.deltaTime, ForceMode.Force);
     }
 
     private void SpeedControl()
