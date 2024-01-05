@@ -8,6 +8,7 @@ public class PlayerCam : MonoBehaviour
     public float sensY;
 
     public Transform orientation;
+    public float initialY;
 
     float xRotation;
     float yRotation;
@@ -16,7 +17,7 @@ public class PlayerCam : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         xRotation = 0;
-        yRotation = 180;
+        yRotation = initialY;
     }
 
     private void Update()

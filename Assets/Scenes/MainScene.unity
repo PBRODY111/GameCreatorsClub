@@ -59799,6 +59799,7 @@ MonoBehaviour:
   sensX: 100
   sensY: 100
   orientation: {fileID: 1144686631}
+  initialY: 180
 --- !u!1 &1976307117
 GameObject:
   m_ObjectHideFlags: 0
