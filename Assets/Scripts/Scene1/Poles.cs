@@ -23,7 +23,7 @@ public class Poles : MonoBehaviour
         } else{
             intText3.SetActive(false);
         }
-        if (Input.GetMouseButtonDown(1) && IsWithinReach())
+        if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Instance.GetHeldItem().itemName == "Poles")
         {
             ladderUI.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
