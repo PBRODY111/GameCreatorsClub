@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -22,26 +23,16 @@ public class Player : MonoBehaviour
             { 
                 _hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().UseItem();
             }
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-                _hotbar.transform.GetChild(0).GetComponent<InventoryItemController>().HoldItem();
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-                _hotbar.transform.GetChild(1).GetComponent<InventoryItemController>().HoldItem();
-            else if (Input.GetKeyDown(KeyCode.Alpha3))
-                _hotbar.transform.GetChild(2).GetComponent<InventoryItemController>().HoldItem();
-            else if (Input.GetKeyDown(KeyCode.Alpha4))
-                _hotbar.transform.GetChild(3).GetComponent<InventoryItemController>().HoldItem();
-            else if (Input.GetKeyDown(KeyCode.Alpha5))
-                _hotbar.transform.GetChild(4).GetComponent<InventoryItemController>().HoldItem();
-            else if (Input.GetKeyDown(KeyCode.Alpha6))
-                _hotbar.transform.GetChild(5).GetComponent<InventoryItemController>().HoldItem();
-            else if (Input.GetKeyDown(KeyCode.Alpha7))
-                _hotbar.transform.GetChild(6).GetComponent<InventoryItemController>().HoldItem();
-            else if (Input.GetKeyDown(KeyCode.Alpha8))
-                _hotbar.transform.GetChild(7).GetComponent<InventoryItemController>().HoldItem();
-            else if (Input.GetKeyDown(KeyCode.Alpha9))
-                _hotbar.transform.GetChild(8).GetComponent<InventoryItemController>().HoldItem();
-            else if (Input.GetKeyDown(KeyCode.Alpha0))
-                _hotbar.transform.GetChild(9).GetComponent<InventoryItemController>().HoldItem();
+
+            for (int i = 0; i < 10; i++)
+            {
+                KeyCode key = (KeyCode)Enum.Parse(typeof(KeyCode), "Alpha" + (i == 9 ? 0 : i + 1));
+                if (Input.GetKeyDown(key))
+                {
+                    _hotbar.transform.GetChild(i).GetComponent<InventoryItemController>().HoldItem();
+                    break;
+                }
+            }
         }
         catch (System.Exception e)
         {
