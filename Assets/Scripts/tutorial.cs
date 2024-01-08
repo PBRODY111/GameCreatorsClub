@@ -29,6 +29,7 @@ public class Tutorial : MonoBehaviour
         page4.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(goPage3);
         page4.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(hide);
         Player.Instance.mainCamera.GetComponent<PlayerCam>().enabled = false;
+        Player.Instance.GetComponent<PlayerMovement>().enabled = false;
         Cursor.lockState = CursorLockMode.None;
 
     }
@@ -66,6 +67,7 @@ public class Tutorial : MonoBehaviour
         this.gameObject.SetActive(false);
         Time.timeScale = 1;
         Player.Instance.mainCamera.GetComponent<PlayerCam>().enabled = true;
+        Player.Instance.GetComponent<PlayerMovement>().enabled = true;
         UI.SetActive(true);
     }
 

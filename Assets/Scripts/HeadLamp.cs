@@ -25,8 +25,6 @@ public class HeadLamp : MonoBehaviour
         }
         
         _color = _lights[0].color;
-
-        Fullbright();
     }
     void Update()
     {
