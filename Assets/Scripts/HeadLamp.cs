@@ -62,7 +62,7 @@ public class HeadLamp : MonoBehaviour
             {
                 _lights[i].intensity = 0.2f * (_lightStage + 1);
                 _lights[i].spotAngle = 60f;
-                _lights[i].range = 10f;
+                _lights[i].range = 20f;
                 _lights[i].color = _color;
             }
         }

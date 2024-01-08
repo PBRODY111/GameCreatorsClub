@@ -9,10 +9,12 @@ public class DebugUI : MonoBehaviour
 {
     [SerializeField] private Canvas canvas;
     [SerializeField] private KeyCode debugKey = KeyCode.F3;
-    [SerializeField] private Button button1;
-    [SerializeField] private Button button2;
-    [SerializeField] private TMP_Text _fps;
+    [SerializeField] private Button fullbright;
+    [SerializeField] private Button epic;
+    [SerializeField] private Button fps;
     [SerializeField] private Light sun; 
+
+    [SerializeField] private TMP_Text _fps;
 
     float fpsUpdateTimer = 0f;
     float fpsUpdateInterval = 0.1f;
@@ -32,11 +34,11 @@ public class DebugUI : MonoBehaviour
             Cursor.lockState = canvas.gameObject.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = canvas.gameObject.activeSelf;
         }
-        button1.onClick.AddListener(() =>
+        fullbright.onClick.AddListener(() =>
         {
             Player.Instance.GetComponent<HeadLamp>().Fullbright();
         });
-        button2.onClick.AddListener(() => 
+        epic.onClick.AddListener(() => 
         {
             var player = Player.Instance;
             var rb = player.GetComponent<Rigidbody>();
@@ -46,6 +48,10 @@ public class DebugUI : MonoBehaviour
 
             var pm = player.GetComponent<PlayerMovement>();
             pm.epicModeEnabled = !pm.epicModeEnabled;
+        });
+        fps.onClick.AddListener(() =>
+        {
+            _fps.gameObject.SetActive(!_fps.gameObject.activeSelf);
         });
 
         fpsUpdateTimer += Time.deltaTime;
