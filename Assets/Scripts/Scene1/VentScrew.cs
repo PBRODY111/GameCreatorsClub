@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using TMPro;
 
@@ -17,7 +16,7 @@ public class VentScrew : MonoBehaviour
     {
         intText3.GetComponent<TMP_Text>().text = "SCREWDRIVER NEEDED TO INTERACT";
         intText3.SetActive(true);
-        if(Input.GetMouseButtonDown(1) && IsWithinReach() && InventoryItemController.item.itemName == "Screwdriver"){
+        if(Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Instance.GetHeldItem().itemName == "Screwdriver"){
             RotateButton(button);
         }
     }

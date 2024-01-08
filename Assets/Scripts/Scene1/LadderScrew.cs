@@ -38,7 +38,7 @@ public class LadderScrew : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
 
     public void RotateButton(Button button){
-        if(InventoryItemController.item.itemName == "Screwdriver"){
+        if(Player.Instance.GetHeldItem().itemName == "Screwdriver"){
             button.GetComponent<RectTransform>().Rotate(new Vector3( 0, 0, 45 ));
             button.GetComponent<AudioSource>().Play();
         }

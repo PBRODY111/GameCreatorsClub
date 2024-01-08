@@ -8,9 +8,15 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _hotbar;
     public Camera mainCamera;
     public GameObject stoolPrefab;
-    public int selectedslot = -1;
+    public int selectedslot;
     void Awake(){
         Instance = this;
+        selectedslot = -1;
+    }
+
+    public InventoryItem GetHeldItem()
+    {
+        return _hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().item;
     }
 
     void Update()
@@ -19,8 +25,10 @@ public class Player : MonoBehaviour
         try
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
-            { 
+            {
+                Debug.Log(_hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().item.itemName);
                 _hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().UseItem();
+                
             }
             if (Input.GetKeyDown(KeyCode.Alpha1))
                 _hotbar.transform.GetChild(0).GetComponent<InventoryItemController>().HoldItem();

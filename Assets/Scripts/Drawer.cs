@@ -22,7 +22,7 @@ public class Drawer : MonoBehaviour
     {
         intText3.GetComponent<TMP_Text>().text = "LOCKPICK NEEDED TO INTERACT";
         intText3.SetActive(IsWithinReach());
-        if(Input.GetMouseButtonDown(1) && IsWithinReach() && InventoryItemController.item.itemName == "Lock Pick"){
+        if(Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Instance.GetHeldItem().itemName == "Lock Pick"){
             closetAudio.pitch *= -1;
             closetAudio.timeSamples = closetAudio.pitch > 0 ? 0 : closetAudio.clip.samples - 1;
             closetAudio.Play(0);

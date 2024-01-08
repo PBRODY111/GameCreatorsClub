@@ -32,7 +32,7 @@ public class Vent : MonoBehaviour
         if(unscrewed >= 4){
             intText3.GetComponent<TMP_Text>().text = "CROWBAR NEEDED TO INTERACT";
             intText3.SetActive(true);
-            if(Input.GetMouseButtonDown(1) && IsWithinReach() && InventoryItemController.item.itemName == "Crowbar"){
+            if(Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Instance.GetHeldItem().itemName == "Crowbar"){
                 StartCoroutine(escapeFunc());
             }
         }
