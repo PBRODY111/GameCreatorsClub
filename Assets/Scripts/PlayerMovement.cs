@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Misc")]
     public Transform orientation;
 
+    public bool epicModeEnabled = false;
 
     float horizontalInput;
     float verticalInput;
@@ -95,23 +96,27 @@ public class PlayerMovement : MonoBehaviour
         // rotate physical body
         transform.rotation = orientation.rotation;
 
-        // on ground
-        if (grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 500f * Time.deltaTime, ForceMode.Force);
+        if(epicModeEnabled)
+        {
+            moveSpeed = 20f;
+            transform.position += moveDirection.normalized * moveSpeed * Time.deltaTime;
 
-        // in air
-        //else if (!grounded && Physics.Raycast(transform.position, moveDirection.normalized, 0.5f))
-        else{
-            rb.AddForce(moveDirection.normalized * moveSpeed * 500f * airMultiplier * Time.deltaTime, ForceMode.Force);
+            if(Input.GetKey(goDownKey))
+                transform.position -= transform.up * moveSpeed * Time.deltaTime;
+            else if(Input.GetKey(jumpKey))
+                transform.position += transform.up * moveSpeed * Time.deltaTime;
+
+            rb.velocity = Vector3.zero;
+        } else {
+            // on ground
+            if (grounded)
+                rb.AddForce(moveDirection.normalized * moveSpeed * 500f * Time.deltaTime, ForceMode.Force);
+
+            // in air
+            else{
+                rb.AddForce(moveDirection.normalized * moveSpeed * 500f * airMultiplier * Time.deltaTime, ForceMode.Force);
+            }
         }
-
-        bool epicModeEnabled = !rb.useGravity;
-        
-        if(Input.GetKey(goDownKey) && !grounded && epicModeEnabled)
-            rb.AddForce(-transform.up * moveSpeed * 500f * Time.deltaTime, ForceMode.Force);
-
-        if(Input.GetKey(jumpKey) && epicModeEnabled)
-            rb.AddForce(transform.up * moveSpeed * 500f * Time.deltaTime, ForceMode.Force);
     }
 
     private void SpeedControl()

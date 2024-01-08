@@ -59735,7 +59735,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 60
+  field of view: 75
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -60008,17 +60008,18 @@ MonoBehaviour:
   sprintSpeed: 5
   groundDrag: 8
   jumpForce: 6.5
-  jumpCooldown: 1
+  jumpCooldown: 0.2
   airMultiplier: 0.5
   jumpKey: 32
-  sprintKey: 304
+  sprintKey: 306
   pauseKey: 27
-  goDownKey: 306
+  goDownKey: 304
   playerHeight: 2
   ground:
     serializedVersion: 2
     m_Bits: 9
   orientation: {fileID: 1144686631}
+  epicModeEnabled: 0
 --- !u!4 &1981617486
 Transform:
   m_ObjectHideFlags: 0

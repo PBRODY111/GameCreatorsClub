@@ -13,7 +13,6 @@ public class DebugUI : MonoBehaviour
     [SerializeField] private Button button2;
     [SerializeField] private TMP_Text _fps;
     [SerializeField] private Light sun; 
-    private float sunIntensity = 1.0f;
 
     float fpsUpdateTimer = 0f;
     float fpsUpdateInterval = 0.1f;
@@ -35,16 +34,20 @@ public class DebugUI : MonoBehaviour
         }
         button1.onClick.AddListener(() =>
         {
-            sun.intensity += sunIntensity;
-            sunIntensity = sun.intensity - sunIntensity;
-            sun.intensity -= sunIntensity;
-            Debug.Log("Sun clicked. Intensity set to:"+sun.intensity);
+            Player.Instance.GetComponent<HeadLamp>().Fullbright();
         });
         button2.onClick.AddListener(() => 
         {
-            Player.Instance.GetComponent<Rigidbody>().useGravity = !Player.Instance.GetComponent<Rigidbody>().useGravity;
-            Player.Instance.transform.GetChild(0).GetComponent<CapsuleCollider>().enabled = !Player.Instance.transform.GetChild(0).GetComponent<CapsuleCollider>().enabled;
+            var player = Player.Instance;
+            var rb = player.GetComponent<Rigidbody>();
+            rb.useGravity = !rb.useGravity;
+            var cc = player.transform.GetChild(0).GetComponent<CapsuleCollider>();
+            cc.enabled = !cc.enabled;
+
+            var pm = player.GetComponent<PlayerMovement>();
+            pm.epicModeEnabled = !pm.epicModeEnabled;
         });
+
         fpsUpdateTimer += Time.deltaTime;
         if (fpsUpdateTimer >= fpsUpdateInterval)
         {
