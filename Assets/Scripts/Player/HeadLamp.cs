@@ -66,9 +66,8 @@ namespace Player
                 _fullbright = false;
                 foreach (var t in _lights)
                 {
-                    t.intensity = 0.2f * (lightStage + 1);
                     t.spotAngle = 60f;
-                    t.range = 20f;
+                    t.range = 10f;
                     t.color = _color;
                 }
             }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Player
 {
@@ -90,7 +91,6 @@ namespace Player
 
         private void MovePlayer()
         {
-            var transform = this.transform;
             // calculate movement direction
             _moveDirection = orientation.forward * _verticalInput + orientation.right * _horizontalInput;
 
@@ -98,33 +98,35 @@ namespace Player
             transform.rotation = orientation.rotation;
 
             if (epicModeEnabled)
-            {
-                _moveSpeed = 20f;
-                transform.position += _moveDirection.normalized * (_moveSpeed * Time.deltaTime);
-
-                if (Input.GetKey(goDownKey))
-                {
-                    if (!Input.GetKey(jumpKey))
-                        transform.position -= transform.up * (_moveSpeed * Time.deltaTime);
-                }
-                else if (Input.GetKey(jumpKey))
-                {
-                    transform.position += transform.up * (_moveSpeed * Time.deltaTime);
-                }
-
-                _rb.velocity = Vector3.zero;
-            }
+                EpicModeMovement();
             else
-            {
-                // on ground
-                if (_grounded)
-                    _rb.AddForce(_moveDirection.normalized * (_moveSpeed * 500f * Time.deltaTime), ForceMode.Force);
+                RegularMovement();
+        }
 
-                // in air
-                else
-                    _rb.AddForce(_moveDirection.normalized * (_moveSpeed * 500f * airMultiplier * Time.deltaTime),
-                        ForceMode.Force);
+        private void EpicModeMovement()
+        {
+            _moveSpeed = 1000f;
+            _rb.AddForce(_moveDirection.normalized * (_moveSpeed * Time.deltaTime), ForceMode.VelocityChange);
+            
+            if (Input.GetKey(goDownKey))
+            {
+                if (!Input.GetKey(jumpKey))
+                    _rb.AddForce(-transform.up * (_moveSpeed * Time.deltaTime), ForceMode.VelocityChange);
             }
+            else if (Input.GetKey(jumpKey))
+            {
+                _rb.AddForce(transform.up * (_moveSpeed * Time.deltaTime), ForceMode.VelocityChange);
+            }
+
+            _rb.velocity = Vector3.zero;
+        }
+
+        private void RegularMovement()
+        {
+            var force = _moveDirection.normalized * (_moveSpeed * 500f * Time.deltaTime);
+            if(!_grounded) force *= airMultiplier;
+            
+            _rb.AddForce(force, ForceMode.Force);
         }
 
         private void SpeedControl()

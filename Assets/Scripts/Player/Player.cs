@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using Player.Inventory;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -32,7 +33,7 @@ namespace Player
         {
             try
             {
-                if (Input.GetKeyDown(KeyCode.Mouse1))
+                if (Input.GetKeyDown(KeyCode.Mouse1) && selectedslot != -1)
                 {
                     Debug.Log(
                         hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().item.itemName);
@@ -51,7 +52,7 @@ namespace Player
             }
             catch (Exception e)
             {
-                Debug.Log("No Item in Slot" + e);
+                Debug.Log("No Item in Slot " + e);
             }
         }
 
@@ -72,9 +73,17 @@ namespace Player
             }
         }
 
+        [CanBeNull]
         public InventoryItem GetHeldItem()
         {
-            return hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().item;
+            try
+            {
+                return hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().item;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
         
         public bool IsHolding(InventoryItem item)
@@ -85,7 +94,7 @@ namespace Player
         public bool IsHolding(string itemName)
         {
             var heldItem = GetHeldItem();
-            return (heldItem != null && heldItem.itemName == itemName) || EpicModeEnabled();
+            return (heldItem is not null && heldItem.itemName == itemName) || EpicModeEnabled();
         }
 
         public bool EpicModeEnabled()
