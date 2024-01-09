@@ -55,8 +55,8 @@ namespace Scene1
                 if (Player.Player.Instance.EpicModeEnabled() && Input.GetMouseButtonDown(1))
                     StartCoroutine(EscapeFunc());
 
-                if (Input.GetMouseButtonDown(1) && IsWithinReach() &&
-                    Player.Player.Instance.GetHeldItem().itemName == "Crowbar") StartCoroutine(EscapeFunc());
+                if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Crowbar"))
+                    StartCoroutine(EscapeFunc());
             }
         }
 

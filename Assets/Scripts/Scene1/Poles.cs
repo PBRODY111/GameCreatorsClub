@@ -32,7 +32,7 @@ namespace Scene1
             intText3.SetActive(!ladderUI.activeSelf && IsWithinReach());
 
             if (Input.GetMouseButtonDown(1) && IsWithinReach() &&
-                Player.Player.Instance.GetHeldItem().itemName == "Poles")
+                Player.Player.Instance.IsHolding("Poles"))
             {
                 ladderUI.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;

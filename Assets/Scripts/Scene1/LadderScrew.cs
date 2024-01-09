@@ -42,7 +42,7 @@ namespace Scene1
 
         public void RotateButton(Button button)
         {
-            if (Player.Player.Instance.GetHeldItem().itemName == "Screwdriver")
+            if (Player.Player.Instance.IsHolding("Screwdriver"))
             {
                 button.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, 45));
                 button.GetComponent<AudioSource>().Play();

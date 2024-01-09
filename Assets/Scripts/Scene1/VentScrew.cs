@@ -20,15 +20,21 @@ namespace Scene1
             intText3.GetComponent<TMP_Text>().text = "SCREWDRIVER NEEDED TO INTERACT";
             intText3.SetActive(IsWithinReach());
 
-            if (Player.Player.Instance.EpicModeEnabled()) RotateButton(button);
+            var pressed = Input.GetMouseButtonDown(1);
 
-            if (Input.GetMouseButtonDown(1) && IsWithinReach() &&
-                Player.Player.Instance.GetHeldItem().itemName == "Screwdriver") RotateButton(button);
+            if (pressed)
+            {
+                if (Player.Player.Instance.EpicModeEnabled())
+                    RotateButton(350);
+
+                else if (Player.Player.Instance.IsHolding("Screwdriver"))
+                    RotateButton(6);
+            }
         }
 
-        public void RotateButton(GameObject button)
+        public void RotateButton(int amount)
         {
-            button.transform.Rotate(new Vector3(0, 0, 6));
+            button.transform.Rotate(new Vector3(0, 0, amount));
             button.GetComponent<AudioSource>().Play();
             if (button.transform.rotation.eulerAngles.y >= 350)
             {

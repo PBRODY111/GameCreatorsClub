@@ -31,7 +31,7 @@ namespace Scene1
 
         public void ShowScrew(GameObject button)
         {
-            if (Player.Player.Instance.GetHeldItem().itemName == "Screws")
+            if (Player.Player.Instance.IsHolding("Screws"))
             {
                 button2.SetActive(true);
                 button.SetActive(false);

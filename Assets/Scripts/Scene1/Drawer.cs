@@ -32,7 +32,7 @@ namespace Scene1
             intText3.GetComponent<TMP_Text>().text = "LOCKPICK NEEDED TO INTERACT";
             intText3.SetActive(IsWithinReach());
             if (Input.GetMouseButtonDown(1) && IsWithinReach() &&
-                Player.Player.Instance.GetHeldItem().itemName == "Lock Pick")
+                Player.Player.Instance.IsHolding("Lock Pick"))
             {
                 var pitch = closetAudio.pitch;
                 pitch = -pitch;

@@ -35,7 +35,7 @@ namespace Scene1
             intText3.GetComponent<TMP_Text>().text = "CROWBAR NEEDED TO INTERACT";
             intText3.SetActive(IsWithinReach());
             if (Input.GetMouseButtonDown(1) && IsWithinReach() &&
-                Player.Player.Instance.GetHeldItem().itemName == "Crowbar")
+                Player.Player.Instance.IsHolding("Crowbar"))
             {
                 Debug.Log("JUMPSCARE!!");
                 // this should only happen if the crowbar is used

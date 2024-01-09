@@ -62,9 +62,9 @@ namespace Player
                 if(Math.Abs(mainCamera.fieldOfView - 70) < 0.1)
                     mainCamera.fieldOfView = 20;
                 
-                var scrollInput = Input.mouseScrollDelta.y;
-                mainCamera.fieldOfView -= scrollInput * 30;
-                mainCamera.fieldOfView = Mathf.Clamp(mainCamera.fieldOfView, 1, 69);
+                var fieldOfView = mainCamera.fieldOfView;
+                fieldOfView -= Input.mouseScrollDelta.y * 30;
+                mainCamera.fieldOfView = Mathf.Clamp(fieldOfView, 1, 69);
             }
             else
             {
@@ -75,6 +75,17 @@ namespace Player
         public InventoryItem GetHeldItem()
         {
             return hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().item;
+        }
+        
+        public bool IsHolding(InventoryItem item)
+        {
+            return GetHeldItem() == item || EpicModeEnabled();
+        }
+        
+        public bool IsHolding(string itemName)
+        {
+            var heldItem = GetHeldItem();
+            return (heldItem != null && heldItem.itemName == itemName) || EpicModeEnabled();
         }
 
         public bool EpicModeEnabled()
