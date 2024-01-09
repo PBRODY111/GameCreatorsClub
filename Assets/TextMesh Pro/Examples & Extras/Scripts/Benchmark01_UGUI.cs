@@ -1,10 +1,10 @@
-using UnityEngine;
 using System.Collections;
+using TMPro;
+using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-
-namespace TMPro.Examples
+namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class Benchmark01UGUI : MonoBehaviour
     {
@@ -92,7 +92,7 @@ namespace TMPro.Examples
             {
                 if (benchmarkType == 0)
                 {
-                    _mTextMeshPro.text = Label01 + (i % 1000);
+                    _mTextMeshPro.text = Label01 + i % 1000;
                     if (i % 1000 == 999)
                         _mTextMeshPro.fontSharedMaterial = _mTextMeshPro.fontSharedMaterial == _mMaterial01
                             ? _mTextMeshPro.fontSharedMaterial = _mMaterial02

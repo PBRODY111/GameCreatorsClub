@@ -1,38 +1,41 @@
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.Events;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
-public class LadderScrewHole : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+namespace Scene1
 {
-    [SerializeField] private GameObject intText3;
-    [SerializeField] private GameObject button2;
-    public UnityEvent rightClick;
-
-    public void OnPointerClick(PointerEventData eventData)
+    public class LadderScrewHole : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
-        if (eventData.button == PointerEventData.InputButton.Right)
-            rightClick.Invoke();
-    }
+        [SerializeField] private GameObject intText3;
+        [SerializeField] private GameObject button2;
+        public UnityEvent rightClick;
 
-    // Start is called before the first frame update
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        intText3.GetComponent<TMP_Text>().text = "SCREWS NEEDED TO INTERACT";
-        intText3.SetActive(true);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        intText3.SetActive(false);
-    }
-
-    public void ShowScrew(GameObject button)
-    {
-        if (Player.Instance.GetHeldItem().itemName == "Screws")
+        public void OnPointerClick(PointerEventData eventData)
         {
-            button2.SetActive(true);
-            button.SetActive(false);
+            if (eventData.button == PointerEventData.InputButton.Right)
+                rightClick.Invoke();
+        }
+
+        // Start is called before the first frame update
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            intText3.GetComponent<TMP_Text>().text = "SCREWS NEEDED TO INTERACT";
+            intText3.SetActive(true);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            intText3.SetActive(false);
+        }
+
+        public void ShowScrew(GameObject button)
+        {
+            if (Player.Player.Instance.GetHeldItem().itemName == "Screws")
+            {
+                button2.SetActive(true);
+                button.SetActive(false);
+            }
         }
     }
 }

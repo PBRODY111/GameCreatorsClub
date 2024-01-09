@@ -1,8 +1,8 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-
-namespace TMPro.Examples
+namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class TextMeshSpawner : MonoBehaviour
     {

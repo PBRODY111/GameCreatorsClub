@@ -1,38 +1,41 @@
 using System.Collections;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class TypewriterUI : MonoBehaviour
+namespace PreCutscene
 {
-    [SerializeField] private TMP_Text text;
-    private string _final;
-    [SerializeField] private float timeBetween = 0.1f;
-
-    public void Write()
+    public class TypewriterUI : MonoBehaviour
     {
-        StopAllCoroutines();
-        _final = text.text;
-        text.text = "";
-        StartCoroutine(nameof(TypeWriter));
-    }
+        [SerializeField] private TMP_Text text;
+        private string _final;
+        [SerializeField] private float timeBetween = 0.1f;
 
-    private IEnumerator TypeWriter()
-    {
-        foreach (var c in _final)
+        public void Write()
         {
-            if (text.text.Length > 0) text.text = text.text.Substring(0, text.text.Length);
-            text.text += c;
-            yield return new WaitForSeconds(timeBetween);
+            StopAllCoroutines();
+            _final = text.text;
+            text.text = "";
+            StartCoroutine(nameof(TypeWriter));
         }
-    }
 
-    public void SetText(string text)
-    {
-        this.text.text = text;
-    }
+        private IEnumerator TypeWriter()
+        {
+            foreach (var c in _final)
+            {
+                if (text.text.Length > 0) text.text = text.text.Substring(0, text.text.Length);
+                text.text += c;
+                yield return new WaitForSeconds(timeBetween);
+            }
+        }
 
-    public float GetTimeBetween()
-    {
-        return timeBetween;
+        public void SetText(string text)
+        {
+            this.text.text = text;
+        }
+
+        public float GetTimeBetween()
+        {
+            return timeBetween;
+        }
     }
 }

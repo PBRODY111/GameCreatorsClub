@@ -1,51 +1,54 @@
 using UnityEngine;
 
-public class CameraShake : MonoBehaviour
+namespace Scene1
 {
-    // Transform of the camera to shake. Grabs the gameObject's transform
-    // if null.
-    public Camera cerCamera;
-    public Transform camTransform;
-
-    // How long the object should shake for.
-    public float shakeDuration;
-
-    // Amplitude of the shake. A larger value shakes the camera harder.
-    public float shakeAmount = 0.7f;
-    public float decreaseFactor = 1.0f;
-
-    private Vector3 _originalPos;
-
-    private void Awake()
+    public class CameraShake : MonoBehaviour
     {
-        if (camTransform == null)
+        // Transform of the camera to shake. Grabs the gameObject's transform
+        // if null.
+        public Camera cerCamera;
+        public Transform camTransform;
+
+        // How long the object should shake for.
+        public float shakeDuration;
+
+        // Amplitude of the shake. A larger value shakes the camera harder.
+        public float shakeAmount = 0.7f;
+        public float decreaseFactor = 1.0f;
+
+        private Vector3 _originalPos;
+
+        private void Awake()
         {
-            camTransform = GetComponent(typeof(Transform)) as Transform;
-        }
-    }
-
-    private void OnEnable()
-    {
-        _originalPos = camTransform.localPosition;
-    }
-
-    private void Update()
-    {
-        if (Camera.main == cerCamera)
-        {
-            Debug.Log("Breuh");
+            if (camTransform == null)
+            {
+                camTransform = GetComponent(typeof(Transform)) as Transform;
+            }
         }
 
-        if (shakeDuration < 0)
+        private void OnEnable()
         {
-            camTransform.localPosition = _originalPos + Random.insideUnitSphere * shakeAmount;
-
-            shakeDuration -= Time.deltaTime * decreaseFactor;
+            _originalPos = camTransform.localPosition;
         }
-        else
+
+        private void Update()
         {
-            shakeDuration = 0f;
-            camTransform.localPosition = _originalPos;
+            if (Camera.main == cerCamera)
+            {
+                Debug.Log("Breuh");
+            }
+
+            if (shakeDuration < 0)
+            {
+                camTransform.localPosition = _originalPos + Random.insideUnitSphere * shakeAmount;
+
+                shakeDuration -= Time.deltaTime * decreaseFactor;
+            }
+            else
+            {
+                shakeDuration = 0f;
+                camTransform.localPosition = _originalPos;
+            }
         }
     }
 }

@@ -31,6 +31,6 @@ public class Stereo : MonoBehaviour
 
     private bool IsWithinReach()
     {
-        return Vector3.Distance(transform.position, Player.Instance.transform.position) <= reach;
+        return Vector3.Distance(transform.position, Player.Player.Instance.transform.position) <= reach;
     }
 }

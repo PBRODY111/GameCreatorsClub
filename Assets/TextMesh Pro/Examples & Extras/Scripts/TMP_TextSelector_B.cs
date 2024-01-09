@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
-
 #pragma warning disable 0618 // Disabled warning due to SetVertices being deprecated until new release with SetMesh() is available.
 
-namespace TMPro.Examples
+namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class TMPTextSelectorB : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler,
         IPointerUpHandler

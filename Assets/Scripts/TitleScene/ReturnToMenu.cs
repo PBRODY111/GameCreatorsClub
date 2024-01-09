@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ReturnToMenu : MonoBehaviour
+namespace TitleScene
 {
-    // Update is called once per frame
-    private void Update()
+    public class ReturnToMenu : MonoBehaviour
     {
-        if (Input.GetMouseButtonDown(0))
-            SceneManager.LoadScene(1);
+        // Update is called once per frame
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
+                SceneManager.LoadScene(1);
+        }
     }
 }

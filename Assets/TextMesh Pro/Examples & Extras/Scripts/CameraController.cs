@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-
-namespace TMPro.Examples
+namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class CameraController : MonoBehaviour
     {
@@ -97,7 +96,7 @@ namespace TMPro.Examples
                 else if (cameraMode == CameraModes.Follow)
                 {
                     _desiredPosition = cameraTarget.position + cameraTarget.TransformDirection(
-                        Quaternion.Euler(elevationAngle, orbitalAngle, 0f) * (new Vector3(0, 0, -followDistance)));
+                        Quaternion.Euler(elevationAngle, orbitalAngle, 0f) * new Vector3(0, 0, -followDistance));
                 }
                 else
                 {

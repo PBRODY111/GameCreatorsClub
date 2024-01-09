@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MakeCube : MonoBehaviour
 {
-    [SerializeField] private KeyCode key = KeyCode.Space;
+    [SerializeField] private KeyCode key = KeyCode.F2;
     [SerializeField] private GameObject cubePrefab;
     [SerializeField] private Transform deskSpam;
 

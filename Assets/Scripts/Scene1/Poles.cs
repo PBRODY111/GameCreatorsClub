@@ -1,58 +1,62 @@
-using UnityEngine;
 using TMPro;
+using UI;
+using UnityEngine;
 
-public class Poles : MonoBehaviour
+namespace Scene1
 {
-    [SerializeField] private float reach;
-    [SerializeField] private GameObject intText3;
-
-    [SerializeField] private GameObject ladderUI;
-
-    // Start is called before the first frame update
-    private void Start()
+    public class Poles : MonoBehaviour
     {
-    }
+        [SerializeField] private float reach;
+        [SerializeField] private GameObject intText3;
 
-    private void OnMouseOver()
-    {
-        intText3.GetComponent<TMP_Text>().text = "POLES NEEDED TO INTERACT";
-        if (!ladderUI.activeSelf)
+        [SerializeField] private GameObject ladderUI;
+
+        // Start is called before the first frame update
+        private void Start()
         {
-            intText3.SetActive(IsWithinReach());
         }
-        else
+
+        private void OnMouseOver()
+        {
+            intText3.GetComponent<TMP_Text>().text = "POLES NEEDED TO INTERACT";
+            if (!ladderUI.activeSelf)
+            {
+                intText3.SetActive(IsWithinReach());
+            }
+            else
+            {
+                intText3.SetActive(false);
+            }
+
+            if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.GetHeldItem().itemName == "Poles")
+            {
+                ladderUI.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+                PauseMenu.IsPaused = true;
+            }
+        }
+
+        private void OnMouseExit()
         {
             intText3.SetActive(false);
         }
 
-        if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Instance.GetHeldItem().itemName == "Poles")
+        private void Update()
         {
-            ladderUI.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            PauseMenu.IsPaused = true;
-        }
-    }
-
-    private void OnMouseExit()
-    {
-        intText3.SetActive(false);
-    }
-
-    private void Update()
-    {
-        if (ladderUI.activeSelf)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (ladderUI.activeSelf)
             {
-                ladderUI.SetActive(false);
-                PauseMenu.IsPaused = false;
-                Cursor.lockState = CursorLockMode.Locked;
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    ladderUI.SetActive(false);
+                    PauseMenu.IsPaused = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
             }
         }
-    }
 
-    private bool IsWithinReach()
-    {
-        return Vector3.Distance(transform.position, Player.Instance.transform.position) <= reach;
+        private bool IsWithinReach()
+        {
+            return Vector3.Distance(transform.position, Player.Player.Instance.transform.position) <= reach;
+        }
     }
 }

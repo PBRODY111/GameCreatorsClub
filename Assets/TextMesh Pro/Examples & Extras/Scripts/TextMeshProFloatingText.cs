@@ -1,9 +1,9 @@
-using UnityEngine;
 using System.Collections;
+using TMPro;
+using UnityEngine;
 using UnityEngine.Serialization;
 
-
-namespace TMPro.Examples
+namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class TextMeshProFloatingText : MonoBehaviour
     {
@@ -25,18 +25,18 @@ namespace TMPro.Examples
 
         //private int m_frame = 0;
 
-        private static WaitForEndOfFrame _kWaitForEndOfFrame = new WaitForEndOfFrame();
+        private static WaitForEndOfFrame _kWaitForEndOfFrame = new();
 
         private static WaitForSeconds[] _kWaitForSecondsRandom = new WaitForSeconds[]
         {
-            new WaitForSeconds(0.05f), new WaitForSeconds(0.1f), new WaitForSeconds(0.15f), new WaitForSeconds(0.2f),
-            new WaitForSeconds(0.25f),
-            new WaitForSeconds(0.3f), new WaitForSeconds(0.35f), new WaitForSeconds(0.4f), new WaitForSeconds(0.45f),
-            new WaitForSeconds(0.5f),
-            new WaitForSeconds(0.55f), new WaitForSeconds(0.6f), new WaitForSeconds(0.65f), new WaitForSeconds(0.7f),
-            new WaitForSeconds(0.75f),
-            new WaitForSeconds(0.8f), new WaitForSeconds(0.85f), new WaitForSeconds(0.9f), new WaitForSeconds(0.95f),
-            new WaitForSeconds(1.0f),
+            new(0.05f), new(0.1f), new(0.15f), new(0.2f),
+            new(0.25f),
+            new(0.3f), new(0.35f), new(0.4f), new(0.45f),
+            new(0.5f),
+            new(0.55f), new(0.6f), new(0.65f), new(0.7f),
+            new(0.75f),
+            new(0.8f), new(0.85f), new(0.9f), new(0.95f),
+            new(1.0f),
         };
 
         private void Awake()
@@ -131,12 +131,12 @@ namespace TMPro.Examples
 
             while (currentCount > 0)
             {
-                currentCount -= (Time.deltaTime / countDuration) * startingCount;
+                currentCount -= Time.deltaTime / countDuration * startingCount;
 
                 if (currentCount <= 3)
                 {
                     //Debug.Log("Fading Counter ... " + current_Count.ToString("f2"));
-                    alpha = Mathf.Clamp(alpha - (Time.deltaTime / fadeDuration) * 255, 0, 255);
+                    alpha = Mathf.Clamp(alpha - Time.deltaTime / fadeDuration * 255, 0, 255);
                 }
 
                 intCounter = (int)currentCount;
@@ -187,12 +187,12 @@ namespace TMPro.Examples
 
             while (currentCount > 0)
             {
-                currentCount -= (Time.deltaTime / countDuration) * startingCount;
+                currentCount -= Time.deltaTime / countDuration * startingCount;
 
                 if (currentCount <= 3)
                 {
                     //Debug.Log("Fading Counter ... " + current_Count.ToString("f2"));
-                    alpha = Mathf.Clamp(alpha - (Time.deltaTime / fadeDuration) * 255, 0, 255);
+                    alpha = Mathf.Clamp(alpha - Time.deltaTime / fadeDuration * 255, 0, 255);
                 }
 
                 intCounter = (int)currentCount;

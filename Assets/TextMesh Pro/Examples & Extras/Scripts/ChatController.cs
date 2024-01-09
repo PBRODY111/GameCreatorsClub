@@ -1,51 +1,54 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
-public class ChatController : MonoBehaviour
+namespace TextMesh_Pro.Examples___Extras.Scripts
 {
-    [FormerlySerializedAs("ChatInputField")] public TMP_InputField chatInputField;
-
-    [FormerlySerializedAs("ChatDisplayOutput")] public TMP_Text chatDisplayOutput;
-
-    [FormerlySerializedAs("ChatScrollbar")] public Scrollbar chatScrollbar;
-
-    private void OnEnable()
+    public class ChatController : MonoBehaviour
     {
-        chatInputField.onSubmit.AddListener(AddToChatOutput);
-    }
+        [FormerlySerializedAs("ChatInputField")] public TMP_InputField chatInputField;
 
-    private void OnDisable()
-    {
-        chatInputField.onSubmit.RemoveListener(AddToChatOutput);
-    }
+        [FormerlySerializedAs("ChatDisplayOutput")] public TMP_Text chatDisplayOutput;
 
+        [FormerlySerializedAs("ChatScrollbar")] public Scrollbar chatScrollbar;
 
-    private void AddToChatOutput(string newText)
-    {
-        // Clear Input Field
-        chatInputField.text = string.Empty;
-
-        var timeNow = System.DateTime.Now;
-
-        var formattedInput = "[<#FFFF80>" + timeNow.Hour.ToString("d2") + ":" + timeNow.Minute.ToString("d2") + ":" +
-                             timeNow.Second.ToString("d2") + "</color>] " + newText;
-
-        if (chatDisplayOutput != null)
+        private void OnEnable()
         {
-            // No special formatting for first entry
-            // Add line feed before each subsequent entries
-            if (chatDisplayOutput.text == string.Empty)
-                chatDisplayOutput.text = formattedInput;
-            else
-                chatDisplayOutput.text += "\n" + formattedInput;
+            chatInputField.onSubmit.AddListener(AddToChatOutput);
         }
 
-        // Keep Chat input field active
-        chatInputField.ActivateInputField();
+        private void OnDisable()
+        {
+            chatInputField.onSubmit.RemoveListener(AddToChatOutput);
+        }
 
-        // Set the scrollbar to the bottom when next text is submitted.
-        chatScrollbar.value = 0;
+
+        private void AddToChatOutput(string newText)
+        {
+            // Clear Input Field
+            chatInputField.text = string.Empty;
+
+            var timeNow = System.DateTime.Now;
+
+            var formattedInput = "[<#FFFF80>" + timeNow.Hour.ToString("d2") + ":" + timeNow.Minute.ToString("d2") + ":" +
+                                 timeNow.Second.ToString("d2") + "</color>] " + newText;
+
+            if (chatDisplayOutput != null)
+            {
+                // No special formatting for first entry
+                // Add line feed before each subsequent entries
+                if (chatDisplayOutput.text == string.Empty)
+                    chatDisplayOutput.text = formattedInput;
+                else
+                    chatDisplayOutput.text += "\n" + formattedInput;
+            }
+
+            // Keep Chat input field active
+            chatInputField.ActivateInputField();
+
+            // Set the scrollbar to the bottom when next text is submitted.
+            chatScrollbar.value = 0;
+        }
     }
 }

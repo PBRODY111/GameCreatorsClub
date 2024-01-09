@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using TMPro;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using System;
 using UnityEngine.Serialization;
 
-
-namespace TMPro
+namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class TMPTextEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
@@ -44,7 +44,7 @@ namespace TMPro
             set { mOnCharacterSelection = value; }
         }
 
-        [FormerlySerializedAs("m_OnCharacterSelection")] [SerializeField] private CharacterSelectionEvent mOnCharacterSelection = new CharacterSelectionEvent();
+        [FormerlySerializedAs("m_OnCharacterSelection")] [SerializeField] private CharacterSelectionEvent mOnCharacterSelection = new();
 
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace TMPro
             set { mOnSpriteSelection = value; }
         }
 
-        [FormerlySerializedAs("m_OnSpriteSelection")] [SerializeField] private SpriteSelectionEvent mOnSpriteSelection = new SpriteSelectionEvent();
+        [FormerlySerializedAs("m_OnSpriteSelection")] [SerializeField] private SpriteSelectionEvent mOnSpriteSelection = new();
 
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace TMPro
             set { mOnWordSelection = value; }
         }
 
-        [FormerlySerializedAs("m_OnWordSelection")] [SerializeField] private WordSelectionEvent mOnWordSelection = new WordSelectionEvent();
+        [FormerlySerializedAs("m_OnWordSelection")] [SerializeField] private WordSelectionEvent mOnWordSelection = new();
 
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace TMPro
             set { mOnLineSelection = value; }
         }
 
-        [FormerlySerializedAs("m_OnLineSelection")] [SerializeField] private LineSelectionEvent mOnLineSelection = new LineSelectionEvent();
+        [FormerlySerializedAs("m_OnLineSelection")] [SerializeField] private LineSelectionEvent mOnLineSelection = new();
 
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace TMPro
             set { mOnLinkSelection = value; }
         }
 
-        [FormerlySerializedAs("m_OnLinkSelection")] [SerializeField] private LinkSelectionEvent mOnLinkSelection = new LinkSelectionEvent();
+        [FormerlySerializedAs("m_OnLinkSelection")] [SerializeField] private LinkSelectionEvent mOnLinkSelection = new();
 
 
         private TMP_Text _mTextComponent;

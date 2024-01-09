@@ -1,15 +1,15 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using TMPro;
+using UnityEngine;
 using UnityEngine.Serialization;
 
-
-namespace TMPro.Examples
+namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class WarpTextExample : MonoBehaviour
     {
         private TMP_Text _mTextComponent;
 
-        [FormerlySerializedAs("VertexCurve")] public AnimationCurve vertexCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.25f, 2.0f),
+        [FormerlySerializedAs("VertexCurve")] public AnimationCurve vertexCurve = new(new Keyframe(0, 0), new Keyframe(0.25f, 2.0f),
             new Keyframe(0.5f, 0), new Keyframe(0.75f, 2.0f), new Keyframe(1, 0f));
 
         [FormerlySerializedAs("AngleMultiplier")] public float angleMultiplier = 1.0f;
