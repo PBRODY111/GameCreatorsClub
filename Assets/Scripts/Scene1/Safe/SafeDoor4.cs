@@ -31,7 +31,7 @@ namespace Scene1.Safe
             else
                 intText3.SetActive(false);
 
-            if (Input.GetMouseButtonDown(1) && IsWithinReach())
+            if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.GetHeldItem().itemName == "Screwdriver")
             {
                 _safeAnimator.SetBool("unlock", true);
                 if (!isUnlocked) unlockAudio.Play();
