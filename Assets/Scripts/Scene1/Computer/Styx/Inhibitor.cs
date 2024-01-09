@@ -5,15 +5,13 @@ namespace Scene1.Computer.Styx
 {
     public class Inhibitor : MonoBehaviour
     {
-        public GameObject intText; // Reference to the GameObject "intText"
+        public GameObject intText;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             // Check if the player has entered the collider
-            if (other.CompareTag("Player"))
-                // Set "intText" object's active state to true
-                if (intText != null)
-                    intText.SetActive(true);
+            if (other.CompareTag("Player") && intText != null)
+                intText.SetActive(true);
         }
 
         private void OnTriggerStay2D(Collider2D other)

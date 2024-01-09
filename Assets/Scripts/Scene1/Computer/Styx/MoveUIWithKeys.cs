@@ -40,6 +40,12 @@ namespace Scene1.Computer.Styx
             var horizontalInput = Input.GetAxis("Horizontal");
             var verticalInput = Input.GetAxis("Vertical");
 
+            if (Player.Player.Instance.EpicModeEnabled())
+            {
+                moveSpeed = 300f;
+                followerObject.SetActive(false);
+            }
+
             if (horizontalInput != 0 || verticalInput != 0)
             {
                 // If arrow keys are pressed, perform movement and animation
