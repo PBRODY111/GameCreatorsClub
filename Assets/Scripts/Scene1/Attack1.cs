@@ -27,7 +27,7 @@ namespace Scene1
             var thisTransform = transform;
             thisTransform.position = Vector3.Lerp(startPosition, target, t);
             startPosition = thisTransform.position;
-        
+
             var position = Player.Player.Instance.transform.position;
             target = new Vector3(position.x, 0.4f, position.z);
             _lookRotation = Quaternion.LookRotation(target);

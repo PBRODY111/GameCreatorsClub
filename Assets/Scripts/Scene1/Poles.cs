@@ -16,24 +16,15 @@ namespace Scene1
         {
         }
 
-        private void OnMouseOver()
+        private void Update()
         {
-            intText3.GetComponent<TMP_Text>().text = "POLES NEEDED TO INTERACT";
-            if (!ladderUI.activeSelf)
-            {
-                intText3.SetActive(IsWithinReach());
-            }
-            else
-            {
-                intText3.SetActive(false);
-            }
-
-            if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.GetHeldItem().itemName == "Poles")
-            {
-                ladderUI.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
-                PauseMenu.IsPaused = true;
-            }
+            if (ladderUI.activeSelf)
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    ladderUI.SetActive(false);
+                    PauseMenu.IsPaused = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
         }
 
         private void OnMouseExit()
@@ -41,16 +32,20 @@ namespace Scene1
             intText3.SetActive(false);
         }
 
-        private void Update()
+        private void OnMouseOver()
         {
-            if (ladderUI.activeSelf)
+            intText3.GetComponent<TMP_Text>().text = "POLES NEEDED TO INTERACT";
+            if (!ladderUI.activeSelf)
+                intText3.SetActive(IsWithinReach());
+            else
+                intText3.SetActive(false);
+
+            if (Input.GetMouseButtonDown(1) && IsWithinReach() &&
+                Player.Player.Instance.GetHeldItem().itemName == "Poles")
             {
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    ladderUI.SetActive(false);
-                    PauseMenu.IsPaused = false;
-                    Cursor.lockState = CursorLockMode.Locked;
-                }
+                ladderUI.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+                PauseMenu.IsPaused = true;
             }
         }
 

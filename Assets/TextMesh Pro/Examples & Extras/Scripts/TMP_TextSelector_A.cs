@@ -6,14 +6,13 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class TMPTextSelectorA : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        private TextMeshPro _mTextMeshPro;
-
         private Camera _mCamera;
 
         private bool _mIsHoveringObject;
-        private int _mSelectedLink = -1;
         private int _mLastCharIndex = -1;
         private int _mLastWordIndex = -1;
+        private int _mSelectedLink = -1;
+        private TextMeshPro _mTextMeshPro;
 
         private void Awake()
         {
@@ -31,9 +30,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 
             if (TMP_TextUtilities.IsIntersectingRectTransform(_mTextMeshPro.rectTransform, Input.mousePosition,
                     Camera.main))
-            {
                 _mIsHoveringObject = true;
-            }
 
             if (_mIsHoveringObject)
             {
@@ -75,10 +72,8 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 
                 // Clear previous link selection if one existed.
                 if ((linkIndex == -1 && _mSelectedLink != -1) || linkIndex != _mSelectedLink)
-                {
                     //m_TextPopup_RectTransform.gameObject.SetActive(false);
                     _mSelectedLink = -1;
-                }
 
                 // Handle new Link selection.
                 if (linkIndex != -1 && linkIndex != _mSelectedLink)

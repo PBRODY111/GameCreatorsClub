@@ -6,8 +6,8 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class TextConsoleSimulator : MonoBehaviour
     {
-        private TMP_Text _mTextComponent;
         private bool _hasTextChanged;
+        private TMP_Text _mTextComponent;
 
         private void Awake()
         {
@@ -42,7 +42,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 
 
         /// <summary>
-        /// Method revealing the text one character at a time.
+        ///     Method revealing the text one character at a time.
         /// </summary>
         /// <returns></returns>
         private IEnumerator RevealCharacters(TMP_Text textComponent)
@@ -78,7 +78,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 
 
         /// <summary>
-        /// Method revealing the text one word at a time.
+        ///     Method revealing the text one word at a time.
         /// </summary>
         /// <returns></returns>
         private IEnumerator RevealWords(TMP_Text textComponent)
@@ -107,10 +107,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
                 textComponent.maxVisibleCharacters = visibleCount; // How many characters should TextMeshPro display?
 
                 // Once the last character has been revealed, wait 1.0 second and start over.
-                if (visibleCount >= totalVisibleCharacters)
-                {
-                    yield return new WaitForSeconds(1.0f);
-                }
+                if (visibleCount >= totalVisibleCharacters) yield return new WaitForSeconds(1.0f);
 
                 counter += 1;
 

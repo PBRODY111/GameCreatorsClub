@@ -21,7 +21,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 
 
         /// <summary>
-        /// Method to animate vertex colors of a TMP Text object.
+        ///     Method to animate vertex colors of a TMP Text object.
         /// </summary>
         /// <returns></returns>
         private IEnumerator AnimateVertexColors()

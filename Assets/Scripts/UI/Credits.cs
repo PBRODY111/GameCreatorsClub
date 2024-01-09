@@ -23,10 +23,7 @@ namespace UI
         // Update is called once per frame
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.E) && _canSkip)
-            {
-                SceneManager.LoadScene(2);
-            }
+            if (Input.GetKeyDown(KeyCode.E) && _canSkip) SceneManager.LoadScene(2);
         }
 
         private IEnumerator CreditSequence()

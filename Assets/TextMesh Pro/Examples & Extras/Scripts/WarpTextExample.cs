@@ -7,14 +7,18 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class WarpTextExample : MonoBehaviour
     {
-        private TMP_Text _mTextComponent;
-
-        [FormerlySerializedAs("VertexCurve")] public AnimationCurve vertexCurve = new(new Keyframe(0, 0), new Keyframe(0.25f, 2.0f),
+        [FormerlySerializedAs("VertexCurve")]
+        public AnimationCurve vertexCurve = new(new Keyframe(0, 0), new Keyframe(0.25f, 2.0f),
             new Keyframe(0.5f, 0), new Keyframe(0.75f, 2.0f), new Keyframe(1, 0f));
 
-        [FormerlySerializedAs("AngleMultiplier")] public float angleMultiplier = 1.0f;
-        [FormerlySerializedAs("SpeedMultiplier")] public float speedMultiplier = 1.0f;
+        [FormerlySerializedAs("AngleMultiplier")]
+        public float angleMultiplier = 1.0f;
+
+        [FormerlySerializedAs("SpeedMultiplier")]
+        public float speedMultiplier = 1.0f;
+
         [FormerlySerializedAs("CurveScale")] public float curveScale = 1.0f;
+        private TMP_Text _mTextComponent;
 
         private void Awake()
         {
@@ -39,7 +43,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 
 
         /// <summary>
-        ///  Method to curve text along a Unity animation curve.
+        ///     Method to curve text along a Unity animation curve.
         /// </summary>
         /// <param name="textComponent"></param>
         /// <returns></returns>

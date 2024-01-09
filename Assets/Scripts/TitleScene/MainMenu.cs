@@ -9,6 +9,7 @@ namespace TitleScene
 {
     public class MainMenu : MonoBehaviour
     {
+        private static readonly int IsStart = Animator.StringToHash("isStart");
         [SerializeField] private Animator animator;
         [SerializeField] private Animator animator2;
         [SerializeField] private Animator animator3;
@@ -27,7 +28,6 @@ namespace TitleScene
 
         // Start is called before the first frame update
         private Resolution[] _resolutions;
-        private static readonly int IsStart = Animator.StringToHash("isStart");
 
         private void Start()
         {
@@ -42,9 +42,7 @@ namespace TitleScene
                 opts.Add(option);
                 if (_resolutions[i].width == Screen.currentResolution.width &&
                     _resolutions[i].height == Screen.currentResolution.height)
-                {
                     currentResIndex = i;
-                }
             }
 
             resolutionDropdown.AddOptions(opts);

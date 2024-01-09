@@ -10,10 +10,7 @@ namespace Scene1
         // Update is called once per frame
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.relativeVelocity.magnitude > 3f)
-            {
-                impactAudio.Play();
-            }
+            if (collision.relativeVelocity.magnitude > 3f) impactAudio.Play();
         }
     }
 }

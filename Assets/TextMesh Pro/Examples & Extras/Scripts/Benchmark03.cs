@@ -16,7 +16,9 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
             TextmeshBitmap = 4
         }
 
-        [FormerlySerializedAs("NumberOfSamples")] public int numberOfSamples = 100;
+        [FormerlySerializedAs("NumberOfSamples")]
+        public int numberOfSamples = 100;
+
         [FormerlySerializedAs("Benchmark")] public BenchmarkType benchmark;
 
         [FormerlySerializedAs("SourceFont")] public Font sourceFont;
@@ -35,27 +37,22 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
             switch (benchmark)
             {
                 case BenchmarkType.TMPSDFMobile:
-                    fontAsset = TMP_FontAsset.CreateFontAsset(sourceFont, 90, 9, GlyphRenderMode.SDFAA, 256, 256,
-                        AtlasPopulationMode.Dynamic);
+                    fontAsset = TMP_FontAsset.CreateFontAsset(sourceFont, 90, 9, GlyphRenderMode.SDFAA, 256, 256);
                     break;
                 case BenchmarkType.TMPSDFMobileSsd:
-                    fontAsset = TMP_FontAsset.CreateFontAsset(sourceFont, 90, 9, GlyphRenderMode.SDFAA, 256, 256,
-                        AtlasPopulationMode.Dynamic);
+                    fontAsset = TMP_FontAsset.CreateFontAsset(sourceFont, 90, 9, GlyphRenderMode.SDFAA, 256, 256);
                     fontAsset.material.shader = Shader.Find("TextMeshPro/Mobile/Distance Field SSD");
                     break;
                 case BenchmarkType.TMPSDF:
-                    fontAsset = TMP_FontAsset.CreateFontAsset(sourceFont, 90, 9, GlyphRenderMode.SDFAA, 256, 256,
-                        AtlasPopulationMode.Dynamic);
+                    fontAsset = TMP_FontAsset.CreateFontAsset(sourceFont, 90, 9, GlyphRenderMode.SDFAA, 256, 256);
                     fontAsset.material.shader = Shader.Find("TextMeshPro/Distance Field");
                     break;
                 case BenchmarkType.TMPBitmapMobile:
-                    fontAsset = TMP_FontAsset.CreateFontAsset(sourceFont, 90, 9, GlyphRenderMode.SMOOTH, 256, 256,
-                        AtlasPopulationMode.Dynamic);
+                    fontAsset = TMP_FontAsset.CreateFontAsset(sourceFont, 90, 9, GlyphRenderMode.SMOOTH, 256, 256);
                     break;
             }
 
             for (var i = 0; i < numberOfSamples; i++)
-            {
                 switch (benchmark)
                 {
                     case BenchmarkType.TMPSDFMobile:
@@ -93,7 +90,6 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
                     }
                         break;
                 }
-            }
         }
     }
 }

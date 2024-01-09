@@ -19,6 +19,11 @@ namespace Scene1
                 _doorAnim = GetComponentInChildren<Animator>();
         }
 
+        private void OnMouseExit()
+        {
+            intText.SetActive(false);
+        }
+
         private void OnMouseOver()
         {
             intText.SetActive(IsWithinReach());
@@ -29,16 +34,8 @@ namespace Scene1
                 doorAudio.Play(0);
                 _doorAnim.SetBool("isOpen", !_doorAnim.GetBool("isOpen"));
                 _probInt = Random.Range(0, 5);
-                if (_probInt == 1)
-                {
-                    StartCoroutine(ImgScare());
-                }
+                if (_probInt == 1) StartCoroutine(ImgScare());
             }
-        }
-
-        private void OnMouseExit()
-        {
-            intText.SetActive(false);
         }
 
         private IEnumerator ImgScare()

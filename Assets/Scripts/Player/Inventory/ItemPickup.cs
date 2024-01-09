@@ -8,18 +8,15 @@ namespace Player.Inventory
         [FormerlySerializedAs("Item")] public InventoryItem item;
         [SerializeField] private float reach;
 
+        private void OnMouseDown()
+        {
+            if (IsWithinReach()) PickUp();
+        }
+
         private void PickUp()
         {
             Inventory.Instance.Add(item);
             Destroy(gameObject);
-        }
-
-        private void OnMouseDown()
-        {
-            if (IsWithinReach())
-            {
-                PickUp();
-            }
         }
 
         private bool IsWithinReach()

@@ -12,45 +12,62 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
             Free
         }
 
-        private Transform _cameraTransform;
-        private Transform _dummyTarget;
-
-        [FormerlySerializedAs("CameraTarget")] public Transform cameraTarget;
-
-        [FormerlySerializedAs("FollowDistance")] public float followDistance = 30.0f;
-        [FormerlySerializedAs("MaxFollowDistance")] public float maxFollowDistance = 100.0f;
-        [FormerlySerializedAs("MinFollowDistance")] public float minFollowDistance = 2.0f;
-
-        [FormerlySerializedAs("ElevationAngle")] public float elevationAngle = 30.0f;
-        [FormerlySerializedAs("MaxElevationAngle")] public float maxElevationAngle = 85.0f;
-        [FormerlySerializedAs("MinElevationAngle")] public float minElevationAngle;
-
-        [FormerlySerializedAs("OrbitalAngle")] public float orbitalAngle;
-
-        [FormerlySerializedAs("CameraMode")] public CameraModes cameraMode = CameraModes.Follow;
-
-        [FormerlySerializedAs("MovementSmoothing")] public bool movementSmoothing = true;
-        [FormerlySerializedAs("RotationSmoothing")] public bool rotationSmoothing;
-        private bool _previousSmoothing;
-
-        [FormerlySerializedAs("MovementSmoothingValue")] public float movementSmoothingValue = 25f;
-        [FormerlySerializedAs("RotationSmoothingValue")] public float rotationSmoothingValue = 5.0f;
-
-        [FormerlySerializedAs("MoveSensitivity")] public float moveSensitivity = 2.0f;
-
-        private Vector3 _currentVelocity = Vector3.zero;
-        private Vector3 _desiredPosition;
-        private float _mouseX;
-        private float _mouseY;
-        private Vector3 _moveVector;
-        private float _mouseWheel;
-
         // Controls for Touches on Mobile devices
         //private float prev_ZoomDelta;
 
 
         private const string EventSmoothingValue = "Slider - Smoothing Value";
         private const string EventFollowDistance = "Slider - Camera Zoom";
+
+        [FormerlySerializedAs("CameraTarget")] public Transform cameraTarget;
+
+        [FormerlySerializedAs("FollowDistance")]
+        public float followDistance = 30.0f;
+
+        [FormerlySerializedAs("MaxFollowDistance")]
+        public float maxFollowDistance = 100.0f;
+
+        [FormerlySerializedAs("MinFollowDistance")]
+        public float minFollowDistance = 2.0f;
+
+        [FormerlySerializedAs("ElevationAngle")]
+        public float elevationAngle = 30.0f;
+
+        [FormerlySerializedAs("MaxElevationAngle")]
+        public float maxElevationAngle = 85.0f;
+
+        [FormerlySerializedAs("MinElevationAngle")]
+        public float minElevationAngle;
+
+        [FormerlySerializedAs("OrbitalAngle")] public float orbitalAngle;
+
+        [FormerlySerializedAs("CameraMode")] public CameraModes cameraMode = CameraModes.Follow;
+
+        [FormerlySerializedAs("MovementSmoothing")]
+        public bool movementSmoothing = true;
+
+        [FormerlySerializedAs("RotationSmoothing")]
+        public bool rotationSmoothing;
+
+        [FormerlySerializedAs("MovementSmoothingValue")]
+        public float movementSmoothingValue = 25f;
+
+        [FormerlySerializedAs("RotationSmoothingValue")]
+        public float rotationSmoothingValue = 5.0f;
+
+        [FormerlySerializedAs("MoveSensitivity")]
+        public float moveSensitivity = 2.0f;
+
+        private Transform _cameraTransform;
+
+        private Vector3 _currentVelocity = Vector3.zero;
+        private Vector3 _desiredPosition;
+        private Transform _dummyTarget;
+        private float _mouseWheel;
+        private float _mouseX;
+        private float _mouseY;
+        private Vector3 _moveVector;
+        private bool _previousSmoothing;
 
 
         private void Awake()
@@ -98,32 +115,23 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
                     _desiredPosition = cameraTarget.position + cameraTarget.TransformDirection(
                         Quaternion.Euler(elevationAngle, orbitalAngle, 0f) * new Vector3(0, 0, -followDistance));
                 }
-                else
-                {
-                    // Free Camera implementation
-                }
 
+                // Free Camera implementation
                 if (movementSmoothing)
-                {
                     // Using Smoothing
                     _cameraTransform.position = Vector3.SmoothDamp(_cameraTransform.position, _desiredPosition,
                         ref _currentVelocity, movementSmoothingValue * Time.fixedDeltaTime);
-                    //cameraTransform.position = Vector3.Lerp(cameraTransform.position, desiredPosition, Time.deltaTime * 5.0f);
-                }
+                //cameraTransform.position = Vector3.Lerp(cameraTransform.position, desiredPosition, Time.deltaTime * 5.0f);
                 else
-                {
                     // Not using Smoothing
                     _cameraTransform.position = _desiredPosition;
-                }
 
                 if (rotationSmoothing)
                     _cameraTransform.rotation = Quaternion.Lerp(_cameraTransform.rotation,
                         Quaternion.LookRotation(cameraTarget.position - _cameraTransform.position),
                         rotationSmoothingValue * Time.deltaTime);
                 else
-                {
                     _cameraTransform.LookAt(cameraTarget);
-                }
             }
         }
 
@@ -205,7 +213,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
                     var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit hit;
 
-                    if (Physics.Raycast(ray, out hit, 300, 1 << 10 | 1 << 11 | 1 << 12 | 1 << 14))
+                    if (Physics.Raycast(ray, out hit, 300, (1 << 10) | (1 << 11) | (1 << 12) | (1 << 14)))
                     {
                         if (hit.transform == cameraTarget)
                         {

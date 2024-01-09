@@ -4,8 +4,8 @@ namespace Scene6
 {
     public class Engineer : MonoBehaviour
     {
-        private Animator _anim;
         private static readonly int IsBegin = Animator.StringToHash("isBegin");
+        private Animator _anim;
 
         // Start is called before the first frame update
         private void Start()
@@ -18,10 +18,7 @@ namespace Scene6
         // Update is called once per frame
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                _anim.SetBool(IsBegin, true);
-            }
+            if (Input.GetKeyDown(KeyCode.E)) _anim.SetBool(IsBegin, true);
         }
     }
 }

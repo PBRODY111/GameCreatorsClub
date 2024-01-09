@@ -7,33 +7,47 @@ namespace Scene1.Safe
 {
     public class SafeDoor2 : MonoBehaviour
     {
+        private static readonly int Unlock = Animator.StringToHash("unlock");
         [SerializeField] private GameObject intText;
-        private float[] _tempValues;
         [SerializeField] private float reach;
         [SerializeField] private GameObject padlockUI;
-        private Animator _safeAnimator;
-        private bool _isUnlocked;
         [SerializeField] private AudioSource dial;
         [SerializeField] private AudioSource unlockAudio;
         [SerializeField] private AudioSource errorAudio;
         public string code;
+        private bool _canUnlock = true;
         private string _entered = "";
         private int _incorrectTrials;
-        private bool _canUnlock = true;
-        private static readonly int Unlock = Animator.StringToHash("unlock");
-
-        // Start is called before the first frame update
-        private void Start()
-        {
-            for (var i = 0; i < 5; i++)
-            {
-                code += Random.Range(0, 10);
-            }
-        }
+        private bool _isUnlocked;
+        private Animator _safeAnimator;
+        private float[] _tempValues;
 
         private void Awake()
         {
             _safeAnimator = GetComponentInChildren<Animator>();
+        }
+
+        // Start is called before the first frame update
+        private void Start()
+        {
+            for (var i = 0; i < 5; i++) code += Random.Range(0, 10);
+        }
+
+        // Update is called once per frame
+        private void Update()
+        {
+            if (padlockUI.activeSelf)
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    padlockUI.SetActive(false);
+                    PauseMenu.IsPaused = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
+        }
+
+        private void OnMouseExit()
+        {
+            intText.SetActive(false);
         }
 
         private void OnMouseOver()
@@ -54,11 +68,6 @@ namespace Scene1.Safe
                     errorAudio.Play();
                 }
             }
-        }
-
-        private void OnMouseExit()
-        {
-            intText.SetActive(false);
         }
 
         public void AddNumb(Button button)
@@ -88,20 +97,6 @@ namespace Scene1.Safe
                 padlockUI.SetActive(false);
                 PauseMenu.IsPaused = false;
                 Cursor.lockState = CursorLockMode.Locked;
-            }
-        }
-
-        // Update is called once per frame
-        private void Update()
-        {
-            if (padlockUI.activeSelf)
-            {
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    padlockUI.SetActive(false);
-                    PauseMenu.IsPaused = false;
-                    Cursor.lockState = CursorLockMode.Locked;
-                }
             }
         }
 

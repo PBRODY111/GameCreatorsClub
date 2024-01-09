@@ -5,25 +5,33 @@ namespace Player
 {
     public class HeadLamp : MonoBehaviour
     {
-        private float _batteryLife = 3999f;
         public float batteryDrain = 100f;
         [FormerlySerializedAs("_lightStage")] public int lightStage = 4;
-        [FormerlySerializedAs("_lightParent")] [SerializeField] private GameObject lightParent;
-        [FormerlySerializedAs("_canvas")] [SerializeField] private Canvas canvas;
-        [FormerlySerializedAs("_batteryBarPrefab")] [SerializeField] private GameObject batteryBarPrefab;
-        private Light[] _lights;
 
-        private bool _fullbright;
+        [FormerlySerializedAs("_lightParent")]
+        [SerializeField]
+        private GameObject lightParent;
+
+        [FormerlySerializedAs("_canvas")]
+        [SerializeField]
+        private Canvas canvas;
+
+        [FormerlySerializedAs("_batteryBarPrefab")]
+        [SerializeField]
+        private GameObject batteryBarPrefab;
+
+        private float _batteryLife = 3999f;
 
         private Color _color;
+
+        private bool _fullbright;
+        private Light[] _lights;
 
         private void Start()
         {
             _lights = new Light[lightParent.transform.childCount];
             for (var i = 0; i < _lights.Length; i++)
-            {
                 _lights[i] = lightParent.transform.GetChild(i).GetComponent<Light>();
-            }
 
             _color = _lights[0].color;
         }
@@ -43,17 +51,11 @@ namespace Player
                 _lights[1].intensity = 0.07f * (lightStage + 1);
                 _lights[2].intensity = 0.07f * (lightStage + 1);
                 if (canvas.transform.GetChild(0).childCount == lightStage + 1) return;
-            
-                var temp = canvas.transform.GetChild(0).childCount;
-                for (var i = 0; i < temp; i++)
-                {
-                    Destroy(canvas.transform.GetChild(0).GetChild(i).gameObject);
-                }
 
-                for (var i = 0; i < lightStage + 1; i++)
-                {
-                    Instantiate(batteryBarPrefab, canvas.transform.GetChild(0));
-                }
+                var temp = canvas.transform.GetChild(0).childCount;
+                for (var i = 0; i < temp; i++) Destroy(canvas.transform.GetChild(0).GetChild(i).gameObject);
+
+                for (var i = 0; i < lightStage + 1; i++) Instantiate(batteryBarPrefab, canvas.transform.GetChild(0));
             }
         }
 
@@ -86,10 +88,7 @@ namespace Player
         public void Charge(float charge)
         {
             _batteryLife += charge;
-            if (_batteryLife > 4000f)
-            {
-                _batteryLife = 4000f;
-            }
+            if (_batteryLife > 4000f) _batteryLife = 4000f;
         }
     }
 }

@@ -7,12 +7,11 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class ShaderPropAnimator : MonoBehaviour
     {
-        private Renderer _mRenderer;
-        private Material _mMaterial;
-
         [FormerlySerializedAs("GlowCurve")] public AnimationCurve glowCurve;
 
         [FormerlySerializedAs("m_frame")] public float mFrame;
+        private Material _mMaterial;
+        private Renderer _mRenderer;
 
         private void Awake()
         {

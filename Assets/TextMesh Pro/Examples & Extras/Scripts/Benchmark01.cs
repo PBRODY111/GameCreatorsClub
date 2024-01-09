@@ -7,23 +7,24 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class Benchmark01 : MonoBehaviour
     {
-        [FormerlySerializedAs("BenchmarkType")] public int benchmarkType;
+        private const string Label01 = "The <#0050FF>count is: </color>{0}";
+        private const string Label02 = "The <color=#0050FF>count is: </color>";
+
+        [FormerlySerializedAs("BenchmarkType")]
+        public int benchmarkType;
 
         [FormerlySerializedAs("TMProFont")] public TMP_FontAsset tmProFont;
         [FormerlySerializedAs("TextMeshFont")] public Font textMeshFont;
-
-        private TextMeshPro _mTextMeshPro;
-        private TextContainer _mTextContainer;
-        private TextMesh _mTextMesh;
-
-        private const string Label01 = "The <#0050FF>count is: </color>{0}";
-        private const string Label02 = "The <color=#0050FF>count is: </color>";
 
         //private string m_string;
         //private int m_frame;
 
         private Material _mMaterial01;
         private Material _mMaterial02;
+        private TextContainer _mTextContainer;
+        private TextMesh _mTextMesh;
+
+        private TextMeshPro _mTextMeshPro;
 
 
         private IEnumerator Start()
@@ -92,7 +93,9 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
                             : _mTextMeshPro.fontSharedMaterial = _mMaterial01;
                 }
                 else if (benchmarkType == 1)
-                    _mTextMesh.text = Label02 + (i % 1000).ToString();
+                {
+                    _mTextMesh.text = Label02 + (i % 1000);
+                }
 
                 yield return null;
             }

@@ -9,101 +9,86 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class TMPTextEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        [Serializable]
-        public class CharacterSelectionEvent : UnityEvent<char, int>
-        {
-        }
+        [FormerlySerializedAs("m_OnCharacterSelection")]
+        [SerializeField]
+        private CharacterSelectionEvent mOnCharacterSelection = new();
 
-        [Serializable]
-        public class SpriteSelectionEvent : UnityEvent<char, int>
-        {
-        }
+        [FormerlySerializedAs("m_OnSpriteSelection")]
+        [SerializeField]
+        private SpriteSelectionEvent mOnSpriteSelection = new();
 
-        [Serializable]
-        public class WordSelectionEvent : UnityEvent<string, int, int>
-        {
-        }
+        [FormerlySerializedAs("m_OnWordSelection")]
+        [SerializeField]
+        private WordSelectionEvent mOnWordSelection = new();
 
-        [Serializable]
-        public class LineSelectionEvent : UnityEvent<string, int, int>
-        {
-        }
+        [FormerlySerializedAs("m_OnLineSelection")]
+        [SerializeField]
+        private LineSelectionEvent mOnLineSelection = new();
 
-        [Serializable]
-        public class LinkSelectionEvent : UnityEvent<string, string, int>
-        {
-        }
+        [FormerlySerializedAs("m_OnLinkSelection")]
+        [SerializeField]
+        private LinkSelectionEvent mOnLinkSelection = new();
 
+        private Camera _mCamera;
+        private Canvas _mCanvas;
+        private int _mLastCharIndex = -1;
+        private int _mLastLineIndex = -1;
+        private int _mLastWordIndex = -1;
 
-        /// <summary>
-        /// Event delegate triggered when pointer is over a character.
-        /// </summary>
-        public CharacterSelectionEvent OnCharacterSelection
-        {
-            get { return mOnCharacterSelection; }
-            set { mOnCharacterSelection = value; }
-        }
-
-        [FormerlySerializedAs("m_OnCharacterSelection")] [SerializeField] private CharacterSelectionEvent mOnCharacterSelection = new();
-
-
-        /// <summary>
-        /// Event delegate triggered when pointer is over a sprite.
-        /// </summary>
-        public SpriteSelectionEvent OnSpriteSelection
-        {
-            get { return mOnSpriteSelection; }
-            set { mOnSpriteSelection = value; }
-        }
-
-        [FormerlySerializedAs("m_OnSpriteSelection")] [SerializeField] private SpriteSelectionEvent mOnSpriteSelection = new();
-
-
-        /// <summary>
-        /// Event delegate triggered when pointer is over a word.
-        /// </summary>
-        public WordSelectionEvent OnWordSelection
-        {
-            get { return mOnWordSelection; }
-            set { mOnWordSelection = value; }
-        }
-
-        [FormerlySerializedAs("m_OnWordSelection")] [SerializeField] private WordSelectionEvent mOnWordSelection = new();
-
-
-        /// <summary>
-        /// Event delegate triggered when pointer is over a line.
-        /// </summary>
-        public LineSelectionEvent OnLineSelection
-        {
-            get { return mOnLineSelection; }
-            set { mOnLineSelection = value; }
-        }
-
-        [FormerlySerializedAs("m_OnLineSelection")] [SerializeField] private LineSelectionEvent mOnLineSelection = new();
-
-
-        /// <summary>
-        /// Event delegate triggered when pointer is over a link.
-        /// </summary>
-        public LinkSelectionEvent OnLinkSelection
-        {
-            get { return mOnLinkSelection; }
-            set { mOnLinkSelection = value; }
-        }
-
-        [FormerlySerializedAs("m_OnLinkSelection")] [SerializeField] private LinkSelectionEvent mOnLinkSelection = new();
+        private int _mSelectedLink = -1;
 
 
         private TMP_Text _mTextComponent;
 
-        private Camera _mCamera;
-        private Canvas _mCanvas;
 
-        private int _mSelectedLink = -1;
-        private int _mLastCharIndex = -1;
-        private int _mLastWordIndex = -1;
-        private int _mLastLineIndex = -1;
+        /// <summary>
+        ///     Event delegate triggered when pointer is over a character.
+        /// </summary>
+        public CharacterSelectionEvent OnCharacterSelection
+        {
+            get => mOnCharacterSelection;
+            set => mOnCharacterSelection = value;
+        }
+
+
+        /// <summary>
+        ///     Event delegate triggered when pointer is over a sprite.
+        /// </summary>
+        public SpriteSelectionEvent OnSpriteSelection
+        {
+            get => mOnSpriteSelection;
+            set => mOnSpriteSelection = value;
+        }
+
+
+        /// <summary>
+        ///     Event delegate triggered when pointer is over a word.
+        /// </summary>
+        public WordSelectionEvent OnWordSelection
+        {
+            get => mOnWordSelection;
+            set => mOnWordSelection = value;
+        }
+
+
+        /// <summary>
+        ///     Event delegate triggered when pointer is over a line.
+        /// </summary>
+        public LineSelectionEvent OnLineSelection
+        {
+            get => mOnLineSelection;
+            set => mOnLineSelection = value;
+        }
+
+
+        /// <summary>
+        ///     Event delegate triggered when pointer is over a link.
+        /// </summary>
+        public LinkSelectionEvent OnLinkSelection
+        {
+            get => mOnLinkSelection;
+            set => mOnLinkSelection = value;
+        }
 
         private void Awake()
         {
@@ -189,9 +174,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
                     for (var i = 0;
                          i < lineInfo.characterCount && i < _mTextComponent.textInfo.characterInfo.Length;
                          i++)
-                    {
                         buffer[i] = _mTextComponent.textInfo.characterInfo[i + lineInfo.firstCharacterIndex].character;
-                    }
 
                     var lineText = new string(buffer);
                     SendOnLineSelection(lineText, lineInfo.firstCharacterIndex, lineInfo.characterCount);
@@ -270,6 +253,31 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
         {
             if (OnLinkSelection != null)
                 OnLinkSelection.Invoke(linkID, linkText, linkIndex);
+        }
+
+        [Serializable]
+        public class CharacterSelectionEvent : UnityEvent<char, int>
+        {
+        }
+
+        [Serializable]
+        public class SpriteSelectionEvent : UnityEvent<char, int>
+        {
+        }
+
+        [Serializable]
+        public class WordSelectionEvent : UnityEvent<string, int, int>
+        {
+        }
+
+        [Serializable]
+        public class LineSelectionEvent : UnityEvent<string, int, int>
+        {
+        }
+
+        [Serializable]
+        public class LinkSelectionEvent : UnityEvent<string, string, int>
+        {
         }
     }
 }

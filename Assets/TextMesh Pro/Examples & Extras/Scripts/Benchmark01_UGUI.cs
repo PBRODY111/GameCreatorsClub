@@ -8,19 +8,15 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class Benchmark01UGUI : MonoBehaviour
     {
-        [FormerlySerializedAs("BenchmarkType")] public int benchmarkType;
+        private const string Label01 = "The <#0050FF>count is: </color>";
+        private const string Label02 = "The <color=#0050FF>count is: </color>";
+
+        [FormerlySerializedAs("BenchmarkType")]
+        public int benchmarkType;
 
         public Canvas canvas;
         [FormerlySerializedAs("TMProFont")] public TMP_FontAsset tmProFont;
         [FormerlySerializedAs("TextMeshFont")] public Font textMeshFont;
-
-        private TextMeshProUGUI _mTextMeshPro;
-
-        //private TextContainer m_textContainer;
-        private Text _mTextMesh;
-
-        private const string Label01 = "The <#0050FF>count is: </color>";
-        private const string Label02 = "The <color=#0050FF>count is: </color>";
 
         //private const string label01 = "TextMesh <#0050FF>Pro!</color>  The count is: {0}";
         //private const string label02 = "Text Mesh<color=#0050FF>        The count is: </color>";
@@ -30,6 +26,11 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 
         private Material _mMaterial01;
         private Material _mMaterial02;
+
+        //private TextContainer m_textContainer;
+        private Text _mTextMesh;
+
+        private TextMeshProUGUI _mTextMeshPro;
 
 
         private IEnumerator Start()
@@ -75,12 +76,9 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
                     _mTextMesh.font = textMeshFont;
                     //m_textMesh.renderer.sharedMaterial = m_textMesh.font.material;
                 }
-                else
-                {
-                    //m_textMesh.font = Resources.Load("Fonts/ARIAL", typeof(Font)) as Font;
-                    //m_textMesh.renderer.sharedMaterial = m_textMesh.font.material;
-                }
 
+                //m_textMesh.font = Resources.Load("Fonts/ARIAL", typeof(Font)) as Font;
+                //m_textMesh.renderer.sharedMaterial = m_textMesh.font.material;
                 _mTextMesh.fontSize = 48;
                 _mTextMesh.alignment = TextAnchor.MiddleCenter;
 
@@ -99,7 +97,9 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
                             : _mTextMeshPro.fontSharedMaterial = _mMaterial01;
                 }
                 else if (benchmarkType == 1)
-                    _mTextMesh.text = Label02 + (i % 1000).ToString();
+                {
+                    _mTextMesh.text = Label02 + (i % 1000);
+                }
 
                 yield return null;
             }

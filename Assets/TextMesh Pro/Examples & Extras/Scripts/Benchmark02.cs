@@ -9,14 +9,15 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
         [FormerlySerializedAs("SpawnType")] public int spawnType;
         [FormerlySerializedAs("NumberOfNPC")] public int numberOfNpc = 12;
 
-        [FormerlySerializedAs("IsTextObjectScaleStatic")] public bool isTextObjectScaleStatic;
+        [FormerlySerializedAs("IsTextObjectScaleStatic")]
+        public bool isTextObjectScaleStatic;
+
         private TextMeshProFloatingText _floatingTextScript;
 
 
         private void Start()
         {
             for (var i = 0; i < numberOfNpc; i++)
-            {
                 if (spawnType == 0)
                 {
                     // TextMesh Pro Implementation
@@ -83,7 +84,6 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
                     _floatingTextScript = go.AddComponent<TextMeshProFloatingText>();
                     _floatingTextScript.spawnType = 0;
                 }
-            }
         }
     }
 }

@@ -11,15 +11,27 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
         // Since this script is used for debugging, we exclude it from builds.
         // TODO: Rework this script to make it into an editor utility.
 #if UNITY_EDITOR
-        [FormerlySerializedAs("ShowCharacters")] public bool showCharacters;
+        [FormerlySerializedAs("ShowCharacters")]
+        public bool showCharacters;
+
         [FormerlySerializedAs("ShowWords")] public bool showWords;
         [FormerlySerializedAs("ShowLinks")] public bool showLinks;
         [FormerlySerializedAs("ShowLines")] public bool showLines;
-        [FormerlySerializedAs("ShowMeshBounds")] public bool showMeshBounds;
-        [FormerlySerializedAs("ShowTextBounds")] public bool showTextBounds;
-        [FormerlySerializedAs("ObjectStats")] [Space(10)] [TextArea(2, 2)] public string objectStats;
 
-        [FormerlySerializedAs("m_TextComponent")] [SerializeField] private TMP_Text mTextComponent;
+        [FormerlySerializedAs("ShowMeshBounds")]
+        public bool showMeshBounds;
+
+        [FormerlySerializedAs("ShowTextBounds")]
+        public bool showTextBounds;
+
+        [FormerlySerializedAs("ObjectStats")]
+        [Space(10)]
+        [TextArea(2, 2)]
+        public string objectStats;
+
+        [FormerlySerializedAs("m_TextComponent")]
+        [SerializeField]
+        private TMP_Text mTextComponent;
 
         private Transform _mTransform;
         private TMP_TextInfo _mTextInfo;
@@ -110,7 +122,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 
 
         /// <summary>
-        /// Method to draw a rectangle around each character.
+        ///     Method to draw a rectangle around each character.
         /// </summary>
         /// <param name="text"></param>
         private void DrawCharactersBounds()
@@ -291,7 +303,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 
 
         /// <summary>
-        /// Method to draw rectangles around each word of the text.
+        ///     Method to draw rectangles around each word of the text.
         /// </summary>
         /// <param name="text"></param>
         private void DrawWordBounds()
@@ -399,7 +411,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 
 
         /// <summary>
-        /// Draw rectangle around each of the links contained in the text.
+        ///     Draw rectangle around each of the links contained in the text.
         /// </summary>
         /// <param name="text"></param>
         private void DrawLinkBounds()
@@ -510,7 +522,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 
 
         /// <summary>
-        /// Draw Rectangles around each lines of the text.
+        ///     Draw Rectangles around each lines of the text.
         /// </summary>
         /// <param name="text"></param>
         private void DrawLineBounds()
@@ -598,7 +610,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 
 
         /// <summary>
-        /// Draw Rectangle around the bounds of the text object.
+        ///     Draw Rectangle around the bounds of the text object.
         /// </summary>
         private void DrawBounds()
         {

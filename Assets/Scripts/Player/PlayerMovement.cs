@@ -4,42 +4,41 @@ namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [Header("Movement")]
-        public float walkSpeed;
+        [Header("Movement")] public float walkSpeed;
+
         public float sprintSpeed;
-        private float _moveSpeed;
 
         public float groundDrag;
 
         public float jumpForce;
         public float jumpCooldown;
         public float airMultiplier;
-        private bool _readyToJump;
 
 
-        [Header("Keybinds")]
-        public KeyCode jumpKey = KeyCode.Space;
+        [Header("Keybinds")] public KeyCode jumpKey = KeyCode.Space;
+
         public KeyCode sprintKey = KeyCode.LeftShift;
         public KeyCode pauseKey = KeyCode.Escape;
         public KeyCode goDownKey = KeyCode.LeftShift;
 
 
-        [Header("Ground Check")]
-        public float playerHeight;
-        public LayerMask ground;
-        private bool _grounded;
+        [Header("Ground Check")] public float playerHeight;
 
-        [Header("Misc")]
-        public Transform orientation;
+        public LayerMask ground;
+
+        [Header("Misc")] public Transform orientation;
 
         public bool epicModeEnabled;
+        private bool _grounded;
 
         private float _horizontalInput;
-        private float _verticalInput;
 
         private Vector3 _moveDirection;
+        private float _moveSpeed;
 
         private Rigidbody _rb;
+        private bool _readyToJump;
+        private float _verticalInput;
 
         private void Start()
         {
@@ -109,7 +108,9 @@ namespace Player
                         transform.position -= transform.up * (_moveSpeed * Time.deltaTime);
                 }
                 else if (Input.GetKey(jumpKey))
+                {
                     transform.position += transform.up * (_moveSpeed * Time.deltaTime);
+                }
 
                 _rb.velocity = Vector3.zero;
             }
@@ -121,10 +122,8 @@ namespace Player
 
                 // in air
                 else
-                {
                     _rb.AddForce(_moveDirection.normalized * (_moveSpeed * 500f * airMultiplier * Time.deltaTime),
                         ForceMode.Force);
-                }
             }
         }
 

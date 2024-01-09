@@ -26,7 +26,6 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
             var ratio = (float)Screen.width / Screen.height;
 
             for (var i = minPointSize; i <= maxPointSize; i += steps)
-            {
                 if (spawnType == 0)
                 {
                     // TextMesh Pro Implementation
@@ -55,11 +54,9 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 
                     lineHeight += i;
                 }
-                else
-                {
-                    // TextMesh Implementation
-                    // Causes crashes since atlas needed exceeds 4096 X 4096
-                    /*
+            // TextMesh Implementation
+            // Causes crashes since atlas needed exceeds 4096 X 4096
+            /*
                     GameObject go = new GameObject("Arial " + i);
 
                     //if (lineHeight > orthoSize * 2 * 0.9f) return;
@@ -77,8 +74,6 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 
                     lineHeight += i;
                     */
-                }
-            }
         }
     }
 }

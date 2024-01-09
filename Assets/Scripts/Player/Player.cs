@@ -8,11 +8,15 @@ namespace Player
     public class Player : MonoBehaviour
     {
         public static Player Instance;
-        [FormerlySerializedAs("_hotbar")] [SerializeField] private GameObject hotbar;
+
+        [FormerlySerializedAs("_hotbar")]
+        [SerializeField]
+        private GameObject hotbar;
+
         public Camera mainCamera;
         public GameObject stoolPrefab;
         public int selectedslot;
-        
+
         private PlayerMovement _playerMovement;
 
         private void Awake()
@@ -20,16 +24,6 @@ namespace Player
             Instance = this;
             selectedslot = -1;
             _playerMovement = GetComponent<PlayerMovement>();
-        }
-
-        public InventoryItem GetHeldItem()
-        {
-            return hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().item;
-        }
-
-        public bool EpicModeEnabled()
-        {
-            return _playerMovement.epicModeEnabled;
         }
 
         private void Update()
@@ -57,6 +51,16 @@ namespace Player
             {
                 Debug.Log("No Item in Slot" + e);
             }
+        }
+
+        public InventoryItem GetHeldItem()
+        {
+            return hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().item;
+        }
+
+        public bool EpicModeEnabled()
+        {
+            return _playerMovement.epicModeEnabled;
         }
     }
 }

@@ -8,15 +8,15 @@ namespace Scene1.Safe
     {
         [SerializeField] private GameObject intText;
         [SerializeField] private float[] dialValues;
-        private float[] _tempValues;
         [SerializeField] private float reach;
         [SerializeField] private GameObject dialUI;
+        [SerializeField] private AudioSource unlockAudio;
+        private int _currentDialValueIndex;
+        private bool _isUnlocked;
         private Animator _safeAnimator;
         private Slider _slider;
         private float _sliderPreviousValue;
-        private int _currentDialValueIndex;
-        private bool _isUnlocked;
-        [SerializeField] private AudioSource unlockAudio;
+        private float[] _tempValues;
 
         private void Awake()
         {
@@ -28,25 +28,6 @@ namespace Scene1.Safe
                 if (IsWithinValue(_sliderPreviousValue, _slider.value, 1f)) GetComponent<AudioSource>().Play();
                 _sliderPreviousValue = _slider.value;
             });
-        }
-
-        private void OnMouseOver()
-        {
-            if (!dialUI.activeSelf && !_isUnlocked)
-                intText.SetActive(IsWithinReach());
-            if (Input.GetKeyDown(KeyCode.E) && !_isUnlocked && IsWithinReach())
-            {
-                intText.SetActive(false);
-                dialUI.SetActive(true);
-                PauseMenu.IsPaused = true;
-                Cursor.lockState = dialUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
-            }
-        }
-
-        private void OnMouseExit()
-        {
-            if (!dialUI.activeSelf)
-                intText.SetActive(false);
         }
 
         private void Update()
@@ -82,6 +63,25 @@ namespace Scene1.Safe
 
                     _slider.value = 0;
                 }
+            }
+        }
+
+        private void OnMouseExit()
+        {
+            if (!dialUI.activeSelf)
+                intText.SetActive(false);
+        }
+
+        private void OnMouseOver()
+        {
+            if (!dialUI.activeSelf && !_isUnlocked)
+                intText.SetActive(IsWithinReach());
+            if (Input.GetKeyDown(KeyCode.E) && !_isUnlocked && IsWithinReach())
+            {
+                intText.SetActive(false);
+                dialUI.SetActive(true);
+                PauseMenu.IsPaused = true;
+                Cursor.lockState = dialUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
             }
         }
 

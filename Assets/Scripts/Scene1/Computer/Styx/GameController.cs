@@ -33,9 +33,7 @@ namespace Scene1.Computer.Styx
                 pointValue = 0;
                 ChangeLevel();
                 if (playerTransform != null)
-                {
                     playerTransform.localPosition = new Vector3(0f, 0f, 0f); // Reset player position to origin
-                }
             }
 
             UpdatePointsText();
@@ -67,18 +65,12 @@ namespace Scene1.Computer.Styx
 
         private void UpdatePointsText()
         {
-            if (pointsText != null)
-            {
-                pointsText.text = "" + pointValue + "/6";
-            }
+            if (pointsText != null) pointsText.text = "" + pointValue + "/6";
         }
 
         private void UpdateLevelText()
         {
-            if (levelText != null)
-            {
-                levelText.text = "Lvl " + currentLevel;
-            }
+            if (levelText != null) levelText.text = "Lvl " + currentLevel;
         }
     }
 }

@@ -11,21 +11,38 @@ namespace Scene1.Safe
         [SerializeField] private GameObject intText;
         [SerializeField] private float reach;
         [SerializeField] private GameObject colorlockUI;
-        private Animator _safeAnimator;
-        private bool _isUnlocked;
         [SerializeField] private AudioSource dial;
         [SerializeField] private AudioSource unlockAudio;
         public string code;
         public Color selectColor;
-        private int _colorIndex;
         [SerializeField] private TMP_InputField inputField;
         [SerializeField] private SafeDoor31 safeDoor3;
         [SerializeField] private Ascal ascal;
+        private int _colorIndex;
+        private bool _isUnlocked;
+        private Animator _safeAnimator;
 
         // Start is called before the first frame update
         private void Awake()
         {
             _safeAnimator = GetComponentInChildren<Animator>();
+        }
+
+        // Update is called once per frame
+        private void Update()
+        {
+            if (colorlockUI.activeSelf)
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    colorlockUI.SetActive(false);
+                    PauseMenu.IsPaused = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
+        }
+
+        private void OnMouseExit()
+        {
+            intText.SetActive(false);
         }
 
         private void OnMouseOver()
@@ -44,11 +61,6 @@ namespace Scene1.Safe
             }
         }
 
-        private void OnMouseExit()
-        {
-            intText.SetActive(false);
-        }
-
         public void ChangeColor(Button button)
         {
             button.GetComponent<Image>().color = ascal.colors[_colorIndex];
@@ -56,10 +68,7 @@ namespace Scene1.Safe
             if (inputField.text == code && code != "" && button.GetComponent<Image>().color == selectColor)
             {
                 _safeAnimator.SetBool("unlock", true);
-                if (!_isUnlocked)
-                {
-                    unlockAudio.Play();
-                }
+                if (!_isUnlocked) unlockAudio.Play();
 
                 _isUnlocked = true;
                 intText.SetActive(false);
@@ -69,24 +78,7 @@ namespace Scene1.Safe
             }
 
             _colorIndex++;
-            if (_colorIndex >= ascal.colors.Length)
-            {
-                _colorIndex = 0;
-            }
-        }
-
-        // Update is called once per frame
-        private void Update()
-        {
-            if (colorlockUI.activeSelf)
-            {
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    colorlockUI.SetActive(false);
-                    PauseMenu.IsPaused = false;
-                    Cursor.lockState = CursorLockMode.Locked;
-                }
-            }
+            if (_colorIndex >= ascal.colors.Length) _colorIndex = 0;
         }
 
         private bool IsWithinReach()

@@ -8,15 +8,15 @@ namespace UI
 {
     public class PauseMenu : MonoBehaviour
     {
+        public static bool IsPaused;
         [SerializeField] private GameObject pauseMenu;
         [SerializeField] private AudioSource clickAudio;
-        public static bool IsPaused;
         [SerializeField] private GameObject options;
         public Dropdown resolutionDropdown;
         public AudioMixer masterMixer;
-        private Resolution[] _resolutions;
 
         private bool _optionsOn;
+        private Resolution[] _resolutions;
 
         // Start is called before the first frame update
         private void Start()
@@ -32,14 +32,24 @@ namespace UI
                 opts.Add(option);
                 if (_resolutions[i].width == Screen.currentResolution.width &&
                     _resolutions[i].height == Screen.currentResolution.height)
-                {
                     currentResIndex = i;
-                }
             }
 
             resolutionDropdown.AddOptions(opts);
             resolutionDropdown.value = currentResIndex;
             resolutionDropdown.RefreshShownValue();
+        }
+
+        // Update is called once per frame
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                if (IsPaused)
+                    ResumeGame();
+                else
+                    PauseGame();
+            }
         }
 
         // OPTIONS
@@ -89,22 +99,6 @@ namespace UI
         {
             var resolution = _resolutions[resolutionIndex];
             Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-        }
-
-        // Update is called once per frame
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.F1))
-            {
-                if (IsPaused)
-                {
-                    ResumeGame();
-                }
-                else
-                {
-                    PauseGame();
-                }
-            }
         }
 
         public void PauseGame()

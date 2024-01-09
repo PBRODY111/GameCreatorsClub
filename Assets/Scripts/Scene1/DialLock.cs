@@ -42,55 +42,37 @@ namespace Scene1
                         Cursor.lockState = CursorLockMode.None;
                     }
                 }
-                else
-                {
-                    //intText.SetActive(false);
-                }
-            }
-            else
-            {
                 //intText.SetActive(false);
             }
 
+            //intText.SetActive(false);
             if (dialUI.activeInHierarchy)
-            {
                 Cursor.lockState = CursorLockMode.None;
-            }
             else
-            {
                 Cursor.lockState = CursorLockMode.Locked;
-            }
 
             if (!Input.GetMouseButton(0))
             {
                 if (tempValue != 0)
                 {
                     if (firstValue == 0)
-                    {
                         firstValue = tempValue;
-                    }
                     else if (secondValue == 0)
-                    {
                         secondValue = tempValue;
-                    }
                     else
-                    {
                         thirdValue = tempValue;
-                    }
 
                     dialSlider.value = 0;
                 }
                 else if (firstValue != 0 && secondValue != 0 && thirdValue != 0)
                 {
                     dialUI.SetActive(false);
-                    if (firstValue >= 16 && firstValue <= 20 && secondValue >= 23 && secondValue <= 27 && thirdValue >= 3 &&
+                    if (firstValue >= 16 && firstValue <= 20 && secondValue >= 23 && secondValue <= 27 &&
+                        thirdValue >= 3 &&
                         thirdValue <= 7)
                     {
                         var safeAnimator = dialLock.GetComponent<Animator>();
-                        if (!safeAnimator.GetBool(doorOpenAnimName))
-                        {
-                            safeAnimator.SetBool(doorOpenAnimName, true);
-                        }
+                        if (!safeAnimator.GetBool(doorOpenAnimName)) safeAnimator.SetBool(doorOpenAnimName, true);
                     }
 
                     firstValue = secondValue = thirdValue = 0;

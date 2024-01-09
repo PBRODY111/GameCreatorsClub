@@ -19,8 +19,9 @@ namespace UI
         [SerializeField]
         private TMP_Text fps;
 
+        private const float FPSUpdateInterval = 1.0f;
+
         private CapsuleCollider _collider;
-        private readonly float _fpsUpdateInterval = 1.0f;
 
         private float _fpsUpdateTimer;
         private HeadLamp _headLamp;
@@ -58,7 +59,7 @@ namespace UI
             fpsButton.onClick.AddListener(() => fps.gameObject.SetActive(!fps.gameObject.activeSelf));
 
             _fpsUpdateTimer += Time.deltaTime;
-            if (_fpsUpdateTimer < _fpsUpdateInterval) return;
+            if (_fpsUpdateTimer < FPSUpdateInterval) return;
 
             UpdateFps();
             _fpsUpdateTimer = 0f; // Reset the timer

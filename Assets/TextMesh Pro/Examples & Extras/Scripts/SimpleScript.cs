@@ -5,11 +5,11 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class SimpleScript : MonoBehaviour
     {
-        private TextMeshPro _mTextMeshPro;
         //private TMP_FontAsset m_FontAsset;
 
         private const string Label = "The <#0050FF>count is: </color>{0:2}";
         private float _mFrame;
+        private TextMeshPro _mTextMeshPro;
 
 
         private void Start()

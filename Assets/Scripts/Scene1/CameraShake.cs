@@ -20,23 +20,12 @@ namespace Scene1
 
         private void Awake()
         {
-            if (camTransform == null)
-            {
-                camTransform = GetComponent(typeof(Transform)) as Transform;
-            }
-        }
-
-        private void OnEnable()
-        {
-            _originalPos = camTransform.localPosition;
+            if (camTransform == null) camTransform = GetComponent(typeof(Transform)) as Transform;
         }
 
         private void Update()
         {
-            if (Camera.main == cerCamera)
-            {
-                Debug.Log("Breuh");
-            }
+            if (Camera.main == cerCamera) Debug.Log("Breuh");
 
             if (shakeDuration < 0)
             {
@@ -49,6 +38,11 @@ namespace Scene1
                 shakeDuration = 0f;
                 camTransform.localPosition = _originalPos;
             }
+        }
+
+        private void OnEnable()
+        {
+            _originalPos = camTransform.localPosition;
         }
     }
 }

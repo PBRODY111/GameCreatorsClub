@@ -25,8 +25,6 @@ namespace Scene1.Computer
         [SerializeField] private SafeDoor32 safeDoor32;
         public Color[] colors;
         public Color safe3Color;
-        private int _letterIndex;
-        private TypewriterUI _typewriterUi;
 
         private readonly string[] _text =
         {
@@ -41,6 +39,9 @@ namespace Scene1.Computer
             "2...",
             "1..."
         };
+
+        private int _letterIndex;
+        private TypewriterUI _typewriterUi;
 
         public void EnterAscal()
         {
@@ -135,17 +136,11 @@ namespace Scene1.Computer
             {
                 _letterIndex = 0;
                 if (currentString == string1)
-                {
                     StartCoroutine(AscalGame1());
-                }
                 else if (currentString == string2)
-                {
                     StartCoroutine(AscalGame2());
-                }
                 else
-                {
                     StartCoroutine(AscalWin());
-                }
             }
             else
             {

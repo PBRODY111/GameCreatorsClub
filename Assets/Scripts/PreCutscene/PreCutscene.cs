@@ -11,7 +11,6 @@ namespace PreCutscene
         [SerializeField] private GameObject liar;
         [SerializeField] private new AudioSource audio;
         [SerializeField] private AudioSource audio2;
-        private TypewriterUI _typewriterUi;
 
         private readonly string[] _text =
         {
@@ -27,6 +26,8 @@ namespace PreCutscene
             "Help me.",
             "Please..."
         };
+
+        private TypewriterUI _typewriterUi;
 
         private void Start()
         {

@@ -10,27 +10,29 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
     public class TMPTextSelectorB : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler,
         IPointerUpHandler
     {
-        [FormerlySerializedAs("TextPopup_Prefab_01")] public RectTransform textPopupPrefab01;
-
-        private RectTransform _mTextPopupRectTransform;
-        private TextMeshProUGUI _mTextPopupTMPComponent;
         private const string KLinkText = "You have selected link <#ffff00>";
         private const string KWordText = "Word Index: <#ffff00>";
 
-
-        private TextMeshProUGUI _mTextMeshPro;
-        private Canvas _mCanvas;
-        private Camera _mCamera;
+        [FormerlySerializedAs("TextPopup_Prefab_01")]
+        public RectTransform textPopupPrefab01;
 
         // Flags
         private bool _isHoveringObject;
-        private int _mSelectedWord = -1;
-        private int _mSelectedLink = -1;
+
+        private TMP_MeshInfo[] _mCachedMeshInfoVertexData;
+        private Camera _mCamera;
+        private Canvas _mCanvas;
         private int _mLastIndex = -1;
 
         private Matrix4x4 _mMatrix;
+        private int _mSelectedLink = -1;
+        private int _mSelectedWord = -1;
 
-        private TMP_MeshInfo[] _mCachedMeshInfoVertexData;
+
+        private TextMeshProUGUI _mTextMeshPro;
+
+        private RectTransform _mTextPopupRectTransform;
+        private TextMeshProUGUI _mTextPopupTMPComponent;
 
         private void Awake()
         {
@@ -46,33 +48,10 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
                 _mCamera = _mCanvas.worldCamera;
 
             // Create pop-up text object which is used to show the link information.
-            _mTextPopupRectTransform = Instantiate(textPopupPrefab01) as RectTransform;
+            _mTextPopupRectTransform = Instantiate(textPopupPrefab01);
             _mTextPopupRectTransform.SetParent(_mCanvas.transform, false);
             _mTextPopupTMPComponent = _mTextPopupRectTransform.GetComponentInChildren<TextMeshProUGUI>();
             _mTextPopupRectTransform.gameObject.SetActive(false);
-        }
-
-
-        private void OnEnable()
-        {
-            // Subscribe to event fired when text object has been regenerated.
-            TMPro_EventManager.TEXT_CHANGED_EVENT.Add(ON_TEXT_CHANGED);
-        }
-
-        private void OnDisable()
-        {
-            // UnSubscribe to event fired when text object has been regenerated.
-            TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(ON_TEXT_CHANGED);
-        }
-
-
-        private void ON_TEXT_CHANGED(Object obj)
-        {
-            if (obj == _mTextMeshPro)
-            {
-                // Update cached vertex data.
-                _mCachedMeshInfoVertexData = _mTextMeshPro.textInfo.CopyMeshInfoVertexData();
-            }
         }
 
 
@@ -297,17 +276,16 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
         }
 
 
-        public void OnPointerEnter(PointerEventData eventData)
+        private void OnEnable()
         {
-            //Debug.Log("OnPointerEnter()");
-            _isHoveringObject = true;
+            // Subscribe to event fired when text object has been regenerated.
+            TMPro_EventManager.TEXT_CHANGED_EVENT.Add(ON_TEXT_CHANGED);
         }
 
-
-        public void OnPointerExit(PointerEventData eventData)
+        private void OnDisable()
         {
-            //Debug.Log("OnPointerExit()");
-            _isHoveringObject = false;
+            // UnSubscribe to event fired when text object has been regenerated.
+            TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(ON_TEXT_CHANGED);
         }
 
 
@@ -461,9 +439,31 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
         }
 
 
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            //Debug.Log("OnPointerEnter()");
+            _isHoveringObject = true;
+        }
+
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            //Debug.Log("OnPointerExit()");
+            _isHoveringObject = false;
+        }
+
+
         public void OnPointerUp(PointerEventData eventData)
         {
             //Debug.Log("OnPointerUp()");
+        }
+
+
+        private void ON_TEXT_CHANGED(Object obj)
+        {
+            if (obj == _mTextMeshPro)
+                // Update cached vertex data.
+                _mCachedMeshInfoVertexData = _mTextMeshPro.textInfo.CopyMeshInfoVertexData();
         }
 
 

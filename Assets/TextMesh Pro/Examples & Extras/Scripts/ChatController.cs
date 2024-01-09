@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -7,11 +8,14 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class ChatController : MonoBehaviour
     {
-        [FormerlySerializedAs("ChatInputField")] public TMP_InputField chatInputField;
+        [FormerlySerializedAs("ChatInputField")]
+        public TMP_InputField chatInputField;
 
-        [FormerlySerializedAs("ChatDisplayOutput")] public TMP_Text chatDisplayOutput;
+        [FormerlySerializedAs("ChatDisplayOutput")]
+        public TMP_Text chatDisplayOutput;
 
-        [FormerlySerializedAs("ChatScrollbar")] public Scrollbar chatScrollbar;
+        [FormerlySerializedAs("ChatScrollbar")]
+        public Scrollbar chatScrollbar;
 
         private void OnEnable()
         {
@@ -29,9 +33,10 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
             // Clear Input Field
             chatInputField.text = string.Empty;
 
-            var timeNow = System.DateTime.Now;
+            var timeNow = DateTime.Now;
 
-            var formattedInput = "[<#FFFF80>" + timeNow.Hour.ToString("d2") + ":" + timeNow.Minute.ToString("d2") + ":" +
+            var formattedInput = "[<#FFFF80>" + timeNow.Hour.ToString("d2") + ":" + timeNow.Minute.ToString("d2") +
+                                 ":" +
                                  timeNow.Second.ToString("d2") + "</color>] " + newText;
 
             if (chatDisplayOutput != null)

@@ -6,7 +6,8 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class TMPTextEventCheck : MonoBehaviour
     {
-        [FormerlySerializedAs("TextEventHandler")] public TMPTextEventHandler textEventHandler;
+        [FormerlySerializedAs("TextEventHandler")]
+        public TMPTextEventHandler textEventHandler;
 
         private TMP_Text _mTextComponent;
 

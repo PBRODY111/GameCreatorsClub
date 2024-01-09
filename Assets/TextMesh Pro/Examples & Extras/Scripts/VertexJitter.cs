@@ -7,26 +7,26 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class VertexJitter : MonoBehaviour
     {
-        [FormerlySerializedAs("AngleMultiplier")] public float angleMultiplier = 1.0f;
-        [FormerlySerializedAs("SpeedMultiplier")] public float speedMultiplier = 1.0f;
-        [FormerlySerializedAs("CurveScale")] public float curveScale = 1.0f;
+        [FormerlySerializedAs("AngleMultiplier")]
+        public float angleMultiplier = 1.0f;
 
-        private TMP_Text _mTextComponent;
+        [FormerlySerializedAs("SpeedMultiplier")]
+        public float speedMultiplier = 1.0f;
+
+        [FormerlySerializedAs("CurveScale")] public float curveScale = 1.0f;
         private bool _hasTextChanged;
 
-        /// <summary>
-        /// Structure to hold pre-computed animation data.
-        /// </summary>
-        private struct VertexAnim
-        {
-            public float AngleRange;
-            public float Angle;
-            public float Speed;
-        }
+        private TMP_Text _mTextComponent;
 
         private void Awake()
         {
             _mTextComponent = GetComponent<TMP_Text>();
+        }
+
+
+        private void Start()
+        {
+            StartCoroutine(AnimateVertexColors());
         }
 
         private void OnEnable()
@@ -41,12 +41,6 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
         }
 
 
-        private void Start()
-        {
-            StartCoroutine(AnimateVertexColors());
-        }
-
-
         private void ON_TEXT_CHANGED(Object obj)
         {
             if (obj == _mTextComponent)
@@ -54,7 +48,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
         }
 
         /// <summary>
-        /// Method to animate vertex colors of a TMP Text object.
+        ///     Method to animate vertex colors of a TMP Text object.
         /// </summary>
         /// <returns></returns>
         private IEnumerator AnimateVertexColors()
@@ -173,6 +167,16 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 
                 yield return new WaitForSeconds(0.1f);
             }
+        }
+
+        /// <summary>
+        ///     Structure to hold pre-computed animation data.
+        /// </summary>
+        private struct VertexAnim
+        {
+            public float AngleRange;
+            public float Angle;
+            public float Speed;
         }
     }
 }

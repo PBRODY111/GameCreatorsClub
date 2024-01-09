@@ -22,30 +22,44 @@ namespace Scene1.Computer
         public InputField pwdField;
         [SerializeField] private float reach;
         public string password = "";
-        private bool _isUnlocked = false;
-        private string _input;
 
-        private string[] _alphabet = new string[26]
+        private readonly string[] _alphabet = new string[26]
         {
-            "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
+            "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u",
+            "v",
             "w", "x", "y", "z"
         };
+
+        private string _input;
+        private readonly bool _isUnlocked = false;
 
         // Start is called before the first frame update
         private void Start()
         {
-            for (var i = 0; i < 3; i++)
-            {
-                password += _alphabet[Random.Range(0, _alphabet.Length)];
-            }
+            for (var i = 0; i < 3; i++) password += _alphabet[Random.Range(0, _alphabet.Length)];
 
-            for (var i = 0; i < 3; i++)
-            {
-                password += Random.Range(0, 10);
-            }
+            for (var i = 0; i < 3; i++) password += Random.Range(0, 10);
 
             //pwdText = pwdText.GetComponent<TextMeshProUGUI>();
             pwdText.text = password;
+        }
+
+        // Update is called once per frame
+        private void Update()
+        {
+            if (computerUI.activeSelf)
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    computerUI.SetActive(false);
+                    Time.timeScale = 1f;
+                    PauseMenu.IsPaused = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
+        }
+
+        private void OnMouseExit()
+        {
+            intText.SetActive(false);
         }
 
         private void OnMouseOver()
@@ -59,26 +73,6 @@ namespace Scene1.Computer
                 Time.timeScale = 0f;
                 PauseMenu.IsPaused = true;
                 Cursor.lockState = computerUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
-            }
-        }
-
-        private void OnMouseExit()
-        {
-            intText.SetActive(false);
-        }
-
-        // Update is called once per frame
-        private void Update()
-        {
-            if (computerUI.activeSelf)
-            {
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    computerUI.SetActive(false);
-                    Time.timeScale = 1f;
-                    PauseMenu.IsPaused = false;
-                    Cursor.lockState = CursorLockMode.Locked;
-                }
             }
         }
 

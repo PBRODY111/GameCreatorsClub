@@ -7,15 +7,15 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class SkewTextExample : MonoBehaviour
     {
-        private TMP_Text _mTextComponent;
-
-        [FormerlySerializedAs("VertexCurve")] public AnimationCurve vertexCurve = new(new Keyframe(0, 0), new Keyframe(0.25f, 2.0f),
+        [FormerlySerializedAs("VertexCurve")]
+        public AnimationCurve vertexCurve = new(new Keyframe(0, 0), new Keyframe(0.25f, 2.0f),
             new Keyframe(0.5f, 0), new Keyframe(0.75f, 2.0f), new Keyframe(1, 0f));
 
         //public float AngleMultiplier = 1.0f;
         //public float SpeedMultiplier = 1.0f;
         [FormerlySerializedAs("CurveScale")] public float curveScale = 1.0f;
         [FormerlySerializedAs("ShearAmount")] public float shearAmount = 1.0f;
+        private TMP_Text _mTextComponent;
 
         private void Awake()
         {
@@ -40,7 +40,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 
 
         /// <summary>
-        ///  Method to curve text along a Unity animation curve.
+        ///     Method to curve text along a Unity animation curve.
         /// </summary>
         /// <param name="textComponent"></param>
         /// <returns></returns>
@@ -122,7 +122,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
                     var bottomShear =
                         new Vector3(
                             shearValue * (textInfo.characterInfo[i].baseLine -
-                                           textInfo.characterInfo[i].bottomRight.y), 0, 0);
+                                          textInfo.characterInfo[i].bottomRight.y), 0, 0);
 
                     vertices[vertexIndex + 0] += -bottomShear;
                     vertices[vertexIndex + 1] += topShear;

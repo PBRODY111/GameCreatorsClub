@@ -44,13 +44,9 @@ namespace Player.Inventory
         private void ToggleColor()
         {
             if (GetComponent<Image>().color == new Color(40 / 255f, 40 / 255f, 40 / 255f))
-            {
                 GetComponent<Image>().color = new Color(80 / 255f, 80 / 255f, 80 / 255f);
-            }
             else
-            {
                 GetComponent<Image>().color = new Color(40 / 255f, 40 / 255f, 40 / 255f);
-            }
         }
 
         public void UseItem()

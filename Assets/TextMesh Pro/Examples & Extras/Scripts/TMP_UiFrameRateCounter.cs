@@ -6,27 +6,30 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class TMPUiFrameRateCounter : MonoBehaviour
     {
-        [FormerlySerializedAs("UpdateInterval")] public float updateInterval = 5.0f;
-        private float _mLastInterval;
-        private int _mFrames;
-
         public enum FpsCounterAnchorPositions
         {
             TopLeft,
             BottomLeft,
             TopRight,
             BottomRight
-        };
+        }
 
-        [FormerlySerializedAs("AnchorPosition")] public FpsCounterAnchorPositions anchorPosition = FpsCounterAnchorPositions.TopRight;
-
-        private string _htmlColorTag;
         private const string FPSLabel = "{0:2}</color> <#8080ff>FPS \n<#FF8000>{1:2} <#8080ff>MS";
 
-        private TextMeshProUGUI _mTextMeshPro;
-        private RectTransform _mFrameCounterTransform;
+        [FormerlySerializedAs("UpdateInterval")]
+        public float updateInterval = 5.0f;
+
+        [FormerlySerializedAs("AnchorPosition")]
+        public FpsCounterAnchorPositions anchorPosition = FpsCounterAnchorPositions.TopRight;
+
+        private string _htmlColorTag;
 
         private FpsCounterAnchorPositions _lastAnchorPosition;
+        private RectTransform _mFrameCounterTransform;
+        private int _mFrames;
+        private float _mLastInterval;
+
+        private TextMeshProUGUI _mTextMeshPro;
 
         private void Awake()
         {

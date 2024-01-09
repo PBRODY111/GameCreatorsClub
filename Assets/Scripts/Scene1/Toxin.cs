@@ -20,36 +20,6 @@ namespace Scene1
         {
         }
 
-        private void OnTriggerStay(Collider collision)
-        {
-            if (collision.gameObject.name == "Zagreus")
-            {
-                _inTrigger = true;
-                if (toxicLevel <= 10)
-                {
-                    timer += Time.deltaTime;
-
-                    if (timer >= 0.1f)
-                    {
-                        timer = 0f;
-                        toxicLevel += 0.1f;
-                    }
-                }
-                else
-                {
-                    SceneManager.LoadScene("GameOverScene");
-                }
-            }
-        }
-
-        private void OnTriggerExit(Collider collision)
-        {
-            if (collision.gameObject.name == "Zagreus")
-            {
-                _inTrigger = false;
-            }
-        }
-
         // Update is called once per frame
         private void Update()
         {
@@ -74,6 +44,33 @@ namespace Scene1
             else
             {
                 toxinUI.SetActive(false);
+            }
+        }
+
+        private void OnTriggerExit(Collider collision)
+        {
+            if (collision.gameObject.name == "Zagreus") _inTrigger = false;
+        }
+
+        private void OnTriggerStay(Collider collision)
+        {
+            if (collision.gameObject.name == "Zagreus")
+            {
+                _inTrigger = true;
+                if (toxicLevel <= 10)
+                {
+                    timer += Time.deltaTime;
+
+                    if (timer >= 0.1f)
+                    {
+                        timer = 0f;
+                        toxicLevel += 0.1f;
+                    }
+                }
+                else
+                {
+                    SceneManager.LoadScene("GameOverScene");
+                }
             }
         }
     }

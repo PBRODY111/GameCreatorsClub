@@ -10,18 +10,18 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
         {
             TextMeshPro = 0,
             TextMeshProUGUI = 1
-        };
-
-        [FormerlySerializedAs("ObjectType")] public ObjectType objectType;
-        public bool isStatic;
-
-        private TMP_Text _mText;
+        }
 
         //private TMP_InputField m_inputfield;
 
 
         private const string KLabel = "The count is <#0080ff>{0}</color>";
+
+        [FormerlySerializedAs("ObjectType")] public ObjectType objectType;
+        public bool isStatic;
         private int _count;
+
+        private TMP_Text _mText;
 
         private void Awake()
         {

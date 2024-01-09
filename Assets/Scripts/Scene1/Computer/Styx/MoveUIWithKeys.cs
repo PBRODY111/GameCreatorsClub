@@ -11,12 +11,12 @@ namespace Scene1.Computer.Styx
         public float animationInterval = 0.1f; // Interval for changing images (adjusted to 0.1)
         public Sprite[] walkingSprites; // Array of walking sprites for animation
         public GameObject followerObject; // Reference to another GameObject to follow this object's position
-        private RectTransform _rectTransform; // Reference to the UI element's RectTransform
-        private BoxCollider2D _myCollider; // Reference to the UI element's BoxCollider2D
-        private Image _imageComponent; // Reference to the UI element's Image component
         [SerializeField] private GameObject secret;
 
         private int _currentSpriteIndex; // Index to track the current sprite in the array
+        private Image _imageComponent; // Reference to the UI element's Image component
+        private BoxCollider2D _myCollider; // Reference to the UI element's BoxCollider2D
+        private RectTransform _rectTransform; // Reference to the UI element's RectTransform
         private float _timer; // Timer for image changing interval
 
         private void Start()
@@ -31,10 +31,7 @@ namespace Scene1.Computer.Styx
             _imageComponent = GetComponent<Image>();
 
             // Initialize the image with the first sprite in the array
-            if (walkingSprites.Length > 0)
-            {
-                _imageComponent.sprite = walkingSprites[0];
-            }
+            if (walkingSprites.Length > 0) _imageComponent.sprite = walkingSprites[0];
         }
 
         private void Update()
@@ -72,25 +69,18 @@ namespace Scene1.Computer.Styx
             }
 
             // Update the followerObject's position to match this object's position
-            if (followerObject != null)
-            {
-                followerObject.transform.position = _rectTransform.position;
-            }
+            if (followerObject != null) followerObject.transform.position = _rectTransform.position;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             // Check if this object enters the collider trigger of an object tagged "Respawn"
             if (other.CompareTag("Respawn"))
-            {
                 // Change the scene to "TitleScene"
                 SceneManager.LoadScene("WarningScene");
-            }
             else if (other.CompareTag("Finish"))
-            {
                 // Change the scene to "TitleScene"
                 StartCoroutine(SecretEnding());
-            }
         }
 
         private IEnumerator SecretEnding()

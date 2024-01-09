@@ -8,9 +8,11 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
     public class EnvMapAnimator : MonoBehaviour
     {
         //private Vector3 TranslationSpeeds;
-        [FormerlySerializedAs("RotationSpeeds")] public Vector3 rotationSpeeds;
-        private TMP_Text _mTextMeshPro;
+        [FormerlySerializedAs("RotationSpeeds")]
+        public Vector3 rotationSpeeds;
+
         private Material _mMaterial;
+        private TMP_Text _mTextMeshPro;
 
 
         private void Awake()

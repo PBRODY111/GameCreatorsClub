@@ -7,27 +7,11 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class TextMeshProFloatingText : MonoBehaviour
     {
-        [FormerlySerializedAs("TheFont")] public Font theFont;
-
-        private GameObject _mFloatingText;
-        private TextMeshPro _mTextMeshPro;
-        private TextMesh _mTextMesh;
-
-        private Transform _mTransform;
-        private Transform _mFloatingTextTransform;
-        private Transform _mCameraTransform;
-
-        private Vector3 _lastPos = Vector3.zero;
-        private Quaternion _lastRotation = Quaternion.identity;
-
-        [FormerlySerializedAs("SpawnType")] public int spawnType;
-        [FormerlySerializedAs("IsTextObjectScaleStatic")] public bool isTextObjectScaleStatic;
-
         //private int m_frame = 0;
 
-        private static WaitForEndOfFrame _kWaitForEndOfFrame = new();
+        private static readonly WaitForEndOfFrame _kWaitForEndOfFrame = new();
 
-        private static WaitForSeconds[] _kWaitForSecondsRandom = new WaitForSeconds[]
+        private static readonly WaitForSeconds[] _kWaitForSecondsRandom =
         {
             new(0.05f), new(0.1f), new(0.15f), new(0.2f),
             new(0.25f),
@@ -36,8 +20,26 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
             new(0.55f), new(0.6f), new(0.65f), new(0.7f),
             new(0.75f),
             new(0.8f), new(0.85f), new(0.9f), new(0.95f),
-            new(1.0f),
+            new(1.0f)
         };
+
+        [FormerlySerializedAs("TheFont")] public Font theFont;
+
+        [FormerlySerializedAs("SpawnType")] public int spawnType;
+
+        [FormerlySerializedAs("IsTextObjectScaleStatic")]
+        public bool isTextObjectScaleStatic;
+
+        private Vector3 _lastPos = Vector3.zero;
+        private Quaternion _lastRotation = Quaternion.identity;
+        private Transform _mCameraTransform;
+
+        private GameObject _mFloatingText;
+        private Transform _mFloatingTextTransform;
+        private TextMesh _mTextMesh;
+        private TextMeshPro _mTextMeshPro;
+
+        private Transform _mTransform;
 
         private void Awake()
         {
@@ -134,10 +136,8 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
                 currentCount -= Time.deltaTime / countDuration * startingCount;
 
                 if (currentCount <= 3)
-                {
                     //Debug.Log("Fading Counter ... " + current_Count.ToString("f2"));
                     alpha = Mathf.Clamp(alpha - Time.deltaTime / fadeDuration * 255, 0, 255);
-                }
 
                 intCounter = (int)currentCount;
                 _mTextMeshPro.text = intCounter.ToString();
@@ -190,10 +190,8 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
                 currentCount -= Time.deltaTime / countDuration * startingCount;
 
                 if (currentCount <= 3)
-                {
                     //Debug.Log("Fading Counter ... " + current_Count.ToString("f2"));
                     alpha = Mathf.Clamp(alpha - Time.deltaTime / fadeDuration * 255, 0, 255);
-                }
 
                 intCounter = (int)currentCount;
                 _mTextMesh.text = intCounter.ToString();

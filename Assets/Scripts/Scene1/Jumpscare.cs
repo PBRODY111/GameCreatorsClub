@@ -7,6 +7,7 @@ namespace Scene1
 {
     public class Jumpscare : MonoBehaviour
     {
+        private static readonly int IsScared = Animator.StringToHash("isScared");
         [SerializeField] private GameObject cer;
         [SerializeField] private Animator cerAnimator;
         [SerializeField] private AudioSource jumpscareAudio;
@@ -16,7 +17,6 @@ namespace Scene1
         [SerializeField] private Camera cerCamera;
 
         [SerializeField] private float reach;
-        private static readonly int IsScared = Animator.StringToHash("isScared");
 
         // Start is called before the first frame update
         private void Start()
@@ -25,11 +25,17 @@ namespace Scene1
             cerCamera.enabled = false;
         }
 
+        private void OnMouseExit()
+        {
+            intText3.SetActive(false);
+        }
+
         private void OnMouseOver()
         {
             intText3.GetComponent<TMP_Text>().text = "CROWBAR NEEDED TO INTERACT";
             intText3.SetActive(IsWithinReach());
-            if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.GetHeldItem().itemName == "Crowbar")
+            if (Input.GetMouseButtonDown(1) && IsWithinReach() &&
+                Player.Player.Instance.GetHeldItem().itemName == "Crowbar")
             {
                 Debug.Log("JUMPSCARE!!");
                 // this should only happen if the crowbar is used
@@ -40,11 +46,6 @@ namespace Scene1
             }
         }
 
-        private void OnMouseExit()
-        {
-            intText3.SetActive(false);
-        }
-    
         public IEnumerator JumpscareSequence()
         {
             mainCamera.enabled = false;

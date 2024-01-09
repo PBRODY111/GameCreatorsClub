@@ -6,16 +6,13 @@ namespace UI
 {
     public class SplashScreen : MonoBehaviour
     {
-        [SerializeField] private Animator splashAnim;
         private static readonly int IsProceed = Animator.StringToHash("isProceed");
+        [SerializeField] private Animator splashAnim;
 
         // Start is called before the first frame update
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                StartCoroutine(RunSplashScreen());
-            }
+            if (Input.GetMouseButtonDown(0)) StartCoroutine(RunSplashScreen());
         }
 
         private IEnumerator RunSplashScreen()

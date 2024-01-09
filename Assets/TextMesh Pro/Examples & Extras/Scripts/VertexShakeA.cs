@@ -7,18 +7,32 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     public class VertexShakeA : MonoBehaviour
     {
-        [FormerlySerializedAs("AngleMultiplier")] public float angleMultiplier = 1.0f;
-        [FormerlySerializedAs("SpeedMultiplier")] public float speedMultiplier = 1.0f;
-        [FormerlySerializedAs("ScaleMultiplier")] public float scaleMultiplier = 1.0f;
-        [FormerlySerializedAs("RotationMultiplier")] public float rotationMultiplier = 1.0f;
+        [FormerlySerializedAs("AngleMultiplier")]
+        public float angleMultiplier = 1.0f;
+
+        [FormerlySerializedAs("SpeedMultiplier")]
+        public float speedMultiplier = 1.0f;
+
+        [FormerlySerializedAs("ScaleMultiplier")]
+        public float scaleMultiplier = 1.0f;
+
+        [FormerlySerializedAs("RotationMultiplier")]
+        public float rotationMultiplier = 1.0f;
+
+        private bool _hasTextChanged;
 
         private TMP_Text _mTextComponent;
-        private bool _hasTextChanged;
 
 
         private void Awake()
         {
             _mTextComponent = GetComponent<TMP_Text>();
+        }
+
+
+        private void Start()
+        {
+            StartCoroutine(AnimateVertexColors());
         }
 
         private void OnEnable()
@@ -33,12 +47,6 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
         }
 
 
-        private void Start()
-        {
-            StartCoroutine(AnimateVertexColors());
-        }
-
-
         private void ON_TEXT_CHANGED(Object obj)
         {
             if (obj = _mTextComponent)
@@ -46,7 +54,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
         }
 
         /// <summary>
-        /// Method to animate vertex colors of a TMP Text object.
+        ///     Method to animate vertex colors of a TMP Text object.
         /// </summary>
         /// <returns></returns>
         private IEnumerator AnimateVertexColors()

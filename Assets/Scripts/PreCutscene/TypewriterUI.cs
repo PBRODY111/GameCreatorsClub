@@ -7,8 +7,8 @@ namespace PreCutscene
     public class TypewriterUI : MonoBehaviour
     {
         [SerializeField] private TMP_Text text;
-        private string _final;
         [SerializeField] private float timeBetween = 0.1f;
+        private string _final;
 
         public void Write()
         {

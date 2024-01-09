@@ -12,7 +12,9 @@ namespace Player.Inventory
         [FormerlySerializedAs("Items")] public List<InventoryItem> items = new();
 
         public Transform itemContent;
-        [FormerlySerializedAs("InventoryItem")] public GameObject inventoryItem;
+
+        [FormerlySerializedAs("InventoryItem")]
+        public GameObject inventoryItem;
 
         // Start is called before the first frame update
         private void Awake()
@@ -38,10 +40,7 @@ namespace Player.Inventory
 
         public void CleanList()
         {
-            foreach (Transform item in itemContent)
-            {
-                Destroy(item.gameObject);
-            }
+            foreach (Transform item in itemContent) Destroy(item.gameObject);
         }
 
         public void ListItems()

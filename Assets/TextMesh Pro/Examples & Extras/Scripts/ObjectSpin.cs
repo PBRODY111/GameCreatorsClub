@@ -8,7 +8,10 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
 #pragma warning disable 0414
 
         [FormerlySerializedAs("SpinSpeed")] public float spinSpeed = 5;
-        [FormerlySerializedAs("RotationRange")] public int rotationRange = 15;
+
+        [FormerlySerializedAs("RotationRange")]
+        public int rotationRange = 15;
+
         private Transform _mTransform;
 
         private float _mTime;
@@ -23,7 +26,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
             Rotation,
             BackAndForth,
             Translation
-        };
+        }
 
         [FormerlySerializedAs("Motion")] public MotionType motion;
 

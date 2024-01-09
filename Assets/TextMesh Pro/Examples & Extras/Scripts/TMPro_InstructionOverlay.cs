@@ -12,17 +12,19 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
             BottomLeft,
             TopRight,
             BottomRight
-        };
-
-        [FormerlySerializedAs("AnchorPosition")] public FpsCounterAnchorPositions anchorPosition = FpsCounterAnchorPositions.BottomLeft;
+        }
 
         private const string Instructions =
             "Camera Control - <#ffff00>Shift + RMB\n</color>Zoom - <#ffff00>Mouse wheel.";
 
-        private TextMeshPro _mTextMeshPro;
-        private TextContainer _mTextContainer;
-        private Transform _mFrameCounterTransform;
+        [FormerlySerializedAs("AnchorPosition")]
+        public FpsCounterAnchorPositions anchorPosition = FpsCounterAnchorPositions.BottomLeft;
+
         private Camera _mCamera;
+        private Transform _mFrameCounterTransform;
+        private TextContainer _mTextContainer;
+
+        private TextMeshPro _mTextMeshPro;
 
         //private FpsCounterAnchorPositions last_AnchorPosition;
 

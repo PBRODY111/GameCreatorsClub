@@ -7,11 +7,14 @@ namespace UI
 {
     public class Tutorial : MonoBehaviour
     {
+        [FormerlySerializedAs("UI")]
+        [SerializeField]
+        private GameObject ui;
+
         private GameObject _page1;
         private GameObject _page2;
         private GameObject _page3;
         private GameObject _page4;
-        [FormerlySerializedAs("UI")] [SerializeField] private GameObject ui;
 
         public void Start()
         {

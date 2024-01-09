@@ -27,11 +27,11 @@ namespace Scene1
         [SerializeField] private AudioSource call;
         [SerializeField] private AudioSource numbAudio;
         public AudioClip[] numbers;
-        private string _entered = "";
-        private bool _isUnlocked = false;
         [SerializeField] private SafeDoor2 safeCode;
         public string gotCode;
         private int _currentNumb;
+        private string _entered = "";
+        private readonly bool _isUnlocked = false;
 
         // Start is called before the first frame update
         private void Start()
@@ -43,42 +43,48 @@ namespace Scene1
         */
             //while(set.Count != 4){
             //}
-            for (var i = 0; i < 7; i++)
-            {
-                numb1 += Random.Range(0, 10);
-            }
+            for (var i = 0; i < 7; i++) numb1 += Random.Range(0, 10);
 
             while (numb2 == "" || numb2 == numb1 || numb2 == numb5)
             {
                 numb2 = "";
-                for (var i = 0; i < 7; i++)
-                {
-                    numb2 += Random.Range(0, 10);
-                }
+                for (var i = 0; i < 7; i++) numb2 += Random.Range(0, 10);
             }
 
             while (numb3 == "" || numb3 == numb2 || numb2 == numb5)
             {
                 numb3 = "";
-                for (var i = 0; i < 7; i++)
-                {
-                    numb3 += Random.Range(0, 10);
-                }
+                for (var i = 0; i < 7; i++) numb3 += Random.Range(0, 10);
             }
 
             while (numb4 == "" || numb4 == numb3 || numb2 == numb5)
             {
                 numb4 = "";
-                for (var i = 0; i < 7; i++)
-                {
-                    numb4 += Random.Range(0, 10);
-                }
+                for (var i = 0; i < 7; i++) numb4 += Random.Range(0, 10);
             }
 
             num1E.text = numb1;
             num2E.text = numb2;
             num3E.text = numb3;
             num4E.text = numb4;
+        }
+
+        // Update is called once per frame
+        private void Update()
+        {
+            if (phoneUI.activeSelf)
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    phoneUI.SetActive(false);
+                    PauseMenu.IsPaused = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    _entered = "";
+                }
+        }
+
+        private void OnMouseExit()
+        {
+            intText.SetActive(false);
         }
 
         // Update is called once per frame
@@ -93,26 +99,6 @@ namespace Scene1
                 intText.SetActive(false);
                 phoneUI.SetActive(true);
                 Cursor.lockState = phoneUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
-            }
-        }
-
-        private void OnMouseExit()
-        {
-            intText.SetActive(false);
-        }
-
-        // Update is called once per frame
-        private void Update()
-        {
-            if (phoneUI.activeSelf)
-            {
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    phoneUI.SetActive(false);
-                    PauseMenu.IsPaused = false;
-                    Cursor.lockState = CursorLockMode.Locked;
-                    _entered = "";
-                }
             }
         }
 
@@ -150,7 +136,7 @@ namespace Scene1
                 gotCode = safeCode.code;
                 for (var i = 0; i < gotCode.Length; i++)
                 {
-                    _currentNumb = System.Int32.Parse(gotCode[i].ToString());
+                    _currentNumb = int.Parse(gotCode[i].ToString());
                     numbAudio.clip = numbers[_currentNumb + 4];
                     numbAudio.Play();
                     yield return new WaitForSeconds(1.5f);
