@@ -1,3 +1,4 @@
+using System;
 using Player;
 using TMPro;
 using UnityEngine;
@@ -26,8 +27,12 @@ namespace UI
         private float _fpsUpdateTimer;
         private HeadLamp _headLamp;
         private PlayerMovement _pm;
+        
+        public static int NumDesks = 0;
 
         private Rigidbody _rb;
+
+        private int _fpsText;
 
         // Start is called before the first frame update
         private void Start()
@@ -37,9 +42,17 @@ namespace UI
             _headLamp = Player.Player.Instance.GetComponent<HeadLamp>();
             _rb = Player.Player.Instance.GetComponent<Rigidbody>();
             canvas.gameObject.SetActive(false);
+            
+            fullbright.onClick.AddListener(() => _headLamp.Fullbright());
+            epic.onClick.AddListener(() =>
+            {
+                _rb.useGravity = !_rb.useGravity;
+                _collider.enabled = !_collider.enabled;
+                _pm.epicModeEnabled = !_pm.epicModeEnabled;
+            });
+            fpsButton.onClick.AddListener(() => fps.gameObject.SetActive(!fps.gameObject.activeSelf));
         }
 
-        // Update is called once per frame
         private void Update()
         {
             if (Input.GetKeyDown(debugKey))
@@ -49,27 +62,18 @@ namespace UI
                 Cursor.lockState = o.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
                 Cursor.visible = o.activeSelf;
             }
-
-            fullbright.onClick.AddListener(() => _headLamp.Fullbright());
-            epic.onClick.AddListener(() =>
-            {
-                _rb.useGravity = !_rb.useGravity;
-                _collider.enabled = !_collider.enabled;
-                _pm.epicModeEnabled = !_pm.epicModeEnabled;
-            });
-            fpsButton.onClick.AddListener(() => fps.gameObject.SetActive(!fps.gameObject.activeSelf));
-
+            
             _fpsUpdateTimer += Time.deltaTime;
-            if (_fpsUpdateTimer < FPSUpdateInterval) return;
-
-            UpdateFps();
-            _fpsUpdateTimer = 0f; // Reset the timer
+            if (_fpsUpdateTimer > FPSUpdateInterval)
+            {
+                _fpsText = Mathf.FloorToInt(1.0f / Time.deltaTime);
+                _fpsUpdateTimer = 0f;
+            }
         }
 
-        private void UpdateFps()
+        private void FixedUpdate()
         {
-            var roundedFps = Mathf.FloorToInt(1.0f / Time.deltaTime);
-            fps.text = "FPS: " + roundedFps;
+            fps.text = "FPS: " + _fpsText + "\nDesks: " + NumDesks;
         }
     }
 }

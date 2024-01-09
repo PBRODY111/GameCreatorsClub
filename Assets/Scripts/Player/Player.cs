@@ -21,6 +21,8 @@ namespace Player
 
         private void Awake()
         {
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 60;
             Instance = this;
             selectedslot = -1;
             _playerMovement = GetComponent<PlayerMovement>();
@@ -50,6 +52,23 @@ namespace Player
             catch (Exception e)
             {
                 Debug.Log("No Item in Slot" + e);
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            if (Input.GetKey(KeyCode.C))
+            {
+                if(Math.Abs(mainCamera.fieldOfView - 70) < 0.1)
+                    mainCamera.fieldOfView = 20;
+                
+                var scrollInput = Input.mouseScrollDelta.y;
+                mainCamera.fieldOfView -= scrollInput * 30;
+                mainCamera.fieldOfView = Mathf.Clamp(mainCamera.fieldOfView, 1, 69);
+            }
+            else
+            {
+                mainCamera.fieldOfView = 70;
             }
         }
 

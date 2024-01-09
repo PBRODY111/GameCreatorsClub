@@ -30,7 +30,6 @@ namespace TitleScene
 
         private void Start()
         {
-            QualitySettings.vSyncCount = 1;
             Cursor.lockState = CursorLockMode.None;
             _resolutions = Screen.resolutions;
             resolutionDropdown.ClearOptions();
