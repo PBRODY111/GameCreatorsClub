@@ -207,8 +207,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 829990410}
-        m_TargetAssemblyTypeName: tutorial, Assembly-CSharp
-        m_MethodName: goPage1
+        m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
+        m_MethodName: GoPage2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -473,8 +473,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 829990410}
-        m_TargetAssemblyTypeName: tutorial, Assembly-CSharp
-        m_MethodName: goPage1
+        m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
+        m_MethodName: GoPage1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9957,7 +9957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2b072287a41ac4098f8ad0bfb19e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 0afdbe4b3566e4704b623f68ec20cc59, type: 2}
+  item: {fileID: 11400000, guid: 0afdbe4b3566e4704b623f68ec20cc59, type: 2}
   reach: 2
 --- !u!114 &283575852
 MonoBehaviour:
@@ -14212,7 +14212,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 829990410}
         m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
-        m_MethodName: hide
+        m_MethodName: Hide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14455,8 +14455,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 829990410}
-        m_TargetAssemblyTypeName: tutorial, Assembly-CSharp
-        m_MethodName: goPage2
+        m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
+        m_MethodName: GoPage3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16540,9 +16540,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721d7333778ae5b4085a72ae0c1c6cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Items: []
+  items: []
   itemContent: {fileID: 1327178680}
-  InventoryItem: {fileID: 5615826717229402971, guid: f54f2d0f96683e44a98f39da9aa71415, type: 3}
+  inventoryItem: {fileID: 5615826717229402971, guid: f54f2d0f96683e44a98f39da9aa71415, type: 3}
 --- !u!95 &531641776
 Animator:
   serializedVersion: 5
@@ -16824,7 +16824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2b072287a41ac4098f8ad0bfb19e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 5486c5d7dcc044daabdbccb28f049e61, type: 2}
+  item: {fileID: 11400000, guid: 5486c5d7dcc044daabdbccb28f049e61, type: 2}
   reach: 2
 --- !u!114 &548225400
 MonoBehaviour:
@@ -23116,7 +23116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827162a5b20094f0cb37d1770f09305c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: {fileID: 1485086860}
+  ui: {fileID: 1485086860}
 --- !u!1 &832880386
 GameObject:
   m_ObjectHideFlags: 0
@@ -29924,7 +29924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2b072287a41ac4098f8ad0bfb19e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: d19b9afaf79ba4477a0683c425d4c691, type: 2}
+  item: {fileID: 11400000, guid: d19b9afaf79ba4477a0683c425d4c691, type: 2}
   reach: 2
 --- !u!114 &1093391517
 MonoBehaviour:
@@ -30763,8 +30763,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 829990410}
-        m_TargetAssemblyTypeName: tutorial, Assembly-CSharp
-        m_MethodName: goPage3
+        m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
+        m_MethodName: GoPage4
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33865,7 +33865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2b072287a41ac4098f8ad0bfb19e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: f50acd3bbe706425eb30db69746ca7f5, type: 2}
+  item: {fileID: 11400000, guid: f50acd3bbe706425eb30db69746ca7f5, type: 2}
   reach: 3
 --- !u!114 &1210654115
 MonoBehaviour:
@@ -34056,7 +34056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2b072287a41ac4098f8ad0bfb19e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 95a75618803c445b9a8d04ba77bbea13, type: 2}
+  item: {fileID: 11400000, guid: 95a75618803c445b9a8d04ba77bbea13, type: 2}
   reach: 2
 --- !u!114 &1223189680
 MonoBehaviour:
@@ -44779,8 +44779,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 829990410}
-        m_TargetAssemblyTypeName: tutorial, Assembly-CSharp
-        m_MethodName: hide
+        m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
+        m_MethodName: Hide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -45250,7 +45250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2b072287a41ac4098f8ad0bfb19e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: d5ec0639bb83c42f2884a715dffd1f3c, type: 2}
+  item: {fileID: 11400000, guid: d5ec0639bb83c42f2884a715dffd1f3c, type: 2}
   reach: 2
 --- !u!114 &1624008635
 MonoBehaviour:
@@ -45613,9 +45613,9 @@ MonoBehaviour:
   debugKey: 284
   fullbright: {fileID: 1334146069}
   epic: {fileID: 404301887}
-  fps: {fileID: 48146602}
+  fpsButton: {fileID: 48146602}
   sun: {fileID: 1534555352}
-  _fps: {fileID: 2071997151}
+  fps: {fileID: 2071997151}
 --- !u!1 &1628145597
 GameObject:
   m_ObjectHideFlags: 0
@@ -56583,8 +56583,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 829990410}
-        m_TargetAssemblyTypeName: tutorial, Assembly-CSharp
-        m_MethodName: goPage3
+        m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
+        m_MethodName: GoPage3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -58399,7 +58399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2b072287a41ac4098f8ad0bfb19e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 8c03db1de6f604ce9aa5b0d173ec8bb5, type: 2}
+  item: {fileID: 11400000, guid: 8c03db1de6f604ce9aa5b0d173ec8bb5, type: 2}
   reach: 2
 --- !u!114 &1904359252
 MonoBehaviour:
@@ -60565,10 +60565,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   batteryDrain: 16.67
-  _lightStage: 4
-  _lightParent: {fileID: 1972437050}
-  _canvas: {fileID: 938915109}
-  _batteryBarPrefab: {fileID: 7657791715483782647, guid: 61874500c04ac13409f054662e477f86, type: 3}
+  lightStage: 4
+  lightParent: {fileID: 1972437050}
+  canvas: {fileID: 938915109}
+  batteryBarPrefab: {fileID: 7657791715483782647, guid: 61874500c04ac13409f054662e477f86, type: 3}
 --- !u!114 &1981617491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60581,7 +60581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60df8e881c8e5704796aa0929c93cef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hotbar: {fileID: 1327178679}
+  hotbar: {fileID: 1327178679}
   mainCamera: {fileID: 1972437052}
   stoolPrefab: {fileID: 205041033105215615, guid: 850ca12dc3cfb624bb324c69fa8c3bf5, type: 3}
   selectedslot: -1
@@ -63554,8 +63554,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 829990410}
-        m_TargetAssemblyTypeName: tutorial, Assembly-CSharp
-        m_MethodName: goPage2
+        m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
+        m_MethodName: GoPage2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
