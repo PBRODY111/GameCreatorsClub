@@ -1,74 +1,75 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
-    private GameObject page1;
-    private GameObject page2;
-    private GameObject page3;
-    private GameObject page4;
-    [SerializeField] private GameObject UI;
+    private GameObject _page1;
+    private GameObject _page2;
+    private GameObject _page3;
+    private GameObject _page4;
+    [FormerlySerializedAs("UI")] [SerializeField] private GameObject ui;
 
-    void Start()
+    public void Start()
     {
-        UI.SetActive(false);
-        page1 = transform.GetChild(0).gameObject;
-        page2 = transform.GetChild(1).gameObject;
-        page3 = transform.GetChild(2).gameObject;
-        page4 = transform.GetChild(3).gameObject;
-        this.gameObject.SetActive(true);
-        page1.SetActive(true);
+        ui.SetActive(false);
+        _page1 = transform.GetChild(0).gameObject;
+        _page2 = transform.GetChild(1).gameObject;
+        _page3 = transform.GetChild(2).gameObject;
+        _page4 = transform.GetChild(3).gameObject;
+        gameObject.SetActive(true);
+        _page1.SetActive(true);
 
-        page1.GetComponentInChildren<Button>().onClick.AddListener(goPage2);
-        page2.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(goPage1);
-        page2.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(goPage3);
-        page3.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(goPage2);
-        page3.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(goPage4);
-        page4.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(goPage3);
-        page4.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(hide);
+        _page1.GetComponentInChildren<Button>().onClick.AddListener(GoPage2);
+        _page2.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(GoPage1);
+        _page2.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(GoPage3);
+        _page3.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(GoPage2);
+        _page3.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(GoPage4);
+        _page4.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(GoPage3);
+        _page4.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(Hide);
         Player.Instance.mainCamera.GetComponent<PlayerCam>().enabled = false;
         Player.Instance.GetComponent<PlayerMovement>().enabled = false;
         Cursor.lockState = CursorLockMode.None;
-
     }
 
-    public void goPage1()
+    public void GoPage1()
     {
-        page1.SetActive(true);
-        page2.SetActive(false);
-        page3.SetActive(false);
-        page4.SetActive(false);
+        _page1.SetActive(true);
+        _page2.SetActive(false);
+        _page3.SetActive(false);
+        _page4.SetActive(false);
     }
-    public void goPage2()
+
+    public void GoPage2()
     {
-        page1.SetActive(false);
-        page2.SetActive(true);
-        page3.SetActive(false);
-        page4.SetActive(false);
+        _page1.SetActive(false);
+        _page2.SetActive(true);
+        _page3.SetActive(false);
+        _page4.SetActive(false);
     }
-    public void goPage3()
+
+    public void GoPage3()
     {
-        page1.SetActive(false);
-        page2.SetActive(false);
-        page3.SetActive(true);
-        page4.SetActive(false);
+        _page1.SetActive(false);
+        _page2.SetActive(false);
+        _page3.SetActive(true);
+        _page4.SetActive(false);
     }
-    public void goPage4()
+
+    public void GoPage4()
     {
-        page1.SetActive(false);
-        page2.SetActive(false);
-        page3.SetActive(false);
-        page4.SetActive(true);
+        _page1.SetActive(false);
+        _page2.SetActive(false);
+        _page3.SetActive(false);
+        _page4.SetActive(true);
     }
-    public void hide()
+
+    public void Hide()
     {
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
         Time.timeScale = 1;
         Player.Instance.mainCamera.GetComponent<PlayerCam>().enabled = true;
         Player.Instance.GetComponent<PlayerMovement>().enabled = true;
-        UI.SetActive(true);
+        ui.SetActive(true);
     }
-
 }

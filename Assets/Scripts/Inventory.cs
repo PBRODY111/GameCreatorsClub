@@ -1,16 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
     public static Inventory Instance;
-    public List<InventoryItem> Items = new List<InventoryItem>();
+    [FormerlySerializedAs("Items")] public List<InventoryItem> items = new List<InventoryItem>();
 
     public Transform itemContent;
-    public GameObject InventoryItem;
+    [FormerlySerializedAs("InventoryItem")] public GameObject inventoryItem;
 
     // Start is called before the first frame update
     private void Awake()
@@ -20,16 +20,16 @@ public class Inventory : MonoBehaviour
 
     public void Add(InventoryItem item)
     {
-        Items.Add(item);
-        GameObject obj = Instantiate(InventoryItem, itemContent);
-        obj.transform.Find("Name").GetComponent<TMP_Text>().text = Items.Count+":"+item.itemName;
+        items.Add(item);
+        var obj = Instantiate(inventoryItem, itemContent);
+        obj.transform.Find("Name").GetComponent<TMP_Text>().text = items.Count + ":" + item.itemName;
         obj.transform.Find("Image").GetComponent<Image>().sprite = item.icon;
         obj.GetComponent<InventoryItemController>().AddItem(item);
     }
 
     public void Remove(InventoryItem item)
     {
-        Items.Remove(item);
+        items.Remove(item);
         CleanList();
         ListItems();
     }
@@ -44,12 +44,12 @@ public class Inventory : MonoBehaviour
 
     public void ListItems()
     {
-        int i = 0;
-        foreach (var item in Items)
+        var i = 0;
+        foreach (var item in items)
         {
             i++;
-            GameObject obj = Instantiate(InventoryItem, itemContent);
-            obj.transform.Find("Name").GetComponent<TMP_Text>().text = i+":"+item.itemName;
+            var obj = Instantiate(inventoryItem, itemContent);
+            obj.transform.Find("Name").GetComponent<TMP_Text>().text = i + ":" + item.itemName;
             obj.transform.Find("Image").GetComponent<Image>().sprite = item.icon;
             obj.GetComponent<InventoryItemController>().AddItem(item);
         }

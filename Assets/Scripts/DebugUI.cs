@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class DebugUI : MonoBehaviour
@@ -11,22 +9,31 @@ public class DebugUI : MonoBehaviour
     [SerializeField] private KeyCode debugKey = KeyCode.F3;
     [SerializeField] private Button fullbright;
     [SerializeField] private Button epic;
-    [SerializeField] private Button fps;
-    [SerializeField] private Light sun; 
+    [SerializeField] private Button fpsButton;
+    [SerializeField] private Light sun;
 
-    [SerializeField] private TMP_Text _fps;
+    [FormerlySerializedAs("_fps")] [SerializeField] private TMP_Text fps;
 
-    float fpsUpdateTimer = 0f;
-    float fpsUpdateInterval = 0.1f;
+    private float _fpsUpdateTimer;
+    private float _fpsUpdateInterval = 1.0f;
+    
+    private Rigidbody _rb;
+    private HeadLamp _headLamp;
+    private CapsuleCollider _collider;
+    private PlayerMovement _pm;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        _pm = Player.Instance.GetComponent<PlayerMovement>();
+        _collider = Player.Instance.transform.GetChild(0).GetComponent<CapsuleCollider>();
+        _headLamp = Player.Instance.GetComponent<HeadLamp>();
+        _rb = Player.Instance.GetComponent<Rigidbody>();
         canvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(debugKey))
         {
@@ -34,37 +41,26 @@ public class DebugUI : MonoBehaviour
             Cursor.lockState = canvas.gameObject.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = canvas.gameObject.activeSelf;
         }
-        fullbright.onClick.AddListener(() =>
-        {
-            Player.Instance.GetComponent<HeadLamp>().Fullbright();
-        });
-        epic.onClick.AddListener(() => 
-        {
-            var player = Player.Instance;
-            var rb = player.GetComponent<Rigidbody>();
-            rb.useGravity = !rb.useGravity;
-            var cc = player.transform.GetChild(0).GetComponent<CapsuleCollider>();
-            cc.enabled = !cc.enabled;
 
-            var pm = player.GetComponent<PlayerMovement>();
-            pm.epicModeEnabled = !pm.epicModeEnabled;
-        });
-        fps.onClick.AddListener(() =>
+        fullbright.onClick.AddListener(() => _headLamp.Fullbright());
+        epic.onClick.AddListener(() =>
         {
-            _fps.gameObject.SetActive(!_fps.gameObject.activeSelf);
+            _rb.useGravity = !_rb.useGravity;
+            _collider.enabled = !_collider.enabled;
+            _pm.epicModeEnabled = !_pm.epicModeEnabled;
         });
+        fpsButton.onClick.AddListener(() => fps.gameObject.SetActive(!fps.gameObject.activeSelf));
 
-        fpsUpdateTimer += Time.deltaTime;
-        if (fpsUpdateTimer >= fpsUpdateInterval)
-        {
-            UpdateFps();
-            fpsUpdateTimer = 0f; // Reset the timer
-        }
+        _fpsUpdateTimer += Time.deltaTime;
+        if (_fpsUpdateTimer < _fpsUpdateInterval) return;
+        
+        UpdateFps();
+        _fpsUpdateTimer = 0f; // Reset the timer
     }
 
-    void UpdateFps()
+    private void UpdateFps()
     {
-        int roundedFps = Mathf.FloorToInt(1.0f / Time.deltaTime);
-        _fps.text = "FPS: " + roundedFps.ToString();
+        var roundedFps = Mathf.FloorToInt(1.0f / Time.deltaTime);
+        fps.text = "FPS: " + roundedFps;
     }
 }

@@ -5,88 +5,89 @@ public class SafeDoor : MonoBehaviour
 {
     [SerializeField] private GameObject intText;
     [SerializeField] private float[] dialValues;
-    private float[] tempValues;
+    private float[] _tempValues;
     [SerializeField] private float reach;
     [SerializeField] private GameObject dialUI;
-    private Animator safeAnimator;
-    private Slider slider;
-    private float sliderPreviousValue;
-    private int currentDialValueIndex = 0;
-    private bool isUnlocked = false;
+    private Animator _safeAnimator;
+    private Slider _slider;
+    private float _sliderPreviousValue;
+    private int _currentDialValueIndex;
+    private bool _isUnlocked;
     [SerializeField] private AudioSource unlockAudio;
 
-    void Awake()
+    private void Awake()
     {
-        slider = dialUI.GetComponentInChildren<Slider>();
-        safeAnimator = GetComponentInChildren<Animator>();
-        tempValues = new float[dialValues.Length];
-        slider.onValueChanged.AddListener (delegate
+        _slider = dialUI.GetComponentInChildren<Slider>();
+        _safeAnimator = GetComponentInChildren<Animator>();
+        _tempValues = new float[dialValues.Length];
+        _slider.onValueChanged.AddListener(delegate
         {
-            if(IsWithinValue(sliderPreviousValue,slider.value,1f)) GetComponent<AudioSource>().Play();
-            sliderPreviousValue = slider.value;
+            if (IsWithinValue(_sliderPreviousValue, _slider.value, 1f)) GetComponent<AudioSource>().Play();
+            _sliderPreviousValue = _slider.value;
         });
     }
-    void OnMouseOver()
+
+    private void OnMouseOver()
     {
-        if (!dialUI.activeSelf && !isUnlocked)
+        if (!dialUI.activeSelf && !_isUnlocked)
             intText.SetActive(IsWithinReach());
-        if (Input.GetKeyDown(KeyCode.E) && !isUnlocked && IsWithinReach())
+        if (Input.GetKeyDown(KeyCode.E) && !_isUnlocked && IsWithinReach())
         {
             intText.SetActive(false);
             dialUI.SetActive(true);
-            PauseMenu.isPaused = true;
+            PauseMenu.IsPaused = true;
             Cursor.lockState = dialUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
         }
-
-
     }
-    
-    void OnMouseExit(){
-        if(!dialUI.activeSelf)
+
+    private void OnMouseExit()
+    {
+        if (!dialUI.activeSelf)
             intText.SetActive(false);
     }
 
-    void Update()
+    private void Update()
     {
-
         if (dialUI.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 dialUI.SetActive(false);
-                PauseMenu.isPaused = false;
+                PauseMenu.IsPaused = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
+
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
-                if (IsWithinValue(dialValues[currentDialValueIndex], slider.value, 2f))
+                if (IsWithinValue(dialValues[_currentDialValueIndex], _slider.value, 2f))
                 {
-                    currentDialValueIndex++;
-                    if (currentDialValueIndex >= dialValues.Length)
+                    _currentDialValueIndex++;
+                    if (_currentDialValueIndex >= dialValues.Length)
                     {
-                        safeAnimator.SetBool("unlock", true);
+                        _safeAnimator.SetBool("unlock", true);
                         unlockAudio.Play();
                         dialUI.SetActive(false);
-                        PauseMenu.isPaused = false;
+                        PauseMenu.IsPaused = false;
                         Cursor.lockState = CursorLockMode.Locked;
-                        isUnlocked = true;
+                        _isUnlocked = true;
                     }
                 }
                 else
                 {
-                    currentDialValueIndex = 0;
+                    _currentDialValueIndex = 0;
                 }
-                slider.value = 0;
+
+                _slider.value = 0;
             }
         }
     }
 
-    bool IsWithinReach()
+    private bool IsWithinReach()
     {
         return Vector3.Distance(transform.position, Player.Instance.transform.position) <= reach;
     }
 
-    bool IsWithinValue(float value, float actual,float deviation)
+    private bool IsWithinValue(float value, float actual, float deviation)
     {
         return actual >= value - deviation && actual <= value + deviation;
     }

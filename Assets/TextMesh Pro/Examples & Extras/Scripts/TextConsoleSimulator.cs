@@ -6,38 +6,38 @@ namespace TMPro.Examples
 {
     public class TextConsoleSimulator : MonoBehaviour
     {
-        private TMP_Text m_TextComponent;
-        private bool hasTextChanged;
+        private TMP_Text _mTextComponent;
+        private bool _hasTextChanged;
 
-        void Awake()
+        private void Awake()
         {
-            m_TextComponent = gameObject.GetComponent<TMP_Text>();
+            _mTextComponent = gameObject.GetComponent<TMP_Text>();
         }
 
 
-        void Start()
+        private void Start()
         {
-            StartCoroutine(RevealCharacters(m_TextComponent));
+            StartCoroutine(RevealCharacters(_mTextComponent));
             //StartCoroutine(RevealWords(m_TextComponent));
         }
 
 
-        void OnEnable()
+        private void OnEnable()
         {
             // Subscribe to event fired when text object has been regenerated.
             TMPro_EventManager.TEXT_CHANGED_EVENT.Add(ON_TEXT_CHANGED);
         }
 
-        void OnDisable()
+        private void OnDisable()
         {
             TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(ON_TEXT_CHANGED);
         }
 
 
         // Event received when the text object has changed.
-        void ON_TEXT_CHANGED(Object obj)
+        private void ON_TEXT_CHANGED(Object obj)
         {
-            hasTextChanged = true;
+            _hasTextChanged = true;
         }
 
 
@@ -45,21 +45,21 @@ namespace TMPro.Examples
         /// Method revealing the text one character at a time.
         /// </summary>
         /// <returns></returns>
-        IEnumerator RevealCharacters(TMP_Text textComponent)
+        private IEnumerator RevealCharacters(TMP_Text textComponent)
         {
             textComponent.ForceMeshUpdate();
 
-            TMP_TextInfo textInfo = textComponent.textInfo;
+            var textInfo = textComponent.textInfo;
 
-            int totalVisibleCharacters = textInfo.characterCount; // Get # of Visible Character in text object
-            int visibleCount = 0;
+            var totalVisibleCharacters = textInfo.characterCount; // Get # of Visible Character in text object
+            var visibleCount = 0;
 
             while (true)
             {
-                if (hasTextChanged)
+                if (_hasTextChanged)
                 {
                     totalVisibleCharacters = textInfo.characterCount; // Update visible character count.
-                    hasTextChanged = false; 
+                    _hasTextChanged = false;
                 }
 
                 if (visibleCount > totalVisibleCharacters)
@@ -81,15 +81,16 @@ namespace TMPro.Examples
         /// Method revealing the text one word at a time.
         /// </summary>
         /// <returns></returns>
-        IEnumerator RevealWords(TMP_Text textComponent)
+        private IEnumerator RevealWords(TMP_Text textComponent)
         {
             textComponent.ForceMeshUpdate();
 
-            int totalWordCount = textComponent.textInfo.wordCount;
-            int totalVisibleCharacters = textComponent.textInfo.characterCount; // Get # of Visible Character in text object
-            int counter = 0;
-            int currentWord = 0;
-            int visibleCount = 0;
+            var totalWordCount = textComponent.textInfo.wordCount;
+            var totalVisibleCharacters =
+                textComponent.textInfo.characterCount; // Get # of Visible Character in text object
+            var counter = 0;
+            var currentWord = 0;
+            var visibleCount = 0;
 
             while (true)
             {
@@ -116,6 +117,5 @@ namespace TMPro.Examples
                 yield return new WaitForSeconds(0.1f);
             }
         }
-
     }
 }

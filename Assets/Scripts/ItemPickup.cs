@@ -1,25 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ItemPickup : MonoBehaviour
 {
-    public InventoryItem Item;
+    [FormerlySerializedAs("Item")] public InventoryItem item;
     [SerializeField] private float reach;
 
-    void PickUp()
+    private void PickUp()
     {
-        Inventory.Instance.Add(Item);
+        Inventory.Instance.Add(item);
         Destroy(gameObject);
     }
 
     private void OnMouseDown()
     {
-        if(IsWithinReach()){
+        if (IsWithinReach())
+        {
             PickUp();
         }
     }
-    bool IsWithinReach()
+
+    private bool IsWithinReach()
     {
         return Vector3.Distance(transform.position, Player.Instance.transform.position) <= reach;
     }

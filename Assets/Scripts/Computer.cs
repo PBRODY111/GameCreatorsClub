@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -21,44 +19,53 @@ public class Computer : MonoBehaviour
     public InputField pwdField;
     [SerializeField] private float reach;
     public string password = "";
-    private bool isUnlocked = false;
-    private string input;
-    string[] Alphabet = new string[26] {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
-    // Start is called before the first frame update
-    void Start()
+    private bool _isUnlocked = false;
+    private string _input;
+
+    private string[] _alphabet = new string[26]
     {
-        for(int i = 0; i<3; i++){
-            password += Alphabet[Random.Range(0, Alphabet.Length)];
+        "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
+        "w", "x", "y", "z"
+    };
+
+    // Start is called before the first frame update
+    private void Start()
+    {
+        for (var i = 0; i < 3; i++)
+        {
+            password += _alphabet[Random.Range(0, _alphabet.Length)];
         }
-        for(int i = 0; i<3; i++){
+
+        for (var i = 0; i < 3; i++)
+        {
             password += Random.Range(0, 10);
         }
+
         //pwdText = pwdText.GetComponent<TextMeshProUGUI>();
         pwdText.text = password;
     }
 
-    void OnMouseOver()
+    private void OnMouseOver()
     {
-        if (!computerUI.activeSelf && !isUnlocked)
+        if (!computerUI.activeSelf && !_isUnlocked)
             intText.SetActive(IsWithinReach());
-        if (Input.GetKeyDown(KeyCode.E) && !isUnlocked && IsWithinReach())
+        if (Input.GetKeyDown(KeyCode.E) && !_isUnlocked && IsWithinReach())
         {
             intText.SetActive(false);
             computerUI.SetActive(true);
             Time.timeScale = 0f;
-            PauseMenu.isPaused = true;
+            PauseMenu.IsPaused = true;
             Cursor.lockState = computerUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
         }
-
-
     }
-    void OnMouseExit()
+
+    private void OnMouseExit()
     {
         intText.SetActive(false);
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (computerUI.activeSelf)
         {
@@ -66,29 +73,34 @@ public class Computer : MonoBehaviour
             {
                 computerUI.SetActive(false);
                 Time.timeScale = 1f;
-                PauseMenu.isPaused = false;
+                PauseMenu.IsPaused = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
     }
 
-    public void ShutDown(){
+    public void ShutDown()
+    {
         computerUI.SetActive(false);
         Time.timeScale = 1f;
-        PauseMenu.isPaused = false;
+        PauseMenu.IsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public void LogIn(string s){
-        input = s;
-        if (input == password || Player.Instance.EpicModeEnabled()) {
+    public void LogIn(string s)
+    {
+        _input = s;
+        if (_input == password || Player.Instance.EpicModeEnabled())
+        {
             loginPage.SetActive(false);
             homePage.SetActive(true);
             //pwdField.Select();
             //pwdField.text = "";
         }
     }
-    public void LogOut(){
+
+    public void LogOut()
+    {
         loginPage.SetActive(true);
         homePage.SetActive(false);
         emails.SetActive(false);
@@ -96,7 +108,8 @@ public class Computer : MonoBehaviour
         trash.SetActive(false);
     }
 
-    public void Desktop(){
+    public void Desktop()
+    {
         emails.SetActive(false);
         notes.SetActive(false);
         trash.SetActive(false);
@@ -105,55 +118,74 @@ public class Computer : MonoBehaviour
 
     // Emails
 
-    public void EmailApp(){
+    public void EmailApp()
+    {
         emails.SetActive(true);
         homePage.SetActive(false);
     }
-    public void Email1(){
+
+    public void Email1()
+    {
         //GetComponent<Image>().color = Color.red;
         email1.SetActive(true);
     }
-    public void ReturnEmail1(){
+
+    public void ReturnEmail1()
+    {
         email1.SetActive(false);
     }
-    public void Email2(){
+
+    public void Email2()
+    {
         //GetComponent<Image>().color = Color.red;
         email2.SetActive(true);
     }
-    public void ReturnEmail2(){
+
+    public void ReturnEmail2()
+    {
         email2.SetActive(false);
     }
-    public void Email3(){
+
+    public void Email3()
+    {
         //GetComponent<Image>().color = Color.red;
         email3.SetActive(true);
     }
-    public void ReturnEmail3(){
+
+    public void ReturnEmail3()
+    {
         email3.SetActive(false);
     }
-    public void Email4(){
+
+    public void Email4()
+    {
         //GetComponent<Image>().color = Color.red;
         email4.SetActive(true);
     }
-    public void ReturnEmail4(){
+
+    public void ReturnEmail4()
+    {
         email4.SetActive(false);
     }
 
-    public void NoteApp(){
+    public void NoteApp()
+    {
         notes.SetActive(true);
         homePage.SetActive(false);
     }
 
-    public void TrashApp(){
+    public void TrashApp()
+    {
         trash.SetActive(true);
         homePage.SetActive(false);
     }
 
-    bool IsWithinReach()
+    private bool IsWithinReach()
     {
         return Vector3.Distance(transform.position, Player.Instance.transform.position) <= reach;
     }
 
-    bool IsWithinValue(float value, float actual,float deviation)
+    private bool IsWithinValue(float value, float actual, float deviation)
     {
         return actual >= value - deviation && actual <= value + deviation;
     }

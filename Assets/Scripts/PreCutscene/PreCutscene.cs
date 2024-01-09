@@ -1,19 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class PreCutscene : MonoBehaviour
-{   
+{
     [SerializeField] private GameObject rose;
     [SerializeField] private GameObject zagreus;
     [SerializeField] private GameObject liar;
-    [SerializeField] private AudioSource audio;
+    [SerializeField] private new AudioSource audio;
     [SerializeField] private AudioSource audio2;
-    private typewriterUI typewriterUi;
-    private string[] text =
+    private TypewriterUI _typewriterUi;
+
+    private readonly string[] _text =
     {
         "Dad, can you hear me?",
         "Where are you?",
@@ -27,33 +25,35 @@ public class PreCutscene : MonoBehaviour
         "Help me.",
         "Please..."
     };
-    void Start()
+
+    private void Start()
     {
-        typewriterUi = transform.GetComponent<typewriterUI>();
-        StartCoroutine(cutScene());
+        _typewriterUi = transform.GetComponent<TypewriterUI>();
+        StartCoroutine(CutScene());
     }
 
-    IEnumerator cutScene()
+    private IEnumerator CutScene()
     {
         yield return new WaitForSeconds(0.5f);
-        foreach (var line in text)
+        foreach (var line in _text)
         {
-            typewriterUi.setText(line);
-            typewriterUi.Write();
-            yield return new WaitForSeconds(typewriterUi.getTimeBetween() * line.Length + 1f);
+            _typewriterUi.SetText(line);
+            _typewriterUi.Write();
+            yield return new WaitForSeconds(_typewriterUi.GetTimeBetween() * line.Length + 1f);
         }
+
         audio.Stop();
         audio2.Play();
         rose.SetActive(true);
         zagreus.SetActive(false);
-        typewriterUi.setText("There is no escape.");
-        typewriterUi.Write();
+        _typewriterUi.SetText("There is no escape.");
+        _typewriterUi.Write();
         yield return new WaitForSeconds(3f);
         liar.SetActive(true);
         yield return new WaitForSeconds(7f);
         liar.SetActive(false);
         rose.SetActive(false);
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

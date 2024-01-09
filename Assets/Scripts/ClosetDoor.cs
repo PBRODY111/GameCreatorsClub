@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ClosetDoor : MonoBehaviour
@@ -9,14 +8,16 @@ public class ClosetDoor : MonoBehaviour
     [SerializeField] private GameObject scare;
     [SerializeField] private AudioSource doorAudio;
     private Animator _doorAnim;
-    private int probInt;
+    private int _probInt;
 
-    void Awake(){
+    private void Awake()
+    {
         _doorAnim = GetComponent<Animator>();
-        if(_doorAnim == null)
+        if (_doorAnim == null)
             _doorAnim = GetComponentInChildren<Animator>();
     }
-    void OnMouseOver()
+
+    private void OnMouseOver()
     {
         intText.SetActive(IsWithinReach());
         if (Input.GetKeyDown(KeyCode.E) && IsWithinReach())
@@ -25,26 +26,28 @@ public class ClosetDoor : MonoBehaviour
             doorAudio.timeSamples = doorAudio.pitch > 0 ? 0 : doorAudio.clip.samples - 1;
             doorAudio.Play(0);
             _doorAnim.SetBool("isOpen", !_doorAnim.GetBool("isOpen"));
-            probInt = Random.Range(0, 5);
-            if(probInt == 1){
-                StartCoroutine(imgScare());
+            _probInt = Random.Range(0, 5);
+            if (_probInt == 1)
+            {
+                StartCoroutine(ImgScare());
             }
         }
     }
 
-    void OnMouseExit()
+    private void OnMouseExit()
     {
         intText.SetActive(false);
     }
 
-    IEnumerator imgScare(){
+    private IEnumerator ImgScare()
+    {
         scare.SetActive(true);
         scare.GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(1.5f);
         scare.SetActive(false);
     }
 
-    bool IsWithinReach()
+    private bool IsWithinReach()
     {
         return Vector3.Distance(transform.position, Player.Instance.transform.position) <= reach;
     }

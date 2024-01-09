@@ -6,29 +6,30 @@ public class Stereo : MonoBehaviour
     [SerializeField] private AudioSource stereoAudio;
     [SerializeField] private AudioSource clickAudio;
     [SerializeField] private float reach = 1.5f;
-    void OnMouseOver()
+
+    private void OnMouseOver()
     {
         intText.SetActive(IsWithinReach());
-        if (Input.GetKeyDown(KeyCode.E) && IsWithinReach())
+        if (!Input.GetKeyDown(KeyCode.E) || !IsWithinReach()) return;
+        
+        if (stereoAudio.isPlaying)
         {
-            if (stereoAudio.isPlaying)
-            {
-                stereoAudio.Pause();
-                clickAudio.Play(0);
-            }
-            else
-            {
-                stereoAudio.Play(0);
-                clickAudio.Play(0);
-            }
+            stereoAudio.Pause();
+            clickAudio.Play(0);
+        }
+        else
+        {
+            stereoAudio.Play(0);
+            clickAudio.Play(0);
         }
     }
-    void OnMouseExit()
+
+    private void OnMouseExit()
     {
         intText.SetActive(false);
     }
 
-    bool IsWithinReach()
+    private bool IsWithinReach()
     {
         return Vector3.Distance(transform.position, Player.Instance.transform.position) <= reach;
     }

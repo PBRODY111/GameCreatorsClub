@@ -19,116 +19,150 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject options;
     public Dropdown resolutionDropdown;
     public AudioMixer masterMixer;
-    private bool extrasOn = false;
-    private bool optionsOn = false;
+    private bool _extrasOn;
+
+    private bool _optionsOn;
+
     // Start is called before the first frame update
-    Resolution[] resolutions;
-    void Start(){
+    private Resolution[] _resolutions;
+    private static readonly int IsStart = Animator.StringToHash("isStart");
+
+    private void Start()
+    {
         Cursor.lockState = CursorLockMode.None;
-        resolutions = Screen.resolutions;
+        _resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
-        List<string> options = new List<string>();
-        int currentResIndex = 0;
-        for(int i=0; i<resolutions.Length; i++){
-            string option = resolutions[i].width+"x"+resolutions[i].height;
-            options.Add(option);
-            if(resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height){
+        var opts = new List<string>();
+        var currentResIndex = 0;
+        for (var i = 0; i < _resolutions.Length; i++)
+        {
+            var option = _resolutions[i].width + "x" + _resolutions[i].height;
+            opts.Add(option);
+            if (_resolutions[i].width == Screen.currentResolution.width &&
+                _resolutions[i].height == Screen.currentResolution.height)
+            {
                 currentResIndex = i;
             }
         }
-        resolutionDropdown.AddOptions(options);
+
+        resolutionDropdown.AddOptions(opts);
         resolutionDropdown.value = currentResIndex;
         resolutionDropdown.RefreshShownValue();
     }
 
-    public void StartNew ()
+    public void StartNew()
     {
         click.Play();
-        StartCoroutine(fadeMusic());
-        animator.SetBool("isStart", true);
-        animator2.SetBool("isStart", true);
-        animator3.SetBool("isStart", true);
+        StartCoroutine(FadeMusic());
+        animator.SetBool(IsStart, true);
+        animator2.SetBool(IsStart, true);
+        animator3.SetBool(IsStart, true);
         audioData.Play(0);
-        StartCoroutine(loadStart());
-        
+        StartCoroutine(LoadStart());
     }
-    public void Continue ()
+
+    public void Continue()
     {
         click.Play();
-        StartCoroutine(fadeMusic());
-        animator.SetBool("isStart", true);
-        animator2.SetBool("isStart", true);
-        animator3.SetBool("isStart", true);
+        StartCoroutine(FadeMusic());
+        animator.SetBool(IsStart, true);
+        animator2.SetBool(IsStart, true);
+        animator3.SetBool(IsStart, true);
         audioData.Play(0);
-        StartCoroutine(loadStart());
-        
+        StartCoroutine(LoadStart());
     }
 
     // OPTIONS
-    public void OptionsMenu(){
+    public void OptionsMenu()
+    {
         click.Play();
-        if(optionsOn == false){
+        if (_optionsOn == false)
+        {
             mainCanvas.SetActive(false);
             options.SetActive(true);
-        }else{
+        }
+        else
+        {
             mainCanvas.SetActive(true);
             options.SetActive(false);
         }
-        optionsOn = !optionsOn;
+
+        _optionsOn = !_optionsOn;
     }
-    public void SetVolume(float volume){
+
+    public void SetVolume(float volume)
+    {
         masterMixer.SetFloat("MasterVol", volume);
     }
-    public void SetMusic(float volume){
+
+    public void SetMusic(float volume)
+    {
         masterMixer.SetFloat("MusicVol", volume);
     }
-    public void SetSFX(float volume){
+
+    public void SetSfx(float volume)
+    {
         masterMixer.SetFloat("SFXVol", volume);
     }
-    public void SetQuality(int qualityIndex){
+
+    public void SetQuality(int qualityIndex)
+    {
         QualitySettings.SetQualityLevel(qualityIndex);
     }
-    public void SetFullscreen(bool isFull){
+
+    public void SetFullscreen(bool isFull)
+    {
         Screen.fullScreen = isFull;
     }
-    public void SetResolution(int resolutionIndex){
-        Resolution resolution = resolutions[resolutionIndex];
+
+    public void SetResolution(int resolutionIndex)
+    {
+        var resolution = _resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
     // EXTRAS
-    public void ExtrasMenu(){
+    public void ExtrasMenu()
+    {
         click.Play();
-        if(extrasOn == false){
+        if (_extrasOn == false)
+        {
             mainCanvas.SetActive(false);
             extras.SetActive(true);
-        }else{
+        }
+        else
+        {
             mainCanvas.SetActive(true);
             extras.SetActive(false);
         }
-        extrasOn = !extrasOn;
+
+        _extrasOn = !_extrasOn;
     }
 
-    IEnumerator fadeMusic(){
-        float startVolume = audioSource.volume;
- 
-        while (audioSource.volume > 0) {
+    private IEnumerator FadeMusic()
+    {
+        var startVolume = audioSource.volume;
+
+        while (audioSource.volume > 0)
+        {
             audioSource.volume -= startVolume * Time.deltaTime / 3;
- 
+
             yield return null;
         }
- 
-        audioSource.Stop ();
+
+        audioSource.Stop();
         audioSource.volume = startVolume;
     }
-    IEnumerator loadStart()
+
+    private IEnumerator LoadStart()
     {
-        yield return new WaitForSeconds((float) 1.5);
-        animator4.SetBool("isStart", true);
-        yield return new WaitForSeconds((float) 2.5);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        yield return new WaitForSeconds((float)1.5);
+        animator4.SetBool(IsStart, true);
+        yield return new WaitForSeconds((float)2.5);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    public void QuitGame ()
+
+    public void QuitGame()
     {
         Application.Quit();
     }

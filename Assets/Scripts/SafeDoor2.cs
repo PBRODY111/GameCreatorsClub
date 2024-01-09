@@ -1,103 +1,115 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SafeDoor2 : MonoBehaviour
 {
     [SerializeField] private GameObject intText;
-    private float[] tempValues;
+    private float[] _tempValues;
     [SerializeField] private float reach;
     [SerializeField] private GameObject padlockUI;
-    private Animator safeAnimator;
-    private bool isUnlocked = false;
+    private Animator _safeAnimator;
+    private bool _isUnlocked;
     [SerializeField] private AudioSource dial;
     [SerializeField] private AudioSource unlockAudio;
     [SerializeField] private AudioSource errorAudio;
     public string code;
-    private string entered = "";
-    private int incorrectTrials = 0;
-    private bool canUnlock = true;
-    
+    private string _entered = "";
+    private int _incorrectTrials;
+    private bool _canUnlock = true;
+    private static readonly int Unlock = Animator.StringToHash("unlock");
+
     // Start is called before the first frame update
-    void Start(){
-        for(int i = 0; i<5; i++){
+    private void Start()
+    {
+        for (var i = 0; i < 5; i++)
+        {
             code += Random.Range(0, 10);
         }
     }
 
-    void Awake()
+    private void Awake()
     {
-        safeAnimator = GetComponentInChildren<Animator>();
+        _safeAnimator = GetComponentInChildren<Animator>();
     }
 
-    void OnMouseOver()
+    private void OnMouseOver()
     {
-        if (!padlockUI.activeSelf && !isUnlocked)
+        if (!padlockUI.activeSelf && !_isUnlocked)
             intText.SetActive(IsWithinReach());
-        if (Input.GetKeyDown(KeyCode.E) && !isUnlocked && IsWithinReach())
+        if (Input.GetKeyDown(KeyCode.E) && !_isUnlocked && IsWithinReach())
         {
-            if(canUnlock){
+            if (_canUnlock)
+            {
                 intText.SetActive(false);
                 padlockUI.SetActive(!padlockUI.activeSelf);
-                PauseMenu.isPaused = true;
+                PauseMenu.IsPaused = true;
                 Cursor.lockState = padlockUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
-            } else{
+            }
+            else
+            {
                 errorAudio.Play();
             }
         }
-
-
     }
-    void OnMouseExit()
+
+    private void OnMouseExit()
     {
         intText.SetActive(false);
     }
 
-    public void AddNumb(Button button){
+    public void AddNumb(Button button)
+    {
         Debug.Log("Hello!");
         dial.Play();
-        entered += button.name;
-        if(entered.Length >= 5){
-            if(entered == code){
-                safeAnimator.SetBool("unlock", true);
+        _entered += button.name;
+        if (_entered.Length >= 5)
+        {
+            if (_entered == code)
+            {
+                _safeAnimator.SetBool(Unlock, true);
                 unlockAudio.Play();
-                isUnlocked = true;
-            } else{
-                incorrectTrials++;
-                if(incorrectTrials >= 3){
-                    canUnlock = false;
-                    StartCoroutine(untilReset());
+                _isUnlocked = true;
+            }
+            else
+            {
+                _incorrectTrials++;
+                if (_incorrectTrials >= 3)
+                {
+                    _canUnlock = false;
+                    StartCoroutine(UntilReset());
                 }
             }
-            entered = "";
+
+            _entered = "";
             padlockUI.SetActive(false);
-            PauseMenu.isPaused = false;
+            PauseMenu.IsPaused = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (padlockUI.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 padlockUI.SetActive(false);
-                PauseMenu.isPaused = false;
+                PauseMenu.IsPaused = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
     }
 
-    IEnumerator untilReset(){
+    private IEnumerator UntilReset()
+    {
         yield return new WaitForSeconds(300f);
-        canUnlock = true;
-        incorrectTrials = 0;
+        _canUnlock = true;
+        _incorrectTrials = 0;
     }
 
-    bool IsWithinReach()
+    private bool IsWithinReach()
     {
         return Vector3.Distance(transform.position, Player.Instance.transform.position) <= reach;
     }

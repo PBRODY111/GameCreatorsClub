@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using TMPro;
@@ -15,8 +12,8 @@ public class LadderScrewHole : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Right)
-            rightClick.Invoke ();
-     }
+            rightClick.Invoke();
+    }
 
     // Start is called before the first frame update
     public void OnPointerEnter(PointerEventData eventData)
@@ -24,12 +21,16 @@ public class LadderScrewHole : MonoBehaviour, IPointerEnterHandler, IPointerExit
         intText3.GetComponent<TMP_Text>().text = "SCREWS NEEDED TO INTERACT";
         intText3.SetActive(true);
     }
+
     public void OnPointerExit(PointerEventData eventData)
     {
         intText3.SetActive(false);
     }
-    public void ShowScrew(GameObject button){
-        if(Player.Instance.GetHeldItem().itemName == "Screws"){
+
+    public void ShowScrew(GameObject button)
+    {
+        if (Player.Instance.GetHeldItem().itemName == "Screws")
+        {
             button2.SetActive(true);
             button.SetActive(false);
         }

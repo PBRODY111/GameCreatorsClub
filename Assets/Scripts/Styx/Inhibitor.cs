@@ -5,7 +5,7 @@ public class Inhibitor : MonoBehaviour
 {
     public GameObject intText; // Reference to the GameObject "intText"
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the player has entered the collider
         if (other.CompareTag("Player"))
@@ -18,7 +18,7 @@ public class Inhibitor : MonoBehaviour
         }
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         // Check if the player is within the collider and "E" key is pressed
         if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))

@@ -3538,7 +3538,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 940513890}
         m_TargetAssemblyTypeName: Ascal, Assembly-CSharp
-        m_MethodName: getLetter
+        m_MethodName: GetLetter
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

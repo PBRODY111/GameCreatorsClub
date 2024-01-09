@@ -1,51 +1,46 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement")]
-    public float walkSpeed;
+    [Header("Movement")] public float walkSpeed;
     public float sprintSpeed;
-    float moveSpeed;
+    private float _moveSpeed;
 
     public float groundDrag;
 
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
-    bool readyToJump;
+    private bool _readyToJump;
 
 
-    [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space;
+    [Header("Keybinds")] public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode pauseKey = KeyCode.Escape;
     public KeyCode goDownKey = KeyCode.LeftShift;
 
 
-    [Header("Ground Check")]
-    public float playerHeight;
+    [Header("Ground Check")] public float playerHeight;
     public LayerMask ground;
-    bool grounded;
+    private bool _grounded;
 
-    [Header("Misc")]
-    public Transform orientation;
+    [Header("Misc")] public Transform orientation;
 
-    public bool epicModeEnabled = false;
+    public bool epicModeEnabled;
 
-    float horizontalInput;
-    float verticalInput;
+    private float _horizontalInput;
+    private float _verticalInput;
 
-    Vector3 moveDirection;
+    private Vector3 _moveDirection;
 
-    Rigidbody rb;
+    private Rigidbody _rb;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        _rb = GetComponent<Rigidbody>();
+        _rb.freezeRotation = true;
 
-        readyToJump = true;
+        _readyToJump = true;
     }
 
     private void Update()
@@ -53,37 +48,37 @@ public class PlayerMovement : MonoBehaviour
         SpeedControl();
 
         // handle drag
-        if (grounded)
-            rb.drag = groundDrag;
+        if (_grounded)
+            _rb.drag = groundDrag;
         else
-            rb.drag = 0;
+            _rb.drag = 0;
 
         MyInput();
-
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(jumpKey) && readyToJump && grounded)
+        if (Input.GetKey(jumpKey) && _readyToJump && _grounded)
         {
-            readyToJump = false;
+            _readyToJump = false;
 
             Jump();
 
             Invoke(nameof(ResetJump), jumpCooldown);
         }
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ground);
 
+        _grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ground);
     }
+
     private void MyInput()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        _horizontalInput = Input.GetAxis("Horizontal");
+        _verticalInput = Input.GetAxis("Vertical");
 
         if (Input.GetKey(sprintKey))
-            moveSpeed = sprintSpeed;
+            _moveSpeed = sprintSpeed;
         else
-            moveSpeed = walkSpeed;
+            _moveSpeed = walkSpeed;
 
         MovePlayer();
     }
@@ -91,57 +86,63 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
         // calculate movement direction
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        _moveDirection = orientation.forward * _verticalInput + orientation.right * _horizontalInput;
 
         // rotate physical body
         transform.rotation = orientation.rotation;
 
-        if(epicModeEnabled)
+        if (epicModeEnabled)
         {
-            moveSpeed = 20f;
-            transform.position += moveDirection.normalized * moveSpeed * Time.deltaTime;
+            _moveSpeed = 20f;
+            transform.position += _moveDirection.normalized * _moveSpeed * Time.deltaTime;
 
-            if(Input.GetKey(goDownKey))
+            if (Input.GetKey(goDownKey))
             {
-                if(!Input.GetKey(jumpKey))
-                    transform.position -= transform.up * moveSpeed * Time.deltaTime;
+                if (!Input.GetKey(jumpKey))
+                    transform.position -= transform.up * _moveSpeed * Time.deltaTime;
             }
-            else if(Input.GetKey(jumpKey))
-                transform.position += transform.up * moveSpeed * Time.deltaTime;
+            else if (Input.GetKey(jumpKey))
+                transform.position += transform.up * _moveSpeed * Time.deltaTime;
 
-            rb.velocity = Vector3.zero;
-        } else {
+            _rb.velocity = Vector3.zero;
+        }
+        else
+        {
             // on ground
-            if (grounded)
-                rb.AddForce(moveDirection.normalized * moveSpeed * 500f * Time.deltaTime, ForceMode.Force);
+            if (_grounded)
+                _rb.AddForce(_moveDirection.normalized * _moveSpeed * 500f * Time.deltaTime, ForceMode.Force);
 
             // in air
-            else{
-                rb.AddForce(moveDirection.normalized * moveSpeed * 500f * airMultiplier * Time.deltaTime, ForceMode.Force);
+            else
+            {
+                _rb.AddForce(_moveDirection.normalized * _moveSpeed * 500f * airMultiplier * Time.deltaTime,
+                    ForceMode.Force);
             }
         }
     }
 
     private void SpeedControl()
     {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        var flatVel = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
 
         // limit velocity if needed
-        if(flatVel.magnitude > moveSpeed)
+        if (flatVel.magnitude > _moveSpeed)
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            var limitedVel = flatVel.normalized * _moveSpeed;
+            _rb.velocity = new Vector3(limitedVel.x, _rb.velocity.y, limitedVel.z);
         }
     }
+
     private void Jump()
     {
         // reset y velocity
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        _rb.velocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        _rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
+
     private void ResetJump()
     {
-        readyToJump = true;
+        _readyToJump = true;
     }
 }

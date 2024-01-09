@@ -1,46 +1,53 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class animationStateController : MonoBehaviour
+public class AnimationStateController : MonoBehaviour
 {
-    Animator animator;
+    private Animator _animator;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        bool isWalking = animator.GetBool("isWalking");
-        bool isSprinting = animator.GetBool("isSprinting");
-        bool isReversing = animator.GetBool("isReversing");
+        var isWalking = _animator.GetBool("isWalking");
+        var isSprinting = _animator.GetBool("isSprinting");
+        var isReversing = _animator.GetBool("isReversing");
 
         // walk forwards
-        if(!isWalking && (Input.GetKey("w") || Input.GetKey("up"))){
-            animator.SetBool("isWalking", true);
+        if (!isWalking && (Input.GetKey("w") || Input.GetKey("up")))
+        {
+            _animator.SetBool("isWalking", true);
         }
-        if(isWalking && !(Input.GetKey("w") || Input.GetKey("up"))){
-            animator.SetBool("isWalking", false);
+
+        if (isWalking && !(Input.GetKey("w") || Input.GetKey("up")))
+        {
+            _animator.SetBool("isWalking", false);
         }
 
         // walk backwards
-        if(!isReversing && (Input.GetKey("s") || Input.GetKey("down"))){
-            animator.SetBool("isReversing", true);
+        if (!isReversing && (Input.GetKey("s") || Input.GetKey("down")))
+        {
+            _animator.SetBool("isReversing", true);
         }
-        if(isReversing && !(Input.GetKey("s") || Input.GetKey("down"))){
-            animator.SetBool("isReversing", false);
+
+        if (isReversing && !(Input.GetKey("s") || Input.GetKey("down")))
+        {
+            _animator.SetBool("isReversing", false);
         }
 
         // sprint forwards
-        if(isWalking && Input.GetKey("left shift")){
-            animator.SetBool("isSprinting", true);
+        if (isWalking && Input.GetKey("left shift"))
+        {
+            _animator.SetBool("isSprinting", true);
         }
-        if(!isWalking && !Input.GetKey("left shift")){
-            animator.SetBool("isSprinting", false);
+
+        if (!isWalking && !Input.GetKey("left shift"))
+        {
+            _animator.SetBool("isSprinting", false);
         }
-        
     }
 }

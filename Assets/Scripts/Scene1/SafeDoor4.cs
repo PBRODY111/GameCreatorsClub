@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class SafeDoor4 : MonoBehaviour
@@ -9,37 +6,47 @@ public class SafeDoor4 : MonoBehaviour
     [SerializeField] private GameObject intText3;
     [SerializeField] private float reach;
     [SerializeField] private AudioSource unlockAudio;
-    private Animator safeAnimator;
-    public bool isUnlocked = false;
+    private Animator _safeAnimator;
+
+    public bool isUnlocked;
+
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
-        safeAnimator = GetComponentInChildren<Animator>();
+        _safeAnimator = GetComponentInChildren<Animator>();
     }
 
-    void OnMouseOver()
+    private void OnMouseOver()
     {
         intText3.GetComponent<TMP_Text>().text = "SCREWDRIVER NEEDED TO INTERACT";
-        if(isUnlocked == false){
+        if (isUnlocked == false)
+        {
             intText3.SetActive(IsWithinReach());
-        } else{
+        }
+        else
+        {
             intText3.SetActive(false);
         }
-        if(Input.GetMouseButtonDown(1) && IsWithinReach()){
-            safeAnimator.SetBool("unlock", true);
-            if(!isUnlocked){
+
+        if (Input.GetMouseButtonDown(1) && IsWithinReach())
+        {
+            _safeAnimator.SetBool("unlock", true);
+            if (!isUnlocked)
+            {
                 unlockAudio.Play();
             }
+
             isUnlocked = true;
             intText3.SetActive(false);
         }
     }
-    void OnMouseExit()
+
+    private void OnMouseExit()
     {
         intText3.SetActive(false);
     }
 
-    bool IsWithinReach()
+    private bool IsWithinReach()
     {
         return Vector3.Distance(transform.position, Player.Instance.transform.position) <= reach;
     }

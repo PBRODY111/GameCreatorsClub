@@ -1,23 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
     public static Player Instance;
-    [SerializeField] private GameObject _hotbar;
+    [FormerlySerializedAs("_hotbar")] [SerializeField] private GameObject hotbar;
     public Camera mainCamera;
     public GameObject stoolPrefab;
     public int selectedslot;
-    void Awake(){
+
+    private void Awake()
+    {
         Instance = this;
         selectedslot = -1;
     }
 
     public InventoryItem GetHeldItem()
     {
-        return _hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().item;
+        return hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().item;
     }
 
     public bool EpicModeEnabled()
@@ -25,33 +26,30 @@ public class Player : MonoBehaviour
         return GetComponent<PlayerMovement>().epicModeEnabled;
     }
 
-    void Update()
+    private void Update()
     {
-        
         try
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                Debug.Log(_hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().item.itemName);
-                _hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().UseItem();
-                
+                Debug.Log(
+                    hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().item.itemName);
+                hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().UseItem();
             }
 
-            for (int i = 0; i < 10; i++)
+            for (var i = 0; i < 10; i++)
             {
-                KeyCode key = (KeyCode)Enum.Parse(typeof(KeyCode), "Alpha" + (i == 9 ? 0 : i + 1));
+                var key = (KeyCode)Enum.Parse(typeof(KeyCode), "Alpha" + (i == 9 ? 0 : i + 1));
                 if (Input.GetKeyDown(key))
                 {
-                    _hotbar.transform.GetChild(i).GetComponent<InventoryItemController>().HoldItem();
+                    hotbar.transform.GetChild(i).GetComponent<InventoryItemController>().HoldItem();
                     break;
                 }
             }
         }
-        catch (System.Exception e)
+        catch (Exception e)
         {
             Debug.Log("No Item in Slot" + e);
         }
-       
     }
-
 }

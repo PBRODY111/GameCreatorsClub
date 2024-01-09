@@ -1,28 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Serialization;
 
 
 namespace TMPro.Examples
 {
-
     public class SkewTextExample : MonoBehaviour
     {
+        private TMP_Text _mTextComponent;
 
-        private TMP_Text m_TextComponent;
+        [FormerlySerializedAs("VertexCurve")] public AnimationCurve vertexCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.25f, 2.0f),
+            new Keyframe(0.5f, 0), new Keyframe(0.75f, 2.0f), new Keyframe(1, 0f));
 
-        public AnimationCurve VertexCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.25f, 2.0f), new Keyframe(0.5f, 0), new Keyframe(0.75f, 2.0f), new Keyframe(1, 0f));
         //public float AngleMultiplier = 1.0f;
         //public float SpeedMultiplier = 1.0f;
-        public float CurveScale = 1.0f;
-        public float ShearAmount = 1.0f;
+        [FormerlySerializedAs("CurveScale")] public float curveScale = 1.0f;
+        [FormerlySerializedAs("ShearAmount")] public float shearAmount = 1.0f;
 
-        void Awake()
+        private void Awake()
         {
-            m_TextComponent = gameObject.GetComponent<TMP_Text>();
+            _mTextComponent = gameObject.GetComponent<TMP_Text>();
         }
 
 
-        void Start()
+        private void Start()
         {
             StartCoroutine(WarpText());
         }
@@ -30,7 +31,7 @@ namespace TMPro.Examples
 
         private AnimationCurve CopyAnimationCurve(AnimationCurve curve)
         {
-            AnimationCurve newCurve = new AnimationCurve();
+            var newCurve = new AnimationCurve();
 
             newCurve.keys = curve.keys;
 
@@ -43,38 +44,40 @@ namespace TMPro.Examples
         /// </summary>
         /// <param name="textComponent"></param>
         /// <returns></returns>
-        IEnumerator WarpText()
+        private IEnumerator WarpText()
         {
-            VertexCurve.preWrapMode = WrapMode.Clamp;
-            VertexCurve.postWrapMode = WrapMode.Clamp;
+            vertexCurve.preWrapMode = WrapMode.Clamp;
+            vertexCurve.postWrapMode = WrapMode.Clamp;
 
             //Mesh mesh = m_TextComponent.textInfo.meshInfo[0].mesh;
 
             Vector3[] vertices;
             Matrix4x4 matrix;
 
-            m_TextComponent.havePropertiesChanged = true; // Need to force the TextMeshPro Object to be updated.
-            CurveScale *= 10;
-            float old_CurveScale = CurveScale;
-            float old_ShearValue = ShearAmount;
-            AnimationCurve old_curve = CopyAnimationCurve(VertexCurve);
+            _mTextComponent.havePropertiesChanged = true; // Need to force the TextMeshPro Object to be updated.
+            curveScale *= 10;
+            var oldCurveScale = curveScale;
+            var oldShearValue = shearAmount;
+            var oldCurve = CopyAnimationCurve(vertexCurve);
 
             while (true)
             {
-                if (!m_TextComponent.havePropertiesChanged && old_CurveScale == CurveScale && old_curve.keys[1].value == VertexCurve.keys[1].value && old_ShearValue == ShearAmount)
+                if (!_mTextComponent.havePropertiesChanged && oldCurveScale == curveScale &&
+                    oldCurve.keys[1].value == vertexCurve.keys[1].value && oldShearValue == shearAmount)
                 {
                     yield return null;
                     continue;
                 }
 
-                old_CurveScale = CurveScale;
-                old_curve = CopyAnimationCurve(VertexCurve);
-                old_ShearValue = ShearAmount;
+                oldCurveScale = curveScale;
+                oldCurve = CopyAnimationCurve(vertexCurve);
+                oldShearValue = shearAmount;
 
-                m_TextComponent.ForceMeshUpdate(); // Generate the mesh and populate the textInfo with data we can use and manipulate.
+                _mTextComponent
+                    .ForceMeshUpdate(); // Generate the mesh and populate the textInfo with data we can use and manipulate.
 
-                TMP_TextInfo textInfo = m_TextComponent.textInfo;
-                int characterCount = textInfo.characterCount;
+                var textInfo = _mTextComponent.textInfo;
+                var characterCount = textInfo.characterCount;
 
 
                 if (characterCount == 0) continue;
@@ -82,25 +85,26 @@ namespace TMPro.Examples
                 //vertices = textInfo.meshInfo[0].vertices;
                 //int lastVertexIndex = textInfo.characterInfo[characterCount - 1].vertexIndex;
 
-                float boundsMinX = m_TextComponent.bounds.min.x;  //textInfo.meshInfo[0].mesh.bounds.min.x;
-                float boundsMaxX = m_TextComponent.bounds.max.x;  //textInfo.meshInfo[0].mesh.bounds.max.x;
+                var boundsMinX = _mTextComponent.bounds.min.x; //textInfo.meshInfo[0].mesh.bounds.min.x;
+                var boundsMaxX = _mTextComponent.bounds.max.x; //textInfo.meshInfo[0].mesh.bounds.max.x;
 
 
-
-                for (int i = 0; i < characterCount; i++)
+                for (var i = 0; i < characterCount; i++)
                 {
                     if (!textInfo.characterInfo[i].isVisible)
                         continue;
 
-                    int vertexIndex = textInfo.characterInfo[i].vertexIndex;
+                    var vertexIndex = textInfo.characterInfo[i].vertexIndex;
 
                     // Get the index of the mesh used by this character.
-                    int materialIndex = textInfo.characterInfo[i].materialReferenceIndex;
+                    var materialIndex = textInfo.characterInfo[i].materialReferenceIndex;
 
                     vertices = textInfo.meshInfo[materialIndex].vertices;
 
                     // Compute the baseline mid point for each character
-                    Vector3 offsetToMidBaseline = new Vector2((vertices[vertexIndex + 0].x + vertices[vertexIndex + 2].x) / 2, textInfo.characterInfo[i].baseLine);
+                    Vector3 offsetToMidBaseline =
+                        new Vector2((vertices[vertexIndex + 0].x + vertices[vertexIndex + 2].x) / 2,
+                            textInfo.characterInfo[i].baseLine);
                     //float offsetY = VertexCurve.Evaluate((float)i / characterCount + loopCount / 50f); // Random.Range(-0.25f, 0.25f);
 
                     // Apply offset to adjust our pivot point.
@@ -110,9 +114,15 @@ namespace TMPro.Examples
                     vertices[vertexIndex + 3] += -offsetToMidBaseline;
 
                     // Apply the Shearing FX
-                    float shear_value = ShearAmount * 0.01f;
-                    Vector3 topShear = new Vector3(shear_value * (textInfo.characterInfo[i].topRight.y - textInfo.characterInfo[i].baseLine), 0, 0);
-                    Vector3 bottomShear = new Vector3(shear_value * (textInfo.characterInfo[i].baseLine - textInfo.characterInfo[i].bottomRight.y), 0, 0);
+                    var shearValue = shearAmount * 0.01f;
+                    var topShear =
+                        new Vector3(
+                            shearValue * (textInfo.characterInfo[i].topRight.y - textInfo.characterInfo[i].baseLine),
+                            0, 0);
+                    var bottomShear =
+                        new Vector3(
+                            shearValue * (textInfo.characterInfo[i].baseLine -
+                                           textInfo.characterInfo[i].bottomRight.y), 0, 0);
 
                     vertices[vertexIndex + 0] += -bottomShear;
                     vertices[vertexIndex + 1] += topShear;
@@ -121,18 +131,20 @@ namespace TMPro.Examples
 
 
                     // Compute the angle of rotation for each character based on the animation curve
-                    float x0 = (offsetToMidBaseline.x - boundsMinX) / (boundsMaxX - boundsMinX); // Character's position relative to the bounds of the mesh.
-                    float x1 = x0 + 0.0001f;
-                    float y0 = VertexCurve.Evaluate(x0) * CurveScale;
-                    float y1 = VertexCurve.Evaluate(x1) * CurveScale;
+                    var x0 = (offsetToMidBaseline.x - boundsMinX) /
+                             (boundsMaxX - boundsMinX); // Character's position relative to the bounds of the mesh.
+                    var x1 = x0 + 0.0001f;
+                    var y0 = vertexCurve.Evaluate(x0) * curveScale;
+                    var y1 = vertexCurve.Evaluate(x1) * curveScale;
 
-                    Vector3 horizontal = new Vector3(1, 0, 0);
+                    var horizontal = new Vector3(1, 0, 0);
                     //Vector3 normal = new Vector3(-(y1 - y0), (x1 * (boundsMaxX - boundsMinX) + boundsMinX) - offsetToMidBaseline.x, 0);
-                    Vector3 tangent = new Vector3(x1 * (boundsMaxX - boundsMinX) + boundsMinX, y1) - new Vector3(offsetToMidBaseline.x, y0);
+                    var tangent = new Vector3(x1 * (boundsMaxX - boundsMinX) + boundsMinX, y1) -
+                                  new Vector3(offsetToMidBaseline.x, y0);
 
-                    float dot = Mathf.Acos(Vector3.Dot(horizontal, tangent.normalized)) * 57.2957795f;
-                    Vector3 cross = Vector3.Cross(horizontal, tangent);
-                    float angle = cross.z > 0 ? dot : 360 - dot;
+                    var dot = Mathf.Acos(Vector3.Dot(horizontal, tangent.normalized)) * 57.2957795f;
+                    var cross = Vector3.Cross(horizontal, tangent);
+                    var angle = cross.z > 0 ? dot : 360 - dot;
 
                     matrix = Matrix4x4.TRS(new Vector3(0, y0, 0), Quaternion.Euler(0, 0, angle), Vector3.one);
 
@@ -149,7 +161,7 @@ namespace TMPro.Examples
 
 
                 // Upload the mesh with the revised information
-                m_TextComponent.UpdateVertexData();
+                _mTextComponent.UpdateVertexData();
 
                 yield return null; // new WaitForSeconds(0.025f);
             }

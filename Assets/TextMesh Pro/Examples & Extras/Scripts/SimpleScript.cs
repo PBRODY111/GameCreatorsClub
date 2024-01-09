@@ -1,26 +1,23 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 
 namespace TMPro.Examples
 {
-    
     public class SimpleScript : MonoBehaviour
     {
-
-        private TextMeshPro m_textMeshPro;
+        private TextMeshPro _mTextMeshPro;
         //private TMP_FontAsset m_FontAsset;
 
-        private const string label = "The <#0050FF>count is: </color>{0:2}";
-        private float m_frame;
+        private const string Label = "The <#0050FF>count is: </color>{0:2}";
+        private float _mFrame;
 
 
-        void Start()
+        private void Start()
         {
             // Add new TextMesh Pro Component
-            m_textMeshPro = gameObject.AddComponent<TextMeshPro>();
+            _mTextMeshPro = gameObject.AddComponent<TextMeshPro>();
 
-            m_textMeshPro.autoSizeTextContainer = true;
+            _mTextMeshPro.autoSizeTextContainer = true;
 
             // Load the Font Asset to be used.
             //m_FontAsset = Resources.Load("Fonts & Materials/LiberationSans SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
@@ -29,12 +26,12 @@ namespace TMPro.Examples
             // Assign Material to TextMesh Pro Component
             //m_textMeshPro.fontSharedMaterial = Resources.Load("Fonts & Materials/LiberationSans SDF - Bevel", typeof(Material)) as Material;
             //m_textMeshPro.fontSharedMaterial.EnableKeyword("BEVEL_ON");
-            
-            // Set various font settings.
-            m_textMeshPro.fontSize = 48;
 
-            m_textMeshPro.alignment = TextAlignmentOptions.Center;
-            
+            // Set various font settings.
+            _mTextMeshPro.fontSize = 48;
+
+            _mTextMeshPro.alignment = TextAlignmentOptions.Center;
+
             //m_textMeshPro.anchorDampening = true; // Has been deprecated but under consideration for re-implementation.
             //m_textMeshPro.enableAutoSizing = true;
 
@@ -42,17 +39,16 @@ namespace TMPro.Examples
             //m_textMeshPro.wordSpacing = 0.1f;
 
             //m_textMeshPro.enableCulling = true;
-            m_textMeshPro.enableWordWrapping = false;
+            _mTextMeshPro.enableWordWrapping = false;
 
             //textMeshPro.fontColor = new Color32(255, 255, 255, 255);
         }
 
 
-        void Update()
+        private void Update()
         {
-            m_textMeshPro.SetText(label, m_frame % 1000);
-            m_frame += 1 * Time.deltaTime;
+            _mTextMeshPro.SetText(Label, _mFrame % 1000);
+            _mFrame += 1 * Time.deltaTime;
         }
-
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DeskSound : MonoBehaviour
@@ -8,9 +6,10 @@ public class DeskSound : MonoBehaviour
     [SerializeField] private AudioSource impactAudio;
 
     // Update is called once per frame
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.relativeVelocity.magnitude > 3f){
+        if (collision.relativeVelocity.magnitude > 3f)
+        {
             impactAudio.Play();
         }
     }

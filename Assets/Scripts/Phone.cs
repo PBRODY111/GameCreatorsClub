@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -24,43 +23,54 @@ public class Phone : MonoBehaviour
     [SerializeField] private AudioSource call;
     [SerializeField] private AudioSource numbAudio;
     public AudioClip[] numbers;
-    private string entered = "";
-    private bool isUnlocked = false;
+    private string _entered = "";
+    private bool _isUnlocked = false;
     [SerializeField] private SafeDoor2 safeCode;
     public string gotCode;
-    private int currentNumb;
-    
+    private int _currentNumb;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         /*
         HashSet<string> set = new HashSet<string>() {
             numb1, numb2, numb3, numb4, "2211814"
-        };  
+        };
         */
         //while(set.Count != 4){
         //}
-        for(int i = 0; i<7; i++){
+        for (var i = 0; i < 7; i++)
+        {
             numb1 += Random.Range(0, 10);
         }
-        while(numb2 == "" || numb2 == numb1 || numb2 == numb5){
+
+        while (numb2 == "" || numb2 == numb1 || numb2 == numb5)
+        {
             numb2 = "";
-            for(int i = 0; i<7; i++){
+            for (var i = 0; i < 7; i++)
+            {
                 numb2 += Random.Range(0, 10);
             }
         }
-        while(numb3 == "" || numb3 == numb2 || numb2 == numb5){
+
+        while (numb3 == "" || numb3 == numb2 || numb2 == numb5)
+        {
             numb3 = "";
-            for(int i = 0; i<7; i++){
+            for (var i = 0; i < 7; i++)
+            {
                 numb3 += Random.Range(0, 10);
             }
         }
-        while(numb4 == "" || numb4 == numb3 || numb2 == numb5){
+
+        while (numb4 == "" || numb4 == numb3 || numb2 == numb5)
+        {
             numb4 = "";
-            for(int i = 0; i<7; i++){
+            for (var i = 0; i < 7; i++)
+            {
                 numb4 += Random.Range(0, 10);
             }
         }
+
         num1E.text = numb1;
         num2E.text = numb2;
         num3E.text = numb3;
@@ -68,87 +78,100 @@ public class Phone : MonoBehaviour
     }
 
     // Update is called once per frame
-    void OnMouseOver()
+    private void OnMouseOver()
     {
-        if (!phoneUI.activeSelf && !isUnlocked)
+        if (!phoneUI.activeSelf && !_isUnlocked)
             intText.SetActive(IsWithinReach());
-        if (Input.GetKeyDown(KeyCode.E) && !isUnlocked && IsWithinReach())
+        if (Input.GetKeyDown(KeyCode.E) && !_isUnlocked && IsWithinReach())
         {
-            entered = "";
-            PauseMenu.isPaused = true;
+            _entered = "";
+            PauseMenu.IsPaused = true;
             intText.SetActive(false);
             phoneUI.SetActive(true);
             Cursor.lockState = phoneUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
         }
-
-
     }
-    void OnMouseExit()
+
+    private void OnMouseExit()
     {
         intText.SetActive(false);
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (phoneUI.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 phoneUI.SetActive(false);
-                PauseMenu.isPaused = false;
+                PauseMenu.IsPaused = false;
                 Cursor.lockState = CursorLockMode.Locked;
-                entered = "";
+                _entered = "";
             }
         }
     }
 
-    public void AddNumb(Button button){
+    public void AddNumb(Button button)
+    {
         dial.Play();
-        entered += button.name;
-        if(entered.Length >= 7){
+        _entered += button.name;
+        if (_entered.Length >= 7)
+        {
             call.Play();
-            StartCoroutine(waitDial());
+            StartCoroutine(WaitDial());
         }
     }
-    IEnumerator waitDial()
+
+    private IEnumerator WaitDial()
     {
         phoneUI.SetActive(false);
-        PauseMenu.isPaused = false;
+        PauseMenu.IsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
         yield return new WaitForSeconds(8.0f);
-        if(entered == numb1){
+        if (_entered == numb1)
+        {
             numbAudio.clip = numbers[1];
             numbAudio.Play();
-        } else if(entered == numb2){
+        }
+        else if (_entered == numb2)
+        {
             email3.SetActive(true);
             email4.SetActive(true);
             numbAudio.clip = numbers[2];
             numbAudio.Play();
-        } else if(entered == numb3){
+        }
+        else if (_entered == numb3)
+        {
             gotCode = safeCode.code;
-            for(int i = 0; i < gotCode.Length; i++){
-                currentNumb = System.Int32.Parse(gotCode[i].ToString());
-                numbAudio.clip = numbers[currentNumb+4];
+            for (var i = 0; i < gotCode.Length; i++)
+            {
+                _currentNumb = System.Int32.Parse(gotCode[i].ToString());
+                numbAudio.clip = numbers[_currentNumb + 4];
                 numbAudio.Play();
                 yield return new WaitForSeconds(1.5f);
             }
-        } else if(entered == numb5){
+        }
+        else if (_entered == numb5)
+        {
             numbAudio.clip = numbers[3];
             numbAudio.Play();
-        } else{
+        }
+        else
+        {
             numbAudio.clip = numbers[0];
             numbAudio.Play();
         }
-        entered = "";
+
+        _entered = "";
     }
 
-    bool IsWithinReach()
+    private bool IsWithinReach()
     {
         return Vector3.Distance(transform.position, Player.Instance.transform.position) <= reach;
     }
 
-    bool IsWithinValue(float value, float actual,float deviation)
+    private bool IsWithinValue(float value, float actual, float deviation)
     {
         return actual >= value - deviation && actual <= value + deviation;
     }

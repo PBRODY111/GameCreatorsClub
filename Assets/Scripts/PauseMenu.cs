@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,96 +8,128 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private AudioSource clickAudio;
-    public static bool isPaused = false;
+    public static bool IsPaused;
     [SerializeField] private GameObject options;
     public Dropdown resolutionDropdown;
     public AudioMixer masterMixer;
-    Resolution[] resolutions;
-    private bool optionsOn = false;
+    private Resolution[] _resolutions;
+
+    private bool _optionsOn;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         pauseMenu.SetActive(false);
-        resolutions = Screen.resolutions;
+        _resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
-        List<string> options = new List<string>();
-        int currentResIndex = 0;
-        for(int i=0; i<resolutions.Length; i++){
-            string option = resolutions[i].width+"x"+resolutions[i].height;
-            options.Add(option);
-            if(resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height){
+        var opts = new List<string>();
+        var currentResIndex = 0;
+        for (var i = 0; i < _resolutions.Length; i++)
+        {
+            var option = _resolutions[i].width + "x" + _resolutions[i].height;
+            opts.Add(option);
+            if (_resolutions[i].width == Screen.currentResolution.width &&
+                _resolutions[i].height == Screen.currentResolution.height)
+            {
                 currentResIndex = i;
             }
         }
-        resolutionDropdown.AddOptions(options);
+
+        resolutionDropdown.AddOptions(opts);
         resolutionDropdown.value = currentResIndex;
         resolutionDropdown.RefreshShownValue();
     }
 
     // OPTIONS
-    public void OptionsMenu(){
+    public void OptionsMenu()
+    {
         clickAudio.Play();
-        if(optionsOn == false){
+        if (_optionsOn == false)
+        {
             pauseMenu.SetActive(false);
             options.SetActive(true);
-        }else{
+        }
+        else
+        {
             pauseMenu.SetActive(true);
             options.SetActive(false);
         }
-        optionsOn = !optionsOn;
+
+        _optionsOn = !_optionsOn;
     }
-    public void SetVolume(float volume){
+
+    public void SetVolume(float volume)
+    {
         masterMixer.SetFloat("MasterVol", volume);
     }
-    public void SetMusic(float volume){
+
+    public void SetMusic(float volume)
+    {
         masterMixer.SetFloat("MusicVol", volume);
     }
-    public void SetSFX(float volume){
+
+    public void SetSfx(float volume)
+    {
         masterMixer.SetFloat("SFXVol", volume);
     }
-    public void SetQuality(int qualityIndex){
+
+    public void SetQuality(int qualityIndex)
+    {
         QualitySettings.SetQualityLevel(qualityIndex);
     }
-    public void SetFullscreen(bool isFull){
+
+    public void SetFullscreen(bool isFull)
+    {
         Screen.fullScreen = isFull;
     }
-    public void SetResolution(int resolutionIndex){
-        Resolution resolution = resolutions[resolutionIndex];
+
+    public void SetResolution(int resolutionIndex)
+    {
+        var resolution = _resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F1)){
-            if(isPaused){
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            if (IsPaused)
+            {
                 ResumeGame();
-            } else{
+            }
+            else
+            {
                 PauseGame();
             }
         }
     }
 
-    public void PauseGame(){
+    public void PauseGame()
+    {
         clickAudio.Play();
         pauseMenu.SetActive(true);
         options.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f;
-        isPaused = true;
+        IsPaused = true;
     }
-    public void ResumeGame(){
+
+    public void ResumeGame()
+    {
         clickAudio.Play();
         pauseMenu.SetActive(false);
         options.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
-        isPaused = false;
+        IsPaused = false;
     }
-    public void ReturnToMenu(){
+
+    public void ReturnToMenu()
+    {
         clickAudio.Play();
         Time.timeScale = 1f;
         SceneManager.LoadScene(2);
-        isPaused = false;
+        IsPaused = false;
     }
 }

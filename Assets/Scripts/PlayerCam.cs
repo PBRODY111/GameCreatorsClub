@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
@@ -10,31 +8,32 @@ public class PlayerCam : MonoBehaviour
     public Transform orientation;
     public float initialY;
 
-    float xRotation;
-    float yRotation;
+    private float _xRotation;
+    private float _yRotation;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        xRotation = 0;
-        yRotation = initialY;
+        _xRotation = 0;
+        _yRotation = initialY;
     }
 
     private void Update()
     {
-        if(!PauseMenu.isPaused){
+        if (!PauseMenu.IsPaused)
+        {
             // get mouse input
-            float mouseX = Input.GetAxis("Mouse X") * 0.02f * sensX;
-            float mouseY = Input.GetAxis("Mouse Y") * 0.02f * sensY;
+            var mouseX = Input.GetAxis("Mouse X") * 0.02f * sensX;
+            var mouseY = Input.GetAxis("Mouse Y") * 0.02f * sensY;
 
-            yRotation += mouseX;
+            _yRotation += mouseX;
 
-            xRotation -= mouseY;
-            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            _xRotation -= mouseY;
+            _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
 
             // rotate cam and orientation
-            transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-            orientation.rotation = Quaternion.Euler(0, yRotation, 0);   
+            transform.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
+            orientation.rotation = Quaternion.Euler(0, _yRotation, 0);
         }
     }
 }

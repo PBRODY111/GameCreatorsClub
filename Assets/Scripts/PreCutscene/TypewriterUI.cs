@@ -2,36 +2,36 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
-public class typewriterUI : MonoBehaviour
+public class TypewriterUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text text;
-	private string final;
-    [SerializeField] private float timeBetween = 0.1f; 
+    private string _final;
+    [SerializeField] private float timeBetween = 0.1f;
 
     public void Write()
     {
         StopAllCoroutines();
-        final = text.text;
+        _final = text.text;
         text.text = "";
-        StartCoroutine("TypeWriter");
+        StartCoroutine(nameof(TypeWriter));
     }
 
-	IEnumerator TypeWriter()
+    private IEnumerator TypeWriter()
     {
-		foreach (char c in final)
-		{
-			if (text.text.Length > 0) text.text = text.text.Substring(0, text.text.Length);
-			text.text += c;
-			yield return new WaitForSeconds(timeBetween);
-		}
-	}
+        foreach (var c in _final)
+        {
+            if (text.text.Length > 0) text.text = text.text.Substring(0, text.text.Length);
+            text.text += c;
+            yield return new WaitForSeconds(timeBetween);
+        }
+    }
 
-    public void setText(string text)
+    public void SetText(string text)
     {
         this.text.text = text;
     }
 
-    public float getTimeBetween()
+    public float GetTimeBetween()
     {
         return timeBetween;
     }

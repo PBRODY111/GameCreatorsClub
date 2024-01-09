@@ -3,7 +3,7 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    public int pointValue = 0; // Number of points, publicly accessible
+    public int pointValue; // Number of points, publicly accessible
     public int currentLevel = 1; // Current level, publicly accessible
 
     public TextMeshProUGUI pointsText; // Reference to the TextMeshPro text for points
@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     public AudioSource levelAudio;
     public AudioSource gameAudio;
 
-    void Start()
+    private void Start()
     {
         UpdatePointsText();
         UpdateLevelText();
@@ -32,31 +32,38 @@ public class GameController : MonoBehaviour
             ChangeLevel();
             if (playerTransform != null)
             {
-                playerTransform.localPosition = new Vector3(0f,0f,0f); // Reset player position to origin
+                playerTransform.localPosition = new Vector3(0f, 0f, 0f); // Reset player position to origin
             }
         }
+
         UpdatePointsText();
     }
 
-    public void ChangeLevel()
+    private void ChangeLevel()
     {
-        if(currentLevel == 1){
-            level1Object.SetActive(false);
-            level2Object.SetActive(true);
-        } else if(currentLevel == 2){
-            level2Object.SetActive(false);
-            level3Object.SetActive(true);
-        } else if(currentLevel == 3){
-            level3Object.SetActive(false);
-            inhibitor.SetActive(true);
-            gameAudio.Stop();
+        switch (currentLevel)
+        {
+            case 1:
+                level1Object.SetActive(false);
+                level2Object.SetActive(true);
+                break;
+            case 2:
+                level2Object.SetActive(false);
+                level3Object.SetActive(true);
+                break;
+            case 3:
+                level3Object.SetActive(false);
+                inhibitor.SetActive(true);
+                gameAudio.Stop();
+                break;
         }
+
         currentLevel++;
         levelAudio.Play();
         UpdateLevelText();
     }
 
-    void UpdatePointsText()
+    private void UpdatePointsText()
     {
         if (pointsText != null)
         {
@@ -64,7 +71,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void UpdateLevelText()
+    private void UpdateLevelText()
     {
         if (levelText != null)
         {

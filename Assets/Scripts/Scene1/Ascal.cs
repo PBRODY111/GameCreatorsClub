@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class Ascal : MonoBehaviour
@@ -20,12 +18,13 @@ public class Ascal : MonoBehaviour
     [SerializeField] private string string3;
     [SerializeField] private string currentString;
     public string safe3Pwd;
-    [SerializeField] private SafeDoor3_2 safeDoor32;
+    [SerializeField] private SafeDoor32 safeDoor32;
     public Color[] colors;
     public Color safe3Color;
-    private int letterIndex = 0;
-    private typewriterUI typewriterUi;
-    private string[] text =
+    private int _letterIndex;
+    private TypewriterUI _typewriterUi;
+
+    private readonly string[] _text =
     {
         "Hello there, you may call me Ascal.",
         "Can you help me remember?",
@@ -38,34 +37,30 @@ public class Ascal : MonoBehaviour
         "2...",
         "1..."
     };
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    public void EnterAscal(){
-        letterIndex = 0;
+    public void EnterAscal()
+    {
+        _letterIndex = 0;
         string1 = words1[Random.Range(0, words1.Length)];
         string2 = words2[Random.Range(0, words2.Length)];
         string3 = words3[Random.Range(0, words3.Length)];
-        safe3Pwd = ""+string1[Random.Range(0, string1.Length)]+string2[Random.Range(0, string2.Length)]+string3[Random.Range(0, string3.Length)];
+        safe3Pwd = "" + string1[Random.Range(0, string1.Length)] + string2[Random.Range(0, string2.Length)] +
+                   string3[Random.Range(0, string3.Length)];
         safeDoor32.code = safe3Pwd;
         safe3Color = colors[Random.Range(0, colors.Length)];
         safeDoor32.selectColor = safe3Color;
-        
+
         //scramble string 1
-        char[] array = string1.ToCharArray();
+        var array = string1.ToCharArray();
         var rng = new System.Random();
-        int n = array.Length;
+        var n = array.Length;
         while (n > 1)
         {
             n--;
-            int k = rng.Next(n + 1);
-            var value = array[k];
-            array[k] = array[n];
-            array[n] = value;
+            var k = rng.Next(n + 1);
+            (array[k], array[n]) = (array[n], array[k]);
         }
+
         string1 = new string(array);
 
         // scramble string 2
@@ -75,13 +70,12 @@ public class Ascal : MonoBehaviour
         while (n > 1)
         {
             n--;
-            int k = rng.Next(n + 1);
-            var value = array[k];
-            array[k] = array[n];
-            array[n] = value;
+            var k = rng.Next(n + 1);
+            (array[k], array[n]) = (array[n], array[k]);
         }
+
         string2 = new string(array);
-        
+
         // scramble string 3
         array = string3.ToCharArray();
         rng = new System.Random();
@@ -89,186 +83,205 @@ public class Ascal : MonoBehaviour
         while (n > 1)
         {
             n--;
-            int k = rng.Next(n + 1);
-            var value = array[k];
-            array[k] = array[n];
-            array[n] = value;
+            var k = rng.Next(n + 1);
+            (array[k], array[n]) = (array[n], array[k]);
         }
+
         string3 = new string(array);
 
         ascalUI.SetActive(true);
         ascalAudio.Play();
         Debug.Log("Entered");
         Time.timeScale = 1f;
-        typewriterUi = transform.GetComponent<typewriterUI>();
-        StartCoroutine(ascalGame());
+        _typewriterUi = transform.GetComponent<TypewriterUI>();
+        StartCoroutine(AscalGame());
     }
 
-    public void ExitAscal(){
+    public void ExitAscal()
+    {
         ascalUI.SetActive(false);
         ascalAudio.Stop();
     }
 
-    public void getLetter(string s){
+    public void GetLetter(string s)
+    {
         s = s.ToLower();
-        Debug.Log(""+currentString[letterIndex]);
-        if(""+s == ""+currentString[letterIndex]){
-            if(letterIndex == currentString.Length-1){
+        Debug.Log("" + currentString[_letterIndex]);
+        if ("" + s == "" + currentString[_letterIndex])
+        {
+            if (_letterIndex == currentString.Length - 1)
+            {
                 ascalEffects.clip = effects[2];
                 ascalEffects.Play();
-            } else{
+            }
+            else
+            {
                 ascalEffects.clip = effects[0];
                 ascalEffects.Play();
             }
-        } else{
+        }
+        else
+        {
             ascalEffects.clip = effects[1];
             ascalEffects.Play();
-            StartCoroutine(ascalIncorrect());
+            StartCoroutine(AscalIncorrect());
         }
-        if(letterIndex == currentString.Length-1){
-            letterIndex = 0;
-            if(currentString == string1){
-                StartCoroutine(ascalGame1());
-            } else if(currentString == string2){
-                StartCoroutine(ascalGame2());
-            } else{
-                StartCoroutine(ascalWin());
+
+        if (_letterIndex == currentString.Length - 1)
+        {
+            _letterIndex = 0;
+            if (currentString == string1)
+            {
+                StartCoroutine(AscalGame1());
             }
-        } else{
-            letterIndex++;
+            else if (currentString == string2)
+            {
+                StartCoroutine(AscalGame2());
+            }
+            else
+            {
+                StartCoroutine(AscalWin());
+            }
         }
+        else
+        {
+            _letterIndex++;
+        }
+
         letterInput.GetComponent<TMP_InputField>().text = "";
     }
 
-    IEnumerator ascalGame()
+    private IEnumerator AscalGame()
     {
         letterInput.SetActive(false);
         yield return new WaitForSeconds(0.5f);
         Debug.Log("ASCAL!");
-        foreach (var line in text)
+        foreach (var line in _text)
         {
-            typewriterUi.setText(line);
-            typewriterUi.Write();
-            yield return new WaitForSeconds(typewriterUi.getTimeBetween() * line.Length + 1f);
+            _typewriterUi.SetText(line);
+            _typewriterUi.Write();
+            yield return new WaitForSeconds(_typewriterUi.GetTimeBetween() * line.Length + 1f);
         }
+
         yield return new WaitForSeconds(0.5f);
-        for(int i=0; i<string1.Length; i++){
-            displayText.text = ""+string1[i];
+        foreach (var t in string1)
+        {
+            displayText.text = "" + t;
             yield return new WaitForSeconds(1.5f);
             displayText.text = "";
             yield return new WaitForSeconds(0.5f);
         }
+
         displayText.text = "Now your turn!";
         letterInput.SetActive(true);
         currentString = string1;
     }
 
-    IEnumerator ascalGame1(){
+    private IEnumerator AscalGame1()
+    {
         Time.timeScale = 1f;
         Debug.Log("Level 1 done");
         letterInput.SetActive(false);
         yield return new WaitForSeconds(0.5f);
-        typewriterUi.setText("Correct! The letters were: ");
-        typewriterUi.Write();
+        _typewriterUi.SetText("Correct! The letters were: ");
+        _typewriterUi.Write();
         yield return new WaitForSeconds(3f);
-        for(int i=0; i<string1.Length; i++){
-            if(string1[i] == safe3Pwd[0]){
-                displayText.color = safe3Color;
-            } else{
-                displayText.color = Color.black;
-            }
-            displayText.text = ""+string1[i];
+        foreach (var t in string1)
+        {
+            displayText.color = t == safe3Pwd[0] ? safe3Color : Color.black;
+
+            displayText.text = "" + t;
             yield return new WaitForSeconds(1.5f);
             displayText.text = "";
             yield return new WaitForSeconds(0.5f);
         }
+
         displayText.color = Color.black;
-        typewriterUi.setText("Round 2 starting...");
-        typewriterUi.Write();
+        _typewriterUi.SetText("Round 2 starting...");
+        _typewriterUi.Write();
         yield return new WaitForSeconds(3f);
-        for(int i=0; i<string2.Length; i++){
-            displayText.text = ""+string2[i];
+        foreach (var t in string2)
+        {
+            displayText.text = "" + t;
             yield return new WaitForSeconds(2.5f);
             displayText.text = "";
             yield return new WaitForSeconds(0.5f);
         }
+
         displayText.text = "Now your turn!";
         letterInput.SetActive(true);
         currentString = string2;
     }
 
-    IEnumerator ascalGame2(){
+    private IEnumerator AscalGame2()
+    {
         Time.timeScale = 1f;
         Debug.Log("Level 2 done");
         letterInput.SetActive(false);
         yield return new WaitForSeconds(0.5f);
-        typewriterUi.setText("Correct! The letters were: ");
-        typewriterUi.Write();
+        _typewriterUi.SetText("Correct! The letters were: ");
+        _typewriterUi.Write();
         yield return new WaitForSeconds(3f);
-        for(int i=0; i<string2.Length; i++){
-            if(string2[i] == safe3Pwd[1]){
-                displayText.color = safe3Color;
-            } else{
-                displayText.color = Color.black;
-            }
-            displayText.text = ""+string2[i];
+        foreach (var t in string2)
+        {
+            displayText.color = t == safe3Pwd[1] ? safe3Color : Color.black;
+
+            displayText.text = "" + t;
             yield return new WaitForSeconds(1.5f);
             displayText.text = "";
             yield return new WaitForSeconds(0.5f);
         }
+
         displayText.color = Color.black;
-        typewriterUi.setText("Round 3 starting...");
-        typewriterUi.Write();
+        _typewriterUi.SetText("Round 3 starting...");
+        _typewriterUi.Write();
         yield return new WaitForSeconds(3f);
-        for(int i=0; i<string3.Length; i++){
-            displayText.text = ""+string3[i];
+        foreach (var t in string3)
+        {
+            displayText.text = "" + t;
             yield return new WaitForSeconds(3.5f);
             displayText.text = "";
             yield return new WaitForSeconds(0.5f);
         }
+
         displayText.text = "Now your turn!";
         letterInput.SetActive(true);
         currentString = string3;
     }
 
-    IEnumerator ascalIncorrect(){
+    private IEnumerator AscalIncorrect()
+    {
         Time.timeScale = 1f;
         letterInput.SetActive(false);
-        typewriterUi.setText("Incorrect! Try again later...");
+        _typewriterUi.SetText("Incorrect! Try again later...");
         yield return new WaitForSeconds(3f);
         ExitAscal();
     }
 
-    IEnumerator ascalWin(){
+    private IEnumerator AscalWin()
+    {
         Time.timeScale = 1f;
         Debug.Log("Level 3 done");
         letterInput.SetActive(false);
         yield return new WaitForSeconds(0.5f);
-        typewriterUi.setText("Correct! The letters were: ");
-        typewriterUi.Write();
+        _typewriterUi.SetText("Correct! The letters were: ");
+        _typewriterUi.Write();
         yield return new WaitForSeconds(3f);
-        for(int i=0; i<string3.Length; i++){
-            if(string3[i] == safe3Pwd[2]){
-                displayText.color = safe3Color;
-            } else{
-                displayText.color = Color.black;
-            }
-            displayText.text = ""+string3[i];
+        foreach (var t in string3)
+        {
+            displayText.color = t == safe3Pwd[2] ? safe3Color : Color.black;
+
+            displayText.text = "" + t;
             yield return new WaitForSeconds(1.5f);
             displayText.text = "";
             yield return new WaitForSeconds(0.5f);
         }
+
         displayText.color = Color.black;
         ascalEffects.clip = effects[3];
         ascalEffects.Play();
-        typewriterUi.setText("GAME WIN!!!");
+        _typewriterUi.SetText("GAME WIN!!!");
         yield return new WaitForSeconds(3f);
         ExitAscal();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
