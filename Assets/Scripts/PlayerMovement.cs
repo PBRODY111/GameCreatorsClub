@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode pauseKey = KeyCode.Escape;
-    public KeyCode goDownKey = KeyCode.LeftControl;
+    public KeyCode goDownKey = KeyCode.LeftShift;
 
 
     [Header("Ground Check")]
@@ -102,7 +102,10 @@ public class PlayerMovement : MonoBehaviour
             transform.position += moveDirection.normalized * moveSpeed * Time.deltaTime;
 
             if(Input.GetKey(goDownKey))
-                transform.position -= transform.up * moveSpeed * Time.deltaTime;
+            {
+                if(!Input.GetKey(jumpKey))
+                    transform.position -= transform.up * moveSpeed * Time.deltaTime;
+            }
             else if(Input.GetKey(jumpKey))
                 transform.position += transform.up * moveSpeed * Time.deltaTime;
 

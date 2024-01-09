@@ -81,7 +81,7 @@ public class Computer : MonoBehaviour
 
     public void LogIn(string s){
         input = s;
-        if (input == password){
+        if (input == password || Player.Instance.EpicModeEnabled()) {
             loginPage.SetActive(false);
             homePage.SetActive(true);
             //pwdField.Select();

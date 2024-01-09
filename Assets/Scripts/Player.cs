@@ -20,6 +20,11 @@ public class Player : MonoBehaviour
         return _hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().item;
     }
 
+    public bool EpicModeEnabled()
+    {
+        return GetComponent<PlayerMovement>().epicModeEnabled;
+    }
+
     void Update()
     {
         
