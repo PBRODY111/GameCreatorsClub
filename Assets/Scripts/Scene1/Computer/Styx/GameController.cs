@@ -21,6 +21,7 @@ namespace Scene1.Computer.Styx
 
         private void Start()
         {
+            QualitySettings.vSyncCount = 1;
             UpdatePointsText();
             UpdateLevelText();
         }

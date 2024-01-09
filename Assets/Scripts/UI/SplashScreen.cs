@@ -8,8 +8,13 @@ namespace UI
     {
         private static readonly int IsProceed = Animator.StringToHash("isProceed");
         [SerializeField] private Animator splashAnim;
-
-        // Start is called before the first frame update
+        
+        
+        private void Start()
+        {
+            QualitySettings.vSyncCount = 1;
+        }
+        
         private void Update()
         {
             if (Input.GetMouseButtonDown(0)) StartCoroutine(RunSplashScreen());

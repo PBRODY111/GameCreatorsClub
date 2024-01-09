@@ -16,14 +16,16 @@ namespace Scene1.Computer.Styx
         private Transform _player; // Reference to the player's transform
         private readonly string _sceneToLoad = "WarningScene"; // Name of the scene to load
         private float _timer; // Timer for image changing interval
+        
+        private MoveUIWithKeys _moveUIWithKeys;
 
         private void Start()
         {
-            // Find the player object based on its tag
             _player = GameObject.FindGameObjectWithTag("Player").transform;
 
-            // Get the Image component of the enemy
             _enemyImage = GetComponent<Image>();
+            
+            _moveUIWithKeys = FindObjectOfType<MoveUIWithKeys>();
 
             // Start the walking animation
             if (walkingSprites.Length > 0) _enemyImage.sprite = walkingSprites[0];
@@ -58,9 +60,8 @@ namespace Scene1.Computer.Styx
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            // Check if the player has entered the enemy's trigger
+            if(_moveUIWithKeys.Epic) return;
             if (other.CompareTag("Player"))
-                // Load the specified scene
                 SceneManager.LoadScene(_sceneToLoad);
         }
     }
