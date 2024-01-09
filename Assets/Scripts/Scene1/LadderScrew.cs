@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,12 +11,7 @@ namespace Scene1
     {
         [SerializeField] private GameObject intText3;
         public UnityEvent rightClick;
-
-        // Update is called once per frame
-        private void Update()
-        {
-        }
-
+        
         public void OnPointerClick(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Right)
@@ -36,10 +32,10 @@ namespace Scene1
 
         public void ChangeSize(Button button)
         {
-            if (button.GetComponent<RectTransform>().rect.width == 50)
-                button.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(80, 80);
-            else
-                button.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(50, 50);
+            button.GetComponent<Image>().rectTransform.sizeDelta =
+                Math.Abs(button.GetComponent<RectTransform>().rect.width - 50) < 0.1
+                    ? new Vector2(80, 80)
+                    : new Vector2(50, 50);
 
             button.GetComponent<AudioSource>().Play();
         }

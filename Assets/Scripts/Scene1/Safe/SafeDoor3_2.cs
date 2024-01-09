@@ -21,6 +21,7 @@ namespace Scene1.Safe
         private int _colorIndex;
         private bool _isUnlocked;
         private Animator _safeAnimator;
+        private static readonly int Unlock = Animator.StringToHash("unlock");
 
         // Start is called before the first frame update
         private void Awake()
@@ -67,7 +68,7 @@ namespace Scene1.Safe
             dial.Play();
             if (inputField.text == code && code != "" && button.GetComponent<Image>().color == selectColor)
             {
-                _safeAnimator.SetBool("unlock", true);
+                _safeAnimator.SetBool(Unlock, true);
                 if (!_isUnlocked) unlockAudio.Play();
 
                 _isUnlocked = true;

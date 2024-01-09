@@ -19,7 +19,7 @@ namespace Scene1.Computer.Styx
         private RectTransform _rectTransform;
         private float _timer;
 
-        internal bool Epic = false;
+        internal bool Epic;
 
         private void Start()
         {

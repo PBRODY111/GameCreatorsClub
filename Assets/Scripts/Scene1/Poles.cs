@@ -11,20 +11,14 @@ namespace Scene1
 
         [SerializeField] private GameObject ladderUI;
 
-        // Start is called before the first frame update
-        private void Start()
-        {
-        }
-
         private void Update()
         {
-            if (ladderUI.activeSelf)
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    ladderUI.SetActive(false);
-                    PauseMenu.IsPaused = false;
-                    Cursor.lockState = CursorLockMode.Locked;
-                }
+            if (ladderUI.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+            {
+                ladderUI.SetActive(false);
+                PauseMenu.IsPaused = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
 
         private void OnMouseExit()
@@ -35,10 +29,7 @@ namespace Scene1
         private void OnMouseOver()
         {
             intText3.GetComponent<TMP_Text>().text = "POLES NEEDED TO INTERACT";
-            if (!ladderUI.activeSelf)
-                intText3.SetActive(IsWithinReach());
-            else
-                intText3.SetActive(false);
+            intText3.SetActive(!ladderUI.activeSelf && IsWithinReach());
 
             if (Input.GetMouseButtonDown(1) && IsWithinReach() &&
                 Player.Player.Instance.GetHeldItem().itemName == "Poles")

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Scene1.Safe;
 using TMPro;
 using UI;
@@ -36,37 +37,28 @@ namespace Scene1
         // Start is called before the first frame update
         private void Start()
         {
-            /*
-        HashSet<string> set = new HashSet<string>() {
-            numb1, numb2, numb3, numb4, "2211814"
-        };
-        */
-            //while(set.Count != 4){
-            //}
-            for (var i = 0; i < 7; i++) numb1 += Random.Range(0, 10);
-
-            while (numb2 == "" || numb2 == numb1 || numb2 == numb5)
-            {
-                numb2 = "";
-                for (var i = 0; i < 7; i++) numb2 += Random.Range(0, 10);
-            }
-
-            while (numb3 == "" || numb3 == numb2 || numb2 == numb5)
-            {
-                numb3 = "";
-                for (var i = 0; i < 7; i++) numb3 += Random.Range(0, 10);
-            }
-
-            while (numb4 == "" || numb4 == numb3 || numb2 == numb5)
-            {
-                numb4 = "";
-                for (var i = 0; i < 7; i++) numb4 += Random.Range(0, 10);
-            }
+            var existingNumbers = new HashSet<string> { numb5 };
+            numb1 = GenerateUniqueNumber(existingNumbers);
+            numb2 = GenerateUniqueNumber(existingNumbers);
+            numb3 = GenerateUniqueNumber(existingNumbers);
+            numb4 = GenerateUniqueNumber(existingNumbers);
 
             num1E.text = numb1;
             num2E.text = numb2;
             num3E.text = numb3;
             num4E.text = numb4;
+        }
+        
+        private static string GenerateUniqueNumber(HashSet<string> existingNumbers)
+        {
+            string number;
+            do
+            {
+                number = Random.Range(0, 10000000).ToString("D7");
+            } while (existingNumbers.Contains(number));
+
+            existingNumbers.Add(number);
+            return number;
         }
 
         // Update is called once per frame
@@ -159,11 +151,6 @@ namespace Scene1
         private bool IsWithinReach()
         {
             return Vector3.Distance(transform.position, Player.Player.Instance.transform.position) <= reach;
-        }
-
-        private bool IsWithinValue(float value, float actual, float deviation)
-        {
-            return actual >= value - deviation && actual <= value + deviation;
         }
     }
 }

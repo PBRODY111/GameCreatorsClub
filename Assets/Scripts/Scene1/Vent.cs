@@ -24,11 +24,8 @@ namespace Scene1
 
         public int unscrewed;
         private AudioSource[] _allAudioSources;
-
-        // Start is called before the first frame update
-        private void Start()
-        {
-        }
+        private static readonly int IsLeaving = Animator.StringToHash("isLeaving");
+        private static readonly int IsEscape = Animator.StringToHash("isEscape");
 
         private void Update()
         {
@@ -36,7 +33,7 @@ namespace Scene1
             {
                 PauseMenu.IsPaused = false;
                 Cursor.lockState = CursorLockMode.Locked;
-                cerAnimator.SetBool("isLeaving", true);
+                cerAnimator.SetBool(IsLeaving, true);
                 attack1.jumpscare = true;
                 attack1.t = 0;
             }
@@ -69,12 +66,14 @@ namespace Scene1
             cer.SetActive(false);
             gas.SetActive(false);
             _allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
-            foreach (var audioS in _allAudioSources) audioS.Stop();
+            if (_allAudioSources != null)
+                foreach (var audioS in _allAudioSources)
+                    audioS.Stop();
 
-            escapeAnim.SetBool("isEscape", true);
-            yield return new WaitForSeconds((float)1.5);
+            escapeAnim.SetBool(IsEscape, true);
+            yield return new WaitForSeconds(1.5f);
             escapeText.SetActive(true);
-            yield return new WaitForSeconds((float)1.5);
+            yield return new WaitForSeconds(1.5f);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 

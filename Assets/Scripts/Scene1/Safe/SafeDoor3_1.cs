@@ -10,22 +10,13 @@ namespace Scene1.Safe
         [SerializeField] private AudioSource unlockAudio;
         public bool isUnlocked;
         private Animator _safeAnimator;
+        private static readonly int Unlock = Animator.StringToHash("unlock");
 
         private void Awake()
         {
             _safeAnimator = GetComponentInChildren<Animator>();
         }
-
-        // Start is called before the first frame update
-        private void Start()
-        {
-        }
-
-        // Update is called once per frame
-        private void Update()
-        {
-        }
-
+        
         private void OnMouseExit()
         {
             intText3.SetActive(false);
@@ -42,7 +33,7 @@ namespace Scene1.Safe
             if (Input.GetMouseButtonDown(1) && IsWithinReach() &&
                 Player.Player.Instance.GetHeldItem().itemName == "Lock Pick")
             {
-                _safeAnimator.SetBool("unlock", true);
+                _safeAnimator.SetBool(Unlock, true);
                 if (!isUnlocked) unlockAudio.Play();
 
                 isUnlocked = true;

@@ -17,6 +17,7 @@ namespace Scene1.Safe
         private Slider _slider;
         private float _sliderPreviousValue;
         private float[] _tempValues;
+        private static readonly int Unlock = Animator.StringToHash("unlock");
 
         private void Awake()
         {
@@ -34,36 +35,42 @@ namespace Scene1.Safe
         {
             if (dialUI.activeSelf)
             {
-                if (Input.GetKeyDown(KeyCode.Escape))
+                HandleEscapeKey();
+                HandleMouseUp();
+            }
+        }
+
+        private void HandleEscapeKey()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                dialUI.SetActive(false);
+                PauseMenu.IsPaused = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
+
+        private void HandleMouseUp()
+        {
+            if (!Input.GetKeyUp(KeyCode.Mouse0)) return;
+            
+            if (IsWithinValue(dialValues[_currentDialValueIndex], _slider.value, 2f))
+            {
+                _currentDialValueIndex++;
+                
+                if (_currentDialValueIndex >= dialValues.Length)
                 {
+                    _safeAnimator.SetBool(Unlock, true);
+                    unlockAudio.Play();
                     dialUI.SetActive(false);
                     PauseMenu.IsPaused = false;
                     Cursor.lockState = CursorLockMode.Locked;
-                }
-
-                if (Input.GetKeyUp(KeyCode.Mouse0))
-                {
-                    if (IsWithinValue(dialValues[_currentDialValueIndex], _slider.value, 2f))
-                    {
-                        _currentDialValueIndex++;
-                        if (_currentDialValueIndex >= dialValues.Length)
-                        {
-                            _safeAnimator.SetBool("unlock", true);
-                            unlockAudio.Play();
-                            dialUI.SetActive(false);
-                            PauseMenu.IsPaused = false;
-                            Cursor.lockState = CursorLockMode.Locked;
-                            _isUnlocked = true;
-                        }
-                    }
-                    else
-                    {
-                        _currentDialValueIndex = 0;
-                    }
-
-                    _slider.value = 0;
+                    _isUnlocked = true;
                 }
             }
+            else _currentDialValueIndex = 0;
+
+            _slider.value = 0;
         }
 
         private void OnMouseExit()

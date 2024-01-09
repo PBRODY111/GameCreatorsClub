@@ -11,6 +11,7 @@ namespace Scene1.Safe
 
         public bool isUnlocked;
         private Animator _safeAnimator;
+        private static readonly int Unlock = Animator.StringToHash("unlock");
 
         // Start is called before the first frame update
         private void Awake()
@@ -33,7 +34,7 @@ namespace Scene1.Safe
 
             if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.GetHeldItem().itemName == "Screwdriver")
             {
-                _safeAnimator.SetBool("unlock", true);
+                _safeAnimator.SetBool(Unlock, true);
                 if (!isUnlocked) unlockAudio.Play();
 
                 isUnlocked = true;

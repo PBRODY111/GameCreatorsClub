@@ -11,6 +11,7 @@ namespace Scene1
         [SerializeField] private AudioSource doorAudio;
         private Animator _doorAnim;
         private int _probInt;
+        private static readonly int IsOpen = Animator.StringToHash("isOpen");
 
         private void Awake()
         {
@@ -32,7 +33,7 @@ namespace Scene1
                 doorAudio.pitch *= -1;
                 doorAudio.timeSamples = doorAudio.pitch > 0 ? 0 : doorAudio.clip.samples - 1;
                 doorAudio.Play(0);
-                _doorAnim.SetBool("isOpen", !_doorAnim.GetBool("isOpen"));
+                _doorAnim.SetBool(IsOpen, !_doorAnim.GetBool(IsOpen));
                 _probInt = Random.Range(0, 5);
                 if (_probInt == 1) StartCoroutine(ImgScare());
             }

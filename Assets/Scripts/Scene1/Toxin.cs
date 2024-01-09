@@ -14,12 +14,7 @@ namespace Scene1
         [SerializeField] private GameObject toxinOverlay;
 
         private bool _inTrigger;
-
-        // Start is called before the first frame update
-        private void Start()
-        {
-        }
-
+        
         // Update is called once per frame
         private void Update()
         {

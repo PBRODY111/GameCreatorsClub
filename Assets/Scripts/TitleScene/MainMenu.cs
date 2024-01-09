@@ -26,11 +26,11 @@ namespace TitleScene
 
         private bool _optionsOn;
 
-        // Start is called before the first frame update
         private Resolution[] _resolutions;
 
         private void Start()
         {
+            QualitySettings.vSyncCount = 1;
             Cursor.lockState = CursorLockMode.None;
             _resolutions = Screen.resolutions;
             resolutionDropdown.ClearOptions();

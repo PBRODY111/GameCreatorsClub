@@ -112,40 +112,33 @@ namespace Scene1.Computer
         {
             s = s.ToLower();
             Debug.Log("" + currentString[_letterIndex]);
+            AudioClip selectedClip;
+
             if ("" + s == "" + currentString[_letterIndex])
             {
-                if (_letterIndex == currentString.Length - 1)
-                {
-                    ascalEffects.clip = effects[2];
-                    ascalEffects.Play();
-                }
-                else
-                {
-                    ascalEffects.clip = effects[0];
-                    ascalEffects.Play();
-                }
+                selectedClip = _letterIndex == currentString.Length - 1 ? effects[2] : effects[0];
             }
             else
             {
-                ascalEffects.clip = effects[1];
-                ascalEffects.Play();
+                selectedClip = effects[1];
                 StartCoroutine(AscalIncorrect());
             }
+
+            ascalEffects.clip = selectedClip;
+            ascalEffects.Play();
 
             if (_letterIndex == currentString.Length - 1)
             {
                 _letterIndex = 0;
-                if (currentString == string1)
-                    StartCoroutine(AscalGame1());
-                else if (currentString == string2)
-                    StartCoroutine(AscalGame2());
-                else
-                    StartCoroutine(AscalWin());
+                var routine = currentString switch
+                {
+                    _ when currentString == string1 => AscalGame1(),
+                    _ when currentString == string2 => AscalGame2(),
+                    _ => AscalWin()
+                };
+                StartCoroutine(routine);
             }
-            else
-            {
-                _letterIndex++;
-            }
+            else _letterIndex++;
 
             letterInput.GetComponent<TMP_InputField>().text = "";
         }

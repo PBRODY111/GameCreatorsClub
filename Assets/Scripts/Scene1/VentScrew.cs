@@ -28,7 +28,6 @@ namespace Scene1
 
         public void RotateButton(GameObject button)
         {
-            var rotation = 6;
             button.transform.Rotate(new Vector3(0, 0, 6));
             button.GetComponent<AudioSource>().Play();
             if (button.transform.rotation.eulerAngles.y >= 350)

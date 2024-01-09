@@ -44,9 +44,10 @@ namespace UI
         {
             if (Input.GetKeyDown(debugKey))
             {
-                canvas.gameObject.SetActive(!canvas.gameObject.activeSelf);
-                Cursor.lockState = canvas.gameObject.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
-                Cursor.visible = canvas.gameObject.activeSelf;
+                var o = canvas.gameObject;
+                o.SetActive(!o.activeSelf);
+                Cursor.lockState = o.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
+                Cursor.visible = o.activeSelf;
             }
 
             fullbright.onClick.AddListener(() => _headLamp.Fullbright());

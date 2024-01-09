@@ -28,7 +28,12 @@ namespace Scene1
         // Update is called once per frame
         private void Update()
         {
-            //Debug.Log(dialSlider.GetComponent<Slider>().value); // this gets the value of the dial slider
+            HandleRaycast();
+            HandleMouseInput();
+        }
+
+        private void HandleRaycast()
+        {
             var transform1 = transform;
             var ray = new Ray(transform1.position, transform1.forward);
             if (Physics.Raycast(ray, out var hit, interactionDistance))
@@ -42,45 +47,41 @@ namespace Scene1
                         Cursor.lockState = CursorLockMode.None;
                     }
                 }
-                //intText.SetActive(false);
             }
+        }
 
-            //intText.SetActive(false);
-            if (dialUI.activeInHierarchy)
-                Cursor.lockState = CursorLockMode.None;
-            else
-                Cursor.lockState = CursorLockMode.Locked;
-
-            if (!Input.GetMouseButton(0))
+        private void HandleMouseInput()
+        {
+            if (Input.GetMouseButton(0)) return;
+            
+            if (tempValue != 0)
             {
-                if (tempValue != 0)
-                {
-                    if (firstValue == 0)
-                        firstValue = tempValue;
-                    else if (secondValue == 0)
-                        secondValue = tempValue;
-                    else
-                        thirdValue = tempValue;
-
-                    dialSlider.value = 0;
-                }
-                else if (firstValue != 0 && secondValue != 0 && thirdValue != 0)
-                {
-                    dialUI.SetActive(false);
-                    if (firstValue >= 16 && firstValue <= 20 && secondValue >= 23 && secondValue <= 27 &&
-                        thirdValue >= 3 &&
-                        thirdValue <= 7)
-                    {
-                        var safeAnimator = dialLock.GetComponent<Animator>();
-                        if (!safeAnimator.GetBool(doorOpenAnimName)) safeAnimator.SetBool(doorOpenAnimName, true);
-                    }
-
-                    firstValue = secondValue = thirdValue = 0;
-                }
+                AssignTempValue();
+                return;
             }
-            //Debug.Log("firstValue: "+firstValue);
-            //Debug.Log("secondValue: "+secondValue);
-            //Debug.Log("thirdValue: "+thirdValue);
+
+            if (firstValue == 0 || secondValue == 0 || thirdValue == 0) return;
+            
+            dialUI.SetActive(false);
+            if (firstValue is >= 16 and <= 20 && secondValue is >= 23 and <= 27 && thirdValue is >= 3 and <= 7)
+            {
+                var safeAnimator = dialLock.GetComponent<Animator>();
+                safeAnimator.SetBool(doorOpenAnimName, true);
+            }
+
+            firstValue = secondValue = thirdValue = 0;
+        }
+
+        private void AssignTempValue()
+        {
+            if (firstValue == 0)
+                firstValue = tempValue;
+            else if (secondValue == 0)
+                secondValue = tempValue;
+            else
+                thirdValue = tempValue;
+
+            dialSlider.value = 0;
         }
 
         private void ValueChangeCheck()
