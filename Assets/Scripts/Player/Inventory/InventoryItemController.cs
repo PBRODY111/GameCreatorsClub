@@ -9,6 +9,9 @@ namespace Player.Inventory
         public InventoryItem item;
 
         [FormerlySerializedAs("RemoveButton")] public Button removeButton;
+        
+        private readonly Color _defaultColor = new Color(40 / 255f, 40 / 255f, 40 / 255f);
+        private readonly Color _selectedColor = new Color(80 / 255f, 80 / 255f, 80 / 255f);
 
 
         public void RemoveItem()
@@ -19,7 +22,7 @@ namespace Player.Inventory
         public void AddItem(InventoryItem newItem)
         {
             item = newItem;
-            GetComponent<Image>().color = new Color(40 / 255f, 40 / 255f, 40 / 255f);
+            GetComponent<Image>().color = _defaultColor;
         }
 
         public void HoldItem()
@@ -43,10 +46,8 @@ namespace Player.Inventory
 
         private void ToggleColor()
         {
-            if (GetComponent<Image>().color == new Color(40 / 255f, 40 / 255f, 40 / 255f))
-                GetComponent<Image>().color = new Color(80 / 255f, 80 / 255f, 80 / 255f);
-            else
-                GetComponent<Image>().color = new Color(40 / 255f, 40 / 255f, 40 / 255f);
+            var imag = GetComponent<Image>();
+            imag.color = imag.color == _defaultColor ? _selectedColor : _defaultColor;
         }
 
         public void UseItem()
