@@ -7,7 +7,6 @@ public class ScarySounds : MonoBehaviour
     public float period;
     private float _nextActionTime;
 
-    // Update is called once per frame
     private void Update()
     {
         if (Time.time <= _nextActionTime) return;

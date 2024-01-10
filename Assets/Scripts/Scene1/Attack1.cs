@@ -12,13 +12,11 @@ namespace Scene1
         public bool jumpscare;
         private Quaternion _lookRotation;
 
-        // Start is called before the first frame update
         private void Start()
         {
             startPosition = transform.position;
         }
 
-        // Update is called once per frame
         private void Update()
         {
             t += Time.deltaTime / timeToReachTarget;

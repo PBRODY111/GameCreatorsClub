@@ -30,8 +30,7 @@ namespace Scene1.Safe
             else
                 intText3.SetActive(false);
 
-            if (Input.GetMouseButtonDown(1) && IsWithinReach() &&
-                Player.Player.Instance.IsHolding("Lock Pick"))
+            if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Lock Pick"))
             {
                 _safeAnimator.SetBool(Unlock, true);
                 if (!isUnlocked) unlockAudio.Play();

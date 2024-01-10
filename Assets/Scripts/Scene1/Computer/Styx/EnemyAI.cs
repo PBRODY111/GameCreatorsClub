@@ -6,18 +6,20 @@ namespace Scene1.Computer.Styx
 {
     public class EnemyAI : MonoBehaviour
     {
-        public float moveSpeed; // Increased speed of enemy movement (original speed multiplied by 3)
-        public float chaseSpeedMultiplier = 0.5f; // Speed multiplier for chasing (slower than player)
-        public Sprite[] walkingSprites; // Array of walking sprites for animation
+        public float moveSpeed;
+        public float chaseSpeedMultiplier = 0.5f;
+        public Sprite[] walkingSprites;
 
-        private int _currentSpriteIndex; // Index to track the current sprite in the array
-        private Image _enemyImage; // Reference to the enemy's Image component
+        private int _currentSpriteIndex;
+        private Image _enemyImage;
 
-        private Transform _player; // Reference to the player's transform
-        private readonly string _sceneToLoad = "WarningScene"; // Name of the scene to load
-        private float _timer; // Timer for image changing interval
-        
+        private Transform _player;
+        private readonly string _sceneToLoad = "WarningScene";
+        private float _timer;
+
         private MoveUIWithKeys _moveUIWithKeys;
+        
+        private readonly float _animationSpeed = 0.2f;
 
         private void Start()
         {
@@ -27,33 +29,30 @@ namespace Scene1.Computer.Styx
             
             _moveUIWithKeys = FindObjectOfType<MoveUIWithKeys>();
 
-            // Start the walking animation
             if (walkingSprites.Length > 0) _enemyImage.sprite = walkingSprites[0];
         }
 
         private void Update()
         {
-            // If player is not found, stop executing the update loop
             if (_player == null)
             {
                 Debug.LogWarning("Player not found!");
                 return;
             }
 
-            // Calculate direction towards the player
-            Vector2 direction = (_player.position - transform.position).normalized;
+            Vector2 directionToPlayer = (_player.position - transform.position).normalized;
 
-            // Calculate movement speed for chasing (slower than player)
-            var speed = moveSpeed * chaseSpeedMultiplier * Time.deltaTime;
+            var chaseSpeed = moveSpeed * chaseSpeedMultiplier * Time.deltaTime;
+            
+            transform.Translate(directionToPlayer * chaseSpeed);
 
-            // Move towards the player's position
-            transform.Translate(direction * speed);
-
-            // Handle walking animation
             _timer += Time.deltaTime;
-            if (!(_timer >= 0.2f)) return; // Interval for changing images (adjust as needed)
+            if (_timer >= _animationSpeed) ChangeAnimation();
+        }
 
-            _timer -= 0.2f;
+        private void ChangeAnimation()
+        {
+            _timer -= _animationSpeed;
             _currentSpriteIndex = (_currentSpriteIndex + 1) % walkingSprites.Length;
             _enemyImage.sprite = walkingSprites[_currentSpriteIndex];
         }

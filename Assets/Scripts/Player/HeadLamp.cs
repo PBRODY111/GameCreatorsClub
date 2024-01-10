@@ -41,22 +41,21 @@ namespace Player
             if (_fullbright)
             {
                 _batteryLife = 4000f;
+                return;
             }
-            else
-            {
-                if (_batteryLife > -1000f)
-                    _batteryLife -= Time.deltaTime * batteryDrain;
-                lightStage = Mathf.CeilToInt(_batteryLife / 1000f);
-                _lights[0].intensity = 0.2f * (lightStage + 1);
-                _lights[1].intensity = 0.07f * (lightStage + 1);
-                _lights[2].intensity = 0.07f * (lightStage + 1);
-                if (canvas.transform.GetChild(0).childCount == lightStage + 1) return;
 
-                var temp = canvas.transform.GetChild(0).childCount;
-                for (var i = 0; i < temp; i++) Destroy(canvas.transform.GetChild(0).GetChild(i).gameObject);
+            if (_batteryLife > -1000f)
+                _batteryLife -= Time.deltaTime * batteryDrain;
+            lightStage = Mathf.CeilToInt(_batteryLife / 1000f);
+            _lights[0].intensity = 0.2f * (lightStage + 1);
+            _lights[1].intensity = 0.07f * (lightStage + 1);
+            _lights[2].intensity = 0.07f * (lightStage + 1);
+            if (canvas.transform.GetChild(0).childCount == lightStage + 1) return;
 
-                for (var i = 0; i < lightStage + 1; i++) Instantiate(batteryBarPrefab, canvas.transform.GetChild(0));
-            }
+            var temp = canvas.transform.GetChild(0).childCount;
+            for (var i = 0; i < temp; i++) Destroy(canvas.transform.GetChild(0).GetChild(i).gameObject);
+
+            for (var i = 0; i < lightStage + 1; i++) Instantiate(batteryBarPrefab, canvas.transform.GetChild(0));
         }
 
         public void Fullbright()
@@ -70,17 +69,17 @@ namespace Player
                     t.range = 10f;
                     t.color = _color;
                 }
+
+                return;
             }
-            else
+
+            _fullbright = true;
+            foreach (var t in _lights)
             {
-                _fullbright = true;
-                foreach (var t in _lights)
-                {
-                    t.intensity = 0.6f;
-                    t.spotAngle = 179.999f;
-                    t.range = 100f;
-                    t.color = Color.white;
-                }
+                t.intensity = 0.6f;
+                t.spotAngle = 179.999f;
+                t.range = 100f;
+                t.color = Color.white;
             }
         }
 

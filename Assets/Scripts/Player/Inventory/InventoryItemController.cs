@@ -67,9 +67,7 @@ namespace Player.Inventory
 
                     break;
                 case InventoryItem.ItemType.Box:
-                    Instantiate(Player.Instance.stoolPrefab,
-                        Player.Instance.transform.position + Player.Instance.transform.forward,
-                        Quaternion.Euler(-90f, 0f, 0f));
+                    Instantiate(Player.Instance.stoolPrefab, Player.Instance.transform.position + Player.Instance.transform.forward, Quaternion.Euler(-90f, 0f, 0f));
                     HoldItem();
                     RemoveItem();
                     break;

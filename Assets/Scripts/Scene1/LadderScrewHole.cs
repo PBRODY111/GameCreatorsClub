@@ -17,7 +17,6 @@ namespace Scene1
                 rightClick.Invoke();
         }
 
-        // Start is called before the first frame update
         public void OnPointerEnter(PointerEventData eventData)
         {
             intText3.GetComponent<TMP_Text>().text = "SCREWS NEEDED TO INTERACT";

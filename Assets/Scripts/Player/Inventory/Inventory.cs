@@ -16,7 +16,6 @@ namespace Player.Inventory
         [FormerlySerializedAs("InventoryItem")]
         public GameObject inventoryItem;
 
-        // Start is called before the first frame update
         private void Awake()
         {
             Instance = this;

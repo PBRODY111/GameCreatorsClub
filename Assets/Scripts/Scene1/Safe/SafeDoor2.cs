@@ -27,13 +27,11 @@ namespace Scene1.Safe
             _safeAnimator = GetComponentInChildren<Animator>();
         }
 
-        // Start is called before the first frame update
         private void Start()
         {
             for (var i = 0; i < 5; i++) code += Random.Range(0, 10);
         }
 
-        // Update is called once per frame
         private void Update()
         {
             if (padlockUI.activeSelf)

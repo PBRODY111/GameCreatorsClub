@@ -18,7 +18,6 @@ namespace Scene1
 
         [SerializeField] private float reach;
 
-        // Start is called before the first frame update
         private void Start()
         {
             mainCamera.enabled = true;
@@ -34,11 +33,9 @@ namespace Scene1
         {
             intText3.GetComponent<TMP_Text>().text = "CROWBAR NEEDED TO INTERACT";
             intText3.SetActive(IsWithinReach());
-            if (Input.GetMouseButtonDown(1) && IsWithinReach() &&
-                Player.Player.Instance.IsHolding("Crowbar"))
+            if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Crowbar"))
             {
                 Debug.Log("JUMPSCARE!!");
-                // this should only happen if the crowbar is used
                 cer.transform.position = new Vector3(-8.5f, 0.5f, -4f);
                 //cer.SetActive(true);
                 playerModel.transform.position = new Vector3(-6.5f, 0f, -4f);

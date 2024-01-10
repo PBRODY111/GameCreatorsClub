@@ -1,4 +1,3 @@
-using System;
 using Player;
 using TMPro;
 using UnityEngine;
@@ -34,7 +33,6 @@ namespace UI
 
         private int _fpsText;
 
-        // Start is called before the first frame update
         private void Start()
         {
             _pm = Player.Player.Instance.GetComponent<PlayerMovement>();

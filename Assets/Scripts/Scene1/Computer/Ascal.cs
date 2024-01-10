@@ -55,8 +55,21 @@ namespace Scene1.Computer
             safe3Color = colors[Random.Range(0, colors.Length)];
             safeDoor32.selectColor = safe3Color;
 
-            //scramble string 1
-            var array = string1.ToCharArray();
+            string1 = Scramble(string1);
+            string2 = Scramble(string2);
+            string3 = Scramble(string3);
+
+            ascalUI.SetActive(true);
+            ascalAudio.Play();
+            Debug.Log("Entered");
+            Time.timeScale = 1f;
+            _typewriterUi = transform.GetComponent<TypewriterUI>();
+            StartCoroutine(AscalGame());
+        }
+        
+        private static string Scramble(string s)
+        {
+            var array = s.ToCharArray();
             var rng = new System.Random();
             var n = array.Length;
             while (n > 1)
@@ -66,42 +79,9 @@ namespace Scene1.Computer
                 (array[k], array[n]) = (array[n], array[k]);
             }
 
-            string1 = new string(array);
-
-            // scramble string 2
-            array = string2.ToCharArray();
-            rng = new System.Random();
-            n = array.Length;
-            while (n > 1)
-            {
-                n--;
-                var k = rng.Next(n + 1);
-                (array[k], array[n]) = (array[n], array[k]);
-            }
-
-            string2 = new string(array);
-
-            // scramble string 3
-            array = string3.ToCharArray();
-            rng = new System.Random();
-            n = array.Length;
-            while (n > 1)
-            {
-                n--;
-                var k = rng.Next(n + 1);
-                (array[k], array[n]) = (array[n], array[k]);
-            }
-
-            string3 = new string(array);
-
-            ascalUI.SetActive(true);
-            ascalAudio.Play();
-            Debug.Log("Entered");
-            Time.timeScale = 1f;
-            _typewriterUi = transform.GetComponent<TypewriterUI>();
-            StartCoroutine(AscalGame());
+            return new string(array);
         }
-
+        
         public void ExitAscal()
         {
             ascalUI.SetActive(false);

@@ -33,7 +33,6 @@ namespace Scene1.Computer
         private string _input;
         private readonly bool _isUnlocked = false;
 
-        // Start is called before the first frame update
         private void Start()
         {
             for (var i = 0; i < 3; i++) password += _alphabet[Random.Range(0, _alphabet.Length)];
@@ -44,7 +43,6 @@ namespace Scene1.Computer
             pwdText.text = password;
         }
 
-        // Update is called once per frame
         private void Update()
         {
             if (computerUI.activeSelf)

@@ -27,16 +27,13 @@ namespace Scene1.Computer.Styx
 
             _myCollider = GetComponent<BoxCollider2D>();
 
-            // Get the Image component of the UI element
             _imageComponent = GetComponent<Image>();
 
-            // Initialize the image with the first sprite in the array
             if (walkingSprites.Length > 0) _imageComponent.sprite = walkingSprites[0];
         }
 
         private void Update()
         {
-            // Calculate movement based on arrow keys
             var horizontalInput = Input.GetAxis("Horizontal");
             var verticalInput = Input.GetAxis("Vertical");
             
@@ -58,44 +55,39 @@ namespace Scene1.Computer.Styx
 
             if (horizontalInput != 0 || verticalInput != 0)
             {
-                // If arrow keys are pressed, perform movement and animation
                 var moveDirection = new Vector3(horizontalInput, verticalInput, 0f) * (moveSpeed * Time.deltaTime);
 
-                // Calculate the new position
                 var newPosition = _rectTransform.anchoredPosition3D + moveDirection;
 
-                // Move the object without collision checks
                 _rectTransform.anchoredPosition3D = newPosition;
 
-                // Handle animation by changing sprites at regular intervals
                 _timer += Time.deltaTime;
-                if (_timer >= animationInterval)
-                {
-                    _timer -= animationInterval;
-                    _currentSpriteIndex = (_currentSpriteIndex + 1) % walkingSprites.Length;
-                    _imageComponent.sprite = walkingSprites[_currentSpriteIndex];
-                }
+                if (_timer >= animationInterval) ChangeAnimation();
             }
-            else
-            {
-                // If no arrow keys are pressed, reset the animation sprite to the first element
-                _currentSpriteIndex = 0;
-                _imageComponent.sprite = walkingSprites[_currentSpriteIndex];
-                _timer = 0f; // Reset the timer for consistent animation timing
-            }
+            else ResetAnimation();
 
-            // Update the followerObject's position to match this object's position
             if (followerObject != null) followerObject.transform.position = _rectTransform.position;
+        }
+        
+        private void ResetAnimation()
+        {
+            _currentSpriteIndex = 0;
+            _imageComponent.sprite = walkingSprites[_currentSpriteIndex];
+            _timer = 0f;
+        }
+
+        private void ChangeAnimation()
+        {
+            _timer -= animationInterval;
+            _currentSpriteIndex = (_currentSpriteIndex + 1) % walkingSprites.Length;
+            _imageComponent.sprite = walkingSprites[_currentSpriteIndex];
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            // Check if this object enters the collider trigger of an object tagged "Respawn"
             if (other.CompareTag("Respawn") && !Epic)
-                // Change the scene to "TitleScene"
                 SceneManager.LoadScene("WarningScene");
             else if (other.CompareTag("Finish"))
-                // Change the scene to "TitleScene"
                 StartCoroutine(SecretEnding());
         }
 

@@ -14,13 +14,11 @@ namespace UI
 
         private bool _canSkip;
 
-        // Start is called before the first frame update
         private void Start()
         {
             StartCoroutine(CreditSequence());
         }
 
-        // Update is called once per frame
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.E) && _canSkip) SceneManager.LoadScene(2);
@@ -29,7 +27,7 @@ namespace UI
         private IEnumerator CreditSequence()
         {
             // if first two endings wait 22 seconds, third ending on start, may have to change animations
-            yield return new WaitForSeconds((float)22.0);
+            yield return new WaitForSeconds(22f);
             creditsAudio.Play();
             _canSkip = true;
             skipText.SetActive(true);
@@ -37,7 +35,7 @@ namespace UI
             skipText.SetActive(false);
             yield return new WaitForSeconds(160);
             img1.SetActive(true);
-            yield return new WaitForSeconds((float)1.0);
+            yield return new WaitForSeconds(1f);
             img1.SetActive(false);
             SceneManager.LoadScene(2);
         }

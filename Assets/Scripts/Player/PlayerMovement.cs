@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Player
 {
@@ -91,10 +90,8 @@ namespace Player
 
         private void MovePlayer()
         {
-            // calculate movement direction
             _moveDirection = orientation.forward * _verticalInput + orientation.right * _horizontalInput;
 
-            // rotate physical body
             transform.rotation = orientation.rotation;
 
             if (epicModeEnabled)
@@ -133,7 +130,6 @@ namespace Player
         {
             var flatVel = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
 
-            // limit velocity if needed
             if (flatVel.magnitude > _moveSpeed)
             {
                 var limitedVel = flatVel.normalized * _moveSpeed;
@@ -143,7 +139,6 @@ namespace Player
 
         private void Jump()
         {
-            // reset y velocity
             _rb.velocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
 
             _rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);

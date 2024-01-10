@@ -5,13 +5,13 @@ namespace Scene1.Computer.Styx
 {
     public class GameController : MonoBehaviour
     {
-        public int pointValue; // Number of points, publicly accessible
-        public int currentLevel = 1; // Current level, publicly accessible
+        public int pointValue;
+        public int currentLevel = 1;
 
-        public TextMeshProUGUI pointsText; // Reference to the TextMeshPro text for points
-        public TextMeshProUGUI levelText; // Reference to the TextMeshPro text for level
+        public TextMeshProUGUI pointsText;
+        public TextMeshProUGUI levelText;
 
-        public Transform playerTransform; // Reference to the player object's transform
+        public Transform playerTransform;
         [SerializeField] private GameObject level1Object;
         [SerializeField] private GameObject level2Object;
         [SerializeField] private GameObject level3Object;
@@ -34,7 +34,7 @@ namespace Scene1.Computer.Styx
                 pointValue = 0;
                 ChangeLevel();
                 if (playerTransform != null)
-                    playerTransform.localPosition = new Vector3(0f, 0f, 0f); // Reset player position to origin
+                    playerTransform.localPosition = Vector3.zero;
             }
 
             UpdatePointsText();

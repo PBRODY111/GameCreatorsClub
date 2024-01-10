@@ -15,7 +15,6 @@ namespace Scene1
 
         private bool _inTrigger;
         
-        // Update is called once per frame
         private void Update()
         {
             if (toxicLevel > 0)

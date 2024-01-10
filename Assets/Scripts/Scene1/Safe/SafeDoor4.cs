@@ -13,7 +13,6 @@ namespace Scene1.Safe
         private Animator _safeAnimator;
         private static readonly int Unlock = Animator.StringToHash("unlock");
 
-        // Start is called before the first frame update
         private void Awake()
         {
             _safeAnimator = GetComponentInChildren<Animator>();

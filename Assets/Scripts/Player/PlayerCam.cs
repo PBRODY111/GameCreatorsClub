@@ -25,7 +25,6 @@ namespace Player
         {
             if (!PauseMenu.IsPaused)
             {
-                // get mouse input
                 var mouseX = Input.GetAxis("Mouse X") * 0.02f * sensX;
                 var mouseY = Input.GetAxis("Mouse Y") * 0.02f * sensY;
 
@@ -34,7 +33,6 @@ namespace Player
                 _xRotation -= mouseY;
                 _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
 
-                // rotate cam and orientation
                 transform.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
                 orientation.rotation = Quaternion.Euler(0, _yRotation, 0);
             }

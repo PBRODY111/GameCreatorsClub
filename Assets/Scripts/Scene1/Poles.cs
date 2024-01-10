@@ -31,8 +31,7 @@ namespace Scene1
             intText3.GetComponent<TMP_Text>().text = "POLES NEEDED TO INTERACT";
             intText3.SetActive(!ladderUI.activeSelf && IsWithinReach());
 
-            if (Input.GetMouseButtonDown(1) && IsWithinReach() &&
-                Player.Player.Instance.IsHolding("Poles"))
+            if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Poles"))
             {
                 ladderUI.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;

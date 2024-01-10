@@ -14,7 +14,6 @@ namespace Scene1
         private Animator _drawerAnim;
         private int _probInt;
 
-        // Start is called before the first frame update
         private void Awake()
         {
             _drawerAnim = GetComponent<Animator>();

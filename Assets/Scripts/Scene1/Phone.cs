@@ -34,19 +34,13 @@ namespace Scene1
         private string _entered = "";
         private readonly bool _isUnlocked = false;
 
-        // Start is called before the first frame update
         private void Start()
         {
             var existingNumbers = new HashSet<string> { numb5 };
-            numb1 = GenerateUniqueNumber(existingNumbers);
-            numb2 = GenerateUniqueNumber(existingNumbers);
-            numb3 = GenerateUniqueNumber(existingNumbers);
-            numb4 = GenerateUniqueNumber(existingNumbers);
-
-            num1E.text = numb1;
-            num2E.text = numb2;
-            num3E.text = numb3;
-            num4E.text = numb4;
+            num1E.text = numb1 = GenerateUniqueNumber(existingNumbers);
+            num2E.text = numb2 = GenerateUniqueNumber(existingNumbers);
+            num3E.text = numb3 = GenerateUniqueNumber(existingNumbers);
+            num4E.text = numb4 = GenerateUniqueNumber(existingNumbers);
         }
         
         private static string GenerateUniqueNumber(HashSet<string> existingNumbers)
@@ -61,7 +55,6 @@ namespace Scene1
             return number;
         }
 
-        // Update is called once per frame
         private void Update()
         {
             if (phoneUI.activeSelf)
@@ -79,7 +72,6 @@ namespace Scene1
             intText.SetActive(false);
         }
 
-        // Update is called once per frame
         private void OnMouseOver()
         {
             if (!phoneUI.activeSelf && !_isUnlocked)

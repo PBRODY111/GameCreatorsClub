@@ -18,14 +18,12 @@ namespace Scene1
 
         public float tempValue;
 
-        // Start is called before the first frame update
         private void Start()
         {
             intText.SetActive(false);
             dialSlider.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
         }
 
-        // Update is called once per frame
         private void Update()
         {
             HandleRaycast();
