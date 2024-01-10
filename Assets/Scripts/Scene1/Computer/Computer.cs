@@ -68,8 +68,7 @@ namespace Scene1.Computer
                 intText.SetActive(false);
                 computerUI.SetActive(true);
                 Time.timeScale = 0f;
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
+                Player.Player.Instance.UnlockCursor();
                 Player.Player.Instance.DisableMovement();
             }
         }
@@ -77,8 +76,7 @@ namespace Scene1.Computer
         public void ShutDown()
         {
             Time.timeScale = 1f;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            Player.Player.Instance.LockCursor();
             Player.Player.Instance.EnableMovement();
             computerUI.SetActive(false);
         }

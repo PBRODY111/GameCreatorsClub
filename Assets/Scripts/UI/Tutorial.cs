@@ -1,4 +1,3 @@
-using Player;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -76,6 +75,7 @@ namespace UI
             Player.Player.Instance.EnableMovement();
             Cursor.lockState = CursorLockMode.Locked;
             ui.SetActive(true);
+            Player.Player.Instance.ResetTimer();
         }
     }
 }

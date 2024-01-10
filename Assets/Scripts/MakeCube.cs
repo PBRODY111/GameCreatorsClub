@@ -7,7 +7,7 @@ public class MakeCube : MonoBehaviour
     [SerializeField] private GameObject cubePrefab;
     [SerializeField] private Transform deskSpam;
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Input.GetKey(key))
         {

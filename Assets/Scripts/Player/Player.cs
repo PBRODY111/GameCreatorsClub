@@ -21,11 +21,28 @@ namespace Player
         private PlayerMovement _playerMovement;
         private PlayerCam _playerCam;
 
+        private float _timer;
+        
+        public void ResetTimer()
+        {
+            _timer = Time.time;
+        }
+        
+        public string GetTime()
+        {
+            var time = Time.time - _timer;
+            var minutes = Mathf.FloorToInt(time / 60);
+            var seconds = Mathf.FloorToInt(time % 60);
+            var milliseconds = Mathf.FloorToInt(time * 100 % 100);
+            return $"{minutes:00}:{seconds:00}.{milliseconds:00}";
+        }
+
         private void Awake()
         {
             QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = 60;
             Instance = this;
+            _timer = Time.time;
             selectedslot = -1;
             _playerMovement = GetComponent<PlayerMovement>();
             _playerCam = mainCamera.GetComponent<PlayerCam>();
@@ -41,6 +58,18 @@ namespace Player
         {
             _playerMovement.enabled = true;
             _playerCam.enabled = true;
+        }
+        
+        public void LockCursor()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        
+        public void UnlockCursor()
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         private void Update()

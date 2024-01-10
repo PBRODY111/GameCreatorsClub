@@ -62,7 +62,7 @@ namespace Scene1
                 {
                     phoneUI.SetActive(false);
                     PauseMenu.IsPaused = false;
-                    Cursor.lockState = CursorLockMode.Locked;
+                    Player.Player.Instance.LockCursor();
                     _entered = "";
                 }
         }
@@ -82,7 +82,7 @@ namespace Scene1
                 PauseMenu.IsPaused = true;
                 intText.SetActive(false);
                 phoneUI.SetActive(true);
-                Cursor.lockState = phoneUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
+                Player.Player.Instance.UnlockCursor();
             }
         }
 

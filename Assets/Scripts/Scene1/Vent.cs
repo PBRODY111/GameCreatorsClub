@@ -72,8 +72,9 @@ namespace Scene1
 
             escapeAnim.SetBool(IsEscape, true);
             yield return new WaitForSeconds(1.5f);
+            escapeText.GetComponent<TMP_Text>().text = "ESCAPED\nIn " + Player.Player.Instance.GetTime();
             escapeText.SetActive(true);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitUntil(() => Input.anyKeyDown);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 

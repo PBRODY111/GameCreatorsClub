@@ -25,29 +25,34 @@ namespace Scene1
             if (pressed)
             {
                 if (Player.Player.Instance.EpicModeEnabled())
-                    RotateButton(350);
+                    RemoveButton();
 
                 else if (Player.Player.Instance.IsHolding("Screwdriver"))
-                    RotateButton(6);
+                    RotateButton();
             }
         }
 
-        public void RotateButton(int amount)
+        public void RotateButton()
         {
-            button.transform.Rotate(new Vector3(0, 0, amount));
+            button.transform.Rotate(new Vector3(0, 0, 6));
             button.GetComponent<AudioSource>().Play();
             if (button.transform.rotation.eulerAngles.y >= 350)
             {
-                button.SetActive(false);
-                intText3.SetActive(false);
-                vent.unscrewed += 1;
-                if (vent.unscrewed >= 3) vent.growlAudio.Play();
+                RemoveButton();
+            }
+        }
+        
+        private void RemoveButton()
+        {
+            button.SetActive(false);
+            intText3.SetActive(false);
+            vent.unscrewed += 1;
+            if (vent.unscrewed >= 3) vent.growlAudio.Play();
 
-                if (vent.unscrewed >= 4)
-                {
-                    vent.doorSlam.Play();
-                    vent.footsteps.Play();
-                }
+            if (vent.unscrewed >= 4)
+            {
+                vent.doorSlam.Play();
+                vent.footsteps.Play();
             }
         }
 
