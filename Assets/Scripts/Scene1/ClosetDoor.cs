@@ -41,6 +41,7 @@ namespace Scene1
 
         private IEnumerator ImgScare()
         {
+            _probInt = Random.Range(0, 5);
             scare.SetActive(true);
             scare.GetComponent<AudioSource>().Play();
             yield return new WaitForSeconds(1.5f);
