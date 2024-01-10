@@ -19638,8 +19638,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684759371}
-        m_TargetAssemblyTypeName: SafeDoor3_2, Assembly-CSharp
-        m_MethodName: changeColor
+        m_TargetAssemblyTypeName: Scene1.Safe.SafeDoor32, Assembly-CSharp
+        m_MethodName: ChangeColor
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 693862501}
