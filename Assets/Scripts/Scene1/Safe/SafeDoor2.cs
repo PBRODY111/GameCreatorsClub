@@ -39,7 +39,8 @@ namespace Scene1.Safe
                 {
                     padlockUI.SetActive(false);
                     PauseMenu.IsPaused = false;
-                    Cursor.lockState = CursorLockMode.Locked;
+                    Player.Player.Instance.LockCursor();
+                    Player.Player.Instance.EnableMovement();
                 }
         }
 
@@ -59,7 +60,8 @@ namespace Scene1.Safe
                     intText.SetActive(false);
                     padlockUI.SetActive(!padlockUI.activeSelf);
                     PauseMenu.IsPaused = true;
-                    Cursor.lockState = padlockUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
+                    Player.Player.Instance.UnlockCursor();
+                    Player.Player.Instance.DisableMovement();
                 }
                 else
                 {

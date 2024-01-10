@@ -195,6 +195,7 @@
      <Folder Include="Assets/TextMesh Pro/Examples &amp; Extras/Resources" />
      <Folder Include="Assets/Images" />
      <Folder Include="Assets/Models/wetfloor/source" />
+     <Folder Include="Assets/Adaptive Performance" />
      <Folder Include="Assets/Models/macintosh/source/macintosh" />
      <Folder Include="Assets/Models/characters/charlie/animations" />
      <Folder Include="Assets/Models/blackboard/Materials" />
@@ -224,6 +225,7 @@
      <Folder Include="Assets/TextMesh Pro/Resources/Style Sheets" />
      <Folder Include="Assets/Models/characters/cer" />
      <Folder Include="Assets/TextMesh Pro/Fonts" />
+     <Folder Include="Assets/Adaptive Performance/Settings" />
      <Folder Include="Assets/Audio/mixers" />
      <Folder Include="Assets/Models/ceiling-fan" />
      <None Include="Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" />
@@ -895,17 +897,62 @@
      <Reference Include="mscorlib">
      <HintPath>/Applications/Unity/Hub/Editor/2022.3.6f1/Unity.app/Contents/NetStandard/compat/2.1.0/shims/netfx/mscorlib.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.EditorCoroutines.Editor">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.EditorCoroutines.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.PlasticSCM.Editor">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Timeline.Editor">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.Shared.Editor">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.VisualScripting.Shared.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.AdaptivePerformance">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.AdaptivePerformance.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualStudio.Editor">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.AdaptivePerformance.Simulator.Extension">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.AdaptivePerformance.Simulator.Extension.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.UI">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.Core">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.VisualScripting.Core.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.UI">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.AdaptivePerformance.Profiler.Editor">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.AdaptivePerformance.Profiler.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.Core.Editor">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.VisualScripting.Core.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Rider.Editor">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.AdaptivePerformance.Simulator.Editor">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.AdaptivePerformance.Simulator.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.AdaptivePerformance.UI.Editor">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.AdaptivePerformance.UI.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.Flow">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.VisualScripting.Flow.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.Flow.Editor">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.VisualScripting.Flow.Editor.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Timeline">
      <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
      </Reference>
      <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
      <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
-     </Reference>
-     <Reference Include="UnityEngine.UI">
-     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.EditorCoroutines.Editor">
-     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.EditorCoroutines.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
      <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
@@ -919,38 +966,17 @@
      <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
      <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.PlasticSCM.Editor">
-     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.VisualScripting.State.Editor">
      <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.VisualScripting.State.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Timeline.Editor">
-     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.Shared.Editor">
-     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.VisualScripting.Shared.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualStudio.Editor">
-     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.TextMeshPro">
      <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.VisualScripting.Core">
-     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.VisualScripting.Core.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.TextMeshPro.Editor">
      <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="UnityEditor.UI">
-     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.Core.Editor">
-     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.VisualScripting.Core.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Rider.Editor">
-     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+     <Reference Include="Unity.AdaptivePerformance.Editor">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.AdaptivePerformance.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.State">
      <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.VisualScripting.State.dll</HintPath>
@@ -958,11 +984,8 @@
      <Reference Include="Unity.VSCode.Editor">
      <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.VisualScripting.Flow">
-     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.VisualScripting.Flow.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.Flow.Editor">
-     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.VisualScripting.Flow.Editor.dll</HintPath>
+     <Reference Include="Unity.Profiling.Core">
+     <HintPath>/Users/rhys/coding/Unity Projects/GameCreatorsClub/Library/ScriptAssemblies/Unity.Profiling.Core.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>

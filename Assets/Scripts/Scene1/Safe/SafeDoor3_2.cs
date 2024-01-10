@@ -33,10 +33,16 @@ namespace Scene1.Safe
             if (colorlockUI.activeSelf)
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    colorlockUI.SetActive(false);
-                    PauseMenu.IsPaused = false;
-                    Cursor.lockState = CursorLockMode.Locked;
+                    Exit();
                 }
+        }
+
+        private void Exit()
+        {
+            colorlockUI.SetActive(false);
+            PauseMenu.IsPaused = false;
+            Player.Player.Instance.LockCursor();
+            Player.Player.Instance.EnableMovement();
         }
 
         private void OnMouseExit()
@@ -55,7 +61,8 @@ namespace Scene1.Safe
                     intText.SetActive(false);
                     colorlockUI.SetActive(true);
                     PauseMenu.IsPaused = true;
-                    Cursor.lockState = colorlockUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
+                    Player.Player.Instance.UnlockCursor();
+                    Player.Player.Instance.DisableMovement();
                 }
             }
         }
@@ -70,10 +77,7 @@ namespace Scene1.Safe
                 if (!_isUnlocked) unlockAudio.Play();
 
                 _isUnlocked = true;
-                intText.SetActive(false);
-                colorlockUI.SetActive(false);
-                PauseMenu.IsPaused = false;
-                Cursor.lockState = CursorLockMode.Locked;
+                Exit();
             }
 
             _colorIndex++;

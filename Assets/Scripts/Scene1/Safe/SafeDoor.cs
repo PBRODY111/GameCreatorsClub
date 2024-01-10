@@ -46,7 +46,8 @@ namespace Scene1.Safe
             {
                 dialUI.SetActive(false);
                 PauseMenu.IsPaused = false;
-                Cursor.lockState = CursorLockMode.Locked;
+                Player.Player.Instance.LockCursor();
+                Player.Player.Instance.EnableMovement();
             }
         }
 
@@ -88,7 +89,8 @@ namespace Scene1.Safe
                 intText.SetActive(false);
                 dialUI.SetActive(true);
                 PauseMenu.IsPaused = true;
-                Cursor.lockState = dialUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
+                Player.Player.Instance.DisableMovement();
+                Player.Player.Instance.UnlockCursor();
             }
         }
 
