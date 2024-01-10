@@ -10,10 +10,10 @@ public class ScarySounds : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Time.time > _nextActionTime){
-            _nextActionTime += period + Random.Range(0, 10);
-            doorAudio.clip = sounds[Random.Range(0, sounds.Length)];
-            doorAudio.Play();
-        }
+        if (Time.time <= _nextActionTime) return;
+        
+        _nextActionTime += period + Random.Range(0, 10);
+        doorAudio.clip = sounds[Random.Range(0, sounds.Length)];
+        doorAudio.Play();
     }
 }
