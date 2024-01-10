@@ -91,7 +91,6 @@ namespace Scene1.Computer
         public void GetLetter(string s)
         {
             s = s.ToLower();
-            Debug.Log("" + currentString[_letterIndex]);
             AudioClip selectedClip;
 
             if ("" + s == "" + currentString[_letterIndex])
@@ -121,6 +120,7 @@ namespace Scene1.Computer
             else _letterIndex++;
 
             letterInput.GetComponent<TMP_InputField>().text = "";
+            letterInput.GetComponent<TMP_InputField>().ActivateInputField();
         }
 
         private IEnumerator AscalGame()

@@ -51,6 +51,8 @@ namespace Scene1
             jumpscareAudio.Play();
             yield return new WaitForSeconds(1.5f);
             SceneManager.LoadScene("GameOverScene");
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         private bool IsWithinReach()

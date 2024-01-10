@@ -33,8 +33,7 @@ namespace UI
             _page3.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(GoPage4);
             _page4.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(GoPage3);
             _page4.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(Hide);
-            Player.Player.Instance.mainCamera.GetComponent<PlayerCam>().enabled = false;
-            Player.Player.Instance.GetComponent<PlayerMovement>().enabled = false;
+            Player.Player.Instance.DisableMovement();
             Cursor.lockState = CursorLockMode.None;
         }
 
@@ -74,8 +73,8 @@ namespace UI
         {
             gameObject.SetActive(false);
             Time.timeScale = 1;
-            Player.Player.Instance.mainCamera.GetComponent<PlayerCam>().enabled = true;
-            Player.Player.Instance.GetComponent<PlayerMovement>().enabled = true;
+            Player.Player.Instance.EnableMovement();
+            Cursor.lockState = CursorLockMode.Locked;
             ui.SetActive(true);
         }
     }

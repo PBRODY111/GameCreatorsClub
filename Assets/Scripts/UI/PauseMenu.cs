@@ -39,9 +39,9 @@ namespace UI
             resolutionDropdown.RefreshShownValue();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            if (Input.GetKeyDown(KeyCode.F1))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (IsPaused)
                     ResumeGame();

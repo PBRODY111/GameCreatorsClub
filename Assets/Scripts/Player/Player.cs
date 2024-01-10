@@ -19,6 +19,7 @@ namespace Player
         public int selectedslot;
 
         private PlayerMovement _playerMovement;
+        private PlayerCam _playerCam;
 
         private void Awake()
         {
@@ -27,6 +28,19 @@ namespace Player
             Instance = this;
             selectedslot = -1;
             _playerMovement = GetComponent<PlayerMovement>();
+            _playerCam = mainCamera.GetComponent<PlayerCam>();
+        }
+        
+        public void DisableMovement()
+        {
+            _playerMovement.enabled = false;
+            _playerCam.enabled = false;
+        }
+        
+        public void EnableMovement()
+        {
+            _playerMovement.enabled = true;
+            _playerCam.enabled = true;
         }
 
         private void Update()

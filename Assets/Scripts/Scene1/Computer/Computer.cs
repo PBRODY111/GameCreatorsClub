@@ -1,3 +1,4 @@
+using Player;
 using TMPro;
 using UI;
 using UnityEngine;
@@ -43,15 +44,13 @@ namespace Scene1.Computer
             pwdText.text = password;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (computerUI.activeSelf)
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    computerUI.SetActive(false);
-                    Time.timeScale = 1f;
-                    PauseMenu.IsPaused = false;
-                    Cursor.lockState = CursorLockMode.Locked;
+                    LogOut();
+                    ShutDown();
                 }
         }
 
@@ -69,17 +68,19 @@ namespace Scene1.Computer
                 intText.SetActive(false);
                 computerUI.SetActive(true);
                 Time.timeScale = 0f;
-                PauseMenu.IsPaused = true;
-                Cursor.lockState = computerUI.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                Player.Player.Instance.DisableMovement();
             }
         }
 
         public void ShutDown()
         {
-            computerUI.SetActive(false);
             Time.timeScale = 1f;
-            PauseMenu.IsPaused = false;
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Player.Player.Instance.EnableMovement();
+            computerUI.SetActive(false);
         }
 
         public void LogIn(string s)
