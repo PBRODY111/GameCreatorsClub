@@ -36,20 +36,19 @@ namespace Scene1
             if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Crowbar"))
             {
                 Debug.Log("JUMPSCARE!!");
-                cer.transform.position = new Vector3(-8.5f, 0.5f, -4f);
-                //cer.SetActive(true);
-                playerModel.transform.position = new Vector3(-6.5f, 0f, -4f);
                 StartCoroutine(JumpscareSequence());
             }
         }
 
         public IEnumerator JumpscareSequence()
         {
+            var playerPos = playerModel.transform.position;
+            cer.transform.position = new Vector3(playerPos.x - 2f, playerPos.y + 0.5f, playerPos.z);
             mainCamera.enabled = false;
             cerCamera.enabled = true;
             cerAnimator.SetBool(IsScared, true);
             jumpscareAudio.Play();
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2.25f);
             SceneManager.LoadScene("GameOverScene");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

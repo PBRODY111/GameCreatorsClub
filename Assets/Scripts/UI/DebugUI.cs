@@ -1,4 +1,5 @@
 using Player;
+using Scene1;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -66,6 +67,18 @@ namespace UI
             {
                 _fpsText = Mathf.FloorToInt(1.0f / Time.deltaTime);
                 _fpsUpdateTimer = 0f;
+            }
+
+            if (Input.GetKeyDown(KeyCode.F4))
+            {
+                var vent = FindObjectOfType<Vent>();
+                StartCoroutine(vent.EscapeFunc());
+            }
+            
+            if (Input.GetKeyDown(KeyCode.F5))
+            {
+                var jumpscare = FindObjectOfType<Jumpscare>();
+                StartCoroutine(jumpscare.JumpscareSequence());
             }
         }
 

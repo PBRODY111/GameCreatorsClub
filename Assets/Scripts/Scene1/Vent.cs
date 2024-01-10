@@ -60,7 +60,7 @@ namespace Scene1
             }
         }
 
-        private IEnumerator EscapeFunc()
+        public IEnumerator EscapeFunc()
         {
             escapeUI.SetActive(true);
             cer.SetActive(false);
