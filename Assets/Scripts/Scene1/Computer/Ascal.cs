@@ -3,6 +3,7 @@ using PreCutscene;
 using Scene1.Safe;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Scene1.Computer
 {
@@ -25,6 +26,8 @@ namespace Scene1.Computer
         [SerializeField] private SafeDoor32 safeDoor32;
         public Color[] colors;
         public Color safe3Color;
+        [SerializeField] private Image lizardImage;
+        public Sprite[] lizardSprites;
 
         private readonly string[] _text =
         {
@@ -151,10 +154,12 @@ namespace Scene1.Computer
 
         private IEnumerator AscalGame1()
         {
+            lizardImage.sprite = lizardSprites[1];
             Time.timeScale = 1f;
             Debug.Log("Level 1 done");
             letterInput.SetActive(false);
             yield return new WaitForSeconds(0.5f);
+            lizardImage.sprite = lizardSprites[0];
             _typewriterUi.SetText("Correct! The letters were: ");
             _typewriterUi.Write();
             yield return new WaitForSeconds(3f);
@@ -187,10 +192,12 @@ namespace Scene1.Computer
 
         private IEnumerator AscalGame2()
         {
+            lizardImage.sprite = lizardSprites[1];
             Time.timeScale = 1f;
             Debug.Log("Level 2 done");
             letterInput.SetActive(false);
             yield return new WaitForSeconds(0.5f);
+            lizardImage.sprite = lizardSprites[0];
             _typewriterUi.SetText("Correct! The letters were: ");
             _typewriterUi.Write();
             yield return new WaitForSeconds(3f);
@@ -223,6 +230,7 @@ namespace Scene1.Computer
 
         private IEnumerator AscalIncorrect()
         {
+            lizardImage.sprite = lizardSprites[2];
             Time.timeScale = 1f;
             letterInput.SetActive(false);
             _typewriterUi.SetText("Incorrect! Try again later...");
@@ -232,6 +240,7 @@ namespace Scene1.Computer
 
         private IEnumerator AscalWin()
         {
+            lizardImage.sprite = lizardSprites[1];
             Time.timeScale = 1f;
             Debug.Log("Level 3 done");
             letterInput.SetActive(false);

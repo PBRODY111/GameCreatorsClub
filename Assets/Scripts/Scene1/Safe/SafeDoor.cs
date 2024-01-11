@@ -65,7 +65,8 @@ namespace Scene1.Safe
                     unlockAudio.Play();
                     dialUI.SetActive(false);
                     PauseMenu.IsPaused = false;
-                    Cursor.lockState = CursorLockMode.Locked;
+                    Player.Player.Instance.LockCursor();
+                    Player.Player.Instance.EnableMovement();
                     _isUnlocked = true;
                 }
             }
