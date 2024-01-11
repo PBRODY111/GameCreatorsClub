@@ -78,8 +78,6 @@ namespace Player
             {
                 if (Input.GetKeyDown(KeyCode.Mouse1) && selectedslot != -1)
                 {
-                    Debug.Log(
-                        hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().item.itemName);
                     hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().UseItem();
                 }
 

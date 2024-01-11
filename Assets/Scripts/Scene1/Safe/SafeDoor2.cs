@@ -96,7 +96,8 @@ namespace Scene1.Safe
                 _entered = "";
                 padlockUI.SetActive(false);
                 PauseMenu.IsPaused = false;
-                Cursor.lockState = CursorLockMode.Locked;
+                Player.Player.Instance.LockCursor();
+                Player.Player.Instance.EnableMovement();
             }
         }
 
