@@ -14,9 +14,11 @@ namespace Player.Inventory
         }
 
         private void PickUp()
-        {
-            Inventory.Instance.Add(item);
-            Destroy(gameObject);
+        {  
+            if(Inventory.Instance.items.Count < 8){
+                Inventory.Instance.Add(item);
+                Destroy(gameObject);
+            }
         }
 
         private bool IsWithinReach()
