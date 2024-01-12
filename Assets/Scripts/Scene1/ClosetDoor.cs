@@ -34,14 +34,14 @@ namespace Scene1
                 doorAudio.timeSamples = doorAudio.pitch > 0 ? 0 : doorAudio.clip.samples - 1;
                 doorAudio.Play(0);
                 _doorAnim.SetBool(IsOpen, !_doorAnim.GetBool(IsOpen));
-                _probInt = Random.Range(0, 5);
+                _probInt = Random.Range(0, 6);
                 if (_probInt == 1) StartCoroutine(ImgScare());
             }
         }
 
         private IEnumerator ImgScare()
         {
-            _probInt = Random.Range(0, 5);
+            _probInt = Random.Range(0, 6);
             scare.SetActive(true);
             scare.GetComponent<AudioSource>().Play();
             yield return new WaitForSeconds(1.5f);
