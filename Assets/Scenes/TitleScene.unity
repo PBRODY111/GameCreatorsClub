@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 3ef70ad6d8f92496980a16b29bac370f, type: 3}
-  VHSClip: {fileID: 32900000, guid: 5cb562ae97793450dbc52e338119ae22, type: 3}
+  vhsClip: {fileID: 32900000, guid: 5cb562ae97793450dbc52e338119ae22, type: 3}
 --- !u!328 &110964447
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -2533,8 +2533,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1945494127}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: SetSFX
+        m_TargetAssemblyTypeName: TitleScene.MainMenu, Assembly-CSharp
+        m_MethodName: SetSfx
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
