@@ -34,6 +34,7 @@ namespace UI
             _page4.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(Hide);
             Player.Player.Instance.DisableMovement();
             Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0f;
         }
 
         public void GoPage1()
@@ -76,6 +77,7 @@ namespace UI
             Cursor.lockState = CursorLockMode.Locked;
             ui.SetActive(true);
             Player.Player.Instance.ResetTimer();
+            Time.timeScale = 1f;
         }
     }
 }
