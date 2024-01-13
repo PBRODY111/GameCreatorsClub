@@ -46,6 +46,7 @@ namespace Player
             selectedslot = -1;
             _playerMovement = GetComponent<PlayerMovement>();
             _playerCam = mainCamera.GetComponent<PlayerCam>();
+            mainCamera.fieldOfView = 70;
         }
         
         public void DisableMovement()
@@ -94,23 +95,6 @@ namespace Player
             catch (Exception e)
             {
                 Debug.Log("No Item in Slot " + e);
-            }
-        }
-
-        private void FixedUpdate()
-        {
-            if (Input.GetKey(KeyCode.C))
-            {
-                if(Math.Abs(mainCamera.fieldOfView - 70) < 0.1)
-                    mainCamera.fieldOfView = 20;
-                
-                var fieldOfView = mainCamera.fieldOfView;
-                fieldOfView -= Input.mouseScrollDelta.y * 30;
-                mainCamera.fieldOfView = Mathf.Clamp(fieldOfView, 1, 69);
-            }
-            else
-            {
-                mainCamera.fieldOfView = 70;
             }
         }
 

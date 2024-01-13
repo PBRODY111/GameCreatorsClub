@@ -12,8 +12,10 @@ namespace UI
         [SerializeField] private GameObject pauseMenu;
         [SerializeField] private AudioSource clickAudio;
         [SerializeField] private GameObject options;
+        [SerializeField] private Player.PlayerCam playerCam;
         public Dropdown resolutionDropdown;
         public AudioMixer masterMixer;
+        public Camera mainCamera;
 
         private bool _optionsOn;
         private Resolution[] _resolutions;
@@ -99,6 +101,17 @@ namespace UI
             Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
         }
 
+        public void SetFOV(float fov)
+        {
+            mainCamera.fieldOfView = fov;
+        }
+
+        public void SetSensitivity(float sens)
+        {
+            playerCam.sensX = sens;
+            playerCam.sensY = sens;
+        }
+
         public void PauseGame()
         {
             clickAudio.Play();
@@ -116,6 +129,15 @@ namespace UI
             options.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1f;
+            IsPaused = false;
+        }
+
+        public void ReloadLevel()
+        {
+            clickAudio.Play();
+            Time.timeScale = 1f;
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentSceneName);
             IsPaused = false;
         }
 
