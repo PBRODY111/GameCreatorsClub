@@ -1121,7 +1121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60df8e881c8e5704796aa0929c93cef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hotbar: {fileID: 0}
+  hotbar: {fileID: 0}
   mainCamera: {fileID: 832543379}
   stoolPrefab: {fileID: 205041033105215615, guid: 850ca12dc3cfb624bb324c69fa8c3bf5, type: 3}
   selectedslot: -1
@@ -1200,6 +1200,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 9
   orientation: {fileID: 2054929964}
+  epicModeEnabled: 0
 --- !u!1 &107773645
 GameObject:
   m_ObjectHideFlags: 0
@@ -6333,7 +6334,7 @@ Transform:
   m_GameObject: {fileID: 832543375}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.916, z: -74.2}
+  m_LocalPosition: {x: 0, y: 1.916, z: -74.1299}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
