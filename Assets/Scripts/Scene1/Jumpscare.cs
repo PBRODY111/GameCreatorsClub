@@ -40,9 +40,16 @@ namespace Scene1
                 StartCoroutine(JumpscareSequence());
             }
         }
+        
+        private bool isJumpscareActive = false;
 
         public IEnumerator JumpscareSequence()
         {
+            // Cancel any ongoing jumpscare sequence
+            if (isJumpscareActive) yield break;
+
+            isJumpscareActive = true;
+
             var playerPos = playerModel.transform.position;
             cer.transform.position = new Vector3(playerPos.x - 2f, playerPos.y + 0.5f, playerPos.z);
             mainCamera.enabled = false;
@@ -50,9 +57,14 @@ namespace Scene1
             cerAnimator.SetBool(IsScared, true);
             jumpscareAudio.Play();
             yield return new WaitForSeconds(2.25f);
+
+            if (!isJumpscareActive) yield break;
+
             SceneManager.LoadScene("GameOverScene");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+
+            isJumpscareActive = false;
         }
 
         private bool IsWithinReach()
