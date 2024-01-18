@@ -48,6 +48,7 @@ namespace UI
                 if (IsPaused)
                     ResumeGame();
                 else
+                    Cursor.lockState = CursorLockMode.None;
                     PauseGame();
             }
         }
