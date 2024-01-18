@@ -13,11 +13,21 @@ namespace Scene1.Computer.Styx
                 intText.SetActive(true);
         }
 
-        private void OnTriggerStay2D(Collider2D other)
+        private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
-                // THIS WILL GIVE AN EXTRA STAR ENDING (MAX OF 2)
-                SceneManager.LoadScene("TitleScene");
+            if (other.CompareTag("Player") && intText != null)
+                intText.SetActive(false);
+        }
+
+        void Update()
+        {
+            if (intText.activeSelf)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    SceneManager.LoadScene("TitleScene");
+                }
+            }
         }
     }
 }
