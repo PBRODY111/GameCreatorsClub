@@ -9,6 +9,7 @@ namespace Scene1
         public float toxicLevel;
         public float timer;
         public float timer1;
+        public float timerDelay = 0.1f;
         [SerializeField] private GameObject toxinUI;
         [SerializeField] private Slider toxinSlider;
         [SerializeField] private GameObject toxinOverlay;
@@ -55,7 +56,7 @@ namespace Scene1
                 {
                     timer += Time.deltaTime;
 
-                    if (timer >= 0.1f)
+                    if (timer >= timerDelay)
                     {
                         timer = 0f;
                         toxicLevel += 0.1f;
