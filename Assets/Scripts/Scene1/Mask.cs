@@ -4,6 +4,7 @@ using UnityEngine;
 public class Mask : MonoBehaviour
 {
     public GameObject maskObject; // Reference to the GameObject named "maskObject"
+    public GameObject intText2; // Reference to the GameObject named "maskObject"
     private bool isMoving = false; // Flag to prevent multiple simultaneous movements
     public Scene1.Toxin toxin;
 
@@ -45,6 +46,7 @@ public class Mask : MonoBehaviour
 
         // Reset the flag after the movement is complete
         isMoving = true;
+        intText2.SetActive(true);
         toxin.timerDelay = 0.5f;
     }
 
@@ -70,6 +72,7 @@ public class Mask : MonoBehaviour
 
         // Reset the flag after the movement is complete
         isMoving = false;
+        intText2.SetActive(false);
         toxin.timerDelay = 0.1f;
     }
 }
