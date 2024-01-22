@@ -71,6 +71,11 @@ namespace Player.Inventory
                     HoldItem();
                     RemoveItem();
                     break;
+                case InventoryItem.ItemType.Ladder:
+                    Instantiate(Player.Instance.ladderPrefab, Player.Instance.transform.position + Player.Instance.transform.forward, Quaternion.Euler(0f, 180f, 0f));
+                    HoldItem();
+                    RemoveItem();
+                    break;
             }
         }
     }

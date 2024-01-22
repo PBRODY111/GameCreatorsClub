@@ -16,6 +16,7 @@ namespace Player
 
         public Camera mainCamera;
         public GameObject stoolPrefab;
+        public GameObject ladderPrefab;
         public int selectedslot;
 
         private PlayerMovement _playerMovement;
