@@ -24290,6 +24290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reach: 2
   intText3: {fileID: 1195845257}
+  intText: {fileID: 1092012639}
   ladderUI: {fileID: 1632147464}
 --- !u!65 &833428062
 BoxCollider:

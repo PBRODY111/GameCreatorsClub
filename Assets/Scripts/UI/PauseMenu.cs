@@ -52,6 +52,12 @@ namespace UI
                     PauseGame();
             }
         }
+        
+        void Update(){
+            if(pauseMenu.activeSelf){
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
 
         // OPTIONS
         public void OptionsMenu()

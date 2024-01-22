@@ -8,16 +8,19 @@ namespace Scene1
     {
         [SerializeField] private float reach;
         [SerializeField] private GameObject intText3;
+        [SerializeField] private GameObject intText;
 
         [SerializeField] private GameObject ladderUI;
+        private bool hasPoles = false;
 
-        private void Update()
+        void Update()
         {
             if (ladderUI.activeSelf && Input.GetKeyDown(KeyCode.Escape))
             {
                 ladderUI.SetActive(false);
                 PauseMenu.IsPaused = false;
-                Cursor.lockState = CursorLockMode.Locked;
+                Player.Player.Instance.LockCursor();
+                Player.Player.Instance.EnableMovement();
             }
         }
 
@@ -28,14 +31,28 @@ namespace Scene1
 
         private void OnMouseOver()
         {
-            intText3.GetComponent<TMP_Text>().text = "POLES NEEDED TO INTERACT";
-            intText3.SetActive(!ladderUI.activeSelf && IsWithinReach());
+            if(!hasPoles){
+                intText3.GetComponent<TMP_Text>().text = "POLES NEEDED TO INTERACT";
+                intText3.SetActive(!ladderUI.activeSelf && IsWithinReach());
 
-            if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Poles"))
-            {
-                ladderUI.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
-                PauseMenu.IsPaused = true;
+                if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Poles"))
+                {
+                    ladderUI.SetActive(true);
+                    hasPoles = true;
+                    PauseMenu.IsPaused = true;
+                    Player.Player.Instance.DisableMovement();
+                    Player.Player.Instance.UnlockCursor();
+                }
+            } else{
+                intText.SetActive(!ladderUI.activeSelf && IsWithinReach());
+                if (Input.GetKeyDown(KeyCode.E) && IsWithinReach())
+                {
+                    ladderUI.SetActive(true);
+                    hasPoles = true;
+                    PauseMenu.IsPaused = true;
+                    Player.Player.Instance.DisableMovement();
+                    Player.Player.Instance.UnlockCursor();
+                }
             }
         }
 
