@@ -24300,6 +24300,7 @@ MonoBehaviour:
   intText3: {fileID: 1195845257}
   intText: {fileID: 1092012639}
   ladderUI: {fileID: 1632147464}
+  ladderObj: {fileID: 1210654107}
 --- !u!65 &833428062
 BoxCollider:
   m_ObjectHideFlags: 0
