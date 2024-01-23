@@ -1,6 +1,7 @@
 using TMPro;
 using UI;
 using UnityEngine;
+using Player.Inventory;
 
 namespace Scene1
 {
@@ -67,6 +68,7 @@ namespace Scene1
                 if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Poles"))
                 {
                     ladderUI.SetActive(true);
+                    //Player.Player.Instance.GetComponent<InventoryItemController>().RemoveItem();
                     hasPoles = true;
                     PauseMenu.IsPaused = true;
                     Player.Player.Instance.DisableMovement();
