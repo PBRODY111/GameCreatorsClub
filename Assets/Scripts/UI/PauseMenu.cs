@@ -41,21 +41,14 @@ namespace UI
             resolutionDropdown.RefreshShownValue();
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (IsPaused)
                     ResumeGame();
                 else
-                    Cursor.lockState = CursorLockMode.None;
                     PauseGame();
-            }
-        }
-        
-        void Update(){
-            if(pauseMenu.activeSelf){
-                Cursor.lockState = CursorLockMode.None;
             }
         }
 
@@ -124,7 +117,8 @@ namespace UI
             clickAudio.Play();
             pauseMenu.SetActive(true);
             options.SetActive(false);
-            Cursor.lockState = CursorLockMode.None;
+            Player.Player.Instance.DisableMovement();
+            Player.Player.Instance.UnlockCursor();
             Time.timeScale = 0f;
             IsPaused = true;
         }
@@ -134,7 +128,8 @@ namespace UI
             clickAudio.Play();
             pauseMenu.SetActive(false);
             options.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
+            Player.Player.Instance.EnableMovement();
+            Player.Player.Instance.LockCursor();
             Time.timeScale = 1f;
             IsPaused = false;
         }
@@ -143,7 +138,7 @@ namespace UI
         {
             clickAudio.Play();
             Time.timeScale = 1f;
-            string currentSceneName = SceneManager.GetActiveScene().name;
+            var currentSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene(currentSceneName);
             IsPaused = false;
         }
