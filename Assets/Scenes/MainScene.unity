@@ -38136,7 +38136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea686e1d14bf4a4da2ef054ea27c053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reach: 20
+  reach: 3
   intText3: {fileID: 1195845257}
   button: {fileID: 1327909060}
   vent: {fileID: 1087959504}
@@ -38152,7 +38152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea686e1d14bf4a4da2ef054ea27c053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reach: 20
+  reach: 3
   intText3: {fileID: 1195845257}
   button: {fileID: 1327909061}
   vent: {fileID: 1087959504}
@@ -38168,7 +38168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea686e1d14bf4a4da2ef054ea27c053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reach: 20
+  reach: 3
   intText3: {fileID: 1195845257}
   button: {fileID: 1327909062}
   vent: {fileID: 1087959504}
@@ -38184,7 +38184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea686e1d14bf4a4da2ef054ea27c053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reach: 20
+  reach: 3
   intText3: {fileID: 1195845257}
   button: {fileID: 1327909063}
   vent: {fileID: 1087959504}

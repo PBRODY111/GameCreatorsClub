@@ -47,6 +47,9 @@ namespace Scene1
                 PauseMenu.IsPaused = false;
                 Player.Player.Instance.LockCursor();
                 Player.Player.Instance.EnableMovement();
+                intText.SetActive(false);
+                intText3.SetActive(false);
+                gameObject.SetActive(false);
             }
         }
 

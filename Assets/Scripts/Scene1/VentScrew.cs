@@ -27,7 +27,7 @@ namespace Scene1
                 if (Player.Player.Instance.EpicModeEnabled())
                     RemoveButton();
 
-                else if (Player.Player.Instance.IsHolding("Screwdriver"))
+                else if (Player.Player.Instance.IsHolding("Screwdriver") && IsWithinReach())
                     RotateButton();
             }
         }

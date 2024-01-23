@@ -19,6 +19,7 @@ public class GlitchMaterialController : MonoBehaviour
         }
 
         // Start the coroutine for changing textures
+        glitchMaterial.SetTexture("_MainTex", originalTexture);
         StartCoroutine(ChangeTexturesPeriodically());
     }
 
