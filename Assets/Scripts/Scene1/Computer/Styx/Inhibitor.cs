@@ -1,14 +1,30 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using PreCutscene;
 
 namespace Scene1.Computer.Styx
 {
     public class Inhibitor : MonoBehaviour
     {
         public GameObject intText;
+        private bool ended = true;
+
+        private readonly string[] _text =
+        {
+            "You shouldn't be doing this..."
+        };
+
+        private TypewriterUI _typewriterUi;
+
+        private void Start()
+        {
+            
+        }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            _typewriterUi = transform.GetComponent<TypewriterUI>();
             if (other.CompareTag("Player") && intText != null)
                 intText.SetActive(true);
         }
@@ -23,11 +39,25 @@ namespace Scene1.Computer.Styx
         {
             if (intText.activeSelf)
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E) && ended)
                 {
-                    SceneManager.LoadScene("TitleScene");
+                    StartCoroutine(CutScene());
+                    ended = false;
                 }
             }
+        }
+
+        private IEnumerator CutScene()
+        {
+            yield return new WaitForSeconds(0.5f);
+            foreach (var line in _text)
+            {
+                _typewriterUi.SetText(line);
+                _typewriterUi.Write();
+                yield return new WaitForSeconds(_typewriterUi.GetTimeBetween() * line.Length + 1f);
+            }
+            yield return new WaitForSeconds(2f);
+            SceneManager.LoadScene("WarningScene");
         }
     }
 }
