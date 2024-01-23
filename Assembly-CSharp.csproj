@@ -73,6 +73,8 @@
      <Compile Include="Assets/Scripts/Stereo.cs" />
      <Compile Include="Assets/Scripts/TitleScene/MainMenu.cs" />
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_A.cs" />
+     <Compile Include="Assets/Scripts/Scene1/BellPlayer.cs" />
+     <Compile Include="Assets/Scripts/Scene1/Mask.cs" />
      <Compile Include="Assets/Scripts/UI/SplashScreen.cs" />
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark01_UGUI.cs" />
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/SimpleScript.cs" />
@@ -91,6 +93,7 @@
      <Compile Include="Assets/Scripts/Player/Inventory/InventoryItemController.cs" />
      <Compile Include="Assets/Scripts/Scene1/Toxin.cs" />
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_DigitValidator.cs" />
+     <Compile Include="Assets/Scripts/Scene2/GlitchMaterialController.cs" />
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_FrameRateCounter.cs" />
      <Compile Include="Assets/Scripts/Scene1/Computer/Computer.cs" />
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TextConsoleSimulator.cs" />
@@ -133,6 +136,7 @@
      <Compile Include="Assets/Scripts/Scene6/Engineer.cs" />
      <Compile Include="Assets/Scripts/Scene1/Drawer.cs" />
      <Folder Include="Assets" />
+     <Folder Include="Assets/Models/grandfather-clock/textures" />
      <Folder Include="Assets/Models/characters/paradox" />
      <Folder Include="Assets/Models/old-fashioned-school-desk" />
      <Folder Include="Assets/unity-vhsglitch-master/Scripts" />
@@ -140,6 +144,7 @@
      <Folder Include="Assets/Scripts/UI" />
      <Folder Include="Assets/TextMesh Pro/Examples &amp; Extras/Sprites" />
      <Folder Include="Assets/Models/macintosh/textures" />
+     <Folder Include="Assets/Models/iron-shelf/source" />
      <Folder Include="Assets/Audio/voices/davis" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <Folder Include="Assets/Audio/music" />
@@ -159,12 +164,15 @@
      <None Include="Assets/TextMesh Pro/Examples &amp; Extras/Fonts/Oswald-Bold - OFL.txt" />
      <Folder Include="Assets/Images/glitched" />
      <Folder Include="Assets/Models/blackboard/textures" />
+     <Folder Include="Assets/Models/characters/corpse" />
      <Folder Include="Assets/Models/old-fashioned-school-desk/source" />
+     <Folder Include="Assets/Scripts/Scene2" />
      <Folder Include="Assets/Models/characters/charlie/textures" />
      <None Include="Assets/TextMesh Pro/Examples &amp; Extras/Fonts/Anton OFL.txt" />
      <Folder Include="Assets/Audio/voices/cerberus" />
      <Folder Include="Assets/TextMesh Pro/Resources/Fonts &amp; Materials" />
      <Folder Include="Assets/Images/Materials" />
+     <Folder Include="Assets/Models/grandfather-clock" />
      <Folder Include="Assets/Images/apps" />
      <Folder Include="Assets/Models/old-fashioned-school-desk/textures" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" />
@@ -192,6 +200,8 @@
      <Folder Include="Assets/TextMesh Pro" />
      <Folder Include="Assets/Models/characters/davis/textures" />
      <Folder Include="Assets/Animations/gameover" />
+     <Folder Include="Assets/Models/grandfather-clock/source" />
+     <Folder Include="Assets/Models/iron-shelf/textures" />
      <Folder Include="Assets/Audio/voices/technicians/technician3" />
      <Folder Include="Assets/TextMesh Pro/Examples &amp; Extras/Fonts" />
      <Folder Include="Assets/TextMesh Pro/Examples &amp; Extras/Resources" />
@@ -210,6 +220,7 @@
      <Folder Include="Assets/Models/office-desk" />
      <Folder Include="Assets/TextMesh Pro/Examples &amp; Extras/Materials" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF.shader" />
+     <Folder Include="Assets/Models/animatronics" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" />
      <None Include="Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" />
      <Folder Include="Assets/Scripts/Scene1/Computer/Styx" />
@@ -219,6 +230,7 @@
      <None Include="Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" />
      <Folder Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts" />
      <Folder Include="Assets/Audio" />
+     <Folder Include="Assets/Models/iron-shelf" />
      <Folder Include="Assets/Models" />
      <Folder Include="Assets/Models/characters/myra/textures" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" />
@@ -240,6 +252,7 @@
      <Folder Include="Assets/TextMesh Pro/Examples &amp; Extras/Scenes" />
      <Folder Include="Assets/Scripts" />
      <Folder Include="Assets/Models/characters/ber" />
+     <Folder Include="Assets/Models/iron-shelf/source/Iron shelf" />
      <Folder Include="Assets/Images/jumpscares" />
      <Folder Include="Assets/Items" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" />
@@ -249,6 +262,7 @@
      <Folder Include="Assets/Models/macintosh" />
      <Folder Include="Assets/Images/animated/liar" />
      <Folder Include="Assets/Models/blackboard/source" />
+     <Folder Include="Assets/Models/characters/corpse/textures" />
      <Folder Include="Assets/Models/blackboard" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" />
      <Folder Include="Assets/unity-vhsglitch-master/Shaders" />
@@ -269,6 +283,7 @@
      <Folder Include="Assets/Unity.VisualScripting.Generated" />
      <Folder Include="Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials" />
      <Folder Include="Assets/Models/wetfloor/textures" />
+     <Folder Include="Assets/Animations/Room3" />
      <Folder Include="Assets/Materials" />
      <Folder Include="Assets/TextMesh Pro/Examples &amp; Extras/Resources/Color Gradient Presets" />
      <None Include="Assets/TextMesh Pro/Sprites/EmojiOne.json" />
