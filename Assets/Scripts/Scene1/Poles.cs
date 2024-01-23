@@ -43,7 +43,7 @@ namespace Scene1
             if(CheckScrewConditions(screwTransform)&&CheckScrew1Conditions(screw1Transform)&&CheckScrew2Conditions(screw2Transform)&&CheckScrew3Conditions(screw3Transform)&&CheckScrew4Conditions(screw4Transform))
             {
                 ladderUI.SetActive(false);
-                ladderObj.SetActive(false);
+                ladderObj.SetActive(true);
                 PauseMenu.IsPaused = false;
                 Player.Player.Instance.LockCursor();
                 Player.Player.Instance.EnableMovement();
@@ -92,7 +92,7 @@ namespace Scene1
             // Check if Z rotation is 45 or -135 and width is 50
             return (Mathf.Approximately(screwTransform.localRotation.eulerAngles.z, 45f) ||
                     Mathf.Approximately(screwTransform.localRotation.eulerAngles.z, -135f)) &&
-                Mathf.Approximately(screwTransform.localScale.x, 50f);
+                Mathf.Approximately(screwTransform.GetComponent<RectTransform>().rect.width, 50f);
         }
 
         bool CheckScrew3Conditions(Transform screw3Transform)
@@ -100,7 +100,7 @@ namespace Scene1
             // Check if Z rotation is 90 or -90 and width is 50
             return (Mathf.Approximately(screw3Transform.localRotation.eulerAngles.z, 90f) ||
                     Mathf.Approximately(screw3Transform.localRotation.eulerAngles.z, -90f)) &&
-                Mathf.Approximately(screw3Transform.localScale.x, 50f);
+                Mathf.Approximately(screw3Transform.GetComponent<RectTransform>().rect.width, 50f);
         }
 
         bool CheckScrew1Conditions(Transform screw1Transform)
@@ -108,7 +108,7 @@ namespace Scene1
             // Check if Z rotation is 90 or -90 and width is 50
             return (Mathf.Approximately(screw1Transform.localRotation.eulerAngles.z, -45f) ||
                     Mathf.Approximately(screw1Transform.localRotation.eulerAngles.z, 135f)) &&
-                Mathf.Approximately(screw1Transform.localScale.x, 50f);
+                Mathf.Approximately(screw1Transform.GetComponent<RectTransform>().rect.width, 50f);
         }
 
         bool CheckScrew4Conditions(Transform screw4Transform)
@@ -116,7 +116,7 @@ namespace Scene1
             // Check if Z rotation is 90 or -90 and width is 50
             return (Mathf.Approximately(screw4Transform.localRotation.eulerAngles.z, 0f) ||
                     Mathf.Approximately(screw4Transform.localRotation.eulerAngles.z, 180f)) &&
-                Mathf.Approximately(screw4Transform.localScale.x, 80f);
+                Mathf.Approximately(screw4Transform.GetComponent<RectTransform>().rect.width, 80f);
         }
 
         bool CheckScrew2Conditions(Transform screw2Transform)
@@ -124,7 +124,7 @@ namespace Scene1
             // Check if Z rotation is 90 or -90 and width is 50
             return (Mathf.Approximately(screw2Transform.localRotation.eulerAngles.z, 90f) ||
                     Mathf.Approximately(screw2Transform.localRotation.eulerAngles.z, -90f)) &&
-                Mathf.Approximately(screw2Transform.localScale.x, 80f);
+                Mathf.Approximately(screw2Transform.GetComponent<RectTransform>().rect.width, 80f);
         }
     }
 }
