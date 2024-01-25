@@ -1751,6 +1751,7 @@ GameObject:
   - component: {fileID: 1615955908}
   - component: {fileID: 1615955910}
   - component: {fileID: 1615955909}
+  - component: {fileID: 1615955911}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -1800,14 +1801,17 @@ MonoBehaviour:
   m_text: 'VOICE ACTORS
 
 
+
     CHARLIE
 
     STEPHEN MULDERRY
 
 
+
     MYRA
 
     TBA
+
 
 
     MR.
@@ -1816,27 +1820,227 @@ MonoBehaviour:
     DAVIS CLARKE
 
 
+
+    CHEMISTRY TEACHER
+
+    TBA
+
+
+
     THE ENGINEER
 
-    JAMES SONG
+    JAMES
+    SONG
+
 
 
     SYSTEM
 
-    FRANK
-    HU
+    FRANK HU
+
 
 
     TECHNICIANS
 
     ALEX RIVAS
 
-    RHYS DE HAAN
+    RHYS
+    DE HAAN
 
     JORDAN ZHAO
 
-    TBA
-    (SAM?)'
+    SAM SAH-NIXON
+
+
+
+    MISC.
+
+    RAIHAN BHUIYA
+
+    (MAYBE
+    ONE/TWO MORE?)
+
+
+
+
+
+
+    ARTWORK
+
+
+
+    2D
+
+    ZACH D''AMICO
+
+    STEPHEN MULDERRY
+
+
+
+    3D
+
+    JAMES
+    SONG
+
+    (DAVIS?)
+
+
+
+    CREATIVE COMMONS MODELS ON SKETCHFAB
+
+    CURLYFRYWHY
+
+    GUNNAR
+    CORREA
+
+    SAEED KHALILI
+
+    OLLI_ONE
+
+    SHEPDES
+
+    ANKUSH GUPTA
+
+    TRAIANDUMBRAVA
+
+    LASSI
+    KAUKONEN
+
+    IROVETSKIY
+
+    PERSIANTIGER
+
+    THUNDER
+
+    WILLIE EVENSSON
+
+
+
+    CREATIVE
+    COMMONS TEXTURES
+
+    ISTOCKPHOTO
+
+    FREEPIK
+
+    PIXABAY
+
+    PIXILART
+
+
+
+
+
+
+    FONTS
+
+    https://www.dafont.com/electronic-highway-sign.font
+
+    https://www.dafont.com/a-dripping-marker.font
+
+    LITTLEBOY
+
+
+
+
+
+
+    MUSIC
+
+    JAMES
+    SONG
+
+
+
+    "WINTER" BY ANTONIO VIVALDI
+
+
+
+
+
+
+    AUDIO
+
+    CREATIVE COMMONS
+    AUDIO FROM PIXABAY
+
+    APPLE SOUND EFFECTS
+
+
+
+
+
+
+    CODING
+
+    SAM SAH-NIXON
+
+    RHYS
+    DE HAAN
+
+
+
+    HEAD OF SOFTWARE
+
+    SAM SAH-NIXON
+
+
+
+    EXTERNAL SCRIPTS
+
+    https://github.com/staffantan/unity-vhsglitch
+
+    https://gist.github.com/ftvs/5822103
+
+
+
+
+
+
+    TESTING
+    TEAM
+
+    RHYS DE HAAN
+
+    ALEX RIVAS
+
+    ARAV RAMASWAMY
+
+    COLETTE SAWYER
+
+    IRIS
+    GU
+
+    JAYMIN DING
+
+
+
+
+
+
+    THE UNKNOWINGVERSE BY
+
+    JAMES SONG
+
+
+
+
+
+
+    MADE
+    WITH UNITY AND BLENDER
+
+
+
+
+
+
+
+
+
+
+
+    THE END'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -1913,6 +2117,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615955907}
   m_CullTransparentMesh: 1
+--- !u!95 &1615955911
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615955907}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d695cfcc7ec374f33b5b0d4a5134a9b9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1711153315
 GameObject:
   m_ObjectHideFlags: 0
