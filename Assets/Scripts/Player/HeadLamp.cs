@@ -25,7 +25,9 @@ namespace Player
         private Color _color;
 
         private bool _fullbright;
+        private bool _flashlightOn = true;
         private Light[] _lights;
+        private GameObject[] _lightObj;
 
         private void Start()
         {
@@ -33,29 +35,44 @@ namespace Player
             for (var i = 0; i < _lights.Length; i++)
                 _lights[i] = lightParent.transform.GetChild(i).GetComponent<Light>();
 
+            _lightObj = new GameObject[3];
+            for (var i = 0; i < _lightObj.Length; i++)
+                _lightObj[i] = lightParent.transform.GetChild(i).gameObject;
+
             _color = _lights[0].color;
         }
 
         private void Update()
         {
-            if (_fullbright)
-            {
-                _batteryLife = 4000f;
-                return;
+            if(_flashlightOn){
+                if (_fullbright)
+                {
+                    _batteryLife = 4000f;
+                    return;
+                }
+
+                if (_batteryLife > -1000f)
+                    _batteryLife -= Time.deltaTime * batteryDrain;
+                lightStage = Mathf.CeilToInt(_batteryLife / 1000f);
+                _lights[0].intensity = 0.2f * (lightStage + 1);
+                _lights[1].intensity = 0.07f * (lightStage + 1);
+                _lights[2].intensity = 0.07f * (lightStage + 1);
+                if (canvas.transform.GetChild(0).childCount == lightStage + 1) return;
+
+                var temp = canvas.transform.GetChild(0).childCount;
+                for (var i = 0; i < temp; i++) Destroy(canvas.transform.GetChild(0).GetChild(i).gameObject);
+
+                for (var i = 0; i < lightStage + 1; i++) Instantiate(batteryBarPrefab, canvas.transform.GetChild(0));
             }
+        }
 
-            if (_batteryLife > -1000f)
-                _batteryLife -= Time.deltaTime * batteryDrain;
-            lightStage = Mathf.CeilToInt(_batteryLife / 1000f);
-            _lights[0].intensity = 0.2f * (lightStage + 1);
-            _lights[1].intensity = 0.07f * (lightStage + 1);
-            _lights[2].intensity = 0.07f * (lightStage + 1);
-            if (canvas.transform.GetChild(0).childCount == lightStage + 1) return;
-
-            var temp = canvas.transform.GetChild(0).childCount;
-            for (var i = 0; i < temp; i++) Destroy(canvas.transform.GetChild(0).GetChild(i).gameObject);
-
-            for (var i = 0; i < lightStage + 1; i++) Instantiate(batteryBarPrefab, canvas.transform.GetChild(0));
+        private void FixedUpdate(){
+            if (Input.GetKeyDown(KeyCode.F)){
+                _lightObj[0].SetActive(!_flashlightOn);
+                _lightObj[1].SetActive(!_flashlightOn);
+                _lightObj[2].SetActive(!_flashlightOn);
+                _flashlightOn = !_flashlightOn;
+            }
         }
 
         public void Fullbright()
