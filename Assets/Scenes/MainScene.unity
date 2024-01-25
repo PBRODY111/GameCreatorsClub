@@ -1273,7 +1273,7 @@ GameObject:
   - component: {fileID: 26120693}
   - component: {fileID: 26120692}
   m_Layer: 0
-  m_Name: Screw
+  m_Name: Screw (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
