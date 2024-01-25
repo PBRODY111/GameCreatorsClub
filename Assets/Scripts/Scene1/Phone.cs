@@ -126,6 +126,11 @@ namespace Scene1
                     yield return new WaitForSeconds(1.5f);
                 }
             }
+            else if (_entered == numb4)
+            {
+                numbAudio.clip = numbers[14];
+                numbAudio.Play();
+            }
             else if (_entered == numb5)
             {
                 numbAudio.clip = numbers[3];
