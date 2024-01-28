@@ -1776,7 +1776,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -696}
-  m_SizeDelta: {x: 1000, y: 50}
+  m_SizeDelta: {x: 1300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1615955909
 MonoBehaviour:
@@ -1798,7 +1798,69 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'VOICE ACTORS
+  m_text: 'They say everything you do comes back to you,
+
+    In solemn echoes, where
+    shadows construe.
+
+    You, a traveler, in the cosmic expanse,
+
+    Navigating
+    realms of chance and circumstance.
+
+
+
+
+    In the dance of shadows, where echoes
+    persist,
+
+    Seek the solace, let grace coexist.
+
+    Empires rise, a testament
+    to might,
+
+    Yet, in their fall, a somber light.
+
+
+
+
+    Greed''s allure, a
+    transient song,
+
+    In the cosmic symphony, where you belong.
+
+    Guilt, a
+    mirror reflecting deeds untold,
+
+    In your journey, let the narrative unfold.
+
+
+
+
+    Break
+    the cycle, forge a path anew,
+
+    In the abstract realms, where destinies accrue.
+
+    Rise
+    from shadows to the sublime,
+
+    For you, Zagreus, will rewrite our time.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    VOICE
+    ACTORS
 
 
 
@@ -1814,10 +1876,10 @@ MonoBehaviour:
 
 
 
-    MR.
-    CLARKE
+    MR. CLARKE
 
-    DAVIS CLARKE
+    DAVIS
+    CLARKE
 
 
 
@@ -1829,14 +1891,14 @@ MonoBehaviour:
 
     THE ENGINEER
 
-    JAMES
-    SONG
+    JAMES SONG
 
 
 
     SYSTEM
 
-    FRANK HU
+    FRANK
+    HU
 
 
 
@@ -1844,12 +1906,12 @@ MonoBehaviour:
 
     ALEX RIVAS
 
-    RHYS
-    DE HAAN
+    RHYS DE HAAN
 
     JORDAN ZHAO
 
-    SAM SAH-NIXON
+    SAM
+    SAH-NIXON
 
 
 
@@ -1857,8 +1919,7 @@ MonoBehaviour:
 
     RAIHAN BHUIYA
 
-    (MAYBE
-    ONE/TWO MORE?)
+    (MAYBE ONE/TWO MORE?)
 
 
 
@@ -1871,7 +1932,8 @@ MonoBehaviour:
 
     2D
 
-    ZACH D''AMICO
+    ZACH
+    D''AMICO
 
     STEPHEN MULDERRY
 
@@ -1879,19 +1941,18 @@ MonoBehaviour:
 
     3D
 
-    JAMES
-    SONG
+    JAMES SONG
 
     (DAVIS?)
 
 
 
-    CREATIVE COMMONS MODELS ON SKETCHFAB
+    CREATIVE
+    COMMONS MODELS ON SKETCHFAB
 
     CURLYFRYWHY
 
-    GUNNAR
-    CORREA
+    GUNNAR CORREA
 
     SAEED KHALILI
 
@@ -1899,12 +1960,12 @@ MonoBehaviour:
 
     SHEPDES
 
-    ANKUSH GUPTA
+    ANKUSH
+    GUPTA
 
     TRAIANDUMBRAVA
 
-    LASSI
-    KAUKONEN
+    LASSI KAUKONEN
 
     IROVETSKIY
 
@@ -1912,12 +1973,12 @@ MonoBehaviour:
 
     THUNDER
 
-    WILLIE EVENSSON
+    WILLIE
+    EVENSSON
 
 
 
-    CREATIVE
-    COMMONS TEXTURES
+    CREATIVE COMMONS TEXTURES
 
     ISTOCKPHOTO
 
@@ -1997,8 +2058,8 @@ MonoBehaviour:
 
 
 
-    TESTING
-    TEAM
+    ALPHA
+    TESTING TEAM
 
     RHYS DE HAAN
 
@@ -2006,10 +2067,10 @@ MonoBehaviour:
 
     ARAV RAMASWAMY
 
-    COLETTE SAWYER
+    COLETTE
+    SAWYER
 
-    IRIS
-    GU
+    IRIS GU
 
     JAYMIN DING
 
@@ -2018,7 +2079,7 @@ MonoBehaviour:
 
 
 
-    THE UNKNOWINGVERSE BY
+    STORY AND GAME BY
 
     JAMES SONG
 
@@ -2040,10 +2101,10 @@ MonoBehaviour:
 
 
 
-    THE END'
+    END CHAPTER'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2079,7 +2140,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 15
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0

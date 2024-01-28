@@ -21,7 +21,7 @@ namespace UI
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.E) && _canSkip) SceneManager.LoadScene(2);
+            if (Input.GetKeyDown(KeyCode.E) && _canSkip) SceneManager.LoadScene("TitleScene");
         }
 
         private IEnumerator CreditSequence()
@@ -37,7 +37,7 @@ namespace UI
             img1.SetActive(true);
             yield return new WaitForSeconds(1f);
             img1.SetActive(false);
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("TitleScene");
         }
     }
 }
