@@ -12,7 +12,7 @@ namespace Player
 
         [FormerlySerializedAs("_hotbar")]
         [SerializeField]
-        private GameObject hotbar;
+        public GameObject hotbar;
 
         public Camera mainCamera;
         public GameObject stoolPrefab;

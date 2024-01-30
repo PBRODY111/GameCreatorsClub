@@ -27,6 +27,7 @@ namespace Scene1
         private float zRotation3;
         private float zRotation4;
         private float epsilon = 0.001f;
+        public int numScrews = 0;
 
         void Start()
         {
@@ -80,7 +81,8 @@ namespace Scene1
                 {
 
                     ladderUI.SetActive(true);
-                    Player.Player.Instance.hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().RemoveItem();
+                    Player.Player.Instance.hotbar.transform.GetChild(Player.Player.Instance.selectedslot).GetComponent<InventoryItemController>().RemoveItem();
+                    Player.Player.Instance.selectedslot = -1;
                     hasPoles = true;
                     PauseMenu.IsPaused = true;
                     Player.Player.Instance.DisableMovement();
@@ -97,8 +99,6 @@ namespace Scene1
                     Player.Player.Instance.UnlockCursor();
                 }
             }
-            Debug.Log((Approximately(zRotation3, 90f, epsilon) || Approximately(zRotation3, -90f, epsilon)));
-            Debug.Log(screw3Transform.GetComponent<RectTransform>().rect.width == 50);
         }
 
         private bool IsWithinReach()

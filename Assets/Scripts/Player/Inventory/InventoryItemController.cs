@@ -38,13 +38,12 @@ namespace Player.Inventory
             }
             else
             {
-                transform.parent.GetChild(Player.Instance.selectedslot).GetComponent<InventoryItemController>()
-                    .ToggleColor();
+                transform.parent.GetChild(Player.Instance.selectedslot).GetComponent<InventoryItemController>().ToggleColor();
                 Player.Instance.selectedslot = transform.GetSiblingIndex();
             }
         }
 
-        private void ToggleColor()
+        public void ToggleColor()
         {
             var imag = GetComponent<Image>();
             imag.color = imag.color == _defaultColor ? _selectedColor : _defaultColor;

@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using Player.Inventory;
 
 namespace Scene1
 {
@@ -10,6 +11,7 @@ namespace Scene1
         [SerializeField] private GameObject intText3;
         [SerializeField] private GameObject button2;
         public UnityEvent rightClick;
+        [SerializeField] private Poles poles;
 
         public void OnPointerClick(PointerEventData eventData)
         {
@@ -34,6 +36,12 @@ namespace Scene1
             {
                 button2.SetActive(true);
                 button.SetActive(false);
+                poles.numScrews++;
+                Debug.Log(poles.numScrews);
+                if(poles.numScrews == 5){
+                    Player.Player.Instance.hotbar.transform.GetChild(Player.Player.Instance.selectedslot).GetComponent<InventoryItemController>().RemoveItem();
+                    Player.Player.Instance.selectedslot = -1;
+                }
             }
         }
     }

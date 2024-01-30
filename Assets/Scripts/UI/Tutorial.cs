@@ -14,6 +14,7 @@ namespace UI
         private GameObject _page2;
         private GameObject _page3;
         private GameObject _page4;
+        private GameObject _page5;
 
         public void Start()
         {
@@ -22,6 +23,7 @@ namespace UI
             _page2 = transform.GetChild(1).gameObject;
             _page3 = transform.GetChild(2).gameObject;
             _page4 = transform.GetChild(3).gameObject;
+            _page5 = transform.GetChild(4).gameObject;
             gameObject.SetActive(true);
             _page1.SetActive(true);
 
@@ -31,7 +33,9 @@ namespace UI
             _page3.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(GoPage2);
             _page3.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(GoPage4);
             _page4.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(GoPage3);
-            _page4.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(Hide);
+            _page4.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(GoPage5);
+            _page5.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(GoPage4);
+            _page5.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(Hide);
             Player.Player.Instance.DisableMovement();
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0f;
@@ -43,6 +47,7 @@ namespace UI
             _page2.SetActive(false);
             _page3.SetActive(false);
             _page4.SetActive(false);
+            _page5.SetActive(false);
         }
 
         public void GoPage2()
@@ -51,6 +56,7 @@ namespace UI
             _page2.SetActive(true);
             _page3.SetActive(false);
             _page4.SetActive(false);
+            _page5.SetActive(false);
         }
 
         public void GoPage3()
@@ -59,6 +65,7 @@ namespace UI
             _page2.SetActive(false);
             _page3.SetActive(true);
             _page4.SetActive(false);
+            _page5.SetActive(false);
         }
 
         public void GoPage4()
@@ -67,6 +74,16 @@ namespace UI
             _page2.SetActive(false);
             _page3.SetActive(false);
             _page4.SetActive(true);
+            _page5.SetActive(false);
+        }
+
+        public void GoPage5()
+        {
+            _page1.SetActive(false);
+            _page2.SetActive(false);
+            _page3.SetActive(false);
+            _page4.SetActive(false);
+            _page5.SetActive(true);
         }
 
         public void Hide()
