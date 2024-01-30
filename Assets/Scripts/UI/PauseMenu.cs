@@ -147,7 +147,7 @@ namespace UI
         {
             clickAudio.Play();
             Time.timeScale = 1f;
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("TitleScene");
             IsPaused = false;
         }
     }
