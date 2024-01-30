@@ -78,8 +78,9 @@ namespace Scene1
 
                 if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Poles"))
                 {
+
                     ladderUI.SetActive(true);
-                    //Player.Player.Instance.GetComponent<InventoryItemController>().RemoveItem();
+                    Player.Player.Instance.hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().RemoveItem();
                     hasPoles = true;
                     PauseMenu.IsPaused = true;
                     Player.Player.Instance.DisableMovement();
