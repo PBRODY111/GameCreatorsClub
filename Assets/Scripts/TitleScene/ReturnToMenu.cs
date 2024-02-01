@@ -7,7 +7,10 @@ namespace TitleScene
     {
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene("WarningScene");
+            if (Input.GetMouseButtonDown(0)){
+                Cursor.lockState = CursorLockMode.None;
+                SceneManager.LoadScene("WarningScene");
+            }
         }
     }
 }

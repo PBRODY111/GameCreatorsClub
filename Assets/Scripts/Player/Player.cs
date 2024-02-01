@@ -101,7 +101,7 @@ namespace Player
         
         private void FixedUpdate()
         {
-            if (Input.GetKey(KeyCode.C))
+            if (Input.GetKey(KeyCode.C) && EpicModeEnabled())
             {
                 if(Math.Abs(mainCamera.fieldOfView - 70) < 0.1)
                     mainCamera.fieldOfView = 20;

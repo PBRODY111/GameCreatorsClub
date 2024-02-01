@@ -99,6 +99,21 @@ namespace Scene1.Computer
             if ("" + s == "" + currentString[_letterIndex])
             {
                 selectedClip = _letterIndex == currentString.Length - 1 ? effects[2] : effects[0];
+                if (_letterIndex == currentString.Length - 1)
+                {
+                    _letterIndex = 0;
+                    var routine = currentString switch
+                    {
+                        _ when currentString == string1 => AscalGame1(),
+                        _ when currentString == string2 => AscalGame2(),
+                        _ => AscalWin()
+                    };
+                    StartCoroutine(routine);
+                }
+                else _letterIndex++;
+
+                letterInput.GetComponent<TMP_InputField>().text = "";
+                letterInput.GetComponent<TMP_InputField>().ActivateInputField();
             }
             else
             {
@@ -108,22 +123,6 @@ namespace Scene1.Computer
 
             ascalEffects.clip = selectedClip;
             ascalEffects.Play();
-
-            if (_letterIndex == currentString.Length - 1)
-            {
-                _letterIndex = 0;
-                var routine = currentString switch
-                {
-                    _ when currentString == string1 => AscalGame1(),
-                    _ when currentString == string2 => AscalGame2(),
-                    _ => AscalWin()
-                };
-                StartCoroutine(routine);
-            }
-            else _letterIndex++;
-
-            letterInput.GetComponent<TMP_InputField>().text = "";
-            letterInput.GetComponent<TMP_InputField>().ActivateInputField();
         }
 
         private IEnumerator AscalGame()

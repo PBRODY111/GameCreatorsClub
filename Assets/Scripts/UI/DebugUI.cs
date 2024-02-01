@@ -69,13 +69,13 @@ namespace UI
                 _fpsUpdateTimer = 0f;
             }
 
-            if (Input.GetKeyDown(KeyCode.F4))
+            if (Input.GetKeyDown(KeyCode.F4) && Player.Player.Instance.EpicModeEnabled())
             {
                 var vent = FindObjectOfType<Vent>();
                 StartCoroutine(vent.EscapeFunc());
             }
             
-            if (Input.GetKeyDown(KeyCode.F5))
+            if (Input.GetKeyDown(KeyCode.F5) && Player.Player.Instance.EpicModeEnabled())
             {
                 var jumpscare = FindObjectOfType<Jumpscare>();
                 StartCoroutine(jumpscare.JumpscareSequence());

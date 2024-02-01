@@ -99,6 +99,11 @@ namespace Scene1
                     Player.Player.Instance.UnlockCursor();
                 }
             }
+            Debug.Log(CheckScrew0Conditions(screw0Transform));
+            Debug.Log(CheckScrew1Conditions(screw1Transform));
+            Debug.Log(CheckScrew2Conditions(screw2Transform));
+            Debug.Log(CheckScrew3Conditions(screw3Transform));
+            Debug.Log(CheckScrew4Conditions(screw4Transform));
         }
 
         private bool IsWithinReach()
@@ -114,27 +119,27 @@ namespace Scene1
         bool CheckScrew0Conditions(Transform screw0Transform)
         {
             // Check if Z rotation is 45 or -135 and width is 50
-            return ((Approximately(zRotation0, 45f, epsilon) || Approximately(zRotation0, -135f, epsilon)) &&
+            return ((Approximately(zRotation0, 45f, epsilon) || Approximately(zRotation0, 225f, epsilon)) &&
                 screw0Transform.GetComponent<RectTransform>().rect.width == 50);
         }
 
         bool CheckScrew3Conditions(Transform screw3Transform)
         {
             // Check if Z rotation is 90 or -90 and width is 50
-            return ((Approximately(zRotation3, 90f, epsilon) || Approximately(zRotation3, -90f, epsilon)) &&
+            return ((Approximately(zRotation3, 90f, epsilon) || Approximately(zRotation3, 270f, epsilon)) &&
                 screw3Transform.GetComponent<RectTransform>().rect.width == 50);
         }
 
         bool CheckScrew1Conditions(Transform screw1Transform)
         {
-            // Check if Z rotation is 90 or -90 and width is 50
-            return ((Approximately(zRotation1, -45f, epsilon) || Approximately(zRotation1, 135f, epsilon)) &&
+            // Check if Z rotation is -45 or 135 and width is 50
+            return ((Approximately(zRotation1, 315f, epsilon) || Approximately(zRotation1, 135f, epsilon)) &&
                 screw1Transform.GetComponent<RectTransform>().rect.width == 50);
         }
 
         bool CheckScrew4Conditions(Transform screw4Transform)
         {
-            // Check if Z rotation is 90 or -90 and width is 50
+            // Check if Z rotation is 0 or 180 and width is 50
             return ((Approximately(zRotation4, 0f, epsilon) || Approximately(zRotation4, 180f, epsilon)) &&
                 screw4Transform.GetComponent<RectTransform>().rect.width == 80);
         }
@@ -142,7 +147,7 @@ namespace Scene1
         bool CheckScrew2Conditions(Transform screw2Transform)
         {
             // Check if Z rotation is 90 or -90 and width is 50
-            return ((Approximately(zRotation2, 90f, epsilon) || Approximately(zRotation2, -90f, epsilon)) &&
+            return ((Approximately(zRotation2, 90f, epsilon) || Approximately(zRotation2, 270f, epsilon)) &&
                 screw2Transform.GetComponent<RectTransform>().rect.width == 80);
         }
     }
