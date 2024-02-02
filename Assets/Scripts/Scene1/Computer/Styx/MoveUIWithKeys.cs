@@ -37,8 +37,10 @@ namespace Scene1.Computer.Styx
             var horizontalInput = Input.GetAxis("Horizontal");
             var verticalInput = Input.GetAxis("Vertical");
             
+            /*
             if(Input.GetKeyDown(KeyCode.F3))
                 Epic = !Epic;
+                */
             
             if (Epic)
             {
