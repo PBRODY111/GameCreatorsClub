@@ -5,6 +5,9 @@ namespace TitleScene
 {
     public class ReturnToMenu : MonoBehaviour
     {
+        void Start(){
+            Cursor.lockState = CursorLockMode.None;
+        }
         private void Update()
         {
             if (Input.GetMouseButtonDown(0)){

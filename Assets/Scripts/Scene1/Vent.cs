@@ -47,16 +47,21 @@ namespace Scene1
 
         private void OnMouseOver()
         {
-            if (unscrewed >= 4)
-            {
-                intText3.GetComponent<TMP_Text>().text = "CROWBAR NEEDED TO INTERACT";
-                intText3.SetActive(true);
+            if(IsWithinReach()){
+                if (unscrewed >= 4)
+                {
+                    intText3.GetComponent<TMP_Text>().text = "CROWBAR NEEDED TO INTERACT";
+                    intText3.SetActive(true);
 
-                if (Player.Player.Instance.EpicModeEnabled() && Input.GetMouseButtonDown(1))
-                    StartCoroutine(EscapeFunc());
+                    if (Player.Player.Instance.EpicModeEnabled() && Input.GetMouseButtonDown(1))
+                        StartCoroutine(EscapeFunc());
 
-                if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Crowbar"))
-                    StartCoroutine(EscapeFunc());
+                    if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Crowbar"))
+                        StartCoroutine(EscapeFunc());
+                } else{
+                    intText3.GetComponent<TMP_Text>().text = "UNSCREW FIRST, CROWBAR NEEDED";
+                    intText3.SetActive(true);
+                }
             }
         }
 

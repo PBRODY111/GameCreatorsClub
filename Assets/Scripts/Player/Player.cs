@@ -110,10 +110,6 @@ namespace Player
                 fieldOfView -= Input.mouseScrollDelta.y * 30;
                 mainCamera.fieldOfView = Mathf.Clamp(fieldOfView, 1, 69);
             }
-            else
-            {
-                mainCamera.fieldOfView = 70;
-            }
         }
 
         [CanBeNull]
