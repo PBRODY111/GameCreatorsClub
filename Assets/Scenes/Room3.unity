@@ -44855,6 +44855,7 @@ MonoBehaviour:
   epic: {fileID: 404301887}
   fpsButton: {fileID: 48146602}
   sun: {fileID: 1534555352}
+  pauseMenu: {fileID: 762216705}
   fps: {fileID: 2071997151}
 --- !u!1 &1628145597
 GameObject:

@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Room2.unity
     guid: eba5a3130b91f44358fde236c58185a3
   - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 2ffa1c2e414694fac9d6a8506895297e
+  - enabled: 1
     path: Assets/Scenes/GameOverScene.unity
     guid: 1820d89688f0841b7ba4c525db2cfe8d
   - enabled: 1
