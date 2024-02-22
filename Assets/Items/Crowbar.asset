@@ -16,3 +16,4 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: f17c818c3da2d46449bf59858accd5c4, type: 3}
   itemType: 6
   deselectOnUse: 0
+  modelPrefab: {fileID: 3447786673938207206, guid: 4c55a54c325c84fdea508835d3e85c5e, type: 3}

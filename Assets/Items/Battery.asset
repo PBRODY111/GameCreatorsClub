@@ -15,3 +15,5 @@ MonoBehaviour:
   itemName: Battery
   icon: {fileID: 21300000, guid: bd360b313691c4a1faaf2304ca5f042b, type: 3}
   itemType: 1
+  deselectOnUse: 0
+  modelPrefab: {fileID: 199388587240883088, guid: e97b76530a0921943b3cf95ef9960762, type: 3}

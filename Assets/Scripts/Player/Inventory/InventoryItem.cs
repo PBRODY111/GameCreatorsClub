@@ -23,5 +23,6 @@ namespace Player.Inventory
         public Sprite icon;
         public ItemType itemType;
         public bool deselectOnUse;
+        public GameObject modelPrefab;
     }
 }

@@ -15,3 +15,5 @@ MonoBehaviour:
   itemName: Stool
   icon: {fileID: 21300000, guid: 854bf240eae87427496e8a4b96db3041, type: 3}
   itemType: 2
+  deselectOnUse: 0
+  modelPrefab: {fileID: 205041033105215615, guid: 850ca12dc3cfb624bb324c69fa8c3bf5, type: 3}
