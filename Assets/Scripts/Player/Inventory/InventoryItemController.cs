@@ -85,7 +85,7 @@ namespace Player.Inventory
                 if (item.modelPrefab != null)
                 {
                     // Drop the model of the selected item
-                    Instantiate(item.modelPrefab, Player.Instance.transform.position + Player.Instance.transform.forward * 2f, Quaternion.identity);
+                    Instantiate(item.modelPrefab, Player.Instance.transform.position + Player.Instance.transform.forward * 1.2f, Quaternion.identity);
                     RemoveItem();
                     Player.Instance.selectedslot = -1;
                 }

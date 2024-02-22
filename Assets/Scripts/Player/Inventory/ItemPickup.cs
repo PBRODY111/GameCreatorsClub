@@ -15,7 +15,7 @@ namespace Player.Inventory
 
         private void PickUp()
         {  
-            if(Inventory.Instance.items.Count < 9){
+            if(Inventory.Instance.items.Count < 6){
                 Inventory.Instance.Add(item);
                 Destroy(gameObject);
             }
