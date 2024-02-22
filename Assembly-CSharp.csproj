@@ -149,6 +149,7 @@
     <Compile Include="Assets\Scripts\UI\Credits.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Scripts\Scene6\Engineer.cs" />
+    <Compile Include="Assets\Scripts\Scene1\Konami.cs" />
     <Compile Include="Assets\Scripts\Scene1\Drawer.cs" />
   </ItemGroup>
   <ItemGroup>
