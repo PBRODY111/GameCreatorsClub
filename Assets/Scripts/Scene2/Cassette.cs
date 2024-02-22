@@ -7,14 +7,21 @@ public class Cassette : MonoBehaviour
     [SerializeField] private float reach;
     [SerializeField] private GameObject intText;
     [SerializeField] private AudioSource cassetteAudio;
+    [SerializeField] private AudioSource clickAudio;
     // Start is called before the first frame update
     private void OnMouseOver()
     {
         intText.SetActive(IsWithinReach());
         if (Input.GetKeyDown(KeyCode.E) && IsWithinReach())
         {
-            cassetteAudio.Play();
+            StartCoroutine(AudioSequence());
         }
+    }
+
+    private IEnumerator AudioSequence(){
+        clickAudio.Play();
+        yield return new WaitForSeconds(3);
+        cassetteAudio.Play();
     }
     private void OnMouseExit()
     {
