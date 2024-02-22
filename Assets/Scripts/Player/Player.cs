@@ -82,6 +82,10 @@ namespace Player
                 {
                     hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().UseItem();
                 }
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().DropItem();
+                }
 
                 for (var i = 0; i < 10; i++)
                 {

@@ -13,14 +13,6 @@ namespace Player.Inventory
         private readonly Color _defaultColor = new Color(40 / 255f, 40 / 255f, 40 / 255f);
         private readonly Color _selectedColor = new Color(80 / 255f, 80 / 255f, 80 / 255f);
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                DropItem();
-            }
-        }
-
         public void RemoveItem()
         {
             Inventory.Instance.Remove(item);
@@ -84,13 +76,19 @@ namespace Player.Inventory
             }
         }
 
-        private void DropItem()
+        public void DropItem()
         {
             if (item.modelPrefab != null)
             {
-                Instantiate(item.modelPrefab, Player.Instance.transform.position + Player.Instance.transform.forward, Quaternion.Euler(0f, 180f, 0f));
-                HoldItem();
-                RemoveItem();
+                
+                // Ensure a valid InventoryItemController is found
+                if (item.modelPrefab != null)
+                {
+                    // Drop the model of the selected item
+                    Instantiate(item.modelPrefab, Player.Instance.transform.position + Player.Instance.transform.forward * 2f, Quaternion.identity);
+                    RemoveItem();
+                    Player.Instance.selectedslot = -1;
+                }
             }
         }
     }
