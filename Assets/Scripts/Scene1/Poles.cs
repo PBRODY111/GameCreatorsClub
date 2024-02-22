@@ -99,11 +99,6 @@ namespace Scene1
                     Player.Player.Instance.UnlockCursor();
                 }
             }
-            Debug.Log(CheckScrew0Conditions(screw0Transform));
-            Debug.Log(CheckScrew1Conditions(screw1Transform));
-            Debug.Log(CheckScrew2Conditions(screw2Transform));
-            Debug.Log(CheckScrew3Conditions(screw3Transform));
-            Debug.Log(CheckScrew4Conditions(screw4Transform));
         }
 
         private bool IsWithinReach()
