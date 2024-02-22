@@ -103,7 +103,7 @@ namespace UI
 
         public void SetFOV(float fov)
         {
-            mainCamera.fieldOfView = fov;
+            Player.Player.Instance.ChangeFOV(fov);
         }
 
         public void SetSensitivity(float sens)

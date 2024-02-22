@@ -2,6 +2,7 @@ using System;
 using JetBrains.Annotations;
 using Player.Inventory;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.Serialization;
 
 namespace Player
@@ -48,6 +49,7 @@ namespace Player
             _playerMovement = GetComponent<PlayerMovement>();
             _playerCam = mainCamera.GetComponent<PlayerCam>();
             mainCamera.fieldOfView = 70;
+            _originalFOV = 70;
         }
         
         public void DisableMovement()
@@ -103,16 +105,44 @@ namespace Player
             }
         }
         
+        private float _originalFOV;
+        
+        public void ChangeFOV(float fov)
+        {
+            mainCamera.fieldOfView = fov;
+            _originalFOV = fov;
+        }
+
+        public void ToggleGoofyPostProcessing()
+        {
+            var volume = mainCamera.GetComponent<PostProcessVolume>();
+            volume.profile.settings.ForEach(setting =>
+            {
+                Debug.Log(setting.name);
+                setting.enabled.value = !setting.enabled.value;
+            });
+        }
+        
+        // OPTIFINE ZOOM HERE
         private void FixedUpdate()
         {
-            if (Input.GetKey(KeyCode.C) && EpicModeEnabled())
+            if(!EpicModeEnabled()) return;
+            
+            if(Input.GetKeyDown(KeyCode.C))
             {
-                if(Math.Abs(mainCamera.fieldOfView - 70) < 0.1)
-                    mainCamera.fieldOfView = 20;
-                
+                _originalFOV = mainCamera.fieldOfView;
+                mainCamera.fieldOfView = 20;
+            }
+            
+            if (Input.GetKey(KeyCode.C))
+            {
                 var fieldOfView = mainCamera.fieldOfView;
                 fieldOfView -= Input.mouseScrollDelta.y * 30;
-                mainCamera.fieldOfView = Mathf.Clamp(fieldOfView, 1, 69);
+                mainCamera.fieldOfView = Mathf.Clamp(fieldOfView, 1, _originalFOV);
+            }
+            else
+            {
+                mainCamera.fieldOfView = _originalFOV;
             }
         }
 
