@@ -15,7 +15,6 @@ namespace UI
         [SerializeField] private Button fullbright;
         [SerializeField] private Button epic;
         [SerializeField] private Button fpsButton;
-        [SerializeField] private Light sun;
         [SerializeField] private GameObject pauseMenu;
 
         [FormerlySerializedAs("_fps")] [SerializeField]
@@ -29,13 +28,15 @@ namespace UI
         private HeadLamp _headLamp;
         private PlayerMovement _pm;
 
-        public static int NumDesks = 0;
+        public static int numDesks;
 
         private Rigidbody _rb;
 
         private int _fpsText;
 
-        private int konami = 0;
+        private KeyCode[] debugActivationSteps;
+        private int debugActivate;
+        private bool debugActive;
 
         private void Start()
         {
@@ -45,7 +46,13 @@ namespace UI
             _rb = Player.Player.Instance.GetComponent<Rigidbody>();
             canvas.gameObject.SetActive(false);
 
-            fullbright.onClick.AddListener(() => _headLamp.Fullbright());
+            //FullBright
+            fullbright.onClick.AddListener(() =>
+            {
+                _headLamp.Fullbright();
+            });
+            
+            //Epic Mode
             epic.onClick.AddListener(() =>
             {
                 _rb.useGravity = !_rb.useGravity;
@@ -53,28 +60,52 @@ namespace UI
                 _pm.epicModeEnabled = !_pm.epicModeEnabled;
                 Player.Player.Instance.ToggleGoofyPostProcessing();
             });
-            fpsButton.onClick.AddListener(() => fps.gameObject.SetActive(!fps.gameObject.activeSelf));
+            
+            fpsButton.onClick.AddListener(() =>{
+                fps.gameObject.SetActive(!fps.gameObject.activeSelf);});
+            
+            debugActivationSteps = new[]
+            {
+                KeyCode.UpArrow,
+                KeyCode.UpArrow,
+                KeyCode.DownArrow,
+                KeyCode.DownArrow,
+                KeyCode.LeftArrow,
+                KeyCode.RightArrow,
+                KeyCode.LeftArrow,
+                KeyCode.RightArrow,
+                KeyCode.A,
+                KeyCode.B,
+                KeyCode.S,
+                KeyCode.T,
+                KeyCode.A,
+                KeyCode.R,
+                KeyCode.T
+            };
         }
 
         private void Update()
         {
 
+            //Debug Activation
             if (Input.anyKeyDown && pauseMenu.activeSelf)
             {
-                if (Input.GetKeyDown(Konami(konami)))
-                    konami++;
+                if (Input.GetKeyDown(debugActivationSteps[debugActivate]))
+                    debugActivate++;
                 else
-                    konami = 0;
+                    debugActivate = 0;
+                
+                if (debugActivate == 15)
+                {
+                    debugActive = true;
+                    ToggleDebug();
+                }
             }
-            if(konami==15 || (Input.GetKeyDown(debugKey) && canvas.gameObject.activeSelf))
-            {
-                konami = 0;
-                var o = canvas.gameObject;
-                o.SetActive(!o.activeSelf);
-                Cursor.lockState = o.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
-                Cursor.visible = o.activeSelf;
-            }
+            
+            
+            if(Input.GetKeyDown(debugKey) && debugActive) ToggleDebug();
 
+            //FPS Update Timer
             _fpsUpdateTimer += Time.deltaTime;
             if (_fpsUpdateTimer > FPSUpdateInterval)
             {
@@ -82,12 +113,14 @@ namespace UI
                 _fpsUpdateTimer = 0f;
             }
 
+            //Complete Level
             if (Input.GetKeyDown(KeyCode.F4) && Player.Player.Instance.EpicModeEnabled())
             {
                 var vent = FindObjectOfType<Vent>();
                 StartCoroutine(vent.EscapeFunc());
             }
 
+            //Jumpscare
             if (Input.GetKeyDown(KeyCode.F5) && Player.Player.Instance.EpicModeEnabled())
             {
                 var jumpscare = FindObjectOfType<Jumpscare>();
@@ -97,49 +130,17 @@ namespace UI
 
         private void FixedUpdate()
         {
-            fps.text = "FPS: " + _fpsText + "\nDesks: " + NumDesks;
+            fps.text = "FPS: " + _fpsText + "\nDesks: " + numDesks;
         }
         
-            
-
-        private KeyCode Konami(int konami)
+        //Toggle Screen
+        public void ToggleDebug()
         {
-            Debug.Log(":"+konami);
-            switch (this.konami)
-            {
-                case 0:
-                    return KeyCode.UpArrow;
-                case 1:
-                    return KeyCode.UpArrow;
-                case 2:
-                    return KeyCode.DownArrow;
-                case 3:
-                    return KeyCode.DownArrow;
-                case 4:
-                    return KeyCode.LeftArrow;
-                case 5:
-                    return KeyCode.RightArrow;
-                case 6:
-                    return KeyCode.LeftArrow;
-                case 7:
-                    return KeyCode.RightArrow;
-                case 8:
-                    return KeyCode.A;
-                case 9:
-                    return KeyCode.B;
-                case 10:
-                    return KeyCode.S;
-                case 11:
-                    return KeyCode.T;
-                case 12:
-                    return KeyCode.A;
-                case 13:
-                    return KeyCode.R;
-                case 14:
-                    return KeyCode.T;
-                default:
-                    return KeyCode.Alpha0;
-            }
+            debugActivate = 0;
+            var o = canvas.gameObject;
+            o.SetActive(!o.activeSelf);
+            Cursor.lockState = o.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = o.activeSelf;
         }
     }
 }

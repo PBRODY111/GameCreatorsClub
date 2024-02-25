@@ -13,7 +13,7 @@ public class MakeCube : MonoBehaviour
         {
             if (Player.Player.Instance.EpicModeEnabled()){
                 Instantiate(cubePrefab, new Vector3(0f, 0.5f, 0f), new Quaternion(), deskSpam);
-                DebugUI.NumDesks++;
+                DebugUI.numDesks++;
             }
         }
     }
