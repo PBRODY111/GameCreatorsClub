@@ -15,8 +15,6 @@ namespace UI
         [SerializeField] private Player.PlayerCam playerCam;
         public Dropdown resolutionDropdown;
         public AudioMixer masterMixer;
-        public Camera mainCamera;
-
         private bool _optionsOn;
         private Resolution[] _resolutions;
 
@@ -117,10 +115,7 @@ namespace UI
             clickAudio.Play();
             pauseMenu.SetActive(true);
             options.SetActive(false);
-            Player.Player.Instance.DisableMovement();
-            Player.Player.Instance.UnlockCursor();
-            Time.timeScale = 0f;
-            IsPaused = true;
+            FreezeGame();
         }
 
         public void ResumeGame()
@@ -128,6 +123,19 @@ namespace UI
             clickAudio.Play();
             pauseMenu.SetActive(false);
             options.SetActive(false);
+            UnFreezeGame();
+        }
+
+        public void FreezeGame()
+        {
+            Player.Player.Instance.DisableMovement();
+            Player.Player.Instance.UnlockCursor();
+            Time.timeScale = 0f;
+            IsPaused = true;
+        }
+
+        public void UnFreezeGame()
+        {
             Player.Player.Instance.EnableMovement();
             Player.Player.Instance.LockCursor();
             Time.timeScale = 1f;

@@ -15,9 +15,6 @@ namespace Scene1.Safe
         [SerializeField] private SafeDoor31 safeDoor3;
         [SerializeField] private Ascal ascal;
         private int _colorIndex;
-
-        
-
         public void ChangeColor(Button button)
         {
             button.GetComponent<Image>().color = ascal.colors[_colorIndex];
@@ -25,9 +22,9 @@ namespace Scene1.Safe
             if (inputField.text == code && code != "" && button.GetComponent<Image>().color == selectColor)
             {
                 _safeAnimator.SetBool(Unlock, true);
-                if (!_isUnlocked) unlockAudio.Play();
+                if (!isUnlocked) unlockAudio.Play();
 
-                _isUnlocked = true;
+                isUnlocked = true;
             }
 
             _colorIndex++;

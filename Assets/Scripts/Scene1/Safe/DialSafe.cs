@@ -39,29 +39,13 @@ namespace Scene1.Safe
             {
                 if (IsWithinValue(dialValues[_currentDialValueIndex], _slider.value, 2f))
                 {
-                    
                     _currentDialValueIndex++;
-                    
-                    if (_currentDialValueIndex >= dialValues.Length)
-                    {
-                        _safeAnimator.SetBool(Unlock, true);
-                        unlockAudio.Play();
-                        ui.SetActive(false);
-                        PauseMenu.IsPaused = false;
-                        Player.Player.Instance.LockCursor();
-                        Player.Player.Instance.EnableMovement();
-                        _isUnlocked = true;
-                    }
-
-                    
+                    if (_currentDialValueIndex >= dialValues.Length) OpenSafe();
                 }
                 else _currentDialValueIndex = 0;
                 _slider.value = 0;
             }
         }
-        private static bool IsWithinValue(float value, float actual, float deviation)
-        {
-            return actual >= value - deviation && actual <= value + deviation;
-        }
+        private static bool IsWithinValue(float value, float actual, float deviation) => actual >= value - deviation && actual <= value + deviation;
     }
 }

@@ -6,25 +6,23 @@ namespace Scene1.Safe
     public class BoxSafe : Safe
     {
         public new void Update(){}
-
-        public void OnMouseExit(){}
-
-        private void OnMouseOver()
+        private new void OnMouseOver()
         {
             intText.GetComponent<TMP_Text>().text = "SCREWDRIVER NEEDED TO INTERACT";
-            if (_isUnlocked == false)
+            if (isUnlocked == false)
                 intText.SetActive(IsWithinReach());
             else
                 intText.SetActive(false);
 
             if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Screwdriver"))
-            {
-                _safeAnimator.SetBool(Unlock, true);
-                if (!_isUnlocked) unlockAudio.Play();
-
-                _isUnlocked = true;
-                intText.SetActive(false);
-            }
+                OpenSafe();
+        }
+        
+        private new void OpenSafe()
+        {
+            _safeAnimator.SetBool(Unlock, true);
+            unlockAudio.Play();
+            isUnlocked = true;
         }
     }
 }

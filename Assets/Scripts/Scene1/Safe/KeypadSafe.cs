@@ -23,21 +23,11 @@ namespace Scene1.Safe
 
         private new void OnMouseOver()
         {
-            if (!ui.activeSelf && !_isUnlocked)
-                intText.SetActive(IsWithinReach());
-            if (Input.GetKeyDown(KeyCode.E) && !_isUnlocked && IsWithinReach())
+            base.OnMouseOver();
+            if (!_canUnlock && Input.GetKeyDown(KeyCode.E) && IsWithinReach())
             {
-                if (_canUnlock)
-                {
-                    intText.SetActive(false);
-                    ui.SetActive(true);
-                    PauseMenu.IsPaused = true;
-                    Player.Player.Instance.DisableMovement();
-                    Player.Player.Instance.UnlockCursor(); 
-                }
-                else
-                    errorAudio.Play();
-                
+                errorAudio.Play();
+                CloseUI();
             }
         }
 
@@ -48,11 +38,7 @@ namespace Scene1.Safe
             if (_entered.Length >= 5)
             {
                 if (_entered == code)
-                {
-                    _safeAnimator.SetBool(Unlock, true);
-                    unlockAudio.Play();
-                    _isUnlocked = true;
-                }
+                    OpenSafe();
                 else
                 {
                     _incorrectTrials++;
@@ -64,10 +50,7 @@ namespace Scene1.Safe
                 }
 
                 _entered = "";
-                ui.SetActive(false);
-                PauseMenu.IsPaused = false;
-                Player.Player.Instance.LockCursor();
-                Player.Player.Instance.EnableMovement();
+                CloseUI();
             }
         }
 

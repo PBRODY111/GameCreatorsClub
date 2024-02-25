@@ -4135,9 +4135,9 @@ MonoBehaviour:
   intText: {fileID: 1092012639}
   reach: 2
   ui: {fileID: 1032130706}
-  unlockAudio: {fileID: 703722771}
-  _isUnlocked: 0
   pauseMenu: {fileID: 414638517}
+  unlockAudio: {fileID: 703722771}
+  isUnlocked: 0
   dialValues:
   - 18
   - 25
@@ -13659,7 +13659,6 @@ MonoBehaviour:
   playerCam: {fileID: 1972437055}
   resolutionDropdown: {fileID: 434867463}
   masterMixer: {fileID: 24100000, guid: e0ad90bb6b9ca475b8ce0ffef59f7f23, type: 2}
-  mainCamera: {fileID: 1972437052}
 --- !u!64 &418379785
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13727,7 +13726,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 643235859ad6744079dfbc494d456d74, type: 3}
   - {fileID: 8300000, guid: 907eefffd0dab4b6d9198aad4637d2be, type: 3}
   - {fileID: 8300000, guid: 16ce2793a762a4f80bd11fa4572cb75e, type: 3}
-  safeCode: {fileID: 1369947864}
+  keypadSafeCode: {fileID: 1369947864}
   gotCode: 
 --- !u!82 &418379791
 AudioSource:
@@ -27435,9 +27434,9 @@ MonoBehaviour:
   intText: {fileID: 1195845257}
   reach: 2
   ui: {fileID: 0}
-  unlockAudio: {fileID: 949714306}
-  _isUnlocked: 0
   pauseMenu: {fileID: 0}
+  unlockAudio: {fileID: 949714306}
+  isUnlocked: 0
 --- !u!65 &949714308
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39738,9 +39737,9 @@ MonoBehaviour:
   intText: {fileID: 1092012639}
   reach: 2
   ui: {fileID: 1408479096}
-  unlockAudio: {fileID: 1369947865}
-  _isUnlocked: 0
   pauseMenu: {fileID: 414638517}
+  unlockAudio: {fileID: 1369947865}
+  isUnlocked: 0
   dial: {fileID: 1369947866}
   errorAudio: {fileID: 1369947870}
   code: 
@@ -49350,9 +49349,9 @@ MonoBehaviour:
   intText: {fileID: 1092012639}
   reach: 1.5
   ui: {fileID: 1482403666}
-  unlockAudio: {fileID: 1684759370}
-  _isUnlocked: 0
   pauseMenu: {fileID: 414638517}
+  unlockAudio: {fileID: 1684759370}
+  isUnlocked: 0
   dial: {fileID: 693862504}
   code: 
   selectColor: {r: 0, g: 0, b: 0, a: 0}
@@ -52636,9 +52635,9 @@ MonoBehaviour:
   intText: {fileID: 1195845257}
   reach: 1.5
   ui: {fileID: 0}
-  unlockAudio: {fileID: 1812255808}
-  _isUnlocked: 0
   pauseMenu: {fileID: 0}
+  unlockAudio: {fileID: 1812255808}
+  isUnlocked: 0
 --- !u!95 &1812255806
 Animator:
   serializedVersion: 5
@@ -67281,6 +67280,18 @@ PrefabInstance:
     - target: {fileID: 661240544133885331, guid: 4017159d05f22439aa0de009a2a21f40, type: 3}
       propertyPath: m_Name
       value: screwdriver
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365722524944184649, guid: 4017159d05f22439aa0de009a2a21f40, type: 3}
+      propertyPath: m_Size.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365722524944184649, guid: 4017159d05f22439aa0de009a2a21f40, type: 3}
+      propertyPath: m_Size.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365722524944184649, guid: 4017159d05f22439aa0de009a2a21f40, type: 3}
+      propertyPath: m_Size.z
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
