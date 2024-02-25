@@ -55,9 +55,9 @@ namespace Player.Inventory
             {
                 i++;
                 var obj = Instantiate(inventoryItem, itemContent);
-                obj.transform.Find("Name").GetComponent<TMP_Text>().text = i + ":" + item.itemName;
+                obj.transform.Find("Name").GetComponent<TMP_Text>().text = item.itemName;
                 obj.transform.Find("Image").GetComponent<Image>().sprite = item.icon;
-                obj.transform.Find("Num").GetComponent<TMP_Text>().text = items.Count.ToString();
+                obj.transform.Find("Num").GetComponent<TMP_Text>().text = i+"";
                 obj.GetComponent<InventoryItemController>().AddItem(item);
             }
         }

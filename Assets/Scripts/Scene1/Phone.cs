@@ -4,6 +4,7 @@ using Scene1.Safe;
 using TMPro;
 using UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Scene1
@@ -28,7 +29,7 @@ namespace Scene1
         [SerializeField] private AudioSource call;
         [SerializeField] private AudioSource numbAudio;
         public AudioClip[] numbers;
-        [SerializeField] private SafeDoor2 safeCode;
+        [FormerlySerializedAs("safeCode")] [SerializeField] private KeypadSafe keypadSafeCode;
         public string gotCode;
         private int _currentNumb;
         private string _entered = "";
@@ -117,7 +118,7 @@ namespace Scene1
             }
             else if (_entered == numb3)
             {
-                gotCode = safeCode.code;
+                gotCode = keypadSafeCode.code;
                 for (var i = 0; i < gotCode.Length; i++)
                 {
                     _currentNumb = int.Parse(gotCode[i].ToString());

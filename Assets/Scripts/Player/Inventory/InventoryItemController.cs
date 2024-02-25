@@ -55,7 +55,6 @@ namespace Player.Inventory
 
         public void UseItem()
         {
-            Debug.Log("Using " + item.itemName);
             if (item.deselectOnUse)
                 HoldItem();
             switch (item.itemType)

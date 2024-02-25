@@ -4133,13 +4133,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intText: {fileID: 1092012639}
+  reach: 2
+  ui: {fileID: 1032130706}
+  unlockAudio: {fileID: 703722771}
+  _isUnlocked: 0
+  pauseMenu: {fileID: 414638517}
   dialValues:
   - 18
   - 25
   - 5
-  reach: 2
-  dialUI: {fileID: 1761290839}
-  unlockAudio: {fileID: 703722771}
+  _slider: {fileID: 1679617268}
 --- !u!82 &57174896
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7398,7 +7401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5705e5eb02a6e476694b2f7b24eac25d, type: 3}
       propertyPath: m_Name
-      value: safe3
+      value: LargeSafe
       objectReference: {fileID: 0}
     - target: {fileID: 4083501151425157549, guid: 5705e5eb02a6e476694b2f7b24eac25d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27429,10 +27432,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51dda35578d0e42308dd11698d1bc29d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intText3: {fileID: 1195845257}
+  intText: {fileID: 1195845257}
   reach: 2
+  ui: {fileID: 0}
   unlockAudio: {fileID: 949714306}
-  isUnlocked: 0
+  _isUnlocked: 0
+  pauseMenu: {fileID: 0}
 --- !u!65 &949714308
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29524,7 +29529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1032130707
 Transform:
   m_ObjectHideFlags: 0
@@ -33519,7 +33524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6199bf78507d146e79815d26b491e708, type: 3}
       propertyPath: m_Name
-      value: safe4
+      value: BoxSafe
       objectReference: {fileID: 0}
     - target: {fileID: 1088619777609266644, guid: 6199bf78507d146e79815d26b491e708, type: 3}
       propertyPath: m_LocalPosition.y
@@ -34015,26 +34020,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1162968931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1162968927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e0dc9d1d611d3246b3e10ecb60f219f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intText: {fileID: 1092012639}
-  dialValues:
-  - 10
-  - 20
-  - 30
-  reach: 10
-  dialUI: {fileID: 1761290839}
-  unlockAudio: {fileID: 0}
 --- !u!4 &1162968932 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 057868d1b10e9419692fb513b930b532, type: 3}
@@ -39752,9 +39737,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intText: {fileID: 1092012639}
   reach: 2
-  padlockUI: {fileID: 1408479096}
-  dial: {fileID: 1369947866}
+  ui: {fileID: 1408479096}
   unlockAudio: {fileID: 1369947865}
+  _isUnlocked: 0
+  pauseMenu: {fileID: 414638517}
+  dial: {fileID: 1369947866}
   errorAudio: {fileID: 1369947870}
   code: 
 --- !u!82 &1369947865
@@ -41855,7 +41842,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 057868d1b10e9419692fb513b930b532, type: 3}
       propertyPath: m_Name
-      value: safe2
+      value: KeypadSafe
       objectReference: {fileID: 0}
     - target: {fileID: 4423045620967985251, guid: 057868d1b10e9419692fb513b930b532, type: 3}
       propertyPath: m_IsActive
@@ -41868,9 +41855,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 057868d1b10e9419692fb513b930b532, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1162968929}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 057868d1b10e9419692fb513b930b532, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1162968931}
     - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 057868d1b10e9419692fb513b930b532, type: 3}
       insertIndex: -1
       addedObject: {fileID: 637772880}
@@ -49365,9 +49349,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intText: {fileID: 1092012639}
   reach: 1.5
-  colorlockUI: {fileID: 1482403666}
-  dial: {fileID: 693862504}
+  ui: {fileID: 1482403666}
   unlockAudio: {fileID: 1684759370}
+  _isUnlocked: 0
+  pauseMenu: {fileID: 414638517}
+  dial: {fileID: 693862504}
   code: 
   selectColor: {r: 0, g: 0, b: 0, a: 0}
   inputField: {fileID: 998775880}
@@ -50573,7 +50559,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1761290840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52647,10 +52633,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8805993b414aa4575a38bfd2687f80db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intText3: {fileID: 1195845257}
+  intText: {fileID: 1195845257}
   reach: 1.5
+  ui: {fileID: 0}
   unlockAudio: {fileID: 1812255808}
-  isUnlocked: 0
+  _isUnlocked: 0
+  pauseMenu: {fileID: 0}
 --- !u!95 &1812255806
 Animator:
   serializedVersion: 5
@@ -60266,7 +60254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b12295213fc444a9d904dde628e06c0e, type: 3}
       propertyPath: m_Name
-      value: safe1
+      value: DialSafe
       objectReference: {fileID: 0}
     - target: {fileID: 4423045620967985251, guid: b12295213fc444a9d904dde628e06c0e, type: 3}
       propertyPath: m_TagString
