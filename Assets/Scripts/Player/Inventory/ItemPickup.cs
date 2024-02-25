@@ -19,6 +19,10 @@ namespace Player.Inventory
                 Inventory.Instance.Add(item);
                 Destroy(gameObject);
             }
+            else
+            {
+                Inventory.Instance.ActionDenied("Inventory is full! Press Q to drop items.");
+            }
         }
 
         private bool IsWithinReach()

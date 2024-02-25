@@ -17,6 +17,8 @@ namespace Player.Inventory
         public GameObject inventoryItem;
 
         [SerializeField] public TMP_Text usageInstructions;
+        [SerializeField] private TMP_Text denyText;
+        [SerializeField] private AudioSource denySound;
         private void Awake()
         {
             Instance = this;
@@ -55,8 +57,18 @@ namespace Player.Inventory
                 var obj = Instantiate(inventoryItem, itemContent);
                 obj.transform.Find("Name").GetComponent<TMP_Text>().text = i + ":" + item.itemName;
                 obj.transform.Find("Image").GetComponent<Image>().sprite = item.icon;
+                obj.transform.Find("Num").GetComponent<TMP_Text>().text = items.Count.ToString();
                 obj.GetComponent<InventoryItemController>().AddItem(item);
             }
         }
+        
+        public void ActionDenied(string message)
+        {
+            denyText.text = message;
+            denySound.Play();
+            Invoke(nameof(ClearDenyText), 2);
+        }
+        
+        private void ClearDenyText() => denyText.text = "";
     }
 }

@@ -29,13 +29,9 @@ namespace Player.Inventory
         {
             ToggleColor();
             if (Player.Instance.selectedslot == -1)
-            {
                 Player.Instance.selectedslot = transform.GetSiblingIndex();
-            }
             else if (Player.Instance.selectedslot == transform.GetSiblingIndex())
-            {
                 Player.Instance.selectedslot = -1;
-            }
             else
             {
                 transform.parent.GetChild(Player.Instance.selectedslot).GetComponent<InventoryItemController>().ToggleColor();
@@ -71,6 +67,8 @@ namespace Player.Inventory
                         HoldItem();
                         RemoveItem();
                     }
+                    else
+                        Inventory.Instance.ActionDenied("Battery is already full");
                     break;
                 case InventoryItem.ItemType.Box:
                     Instantiate(Player.Instance.stoolPrefab, Player.Instance.transform.position + Player.Instance.transform.forward, Quaternion.Euler(-90f, 0f, 0f));
@@ -84,20 +82,17 @@ namespace Player.Inventory
                     break;
             }
         }
-
+        
+        
         public void DropItem()
         {
+            // Ensure a valid InventoryItemController is found
             if (item.modelPrefab != null)
             {
-                
-                // Ensure a valid InventoryItemController is found
-                if (item.modelPrefab != null)
-                {
-                    // Drop the model of the selected item
-                    Instantiate(item.modelPrefab, Player.Instance.transform.position + Player.Instance.transform.forward * 1.2f, Quaternion.identity);
-                    RemoveItem();
-                    Player.Instance.selectedslot = -1;
-                }
+                // Drop the model of the selected item
+                Instantiate(item.modelPrefab, Player.Instance.transform.position + Player.Instance.transform.forward * 1.2f, Quaternion.identity);
+                RemoveItem();
+                Player.Instance.selectedslot = -1;
             }
 
             UpdateInstructions();
