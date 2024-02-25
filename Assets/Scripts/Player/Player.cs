@@ -80,14 +80,8 @@ namespace Player
         {
             try
             {
-                if (Input.GetKeyDown(KeyCode.Mouse1) && selectedslot != -1)
-                {
-                    hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().UseItem();
-                }
-                if (Input.GetKeyDown(KeyCode.Q))
-                {
-                    hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().DropItem();
-                }
+                if (Input.GetKeyDown(KeyCode.Mouse1) && selectedslot != -1) hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().UseItem();
+                if (Input.GetKeyDown(KeyCode.Q)) hotbar.transform.GetChild(selectedslot).GetComponent<InventoryItemController>().DropItem();
 
                 for (var i = 0; i < 10; i++)
                 {
@@ -113,12 +107,11 @@ namespace Player
             _originalFOV = fov;
         }
 
-        public void ToggleGoofyPostProcessing()
+        public void TogglerRespectablePostProcessing()
         {
             var volume = mainCamera.GetComponent<PostProcessVolume>();
             volume.profile.settings.ForEach(setting =>
             {
-                Debug.Log(setting.name);
                 setting.enabled.value = !setting.enabled.value;
             });
         }

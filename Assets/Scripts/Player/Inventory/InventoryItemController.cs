@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -40,6 +41,14 @@ namespace Player.Inventory
                 transform.parent.GetChild(Player.Instance.selectedslot).GetComponent<InventoryItemController>().ToggleColor();
                 Player.Instance.selectedslot = transform.GetSiblingIndex();
             }
+
+            UpdateInstructions();
+        }
+        
+        public void UpdateInstructions()
+        {
+            if (Player.Instance.selectedslot != -1) Inventory.Instance.usageInstructions.text = "Right Click to use item\nPress Q to drop item";
+            else Inventory.Instance.usageInstructions.text = "";
         }
 
         public void ToggleColor()
@@ -90,6 +99,8 @@ namespace Player.Inventory
                     Player.Instance.selectedslot = -1;
                 }
             }
+
+            UpdateInstructions();
         }
     }
 }

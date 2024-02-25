@@ -16,17 +16,21 @@ namespace Player.Inventory
         [FormerlySerializedAs("InventoryItem")]
         public GameObject inventoryItem;
 
+        [SerializeField] public TMP_Text usageInstructions;
         private void Awake()
         {
             Instance = this;
+
+            usageInstructions.text = "";
         }
 
         public void Add(InventoryItem item)
         {
             items.Add(item);
             var obj = Instantiate(inventoryItem, itemContent);
-            obj.transform.Find("Name").GetComponent<TMP_Text>().text = items.Count + ":" + item.itemName;
+            obj.transform.Find("Name").GetComponent<TMP_Text>().text = item.itemName;
             obj.transform.Find("Image").GetComponent<Image>().sprite = item.icon;
+            obj.transform.Find("Num").GetComponent<TMP_Text>().text = items.Count.ToString();
             obj.GetComponent<InventoryItemController>().AddItem(item);
         }
 

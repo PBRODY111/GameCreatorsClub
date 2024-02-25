@@ -58,7 +58,7 @@ namespace UI
                 _rb.useGravity = !_rb.useGravity;
                 _collider.enabled = !_collider.enabled;
                 _pm.epicModeEnabled = !_pm.epicModeEnabled;
-                Player.Player.Instance.ToggleGoofyPostProcessing();
+                Player.Player.Instance.TogglerRespectablePostProcessing();
             });
             
             fpsButton.onClick.AddListener(() =>{
