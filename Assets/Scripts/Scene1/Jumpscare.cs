@@ -35,7 +35,6 @@ namespace Scene1
             intText3.SetActive(IsWithinReach());
             if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Crowbar"))
             {
-                Debug.Log("JUMPSCARE!!");
                 playerModel.transform.position = new Vector3(-6f, 0.12f, -4f);
                 StartCoroutine(JumpscareSequence());
             }

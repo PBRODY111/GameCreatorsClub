@@ -36,7 +36,7 @@ namespace UI
 
         private KeyCode[] debugActivationSteps;
         private int debugActivate;
-        private bool debugActive;
+        private static bool debugActive;
 
         private void Start()
         {
@@ -82,6 +82,11 @@ namespace UI
                 KeyCode.R,
                 KeyCode.T
             };
+        }
+        
+        public static bool DebugActive()
+        {
+            return debugActive;
         }
 
         private void Update()
