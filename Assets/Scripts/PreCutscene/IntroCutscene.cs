@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
@@ -14,6 +15,8 @@ public class IntroCutscene : MonoBehaviour
     [SerializeField] private VideoPlayer titleVid; // Reference to the VideoPlayer
     [SerializeField] private RawImage videoImg;
     private AudioSource[] allAudioSources;
+    
+    private bool _canSkip;
 
     // Update is called once per frame
     void Start()
@@ -22,7 +25,13 @@ public class IntroCutscene : MonoBehaviour
         videoImg.enabled = false;
     }
 
-    IEnumerator IntroClip(){
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && _canSkip) SceneManager.LoadScene("MainScene");
+    }
+
+    IEnumerator IntroClip() {
+        _canSkip = true;
         yield return new WaitForSeconds(2f);
         davis.Play();
         yield return new WaitForSeconds(11f);
@@ -36,7 +45,7 @@ public class IntroCutscene : MonoBehaviour
         yield return new WaitForSeconds(6f);
         // stop all sounds
         allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
-        foreach( AudioSource audioS in allAudioSources) {
+        foreach( var audioS in allAudioSources) {
             audioS.Stop();
         }
         // start title sequence
