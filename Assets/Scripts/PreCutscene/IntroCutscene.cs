@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
@@ -7,18 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class IntroCutscene : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] private AudioSource davis;
     [SerializeField] private AudioSource stephen;
     [SerializeField] private AudioClip [] davisLines;
     [SerializeField] private AudioClip [] stephenLines;
-    [SerializeField] private VideoPlayer titleVid; // Reference to the VideoPlayer
+    [SerializeField] private VideoPlayer titleVid;
     [SerializeField] private RawImage videoImg;
     private AudioSource[] allAudioSources;
     
     private bool _canSkip;
 
-    // Update is called once per frame
     void Start()
     {
         StartCoroutine(IntroClip());

@@ -11,8 +11,8 @@ namespace Player.Inventory
 
         [FormerlySerializedAs("RemoveButton")] public Button removeButton;
         
-        private readonly Color _defaultColor = new Color(40 / 255f, 40 / 255f, 40 / 255f);
-        private readonly Color _selectedColor = new Color(80 / 255f, 80 / 255f, 80 / 255f);
+        private readonly Color _defaultColor = new(40 / 255f, 40 / 255f, 40 / 255f);
+        private readonly Color _selectedColor = new(80 / 255f, 80 / 255f, 80 / 255f);
 
         public void RemoveItem()
         {
