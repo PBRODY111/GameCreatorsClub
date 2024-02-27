@@ -44,7 +44,7 @@ public class Beaker : MonoBehaviour
             intText3.GetComponent<TMP_Text>().text = "STIR NEEDED TO INTERACT";
             intText3.SetActive(IsWithinReach() && !correctSize);
 
-            if (Input.GetMouseButtonDown(1) && IsWithinReach() && !correctSize && (Player.Player.Instance.IsHolding("L Stir")||Player.Player.Instance.IsHolding("S Stir")))
+            if (Input.GetMouseButtonDown(1) && IsWithinReach() && !correctSize && (Player.Player.Instance.IsHolding("L Stir")||Player.Player.Instance.IsHolding("S Stir")||Player.Player.Instance.IsHolding("M Stir")))
             {
                 if(!Player.Player.Instance.IsHolding(hotPlate.stirSize)){
                     cer.aggression = true;
