@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Scene1
+namespace Scene2
 {
     public class Attack2 : MonoBehaviour
     {
@@ -13,6 +13,7 @@ namespace Scene1
         [SerializeField] private float timeToReachTarget;
         [SerializeField] private float rotationTime;
         public bool isActive = false;
+        public bool aggression = false;
         private Quaternion _lookRotation;
 
         private void Start()
@@ -35,16 +36,22 @@ namespace Scene1
 
                 // Check if the distance is within the threshold
                 float distance = Vector3.Distance(transform.position, target);
-                if (distance < 0.5f)
-                {
-                    isActive = false;
-                    if(target == targets[0].transform.position){
-                        target = targets[1].transform.position;
-                    } else{
-                        target = targets[0].transform.position;
+                if(!aggression){
+                    timeToReachTarget = 500;
+                    if (distance < 0.5f)
+                    {
+                        isActive = false;
+                        if(target == targets[0].transform.position){
+                            target = targets[1].transform.position;
+                        } else{
+                            target = targets[0].transform.position;
+                        }
+                        Debug.Log("Close");
+                        StartCoroutine(ScareSequence());
                     }
-                    Debug.Log("Close");
-                    StartCoroutine(ScareSequence());
+                } else{
+                    timeToReachTarget = 1;
+                    target = Player.Player.Instance.transform.position;
                 }
             }
         }
