@@ -29,6 +29,7 @@ public class Mask : MonoBehaviour
         if (maskObject != null)
         {
             maskObject.SetActive(true);
+            maskObject.GetComponent<Animator>().SetBool("isMask", true);
         }
 
         // Move the maskObject's Y position up by 2 units over 0.5 seconds
@@ -67,6 +68,8 @@ public class Mask : MonoBehaviour
 
         if (maskObject != null)
         {
+            maskObject.GetComponent<Animator>().SetBool("isMask", false);
+            yield return new WaitForSeconds(0.5f);
             maskObject.SetActive(false);
         }
 
