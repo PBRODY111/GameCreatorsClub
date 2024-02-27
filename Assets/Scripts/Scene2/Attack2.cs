@@ -15,6 +15,8 @@ namespace Scene2
         public bool isActive = false;
         public bool aggression = false;
         private Quaternion _lookRotation;
+        [SerializeField] private GameObject computerUI;
+        [SerializeField] private AudioSource suspenseAudio;
 
         private void Start()
         {
@@ -26,6 +28,9 @@ namespace Scene2
         private void Update()
         {
             if(isActive){
+                if(computerUI.activeSelf){
+                    target = targets[2].transform.position;
+                }
                 GetComponent<Animator>().SetBool("isLeaving", true);
                 t += Time.deltaTime / timeToReachTarget;
                 var thisTransform = transform;
@@ -40,9 +45,12 @@ namespace Scene2
                     timeToReachTarget = 500;
                     if (distance < 0.5f)
                     {
-                        isActive = false;
                         if(target == targets[0].transform.position){
+                            isActive = false;
                             target = targets[1].transform.position;
+                        } else if(target == targets[1].transform.position){
+                            isActive = false;
+                            target = targets[0].transform.position;
                         } else{
                             target = targets[0].transform.position;
                         }
@@ -60,8 +68,9 @@ namespace Scene2
             t = 0;
             //GetComponent<Animator>().SetBool("isReturn", true);
             Debug.Log("Started");
-            yield return new WaitForSeconds(Random.Range(5f, 10f));
+            yield return new WaitForSeconds(Random.Range(12f, 20f));
             Debug.Log("moving");
+            suspenseAudio.Play();
             isActive = true;
         }
     }
