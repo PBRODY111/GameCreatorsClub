@@ -5,14 +5,20 @@ namespace TitleScene
 {
     public class ReturnToMenu : MonoBehaviour
     {
+        [SerializeField] private int chance;
         void Start(){
             Cursor.lockState = CursorLockMode.None;
         }
         private void Update()
         {
             if (Input.GetMouseButtonDown(0)){
+                chance = Random.Range(0, 3);
                 Cursor.lockState = CursorLockMode.None;
-                SceneManager.LoadScene("WarningScene");
+                if(chance == 0){
+                    SceneManager.LoadScene("Styx");
+                } else{ 
+                    SceneManager.LoadScene("WarningScene");
+                }
             }
         }
     }
