@@ -58,7 +58,7 @@ namespace Scene2
 
         private IEnumerator ScareSequence(){
             t = 0;
-            GetComponent<Animator>().SetBool("isReturn", true);
+            //GetComponent<Animator>().SetBool("isReturn", true);
             Debug.Log("Started");
             yield return new WaitForSeconds(Random.Range(5f, 10f));
             Debug.Log("moving");
