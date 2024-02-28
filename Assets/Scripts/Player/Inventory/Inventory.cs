@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -57,7 +58,7 @@ namespace Player.Inventory
                 var obj = Instantiate(inventoryItem, itemContent);
                 obj.transform.Find("Name").GetComponent<TMP_Text>().text = item.itemName;
                 obj.transform.Find("Image").GetComponent<Image>().sprite = item.icon;
-                obj.transform.Find("Num").GetComponent<TMP_Text>().text = i+"";
+                obj.transform.Find("Num").GetComponent<TMP_Text>().text = i.ToString();
                 obj.GetComponent<InventoryItemController>().AddItem(item);
             }
         }

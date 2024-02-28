@@ -108,7 +108,7 @@ namespace Player
             _originalFOV = fov;
         }
 
-        public void TogglerRespectablePostProcessing()
+        public void ToggleRespectablePostProcessing()
         {
             var volume = mainCamera.GetComponent<PostProcessVolume>();
             volume.profile.settings.ForEach(setting =>

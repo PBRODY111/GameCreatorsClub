@@ -5,7 +5,7 @@ namespace Scene1.Safe
 {
     public class BoxSafe : Safe
     {
-        public new void Update(){}
+        public new void Update() {}
         private new void OnMouseOver()
         {
             intText.GetComponent<TMP_Text>().text = "SCREWDRIVER NEEDED TO INTERACT";
