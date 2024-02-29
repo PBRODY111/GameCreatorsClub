@@ -1,5 +1,4 @@
 using Player;
-using Scene1;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -36,10 +35,11 @@ namespace UI
 
         private KeyCode[] debugActivationSteps;
         private int debugActivate;
-        private bool debugActive;
+        private static bool debugActive;
 
         private void Start()
         {
+            Debug.Log("DebugUI Start");
             _pm = Player.Player.Instance.GetComponent<PlayerMovement>();
             _collider = Player.Player.Instance.transform.GetChild(0).GetComponent<CapsuleCollider>();
             _headLamp = Player.Player.Instance.GetComponent<HeadLamp>();
@@ -58,11 +58,10 @@ namespace UI
                 _rb.useGravity = !_rb.useGravity;
                 _collider.enabled = !_collider.enabled;
                 _pm.epicModeEnabled = !_pm.epicModeEnabled;
-                Player.Player.Instance.TogglerRespectablePostProcessing();
+                Player.Player.Instance.ToggleRespectablePostProcessing();
             });
             
-            fpsButton.onClick.AddListener(() =>{
-                fps.gameObject.SetActive(!fps.gameObject.activeSelf);});
+            fpsButton.onClick.AddListener(() => fps.gameObject.SetActive(!fps.gameObject.activeSelf));
             
             debugActivationSteps = new[]
             {
@@ -83,12 +82,16 @@ namespace UI
                 KeyCode.T
             };
         }
+        
+        public static bool DebugActive()
+        {
+            return debugActive;
+        }
 
         private void Update()
         {
-
             //Debug Activation
-            if (Input.anyKeyDown && pauseMenu.activeSelf)
+            if (Input.anyKeyDown && pauseMenu.activeSelf && !debugActive)
             {
                 if (Input.GetKeyDown(debugActivationSteps[debugActivate]))
                     debugActivate++;
@@ -102,8 +105,9 @@ namespace UI
                 }
             }
             
+            if(!debugActive) return;
             
-            if(Input.GetKeyDown(debugKey) && debugActive) ToggleDebug();
+            if(Input.GetKeyDown(debugKey)) ToggleDebug();
 
             //FPS Update Timer
             _fpsUpdateTimer += Time.deltaTime;
@@ -111,20 +115,6 @@ namespace UI
             {
                 _fpsText = Mathf.FloorToInt(1.0f / Time.deltaTime);
                 _fpsUpdateTimer = 0f;
-            }
-
-            //Complete Level
-            if (Input.GetKeyDown(KeyCode.F4) && Player.Player.Instance.EpicModeEnabled())
-            {
-                var vent = FindObjectOfType<Vent>();
-                StartCoroutine(vent.EscapeFunc());
-            }
-
-            //Jumpscare
-            if (Input.GetKeyDown(KeyCode.F5) && Player.Player.Instance.EpicModeEnabled())
-            {
-                var jumpscare = FindObjectOfType<Jumpscare>();
-                StartCoroutine(jumpscare.JumpscareSequence());
             }
         }
 

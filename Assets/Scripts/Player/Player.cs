@@ -1,6 +1,7 @@
 using System;
 using JetBrains.Annotations;
 using Player.Inventory;
+using UI;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.Serialization;
@@ -108,7 +109,7 @@ namespace Player
             _originalFOV = fov;
         }
 
-        public void TogglerRespectablePostProcessing()
+        public void ToggleRespectablePostProcessing()
         {
             var volume = mainCamera.GetComponent<PostProcessVolume>();
             volume.profile.settings.ForEach(setting =>
@@ -120,7 +121,7 @@ namespace Player
         // OPTIFINE ZOOM HERE
         private void FixedUpdate()
         {
-            if(!EpicModeEnabled()) return;
+            if(!DebugUI.DebugActive()) return;
             
             if(Input.GetKeyDown(KeyCode.C))
             {
@@ -155,13 +156,15 @@ namespace Player
         
         public bool IsHolding(InventoryItem item)
         {
-            return GetHeldItem() == item || EpicModeEnabled();
+            return GetHeldItem() == item || DebugUI.DebugActive();
         }
         
         public bool IsHolding(string itemName)
         {
             var heldItem = GetHeldItem();
-            return (heldItem is not null && heldItem.itemName == itemName) || EpicModeEnabled();
+            var isHeld = (heldItem is not null && heldItem.itemName == itemName) || DebugUI.DebugActive();
+            Debug.Log($"Is holding {itemName}: {isHeld}");
+            return isHeld;
         }
 
         public bool EpicModeEnabled()
