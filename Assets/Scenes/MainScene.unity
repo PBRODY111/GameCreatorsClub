@@ -1385,8 +1385,8 @@ GameObject:
   - component: {fileID: 26120691}
   - component: {fileID: 26120690}
   - component: {fileID: 26120689}
-  - component: {fileID: 26120693}
   - component: {fileID: 26120692}
+  - component: {fileID: 26120693}
   m_Layer: 0
   m_Name: Screw (0)
   m_TagString: Untagged
@@ -1401,17 +1401,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26120687}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1632147465}
+  m_Father: {fileID: 1350899385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -345, y: -209}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &26120689
 MonoBehaviour:
@@ -1456,19 +1456,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 26120690}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 26120693}
-        m_TargetAssemblyTypeName: LadderScrew, Assembly-CSharp
-        m_MethodName: ChangeSize
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 26120689}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &26120690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1615,22 +1603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5faf447d456dc478abd9e614c7618c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intText3: {fileID: 1195845257}
-  rightClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 26120693}
-        m_TargetAssemblyTypeName: LadderScrew, Assembly-CSharp
-        m_MethodName: RotateButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 26120689}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &26871620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11837,6 +11809,46 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322821809}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &324782327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 324782328}
+  m_Layer: 0
+  m_Name: Holes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &324782328
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324782327}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1727775844}
+  - {fileID: 1828096149}
+  - {fileID: 1827183836}
+  - {fileID: 915829330}
+  - {fileID: 1314752312}
+  m_Father: {fileID: 1632147465}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &326210980
 GameObject:
   m_ObjectHideFlags: 0
@@ -13073,6 +13085,145 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 374056709}
+  m_CullTransparentMesh: 1
+--- !u!1 &377975055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 377975056}
+  - component: {fileID: 377975058}
+  - component: {fileID: 377975057}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &377975056
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377975055}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.588046, y: 5.5054603, z: 2.623501}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1946114964}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 450, y: -250}
+  m_SizeDelta: {x: 682.7997, y: 223.2398}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &377975057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377975055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Click at a Screw Hole to insert Screw
+
+    Right Click to rotate screw
+
+    Left
+    click to tighten/untighten screw'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &377975058
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377975055}
   m_CullTransparentMesh: 1
 --- !u!1 &381223885 stripped
 GameObject:
@@ -17682,10 +17833,10 @@ GameObject:
   - component: {fileID: 548951649}
   - component: {fileID: 548951648}
   - component: {fileID: 548951647}
-  - component: {fileID: 548951646}
   - component: {fileID: 548951645}
+  - component: {fileID: 548951650}
   m_Layer: 0
-  m_Name: Screw (3)
+  m_Name: Screw (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17698,17 +17849,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548951643}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1632147465}
+  m_Father: {fileID: 1350899385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 375, y: -209}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &548951645
 AudioSource:
@@ -17806,34 +17957,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &548951646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548951643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5faf447d456dc478abd9e614c7618c15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intText3: {fileID: 1195845257}
-  rightClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 548951646}
-        m_TargetAssemblyTypeName: LadderScrew, Assembly-CSharp
-        m_MethodName: RotateButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 548951647}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &548951647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17877,19 +18000,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 548951648}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 548951646}
-        m_TargetAssemblyTypeName: LadderScrew, Assembly-CSharp
-        m_MethodName: ChangeSize
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 548951647}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &548951648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17928,6 +18039,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548951643}
   m_CullTransparentMesh: 1
+--- !u!114 &548951650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548951643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5faf447d456dc478abd9e614c7618c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &555185716
 GameObject:
   m_ObjectHideFlags: 0
@@ -24625,12 +24748,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1df6432b7944472b6807f3dad040f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intText: {fileID: 1195845257}
   reach: 2
-  intText3: {fileID: 1195845257}
-  intText: {fileID: 1092012639}
-  ladderUI: {fileID: 1632147464}
+  ui: {fileID: 1632147464}
+  pauseMenu: {fileID: 414638517}
   ladderObj: {fileID: 1210654107}
-  numScrews: 0
+  screws: {fileID: 1350899385}
 --- !u!65 &833428062
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26208,9 +26331,9 @@ GameObject:
   - component: {fileID: 915829334}
   - component: {fileID: 915829333}
   - component: {fileID: 915829332}
-  - component: {fileID: 915829331}
+  - component: {fileID: 915829335}
   m_Layer: 0
-  m_Name: ScrewHole (4)
+  m_Name: ScrewHole (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26223,48 +26346,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915829329}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1632147465}
+  m_Father: {fileID: 324782328}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 258, y: 65}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &915829331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915829329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d59c1ce8bc9ad495bb35727aa4d51d2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intText3: {fileID: 1195845257}
-  button2: {fileID: 1783376713}
-  rightClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 915829331}
-        m_TargetAssemblyTypeName: LadderScrewHole, Assembly-CSharp
-        m_MethodName: ShowScrew
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 915829329}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  poles: {fileID: 833428061}
 --- !u!114 &915829332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26347,6 +26440,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915829329}
   m_CullTransparentMesh: 1
+--- !u!114 &915829335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915829329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59c1ce8bc9ad495bb35727aa4d51d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screws: {fileID: 1350899384}
 --- !u!1 &916261689
 GameObject:
   m_ObjectHideFlags: 0
@@ -38099,9 +38205,9 @@ GameObject:
   - component: {fileID: 1314752316}
   - component: {fileID: 1314752315}
   - component: {fileID: 1314752314}
-  - component: {fileID: 1314752313}
+  - component: {fileID: 1314752317}
   m_Layer: 0
-  m_Name: ScrewHole (3)
+  m_Name: ScrewHole (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38114,48 +38220,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314752311}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1632147465}
+  m_Father: {fileID: 324782328}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 375.9, y: -209.1}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1314752313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314752311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d59c1ce8bc9ad495bb35727aa4d51d2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intText3: {fileID: 1195845257}
-  button2: {fileID: 548951643}
-  rightClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1314752313}
-        m_TargetAssemblyTypeName: LadderScrewHole, Assembly-CSharp
-        m_MethodName: ShowScrew
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1314752311}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  poles: {fileID: 833428061}
 --- !u!114 &1314752314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38238,6 +38314,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314752311}
   m_CullTransparentMesh: 1
+--- !u!114 &1314752317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314752311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59c1ce8bc9ad495bb35727aa4d51d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screws: {fileID: 1350899384}
 --- !u!1 &1319486825
 GameObject:
   m_ObjectHideFlags: 0
@@ -39507,6 +39596,46 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 0.75}
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1350899384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1350899385}
+  m_Layer: 0
+  m_Name: Screws
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1350899385
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350899384}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 26120688}
+  - {fileID: 1467768657}
+  - {fileID: 2019769265}
+  - {fileID: 1783376714}
+  - {fileID: 548951644}
+  m_Father: {fileID: 1632147465}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1361653925
 GameObject:
@@ -42463,8 +42592,8 @@ GameObject:
   - component: {fileID: 1467768662}
   - component: {fileID: 1467768661}
   - component: {fileID: 1467768660}
-  - component: {fileID: 1467768659}
   - component: {fileID: 1467768658}
+  - component: {fileID: 1467768663}
   m_Layer: 0
   m_Name: Screw (1)
   m_TagString: Untagged
@@ -42479,17 +42608,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467768656}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1632147465}
+  m_Father: {fileID: 1350899385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -133, y: 65}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &1467768658
 AudioSource:
@@ -42587,34 +42716,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1467768659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467768656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5faf447d456dc478abd9e614c7618c15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intText3: {fileID: 1195845257}
-  rightClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1467768659}
-        m_TargetAssemblyTypeName: LadderScrew, Assembly-CSharp
-        m_MethodName: RotateButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1467768660}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1467768660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42658,19 +42759,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467768661}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1467768659}
-        m_TargetAssemblyTypeName: LadderScrew, Assembly-CSharp
-        m_MethodName: ChangeSize
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1467768660}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1467768661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42709,6 +42798,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467768656}
   m_CullTransparentMesh: 1
+--- !u!114 &1467768663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467768656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5faf447d456dc478abd9e614c7618c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1470534858
 GameObject:
   m_ObjectHideFlags: 0
@@ -48338,16 +48439,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1046463355}
-  - {fileID: 26120688}
-  - {fileID: 548951644}
-  - {fileID: 1467768657}
-  - {fileID: 1783376714}
-  - {fileID: 2019769265}
-  - {fileID: 1727775844}
-  - {fileID: 1314752312}
-  - {fileID: 1828096149}
-  - {fileID: 915829330}
-  - {fileID: 1827183836}
+  - {fileID: 324782328}
+  - {fileID: 1350899385}
+  - {fileID: 1946114964}
   m_Father: {fileID: 1485086861}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -50295,7 +50389,7 @@ GameObject:
   - component: {fileID: 1727775848}
   - component: {fileID: 1727775847}
   - component: {fileID: 1727775846}
-  - component: {fileID: 1727775845}
+  - component: {fileID: 1727775849}
   m_Layer: 0
   m_Name: ScrewHole
   m_TagString: Untagged
@@ -50310,48 +50404,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727775843}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1632147465}
+  m_Father: {fileID: 324782328}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -344.7, y: -209.1}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1727775845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1727775843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d59c1ce8bc9ad495bb35727aa4d51d2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intText3: {fileID: 1195845257}
-  button2: {fileID: 26120687}
-  rightClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1727775845}
-        m_TargetAssemblyTypeName: LadderScrewHole, Assembly-CSharp
-        m_MethodName: ShowScrew
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1727775843}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  poles: {fileID: 833428061}
 --- !u!114 &1727775846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50434,6 +50498,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727775843}
   m_CullTransparentMesh: 1
+--- !u!114 &1727775849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727775843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59c1ce8bc9ad495bb35727aa4d51d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screws: {fileID: 1350899384}
 --- !u!1 &1728907509 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8912261051573315453, guid: ac32902191b3b4f6fb7834fd762bd511, type: 3}
@@ -51999,10 +52076,10 @@ GameObject:
   - component: {fileID: 1783376719}
   - component: {fileID: 1783376718}
   - component: {fileID: 1783376717}
-  - component: {fileID: 1783376716}
   - component: {fileID: 1783376715}
+  - component: {fileID: 1783376720}
   m_Layer: 0
-  m_Name: Screw (4)
+  m_Name: Screw (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52015,17 +52092,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1783376713}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1632147465}
+  m_Father: {fileID: 1350899385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 258, y: 65}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &1783376715
 AudioSource:
@@ -52123,34 +52200,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1783376716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783376713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5faf447d456dc478abd9e614c7618c15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intText3: {fileID: 1195845257}
-  rightClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1783376716}
-        m_TargetAssemblyTypeName: LadderScrew, Assembly-CSharp
-        m_MethodName: RotateButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1783376717}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1783376717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52194,19 +52243,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1783376718}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1783376716}
-        m_TargetAssemblyTypeName: LadderScrew, Assembly-CSharp
-        m_MethodName: ChangeSize
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1783376717}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1783376718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52245,6 +52282,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1783376713}
   m_CullTransparentMesh: 1
+--- !u!114 &1783376720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783376713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5faf447d456dc478abd9e614c7618c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1787158405
 GameObject:
   m_ObjectHideFlags: 0
@@ -53162,7 +53211,7 @@ GameObject:
   - component: {fileID: 1827183840}
   - component: {fileID: 1827183839}
   - component: {fileID: 1827183838}
-  - component: {fileID: 1827183837}
+  - component: {fileID: 1827183841}
   m_Layer: 0
   m_Name: ScrewHole (2)
   m_TagString: Untagged
@@ -53177,48 +53226,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827183835}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1632147465}
+  m_Father: {fileID: 324782328}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 107, y: 341}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1827183837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827183835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d59c1ce8bc9ad495bb35727aa4d51d2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intText3: {fileID: 1195845257}
-  button2: {fileID: 2019769264}
-  rightClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1827183837}
-        m_TargetAssemblyTypeName: LadderScrewHole, Assembly-CSharp
-        m_MethodName: ShowScrew
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1827183835}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  poles: {fileID: 833428061}
 --- !u!114 &1827183838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53301,6 +53320,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827183835}
   m_CullTransparentMesh: 1
+--- !u!114 &1827183841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827183835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59c1ce8bc9ad495bb35727aa4d51d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screws: {fileID: 1350899384}
 --- !u!1 &1828005483
 GameObject:
   m_ObjectHideFlags: 0
@@ -53450,7 +53482,7 @@ GameObject:
   - component: {fileID: 1828096153}
   - component: {fileID: 1828096152}
   - component: {fileID: 1828096151}
-  - component: {fileID: 1828096150}
+  - component: {fileID: 1828096154}
   m_Layer: 0
   m_Name: ScrewHole (1)
   m_TagString: Untagged
@@ -53465,48 +53497,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828096148}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1632147465}
+  m_Father: {fileID: 324782328}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -133, y: 65}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1828096150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828096148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d59c1ce8bc9ad495bb35727aa4d51d2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intText3: {fileID: 1195845257}
-  button2: {fileID: 1467768656}
-  rightClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1828096150}
-        m_TargetAssemblyTypeName: LadderScrewHole, Assembly-CSharp
-        m_MethodName: ShowScrew
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1828096148}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  poles: {fileID: 833428061}
 --- !u!114 &1828096151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53589,6 +53591,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828096148}
   m_CullTransparentMesh: 1
+--- !u!114 &1828096154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828096148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59c1ce8bc9ad495bb35727aa4d51d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screws: {fileID: 1350899384}
 --- !u!1 &1833612706
 GameObject:
   m_ObjectHideFlags: 0
@@ -62126,6 +62141,82 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: 578f328f193184ab19bb81db7ff35a28, type: 3}
+--- !u!1 &1946114963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1946114964}
+  - component: {fileID: 1946114966}
+  - component: {fileID: 1946114965}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1946114964
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946114963}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6297047, y: 0.18163785, z: 0.38117}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 377975056}
+  m_Father: {fileID: 1632147465}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -903, y: 192}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1946114965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946114963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1946114966
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946114963}
+  m_CullTransparentMesh: 1
 --- !u!1 &1948985889
 GameObject:
   m_ObjectHideFlags: 0
@@ -64163,8 +64254,8 @@ GameObject:
   - component: {fileID: 2019769270}
   - component: {fileID: 2019769269}
   - component: {fileID: 2019769268}
-  - component: {fileID: 2019769267}
   - component: {fileID: 2019769266}
+  - component: {fileID: 2019769271}
   m_Layer: 0
   m_Name: Screw (2)
   m_TagString: Untagged
@@ -64179,17 +64270,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019769264}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1632147465}
+  m_Father: {fileID: 1350899385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 107, y: 342}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &2019769266
 AudioSource:
@@ -64287,34 +64378,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2019769267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019769264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5faf447d456dc478abd9e614c7618c15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intText3: {fileID: 1195845257}
-  rightClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2019769267}
-        m_TargetAssemblyTypeName: LadderScrew, Assembly-CSharp
-        m_MethodName: RotateButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2019769268}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2019769268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64358,19 +64421,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2019769269}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2019769267}
-        m_TargetAssemblyTypeName: LadderScrew, Assembly-CSharp
-        m_MethodName: ChangeSize
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2019769268}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2019769269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64409,6 +64460,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019769264}
   m_CullTransparentMesh: 1
+--- !u!114 &2019769271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019769264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5faf447d456dc478abd9e614c7618c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2020283405
 GameObject:
   m_ObjectHideFlags: 0
@@ -67051,7 +67114,7 @@ PrefabInstance:
       objectReference: {fileID: 13400000, guid: 24ad049f885594101964ff376536f584, type: 2}
     - target: {fileID: 9178205431222267636, guid: 067fefbcccffc4cb583d3ed8cba3f18e, type: 3}
       propertyPath: m_Mass
-      value: 5
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

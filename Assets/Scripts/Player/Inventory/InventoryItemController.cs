@@ -2,7 +2,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
-
 namespace Player.Inventory
 {
     public class InventoryItemController : MonoBehaviour
@@ -13,6 +12,12 @@ namespace Player.Inventory
         
         private readonly Color _defaultColor = new Color(40 / 255f, 40 / 255f, 40 / 255f);
         private readonly Color _selectedColor = new Color(80 / 255f, 80 / 255f, 80 / 255f);
+        private Image imag;
+
+        private void Awake()
+        {
+            imag = gameObject.GetComponent<Image>();
+        }
 
         public void RemoveItem()
         {
@@ -21,8 +26,9 @@ namespace Player.Inventory
 
         public void AddItem(InventoryItem newItem)
         {
+            if(Player.Instance.selectedslot != -1) transform.parent.GetChild(Player.Instance.selectedslot).GetComponent<InventoryItemController>().HoldItem();
             item = newItem;
-            GetComponent<Image>().color = _defaultColor;
+            imag.color = _defaultColor;
         }
 
         public void HoldItem()
@@ -47,9 +53,8 @@ namespace Player.Inventory
             else Inventory.Instance.usageInstructions.text = "";
         }
 
-        public void ToggleColor()
+        private void ToggleColor()
         {
-            var imag = GetComponent<Image>();
             imag.color = imag.color == _defaultColor ? _selectedColor : _defaultColor;
         }
 

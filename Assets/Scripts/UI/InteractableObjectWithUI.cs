@@ -26,7 +26,7 @@ namespace UI
             if (Input.GetKeyDown(KeyCode.E) && IsWithinReach() && !ui.activeSelf && !uiCD) OpenUI();
         }
 
-        private void OpenUI()
+        protected void OpenUI()
         {
             pauseMenu.FreezeGame();
             ui.SetActive(true);

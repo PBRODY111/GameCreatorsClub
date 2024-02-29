@@ -24,6 +24,7 @@ namespace Player
         private PlayerCam _playerCam;
 
         private float _timer;
+        private float _originalFOV;
         
         public void ResetTimer()
         {
@@ -99,7 +100,7 @@ namespace Player
             }
         }
         
-        private float _originalFOV;
+        
         
         public void ChangeFOV(float fov)
         {

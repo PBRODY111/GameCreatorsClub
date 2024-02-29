@@ -22,7 +22,6 @@ namespace Player.Inventory
         private void Awake()
         {
             Instance = this;
-
             usageInstructions.text = "";
         }
 
@@ -41,6 +40,11 @@ namespace Player.Inventory
             items.Remove(item);
             CleanList();
             ListItems();
+        }
+
+        public void RemoveSelectedItem()
+        {
+            Remove(items[Player.Instance.selectedslot]);
         }
 
         public void CleanList()
