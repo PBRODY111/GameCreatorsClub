@@ -44,12 +44,12 @@ namespace Scene1
 
         private void OnTriggerExit(Collider collision)
         {
-            if (collision.gameObject.name == "Zagreus") _inTrigger = false;
+            if (collision.gameObject.tag == "toxin") _inTrigger = false;
         }
 
         private void OnTriggerStay(Collider collision)
         {
-            if (collision.gameObject.name == "Zagreus")
+            if (collision.gameObject.tag == "toxin")
             {
                 _inTrigger = true;
                 if (toxicLevel <= 10)

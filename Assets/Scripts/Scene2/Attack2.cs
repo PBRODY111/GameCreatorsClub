@@ -52,6 +52,10 @@ namespace Scene2
                             isActive = false;
                             target = targets[0].transform.position;
                         } else{
+                            if(computerUI.activeSelf){
+                                computerUI.SetActive(false);
+                                aggression = true;
+                            }
                             target = targets[0].transform.position;
                         }
                         Debug.Log("Close");

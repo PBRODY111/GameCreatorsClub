@@ -6,6 +6,7 @@ TagManager:
   tags:
   - door
   - radio
+  - toxin
   layers:
   - Default
   - TransparentFX
