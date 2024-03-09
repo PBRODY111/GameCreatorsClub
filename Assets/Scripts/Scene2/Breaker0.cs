@@ -7,6 +7,8 @@ public class Breaker0 : MonoBehaviour
     [SerializeField] private GameObject intText;
     [SerializeField] private bool hasPower;
     [SerializeField] private AudioSource breakerAudio;
+    [SerializeField] private AudioSource breakerAudio2;
+    [SerializeField] private AudioClip [] breakerSounds;
     
     // Start is called before the first frame update
     void Start()
@@ -33,11 +35,15 @@ public class Breaker0 : MonoBehaviour
     {
         transform.rotation = Quaternion.Euler(-90f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         breakerAudio.Play();
+        breakerAudio2.clip = breakerSounds[0];
+        breakerAudio2.Play();
         hasPower = true;
         yield return new WaitForSeconds(Random.Range(15f, 30f));
         hasPower = false;
         transform.rotation = Quaternion.Euler(-220f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         breakerAudio.Play();
+        breakerAudio2.clip = breakerSounds[1];
+        breakerAudio2.Play();
     }
 
     private bool IsWithinReach()

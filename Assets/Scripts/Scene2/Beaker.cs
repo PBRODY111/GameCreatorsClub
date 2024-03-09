@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using Player.Inventory;
 using Scene2;
@@ -18,6 +19,14 @@ public class Beaker : MonoBehaviour
     [SerializeField] private bool correctSize = false;
     [SerializeField] private string [] elements;
     private readonly bool _isUnlocked = false;
+    private int _elementIndex = 1;
+
+    public void ChangeElement(Button button)
+    {
+        button.GetComponentInChildren<TextMeshProUGUI>().text = elements[_elementIndex];
+        _elementIndex++;
+        if (_elementIndex >= elements.Length) _elementIndex = 0;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -84,6 +93,8 @@ public class Beaker : MonoBehaviour
             }
         }
     }
+
+    
 
     private bool IsWithinReach()
     {
