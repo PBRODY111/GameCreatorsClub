@@ -1,10 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class Breaker0 : MonoBehaviour
 {
     [SerializeField] private float reach;
     [SerializeField] private GameObject intText;
+    [SerializeField] private GameObject powerText;
+    [SerializeField] private Button powerButton;
     [SerializeField] private bool hasPower;
     [SerializeField] private AudioSource breakerAudio;
     [SerializeField] private AudioSource breakerAudio2;
@@ -38,8 +42,12 @@ public class Breaker0 : MonoBehaviour
         breakerAudio2.clip = breakerSounds[0];
         breakerAudio2.Play();
         hasPower = true;
+        powerButton.interactable = true;
+        powerText.GetComponent<TMP_Text>().text = "POWER CONNECTED";
         yield return new WaitForSeconds(Random.Range(15f, 30f));
         hasPower = false;
+        powerButton.interactable = false;
+        powerText.GetComponent<TMP_Text>().text = "POWER DISCONNECTED";
         transform.rotation = Quaternion.Euler(-220f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         breakerAudio.Play();
         breakerAudio2.clip = breakerSounds[1];

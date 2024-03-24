@@ -49,6 +49,10 @@ namespace TitleScene
             resolutionDropdown.RefreshShownValue();
         }
 
+        void FixedUpdate(){
+            Cursor.lockState = CursorLockMode.None;
+        }
+
         public void StartNew()
         {
             click.Play();

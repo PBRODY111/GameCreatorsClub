@@ -13,6 +13,8 @@ public class Beaker : MonoBehaviour
     [SerializeField] private GameObject intText3;
     [SerializeField] private GameObject chemObj;
     [SerializeField] private GameObject hotplateUI;
+    [SerializeField] private GameObject fire;
+    [SerializeField] private GameObject alarm;
     [SerializeField] private Hotplate hotPlate;
     [SerializeField] private Attack2 cer;
     [SerializeField] private bool correctChem = false;
@@ -44,6 +46,14 @@ public class Beaker : MonoBehaviour
                 }
         }
 
+    public void ExitUI(){
+        if (hotplateUI.activeSelf){
+            hotplateUI.SetActive(false);
+            Player.Player.Instance.LockCursor();
+            Player.Player.Instance.EnableMovement();
+        }
+    }
+
     private void OnMouseExit()
     {
         intText.SetActive(false);
@@ -69,7 +79,7 @@ public class Beaker : MonoBehaviour
                 if (Input.GetMouseButtonDown(1) && IsWithinReach() && !chemObj.activeSelf && (Player.Player.Instance.IsHolding("Y Jug")||Player.Player.Instance.IsHolding("G Jug")||Player.Player.Instance.IsHolding("W Jug")))
                 {
                     if(!Player.Player.Instance.IsHolding(hotPlate.chemicalName)){
-                        cer.aggression = true;
+                        StartCoroutine(CerKilled());
                     }
                     correctChem = true;
                     chemObj.SetActive(true);
@@ -83,7 +93,7 @@ public class Beaker : MonoBehaviour
                 if (Input.GetMouseButtonDown(1) && IsWithinReach() && !correctSize && (Player.Player.Instance.IsHolding("L Stir")||Player.Player.Instance.IsHolding("S Stir")||Player.Player.Instance.IsHolding("M Stir")))
                 {
                     if(!Player.Player.Instance.IsHolding(hotPlate.stirSize)){
-                        cer.aggression = true;
+                        StartCoroutine(CerKilled());
                     }
                     correctSize = true;
                     intText3.SetActive(false);
@@ -92,6 +102,13 @@ public class Beaker : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator CerKilled(){
+        fire.SetActive(true);
+        alarm.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        cer.aggression = true;
     }
 
     
