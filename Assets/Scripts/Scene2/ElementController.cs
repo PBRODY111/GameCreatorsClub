@@ -11,6 +11,7 @@ public class ElementController : MonoBehaviour
     [SerializeField] private int [] elementNums;
     [SerializeField] private string [] elementAbrevs;
     [SerializeField] private TextMeshPro [] elementList;
+    [SerializeField] private string [] secretElems;
     [SerializeField] private AudioSource buzzAudio;
     public Beaker beaker;
     [SerializeField] private Button leftButton;
@@ -18,7 +19,9 @@ public class ElementController : MonoBehaviour
     [SerializeField] private GameObject noCorrosive;
     [SerializeField] private GameObject noCorrosive2;
     [SerializeField] private GameObject yesCorrosive;
+    [SerializeField] private GameObject secretPoster;
     private int elementItem = 0;
+    private int secretItem = 0;
     private string currElementAbrev = "";
     private int currElementNum = 0;
     // Start is called before the first frame update
@@ -57,9 +60,17 @@ public class ElementController : MonoBehaviour
                 yesCorrosive.SetActive(true);
             }
         } else{
-            Debug.Log(leftButton.GetComponentInChildren<TextMeshProUGUI>().text);
-            Debug.Log(elementList[elementItem].text);
-            beaker.StartCoroutine(beaker.CerKilled());
+            if(leftButton.GetComponentInChildren<TextMeshProUGUI>().text == secretElems[elementItem]){
+                elementItem++;
+                secretItem++;
+                if(secretItem == 4){
+                    secretPoster.SetActive(true);
+                    yield return new WaitForSeconds(4f);
+                    beaker.StartCoroutine(beaker.CerKilled());
+                }
+            } else{
+                beaker.StartCoroutine(beaker.CerKilled());
+            }
         }
         yield return new WaitForSeconds(1f);
         EventSystem.current.SetSelectedGameObject(null);

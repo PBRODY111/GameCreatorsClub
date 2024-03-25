@@ -37417,7 +37417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e55ecf8a23b1c412fa4181eedefbec0a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -55673,6 +55673,11 @@ MonoBehaviour:
   - {fileID: 970401127}
   - {fileID: 560975323}
   - {fileID: 1424367877}
+  secretElems:
+  - He
+  - Sc
+  - Ar
+  - Si
   buzzAudio: {fileID: 648896568}
   beaker: {fileID: 141679481}
   leftButton: {fileID: 206687230}
@@ -55680,6 +55685,7 @@ MonoBehaviour:
   noCorrosive: {fileID: 141679478}
   noCorrosive2: {fileID: 1332035670}
   yesCorrosive: {fileID: 5488686352367045864}
+  secretPoster: {fileID: 1405941518}
 --- !u!1 &1548180715
 GameObject:
   m_ObjectHideFlags: 0
