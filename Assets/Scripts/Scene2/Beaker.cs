@@ -104,7 +104,7 @@ public class Beaker : MonoBehaviour
         }
     }
 
-    IEnumerator CerKilled(){
+    public IEnumerator CerKilled(){
         fire.SetActive(true);
         alarm.SetActive(true);
         yield return new WaitForSeconds(2f);

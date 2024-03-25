@@ -44,7 +44,7 @@ public class Breaker0 : MonoBehaviour
         hasPower = true;
         powerButton.interactable = true;
         powerText.GetComponent<TMP_Text>().text = "POWER CONNECTED";
-        yield return new WaitForSeconds(Random.Range(15f, 30f));
+        yield return new WaitForSeconds(Random.Range(25f, 35f));
         hasPower = false;
         powerButton.interactable = false;
         powerText.GetComponent<TMP_Text>().text = "POWER DISCONNECTED";

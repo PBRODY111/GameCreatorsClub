@@ -50,7 +50,7 @@ namespace TitleScene
         }
 
         void FixedUpdate(){
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         public void StartNew()
