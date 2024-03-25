@@ -51,6 +51,7 @@ public class ElementController : MonoBehaviour
             if(elementItem<3){
                 elementItem++;
             } else{
+                beaker.ExitUI();
                 noCorrosive.SetActive(false);
                 noCorrosive2.SetActive(false);
                 yesCorrosive.SetActive(true);
