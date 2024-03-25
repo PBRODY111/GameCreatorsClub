@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using UnityEngine.Video;
 
 namespace Scene2
 {
@@ -16,10 +18,28 @@ namespace Scene2
         public bool aggression = false;
         private Quaternion _lookRotation;
         [SerializeField] private GameObject computerUI;
+        [SerializeField] private GameObject hotplateUI;
         [SerializeField] private AudioSource suspenseAudio;
+        [SerializeField] private AudioSource computerAudio;
+        [SerializeField] private VideoPlayer videoPlayer;
+        public string tagToIgnore = "ignoreCollision";
 
         private void Start()
         {
+            Collider[] colliders = GameObject.FindGameObjectsWithTag(tagToIgnore)
+                                        .Select(go => go.GetComponent<Collider>())
+                                        .Where(collider => collider != null)
+                                        .ToArray();
+
+            // Ignore collisions with each collider found
+            foreach (var collider in colliders)
+            {
+                if (collider != null)
+                {
+                    Physics.IgnoreCollision(GetComponent<Collider>(), collider);
+                }
+            }
+
             startPosition = transform.position;
             target = targets[0].transform.position;
             StartCoroutine(ScareSequence());
@@ -30,6 +50,8 @@ namespace Scene2
             if(isActive){
                 if(computerUI.activeSelf){
                     target = targets[2].transform.position;
+                } else if(hotplateUI.activeSelf){
+                    target = targets[3].transform.position;
                 }
                 GetComponent<Animator>().SetBool("isLeaving", true);
                 t += Time.deltaTime / timeToReachTarget;
@@ -53,7 +75,12 @@ namespace Scene2
                             target = targets[0].transform.position;
                         } else{
                             if(computerUI.activeSelf){
+                                computerAudio.Pause();
+                                videoPlayer.Pause();
                                 computerUI.SetActive(false);
+                                aggression = true;
+                            } else if(hotplateUI.activeSelf){
+                                hotplateUI.SetActive(false);
                                 aggression = true;
                             }
                             target = targets[0].transform.position;

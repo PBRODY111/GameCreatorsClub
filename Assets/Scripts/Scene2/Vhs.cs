@@ -70,6 +70,7 @@ public class Vhs : MonoBehaviour
 
             if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("DVD"))
             {
+                hasDvd = true;
                 intText.SetActive(false);
                 Player.Player.Instance.hotbar.transform.GetChild(Player.Player.Instance.selectedslot).GetComponent<InventoryItemController>().RemoveItem();
                 Player.Player.Instance.selectedslot = -1;
