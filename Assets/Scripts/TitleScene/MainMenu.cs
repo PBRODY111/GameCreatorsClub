@@ -72,7 +72,7 @@ namespace TitleScene
             animator2.SetBool(IsStart, true);
             animator3.SetBool(IsStart, true);
             audioData.Play(0);
-            StartCoroutine(LoadStart());
+            StartCoroutine(LoadTemp());
         }
 
         // OPTIONS
@@ -163,6 +163,13 @@ namespace TitleScene
             animator4.SetBool(IsStart, true);
             yield return new WaitForSeconds((float)2.5);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        private IEnumerator LoadTemp()
+        {
+            yield return new WaitForSeconds((float)1.5);
+            animator4.SetBool(IsStart, true);
+            yield return new WaitForSeconds((float)2.5);
+            SceneManager.LoadScene("Room2");
         }
 
         public void QuitGame()

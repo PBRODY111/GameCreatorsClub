@@ -59429,6 +59429,7 @@ MonoBehaviour:
   playerModel: {fileID: 1981617483}
   mainCamera: {fileID: 1972437052}
   cerCamera: {fileID: 694376009}
+  intTextString: CROWBAR NEEDED TO INTERACT
   reach: 1.5
 --- !u!64 &1852842717
 MeshCollider:

@@ -15,6 +15,7 @@ namespace Scene1
         [SerializeField] private GameObject playerModel;
         [SerializeField] private Camera mainCamera;
         [SerializeField] private Camera cerCamera;
+        [SerializeField] private string intTextString;
 
         [SerializeField] private float reach;
 
@@ -31,7 +32,7 @@ namespace Scene1
 
         private void OnMouseOver()
         {
-            intText3.GetComponent<TMP_Text>().text = "CROWBAR NEEDED TO INTERACT";
+            intText3.GetComponent<TMP_Text>().text = intTextString;
             intText3.SetActive(IsWithinReach());
             if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Crowbar"))
             {
