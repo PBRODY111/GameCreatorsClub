@@ -21,6 +21,7 @@ namespace Scene2
         [SerializeField] private GameObject hotplateUI;
         [SerializeField] private AudioSource suspenseAudio;
         [SerializeField] private AudioSource computerAudio;
+        [SerializeField] private AudioSource leaveAudio;
         [SerializeField] private VideoPlayer videoPlayer;
         public string tagToIgnore = "ignoreCollision";
 
@@ -70,9 +71,11 @@ namespace Scene2
                         if(target == targets[0].transform.position){
                             isActive = false;
                             target = targets[1].transform.position;
+                            leaveAudio.Play();
                         } else if(target == targets[1].transform.position){
                             isActive = false;
                             target = targets[0].transform.position;
+                            leaveAudio.Play();
                         } else{
                             if(computerUI.activeSelf){
                                 computerAudio.Pause();
@@ -99,7 +102,7 @@ namespace Scene2
             t = 0;
             //GetComponent<Animator>().SetBool("isReturn", true);
             Debug.Log("Started");
-            yield return new WaitForSeconds(Random.Range(12f, 20f));
+            yield return new WaitForSeconds(Random.Range(20f, 30f));
             Debug.Log("moving");
             suspenseAudio.Play();
             isActive = true;
