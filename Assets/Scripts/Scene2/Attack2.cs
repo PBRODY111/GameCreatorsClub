@@ -102,7 +102,7 @@ namespace Scene2
             t = 0;
             //GetComponent<Animator>().SetBool("isReturn", true);
             Debug.Log("Started");
-            yield return new WaitForSeconds(Random.Range(20f, 30f));
+            yield return new WaitForSeconds(Random.Range(30f, 40f));
             Debug.Log("moving");
             suspenseAudio.Play();
             isActive = true;
