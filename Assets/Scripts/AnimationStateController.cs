@@ -16,9 +16,7 @@ public class AnimationStateController : MonoBehaviour
     {
         HandleAnimationState("w", IsWalking, _animator.GetBool(IsWalking));
         HandleAnimationState("s", IsReversing, _animator.GetBool(IsReversing));
-        HandleAnimationState("left shift", IsSprinting,
-            _animator.GetBool(IsSprinting) && _animator.GetBool(IsWalking) &&
-            !Player.Player.Instance.EpicModeEnabled());
+        //HandleAnimationState("left shift", IsSprinting, _animator.GetBool(IsSprinting) && _animator.GetBool(IsWalking) && !Player.Player.Instance.EpicModeEnabled());
     }
 
     private void HandleAnimationState(string key, int hash, bool currentState)
