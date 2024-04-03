@@ -113,6 +113,7 @@ namespace UI
         public void PauseGame()
         {
             clickAudio.Play();
+            Cursor.visible = true;
             pauseMenu.SetActive(true);
             options.SetActive(false);
             FreezeGame();
