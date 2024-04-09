@@ -24,6 +24,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Room2.unity
     guid: eba5a3130b91f44358fde236c58185a3
   - enabled: 1
+    path: Assets/Scenes/Room3.unity
+    guid: d2be83b38cc19429ab22bae95a7f7ece
+  - enabled: 1
+    path: Assets/Scenes/Room4.unity
+    guid: 91bbc31736e9340a385007d637e6097d
+  - enabled: 1
+    path: Assets/Scenes/Room5.unity
+    guid: 518671214a6d8442881dab92967eb25c
+  - enabled: 1
+    path: Assets/Scenes/Room6.unity
+    guid: 16294a5f643bb48febad282e444e8194
+  - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 2ffa1c2e414694fac9d6a8506895297e
   - enabled: 1
