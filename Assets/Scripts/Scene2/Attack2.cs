@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.Video;
+using Scene1;
 
 namespace Scene2
 {
@@ -23,6 +24,7 @@ namespace Scene2
         [SerializeField] private AudioSource computerAudio;
         [SerializeField] private AudioSource leaveAudio;
         [SerializeField] private VideoPlayer videoPlayer;
+        [SerializeField] private CerKill cerKill;
         public string tagToIgnore = "ignoreCollision";
 
         private void Start()
@@ -48,6 +50,9 @@ namespace Scene2
 
         private void Update()
         {
+            if(cerKill.stopAttack){
+                target = Player.Player.Instance.transform.position;
+            }
             if(isActive){
                 if(computerUI.activeSelf){
                     target = targets[2].transform.position;

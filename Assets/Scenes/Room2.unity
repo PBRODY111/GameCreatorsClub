@@ -30537,6 +30537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpscare: {fileID: 1852842716}
+  stopAttack: 0
 --- !u!1 &751466699
 GameObject:
   m_ObjectHideFlags: 0
@@ -56692,6 +56693,7 @@ MonoBehaviour:
   computerAudio: {fileID: 732397580}
   leaveAudio: {fileID: 1581866965}
   videoPlayer: {fileID: 1806574075}
+  cerKill: {fileID: 746913211}
   tagToIgnore: ignoreCollision
 --- !u!82 &1581866961
 AudioSource:
