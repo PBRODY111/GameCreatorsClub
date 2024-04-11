@@ -12,7 +12,7 @@ namespace TitleScene
         private void Update()
         {
             if (Input.GetMouseButtonDown(0)){
-                chance = Random.Range(0, 2);
+                chance = Random.Range(0, 3);
                 Cursor.lockState = CursorLockMode.None;
                 if(chance == 0){
                     SceneManager.LoadScene("Styx");

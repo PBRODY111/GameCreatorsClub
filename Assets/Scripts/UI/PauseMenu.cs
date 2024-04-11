@@ -48,6 +48,11 @@ namespace UI
                 else
                     PauseGame();
             }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                Cursor.visible = true;
+                Player.Player.Instance.UnlockCursor();
+            }
         }
 
         // OPTIONS

@@ -8,6 +8,7 @@ public class Attack3Cer : MonoBehaviour
     public float t;
     private bool isRotating = false;
     private bool isActive = false;
+    public bool attacking = false;
     private Quaternion originalRotation;
     [SerializeField] private GameObject intText;
     [SerializeField] private float reach;
@@ -16,6 +17,7 @@ public class Attack3Cer : MonoBehaviour
     [SerializeField] private GameObject cer;
     private Quaternion _lookRotation;
     [SerializeField] private Vector3 startPosition;
+    [SerializeField] private AudioSource knockAudio;
     
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,7 @@ public class Attack3Cer : MonoBehaviour
         intText.SetActive(IsWithinReach());
         if (Input.GetKeyDown(KeyCode.E) && IsWithinReach())
         {
+            knockAudio.Play();
             ResetRotation();
             ResetTimer();
         }
@@ -54,7 +57,9 @@ public class Attack3Cer : MonoBehaviour
             float distance = Vector3.Distance(transform.position, target);
         }
         
-        timer += Time.deltaTime;
+        if(attacking){
+            timer += Time.deltaTime;
+        }
 
         if (isRotating)
         {

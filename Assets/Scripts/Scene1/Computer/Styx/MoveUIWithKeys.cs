@@ -38,7 +38,8 @@ namespace Scene1.Computer.Styx
             var verticalInput = Input.GetAxis("Vertical");
             
             if(Input.GetKeyDown(KeyCode.F3))
-                Epic = !Epic;
+                Debug.Log("Epic mode will be changed here");
+                //Epic = !Epic;
             
             if (Epic)
             {
