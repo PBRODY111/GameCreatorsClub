@@ -56778,8 +56778,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorAudio: {fileID: 1581866961}
   sounds:
-  - {fileID: 8300000, guid: 17e3b6f0e68784334b796d7564171a69, type: 3}
-  - {fileID: 8300000, guid: c36b9c9bd3d1e4acd874f8c2c99db76c, type: 3}
+  - {fileID: 8300000, guid: 3785db5e514bd4f0da75e2eba82d1a83, type: 3}
+  - {fileID: 8300000, guid: 3785db5e514bd4f0da75e2eba82d1a83, type: 3}
   - {fileID: 8300000, guid: 3785db5e514bd4f0da75e2eba82d1a83, type: 3}
   period: 0
 --- !u!54 &1581866963

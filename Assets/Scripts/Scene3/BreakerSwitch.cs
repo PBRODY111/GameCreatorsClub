@@ -7,7 +7,12 @@ public class BreakerSwitch : MonoBehaviour
     [SerializeField] private float reach;
     [SerializeField] private GameObject intText;
     [SerializeField] private AudioSource clickAudio;
+    public bool switchDirection;
     // Start is called before the first frame update
+    void Start(){
+        int randomInt = Random.Range(0, 2);
+        switchDirection = (randomInt == 0) ? false : true;
+    }
     private void OnMouseExit()
     {
         intText.SetActive(false);
