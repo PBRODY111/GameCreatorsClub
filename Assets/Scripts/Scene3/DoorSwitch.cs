@@ -11,6 +11,8 @@ public class DoorSwitch : MonoBehaviour
     [SerializeField] private AudioSource switchAudio;
     [SerializeField] private AudioSource doorAudio;
     [SerializeField] private Animator doorAnim;
+    [SerializeField] private GameObject cer;
+    [SerializeField] private GameObject ber;
     private static readonly int IsOpen = Animator.StringToHash("isOpen");
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,8 @@ public class DoorSwitch : MonoBehaviour
                 switchAudio.Play();
                 doorAudio.Play();
                 doorAnim.SetBool(IsOpen, true);
+                cer.SetActive(false);
+                ber.SetActive(false);
             } else{
                 switchAudio.clip = clips[1];
                 switchAudio.Play();

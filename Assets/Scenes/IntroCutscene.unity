@@ -10121,9 +10121,11 @@ MonoBehaviour:
   audio1Arr:
   - {fileID: 8300000, guid: ea97ab3c7537743b5ad18e52162a2e3b, type: 3}
   - {fileID: 8300000, guid: c1fa9625dfcfc4aa3b1608d5c05070c1, type: 3}
+  - {fileID: 8300000, guid: 3af2bab425caa4c62a1d11110e34aeef, type: 3}
   audio2Arr:
   - {fileID: 8300000, guid: bb73a7ccb51d441cbb9c0a30b900e87e, type: 3}
   - {fileID: 8300000, guid: 49e76c57f6d8040528a54e02b35e8a72, type: 3}
+  - {fileID: 8300000, guid: f422e0052507440f8bb47dda6073aedf, type: 3}
   titleVid: {fileID: 220373364}
   videoImg: {fileID: 1650193168}
   monsters: {fileID: 813386920}

@@ -78,7 +78,13 @@ public class IntroCutscene : MonoBehaviour
         yield return new WaitForSeconds(5f);
         audio1.clip = audio1Arr[1];
         audio1.Play();
-        yield return new WaitForSeconds(16f);
+        yield return new WaitForSeconds(9f);
+        audio2.clip = audio2Arr[2];
+        audio2.Play();
+        yield return new WaitForSeconds(6f);
+        audio1.clip = audio1Arr[2];
+        audio1.Play();
+        yield return new WaitForSeconds(1f);
         audio2.clip = audio2Arr[1];
         audio2.Play();
         // start title sequence
