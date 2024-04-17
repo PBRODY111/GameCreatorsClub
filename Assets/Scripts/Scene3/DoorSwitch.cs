@@ -34,7 +34,10 @@ public class DoorSwitch : MonoBehaviour
         {
             for(int i = 0; i < switches.Length; i++){
                 if(switches[i].currDirection != switches[i].switchDirection){
+                    Debug.Log(switches[i].name);
                     switchGo = false;
+                } else{
+                    switchGo = true;
                 }
             }
             if(keyhole.hasKey && switchGo){

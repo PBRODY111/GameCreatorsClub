@@ -217,7 +217,7 @@ public class QuestionBoard : MonoBehaviour
                     i++;
                 }
             }
-            textBlock.text = "S7: "+switch5.switchDirection;
+            textBlock.text = "S7: "+switch7.switchDirection;
             beepAudio.Play();
             yield return new WaitForSeconds(1.5f);
             textBlock.text = "LEVEL 4";

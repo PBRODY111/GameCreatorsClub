@@ -29,8 +29,10 @@ public class TextPanel : MonoBehaviour
         signBool = (randomInt == 0) ? false : true;
         if(signBool){
             signText.text = "x";
+            answer = 1;
         } else{
             signText.text = "+";
+            answer = 0;
         }
         for(int i = 0; i<symNums.Length; i++){
             symNums[i] = Random.Range(1,5);
@@ -66,7 +68,7 @@ public class TextPanel : MonoBehaviour
             }
             bckupBtn.panelAnswer = answer;
             bckupBtn.panelName = gameObject.name;
-            //textSlot.GetComponent<TextMeshPro>.text = ;
+            textSlot.GetComponent<TMP_Text>().text = symb.ToString();
             Player.Player.Instance.UnlockCursor();
             Player.Player.Instance.DisableMovement();
         }
