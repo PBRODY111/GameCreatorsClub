@@ -19,6 +19,7 @@ namespace UI
         public void Start()
         {
             ui.SetActive(false);
+            Cursor.visible = true;
             _page1 = transform.GetChild(0).gameObject;
             _page2 = transform.GetChild(1).gameObject;
             _page3 = transform.GetChild(2).gameObject;

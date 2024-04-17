@@ -8,6 +8,7 @@ public class BreakerSwitch : MonoBehaviour
     [SerializeField] private GameObject intText;
     [SerializeField] private AudioSource clickAudio;
     public bool switchDirection;
+    public bool currDirection = false;
     // Start is called before the first frame update
     void Start(){
         int randomInt = Random.Range(0, 2);
@@ -30,11 +31,13 @@ public class BreakerSwitch : MonoBehaviour
             {
                 // Set rotation to 0 degrees if it's currently at 180 degrees
                 transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
+                currDirection = false;
             }
             else if (currentRotationZ == 0)
             {
                 // Set rotation to 180 degrees if it's currently at 0 degrees
                 transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 180);
+                currDirection = true;
             } else{
                 Debug.Log(Mathf.RoundToInt(transform.rotation.eulerAngles.z));
             }

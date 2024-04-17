@@ -5,7 +5,7 @@ using TMPro;
 using UI;
 using UnityEngine.UI;
 
-public class ImagePanel : MonoBehaviour
+public class TextPanel : MonoBehaviour
 {
     [SerializeField] private TextMeshPro signText;
     [SerializeField] private TMP_Text signText2;
@@ -14,8 +14,9 @@ public class ImagePanel : MonoBehaviour
     [SerializeField] private GameObject panelUI;
     [SerializeField] private GameObject imageSlot;
     [SerializeField] private GameObject textSlot;
-    [SerializeField] private Sprite panelSprite;
-    [SerializeField] private int[] answers;
+    [SerializeField] private char symb;
+    [SerializeField] private TextMeshPro[] symbols;
+    [SerializeField] private int[] symNums = new int[3];
     [SerializeField] private int answer;
     [SerializeField] private float reach;
     [SerializeField] private PhoneAudio phoneAudio;
@@ -28,10 +29,19 @@ public class ImagePanel : MonoBehaviour
         signBool = (randomInt == 0) ? false : true;
         if(signBool){
             signText.text = "x";
-            answer = answers[0];
         } else{
             signText.text = "+";
-            answer = answers[1];
+        }
+        for(int i = 0; i<symNums.Length; i++){
+            symNums[i] = Random.Range(1,5);
+            if(signBool){
+                answer *= symNums[i];
+            } else{
+                answer += symNums[i];
+            }
+        }
+        for(int i = 0; i<symbols.Length; i++){
+            symbols[i].text = new string(symb, symNums[i]);
         }
     }
 
@@ -46,8 +56,8 @@ public class ImagePanel : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && IsWithinReach() && phoneAudio.emergencyActive)
         {
             panelUI.SetActive(true);
-            imageSlot.SetActive(true);
-            textSlot.SetActive(false);
+            imageSlot.SetActive(false);
+            textSlot.SetActive(true);
             intText.SetActive(false);
             if(signBool){
                 signText2.text = "x";
@@ -56,36 +66,11 @@ public class ImagePanel : MonoBehaviour
             }
             bckupBtn.panelAnswer = answer;
             bckupBtn.panelName = gameObject.name;
-            imageSlot.GetComponent<Image>().sprite = panelSprite;
+            //textSlot.GetComponent<TextMeshPro>.text = ;
             Player.Player.Instance.UnlockCursor();
             Player.Player.Instance.DisableMovement();
         }
     }
-
-    // Update is called once per frame
-    // Check button pressed
-    // void Update()
-    // {
-    //     if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
-    //     {
-    //         // Cast a ray from the mouse position or touch position in 2D
-    //         Vector2 rayPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //         RaycastHit2D hit = Physics2D.Raycast(rayPos, Vector2.zero);
-
-    //         // Check if the ray intersects with the Collider of the UI GameObject
-    //         if (hit.collider != null && hit.collider.gameObject == button)
-    //         {
-    //             // Perform actions when the UI GameObject is pressed
-    //             Debug.Log("UI Object Pressed!");
-    //         } else{
-    //             if (hit.collider != null){
-    //                 Debug.Log(hit.collider.gameObject);
-    //             } else{
-    //                 Debug.Log(button);
-    //             }
-    //         }
-    //     }
-    // }
 
     private bool IsWithinReach()
     {

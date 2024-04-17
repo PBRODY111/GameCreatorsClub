@@ -13,6 +13,8 @@ public class DoorSwitch : MonoBehaviour
     [SerializeField] private Animator doorAnim;
     [SerializeField] private GameObject cer;
     [SerializeField] private GameObject ber;
+    [SerializeField] private BreakerSwitch[] switches;
+    [SerializeField] private bool switchGo = true;
     private static readonly int IsOpen = Animator.StringToHash("isOpen");
     // Start is called before the first frame update
     void Start()
@@ -30,7 +32,12 @@ public class DoorSwitch : MonoBehaviour
         intText.SetActive(IsWithinReach());
         if (Input.GetKeyDown(KeyCode.E) && IsWithinReach())
         {
-            if(keyhole.hasKey){
+            for(int i = 0; i < switches.Length; i++){
+                if(switches[i].currDirection != switches[i].switchDirection){
+                    switchGo = false;
+                }
+            }
+            if(keyhole.hasKey && switchGo){
                 transform.rotation = Quaternion.Euler(-135, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
                 switchAudio.clip = clips[0];
                 switchAudio.Play();
