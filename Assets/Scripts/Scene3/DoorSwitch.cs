@@ -36,8 +36,6 @@ public class DoorSwitch : MonoBehaviour
                 if(switches[i].currDirection != switches[i].switchDirection){
                     Debug.Log(switches[i].name);
                     switchGo = false;
-                } else{
-                    switchGo = true;
                 }
             }
             if(keyhole.hasKey && switchGo){
@@ -51,6 +49,7 @@ public class DoorSwitch : MonoBehaviour
             } else{
                 switchAudio.clip = clips[1];
                 switchAudio.Play();
+                switchGo = true;
             }
         }
     }

@@ -9,6 +9,7 @@ public class PhoneAudio : MonoBehaviour
     [SerializeField] private AudioClip[] audios;
     [SerializeField] private AudioSource phoneAudio;
     [SerializeField] private Attack3Cer cerAttack;
+    [SerializeField] private Attack3Ber berAttack;
     [SerializeField] private GameObject[] objectsToHide;
     [SerializeField] private GameObject sparks;
     public bool emergencyActive = false;
@@ -54,6 +55,7 @@ public class PhoneAudio : MonoBehaviour
         phoneAudio.Play();
         _phoneAnim.SetBool(IsFall, true);
         cerAttack.attacking = true;
+        berAttack.attacking = true;
         emergencyActive = true;
         foreach (GameObject obj in objectsToHide)
         {
