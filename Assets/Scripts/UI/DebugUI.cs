@@ -14,6 +14,7 @@ namespace UI
         [SerializeField] private Button fullbright;
         [SerializeField] private Button epic;
         [SerializeField] private Button fpsButton;
+        [SerializeField] private Button tinyMode;
         [SerializeField] private GameObject pauseMenu;
 
         [FormerlySerializedAs("_fps")] [SerializeField]
@@ -63,23 +64,16 @@ namespace UI
             
             fpsButton.onClick.AddListener(() => fps.gameObject.SetActive(!fps.gameObject.activeSelf));
             
+            tinyMode.onClick.AddListener(() => Player.Player.Instance.ToggleTinyMode());
+            
             debugActivationSteps = new[]
             {
-                KeyCode.UpArrow,
-                KeyCode.UpArrow,
-                KeyCode.DownArrow,
-                KeyCode.DownArrow,
-                KeyCode.LeftArrow,
-                KeyCode.RightArrow,
-                KeyCode.LeftArrow,
-                KeyCode.RightArrow,
-                KeyCode.A,
-                KeyCode.B,
-                KeyCode.S,
-                KeyCode.T,
-                KeyCode.A,
-                KeyCode.R,
-                KeyCode.T
+                KeyCode.UpArrow, KeyCode.UpArrow,
+                KeyCode.DownArrow, KeyCode.DownArrow,
+                KeyCode.LeftArrow, KeyCode.RightArrow,
+                KeyCode.LeftArrow, KeyCode.RightArrow,
+                KeyCode.A, KeyCode.B, // yes i know it's swapped, it's a feature now
+                KeyCode.S, KeyCode.T, KeyCode.A, KeyCode.R, KeyCode.T
             };
         }
         

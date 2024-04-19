@@ -1,39 +1,38 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ChaseSequence : MonoBehaviour
+namespace Scene6
 {
-    public NavMeshAgent ai;
-    public Transform player;
-    Vector3 dest;
-    public float aiSpeed;
-    [SerializeField] private AudioSource music;
-    [SerializeField] private bool isActive = false;
-    [SerializeField] private Animator cerberusAnimator;
-    private static readonly int IsRun = Animator.StringToHash("isRun");
-    // Start is called before the first frame update
-    void Start()
+    public class ChaseSequence : MonoBehaviour
     {
-        StartCoroutine(StartChase());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        float distance = Vector3.Distance(transform.position, player.position);
-        if(isActive){
-            ai.speed = aiSpeed;
-            dest = player.position;
-            ai.destination = dest;
+        public NavMeshAgent ai;
+        public Transform player;
+        Vector3 dest;
+        public float aiSpeed;
+        [SerializeField] private AudioSource music;
+        [SerializeField] private bool isActive = false;
+        [SerializeField] private Animator cerberusAnimator;
+        private static readonly int IsRun = Animator.StringToHash("isRun");
+        void Start()
+        {
+            StartCoroutine(StartChase());
         }
-    }
 
-    IEnumerator StartChase(){
-        yield return new WaitForSeconds(5f);
-        cerberusAnimator.SetBool(IsRun, true);
-        music.Play();
-        isActive = true;
+        void Update()
+        {
+            if(isActive){
+                ai.speed = aiSpeed;
+                dest = player.position;
+                ai.destination = dest;
+            }
+        }
+
+        IEnumerator StartChase(){
+            yield return new WaitForSeconds(5f);
+            cerberusAnimator.SetBool(IsRun, true);
+            music.Play();
+            isActive = true;
+        }
     }
 }

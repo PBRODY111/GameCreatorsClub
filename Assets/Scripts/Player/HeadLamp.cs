@@ -44,26 +44,25 @@ namespace Player
 
         private void Update()
         {
-            if(_flashlightOn){
-                if (_fullbright)
-                {
-                    _batteryLife = 4000f;
-                    return;
-                }
-
-                if (_batteryLife > -1000f)
-                    _batteryLife -= Time.deltaTime * batteryDrain;
-                lightStage = Mathf.CeilToInt(_batteryLife / 1000f);
-                _lights[0].intensity = 0.2f * (lightStage + 1);
-                _lights[1].intensity = 0.07f * (lightStage + 1);
-                _lights[2].intensity = 0.07f * (lightStage + 1);
-                if (canvas.transform.GetChild(0).childCount == lightStage + 1) return;
-
-                var temp = canvas.transform.GetChild(0).childCount;
-                for (var i = 0; i < temp; i++) Destroy(canvas.transform.GetChild(0).GetChild(i).gameObject);
-
-                for (var i = 0; i < lightStage + 1; i++) Instantiate(batteryBarPrefab, canvas.transform.GetChild(0));
+            if (!_flashlightOn) return;
+            if (_fullbright)
+            {
+                _batteryLife = 4000f;
+                return;
             }
+
+            if (_batteryLife > -1000f)
+                _batteryLife -= Time.deltaTime * batteryDrain;
+            lightStage = Mathf.CeilToInt(_batteryLife / 1000f);
+            _lights[0].intensity = 0.2f * (lightStage + 1);
+            _lights[1].intensity = 0.07f * (lightStage + 1);
+            _lights[2].intensity = 0.07f * (lightStage + 1);
+            if (canvas.transform.GetChild(0).childCount == lightStage + 1) return;
+
+            var temp = canvas.transform.GetChild(0).childCount;
+            for (var i = 0; i < temp; i++) Destroy(canvas.transform.GetChild(0).GetChild(i).gameObject);
+
+            for (var i = 0; i < lightStage + 1; i++) Instantiate(batteryBarPrefab, canvas.transform.GetChild(0));
         }
 
         private void FixedUpdate(){

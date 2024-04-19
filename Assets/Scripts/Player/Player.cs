@@ -171,5 +171,11 @@ namespace Player
         {
             return _playerMovement.epicModeEnabled;
         }
+
+        public void ToggleTinyMode()
+        {
+            transform.localScale = transform.localScale == Vector3.one ? new Vector3(0.2f, 0.2f, 0.2f) : Vector3.one;
+            _playerMovement.walkSpeed = transform.localScale == Vector3.one ? 2 : 5;
+        }
     }
 }

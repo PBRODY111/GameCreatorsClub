@@ -1,39 +1,41 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BossCassette : MonoBehaviour
+namespace Scene6
 {
-    [SerializeField] private float reach;
-    [SerializeField] private bool activated = false;
-    [SerializeField] private GameObject engineer;
-    [SerializeField] private GameObject intText;
-    [SerializeField] private AudioSource winter;
-    // Start is called before the first frame update
-    private void OnMouseExit()
+    public class BossCassette : MonoBehaviour
     {
-        intText.SetActive(false);
-    }
-
-    private void OnMouseOver()
-    {
-        intText.SetActive(IsWithinReach());
-        if (Input.GetKeyDown(KeyCode.E) && IsWithinReach() && !activated)
+        [SerializeField] private float reach;
+        [SerializeField] private bool activated = false;
+        [SerializeField] private GameObject engineer;
+        [SerializeField] private GameObject intText;
+        [SerializeField] private AudioSource winter;
+        // Start is called before the first frame update
+        private void OnMouseExit()
         {
-            activated = true;
-            winter.Play();
-            StartCoroutine(Paradoxon());
+            intText.SetActive(false);
         }
-    }
 
-    IEnumerator Paradoxon(){
-        yield return new WaitForSeconds(Random.Range(70, 101));
-        winter.Stop();
-        engineer.SetActive(true);
-    }
+        private void OnMouseOver()
+        {
+            intText.SetActive(IsWithinReach());
+            if (Input.GetKeyDown(KeyCode.E) && IsWithinReach() && !activated)
+            {
+                activated = true;
+                winter.Play();
+                StartCoroutine(Paradoxon());
+            }
+        }
 
-    private bool IsWithinReach()
-    {
-        return Vector3.Distance(transform.position, Player.Player.Instance.transform.position) <= reach;
+        IEnumerator Paradoxon(){
+            yield return new WaitForSeconds(Random.Range(70, 101));
+            winter.Stop();
+            engineer.SetActive(true);
+        }
+
+        private bool IsWithinReach()
+        {
+            return Vector3.Distance(transform.position, Player.Player.Instance.transform.position) <= reach;
+        }
     }
 }
