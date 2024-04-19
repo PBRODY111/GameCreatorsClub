@@ -62687,6 +62687,9 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 617f0b1743eee48a3a66beb641ea760f, type: 3}
   originalTexture: {fileID: 2800000, guid: cf6cb85b0726642819d28d3244492725, type: 3}
   corruptAudio: {fileID: 1635858961}
+  rangeMin: 10
+  rangeMax: 15
+  timeBtwn: 0.4
 --- !u!82 &1635858961
 AudioSource:
   m_ObjectHideFlags: 0

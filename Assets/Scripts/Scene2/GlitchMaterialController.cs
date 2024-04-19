@@ -8,6 +8,9 @@ public class GlitchMaterialController : MonoBehaviour
     public Texture originalTexture; // Original texture of the material
     public AudioSource corruptAudio; // Original texture of the material
     private bool isChangingTexture = false;
+    public float rangeMin;
+    public float rangeMax;
+    public float timeBtwn;
 
     void Start()
     {
@@ -28,7 +31,7 @@ public class GlitchMaterialController : MonoBehaviour
         while (true)
         {
             // Wait for a random time between 10 and 15 seconds
-            yield return new WaitForSeconds(Random.Range(10f, 15f));
+            yield return new WaitForSeconds(Random.Range(rangeMin, rangeMax)); //10
             corruptAudio.Play();
 
             // Change the texture every 0.4 seconds for four times
@@ -36,7 +39,7 @@ public class GlitchMaterialController : MonoBehaviour
             {
                 isChangingTexture = true;
                 glitchMaterial.SetTexture("_MainTex", glitchTextures[i]);
-                yield return new WaitForSeconds(0.4f);
+                yield return new WaitForSeconds(timeBtwn); //0.4
             }
 
             // Reset to the original texture

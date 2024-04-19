@@ -11,6 +11,8 @@ public class ChaseSequence : MonoBehaviour
     public float aiSpeed;
     [SerializeField] private AudioSource music;
     [SerializeField] private bool isActive = false;
+    [SerializeField] private Animator cerberusAnimator;
+    private static readonly int IsRun = Animator.StringToHash("isRun");
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,7 @@ public class ChaseSequence : MonoBehaviour
 
     IEnumerator StartChase(){
         yield return new WaitForSeconds(5f);
+        cerberusAnimator.SetBool(IsRun, true);
         music.Play();
         isActive = true;
     }
