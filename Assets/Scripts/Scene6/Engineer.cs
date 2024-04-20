@@ -52,9 +52,6 @@ namespace Scene6
             paradoxAudio.clip = paradoxLines[0];
             paradoxAudio.Play();
             yield return new WaitForSeconds(7f);
-            systemAudio.clip = systemLines[0];
-            systemAudio.Play();
-            yield return new WaitForSeconds(2f);
             StartCoroutine(Escape());
         }
         IEnumerator Escape(){
@@ -63,14 +60,15 @@ namespace Scene6
             isActive = true;
             engineerAnim.SetBool(IsScared, true);
             yield return new WaitForSeconds(1.5f);
-            escapeText.GetComponent<TMP_Text>().text = "";
-            escapeText.SetActive(true);
-            yield return new WaitForSeconds(1.5f);
             _allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
             if (_allAudioSources != null)
                 foreach (var audioS in _allAudioSources)
                     audioS.Stop();
-            yield return new WaitForSeconds(0.5f);
+            systemAudio.clip = systemLines[0];
+            systemAudio.Play();
+            escapeText.GetComponent<TMP_Text>().text = "";
+            escapeText.SetActive(true);
+            yield return new WaitForSeconds(6f);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

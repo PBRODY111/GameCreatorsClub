@@ -8,6 +8,8 @@ namespace Scene6
         [SerializeField] private Animator doorAnim;
         [SerializeField] private GameObject cerberus;
         [SerializeField] private AudioSource chaseAudio;
+        [SerializeField] private AudioSource slamAudio;
+        [SerializeField] private AudioSource droneAudio;
         private static readonly int IsClosed = Animator.StringToHash("isClosed");
 
         void Start(){
@@ -19,6 +21,7 @@ namespace Scene6
             if (collider.gameObject.name == "Zagreus")
             {
                 doorAnim.SetBool(IsClosed, true);
+                slamAudio.Play();
                 StartCoroutine(CloseDoor());
                 Debug.Log("ZAGREUS");
             }
@@ -28,6 +31,7 @@ namespace Scene6
             yield return new WaitForSeconds(0.5f);
             cerberus.SetActive(false);
             chaseAudio.Stop();
+            droneAudio.Play();
         }
     }
 }
