@@ -4058,10 +4058,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2275684611315099952, guid: 3e83ab6dde89746de9d907f0acf4fc7e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ccabb63e7244644bdacf407b1f6133a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 3e83ab6dde89746de9d907f0acf4fc7e, type: 3}
       propertyPath: m_Name
       value: Myra
       objectReference: {fileID: 0}
+    - target: {fileID: 8295254164531952789, guid: 3e83ab6dde89746de9d907f0acf4fc7e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a187c45ea6cbd422bb24e9ef130f21f5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
