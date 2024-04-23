@@ -9,6 +9,7 @@ namespace Scene6
     {
         [SerializeField] private AudioSource paradoxAudio;
         [SerializeField] private AudioSource systemAudio;
+        [SerializeField] private AudioSource jumpscareAudio;
         [SerializeField] private AudioClip [] paradoxLines;
         [SerializeField] private AudioClip [] systemLines;
         [SerializeField] private Animator escapeAnim;
@@ -58,6 +59,7 @@ namespace Scene6
             escapeUI.SetActive(true);
             escapeAnim.SetBool(IsEscape, true);
             isActive = true;
+            jumpscareAudio.Play();
             engineerAnim.SetBool(IsScared, true);
             yield return new WaitForSeconds(1.5f);
             _allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];

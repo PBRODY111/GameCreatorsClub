@@ -67,7 +67,8 @@ public class Attack3Ber : MonoBehaviour
             if(GeometryUtility.TestPlanesAABB(planes, this.gameObject.GetComponent<Renderer>().bounds)){
                 if(IsWithinReach() == true && isAway == false){
                     timer2 += Time.deltaTime;
-                    if(timer2>=3){
+                    Debug.Log(timer2);
+                    if(timer2>=2f){
                         isAway = true;
                         Debug.Log(IsWithinReach());
                         StartCoroutine(ResetTimer());
@@ -77,6 +78,7 @@ public class Attack3Ber : MonoBehaviour
 
             // change stages
             if (timer >= stage1T && timer <= stage1T+1){
+                timer2 = 0f;
                 stage = 1;
                 transform.position = targets[randomIndex,2].transform.position;
             } else if (timer >= stage2T && timer <= stage2T+1){
@@ -120,6 +122,7 @@ public class Attack3Ber : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(10f, 20f));
         timer2 = 0f;
         timer = 0f;
+        isAway = false;
         isActive = true;
         stage1T = Random.Range(20f, 29f);
         stage2T = Random.Range(40f, 49f);

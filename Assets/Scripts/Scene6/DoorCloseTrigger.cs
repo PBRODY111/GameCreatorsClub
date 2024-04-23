@@ -10,6 +10,7 @@ namespace Scene6
         [SerializeField] private AudioSource chaseAudio;
         [SerializeField] private AudioSource slamAudio;
         [SerializeField] private AudioSource droneAudio;
+        private bool hasEntered = false;
         private static readonly int IsClosed = Animator.StringToHash("isClosed");
 
         void Start(){
@@ -18,12 +19,13 @@ namespace Scene6
     
         private void OnTriggerEnter(Collider collider)
         {
-            if (collider.gameObject.name == "Zagreus")
+            if (collider.gameObject.name == "Zagreus" && !hasEntered)
             {
                 doorAnim.SetBool(IsClosed, true);
                 slamAudio.Play();
                 StartCoroutine(CloseDoor());
                 Debug.Log("ZAGREUS");
+                hasEntered = true;
             }
         }
 

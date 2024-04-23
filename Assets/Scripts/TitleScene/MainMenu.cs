@@ -169,7 +169,7 @@ namespace TitleScene
             yield return new WaitForSeconds((float)1.5);
             animator4.SetBool(IsStart, true);
             yield return new WaitForSeconds((float)2.5);
-            SceneManager.LoadScene("Room2");
+            SceneManager.LoadScene("Room3");
         }
 
         public void QuitGame()

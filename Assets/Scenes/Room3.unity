@@ -27244,8 +27244,8 @@ MonoBehaviour:
   m_text: '###:
 
 
-    IT WILL APPEAR AT RANDOM INSIDE A VENT. SHINE YOUR LIGHT AT
-    IT FOR A FEW SECONDS AND IT WILL LEAVE.'
+    IT WILL APPEAR AT RANDOM INSIDE A VENT. ONCE IT GETS CLOSE,
+    LOOK AT IT FOR A FEW SECONDS, AND IT WILL LEAVE.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -62181,7 +62181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2cb5ac9d0c74cc0ada06a3d6f1f405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reach: 4
+  reach: 5
   origin: {fileID: 1576792297}
   randomIndex: 0
   stage: 0
