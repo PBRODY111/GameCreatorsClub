@@ -1,8 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Scene6
-{
     public class DoorCloseTrigger1 : MonoBehaviour
     {
         [SerializeField] private Animator doorAnim;
@@ -27,4 +25,3 @@ namespace Scene6
             }
         }
     }
-}
