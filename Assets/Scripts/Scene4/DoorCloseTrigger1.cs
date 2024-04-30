@@ -8,7 +8,7 @@ namespace Scene6
         [SerializeField] private Animator doorAnim;
         [SerializeField] private AudioSource slamAudio;
         [SerializeField] private LightFlicker lightFlicker;
-        private bool hasEntered = false;
+        public bool hasEntered = false;
         private static readonly int IsClosed = Animator.StringToHash("isClosed");
 
         void Start(){

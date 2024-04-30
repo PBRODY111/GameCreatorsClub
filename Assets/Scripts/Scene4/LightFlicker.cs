@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class LightFlicker : MonoBehaviour
 {
@@ -9,14 +10,23 @@ public class LightFlicker : MonoBehaviour
     [SerializeField] private bool isDark = true;
     [SerializeField] private GameObject light1;
     [SerializeField] private GameObject light2;
+    [SerializeField] private GameObject riveraLight;
     [SerializeField] private GameObject barricade;
+    [SerializeField] private GameObject us;
     [SerializeField] private AudioSource lightBuzz;
     [SerializeField] private Camera playerCam;
     [SerializeField] private Camera usCamera;
     [SerializeField] private Animator usAnimator;
+    [SerializeField] private Animator dividerAnimator;
     [SerializeField] private AudioSource jumpscareAudio;
+    [SerializeField] private AudioSource startupAudio;
+    [SerializeField] private AudioSource dividerAudio;
     [SerializeField] private bool isInTrigger = false;
+    [SerializeField] private RiveraLever [] riveraLevers;
+    public bool leversOff = true;
     private static readonly int IsScared = Animator.StringToHash("isScared");
+    private static readonly int IsOpen = Animator.StringToHash("isOpen");
+    private bool allFalse;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +50,16 @@ public class LightFlicker : MonoBehaviour
         }
     }
     void Update(){
-        if (isInTrigger && isDark){
+        allFalse = riveraLevers.All(lever => !lever.directionDown);
+        if (allFalse && leversOff){
+            isActive = false;
+            leversOff = false;
+            riveraLight.SetActive(true);
+            us.SetActive(false);
+            startupAudio.Play();
+            StartCoroutine(LightsOn());
+        }
+        if (isInTrigger && isDark && leversOff){
             isDark = false;
             StartCoroutine(JumpscareSequence());
         }
@@ -70,6 +89,19 @@ public class LightFlicker : MonoBehaviour
             isDark = true;
             yield return new WaitForSeconds(Random.Range(5f, 8f)); // change to 8,15
         }
+    }
+    public IEnumerator LightsOn(){
+        lightBuzz.Play();
+        light1.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        isDark = false;
+        light2.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        light1.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+        light1.SetActive(true);
+        dividerAnimator.SetBool(IsOpen, true);
+        dividerAudio.Play();
     }
     public IEnumerator JumpscareSequence()
     {

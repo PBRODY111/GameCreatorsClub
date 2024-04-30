@@ -62,31 +62,6 @@ public class ImagePanel : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    // Check button pressed
-    // void Update()
-    // {
-    //     if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
-    //     {
-    //         // Cast a ray from the mouse position or touch position in 2D
-    //         Vector2 rayPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //         RaycastHit2D hit = Physics2D.Raycast(rayPos, Vector2.zero);
-
-    //         // Check if the ray intersects with the Collider of the UI GameObject
-    //         if (hit.collider != null && hit.collider.gameObject == button)
-    //         {
-    //             // Perform actions when the UI GameObject is pressed
-    //             Debug.Log("UI Object Pressed!");
-    //         } else{
-    //             if (hit.collider != null){
-    //                 Debug.Log(hit.collider.gameObject);
-    //             } else{
-    //                 Debug.Log(button);
-    //             }
-    //         }
-    //     }
-    // }
-
     private bool IsWithinReach()
     {
         return Vector3.Distance(transform.position, Player.Player.Instance.transform.position) <= reach;
