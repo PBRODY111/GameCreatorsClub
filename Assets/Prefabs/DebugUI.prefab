@@ -1205,7 +1205,7 @@ MonoBehaviour:
   epic: {fileID: 7976757725963017001}
   fpsButton: {fileID: 4793305919424443211}
   tinyMode: {fileID: 6623007582398421691}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 1811360214251551441, guid: d68f16fedb5544b4d9cab6eda9def2b8, type: 3}
   fps: {fileID: 230751056059330798}
 --- !u!1 &7227760390964368752
 GameObject:

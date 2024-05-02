@@ -21,6 +21,8 @@ public class TextPanel : MonoBehaviour
     [SerializeField] private float reach;
     [SerializeField] private PhoneAudio phoneAudio;
     [SerializeField] private BackupButton bckupBtn;
+    [SerializeField] private int secret;
+    public bool isSecret = false;
     //[SerializeField] private GameObject button;
     // Start is called before the first frame update
     void Start()
@@ -67,6 +69,7 @@ public class TextPanel : MonoBehaviour
                 signText2.text = "+";
             }
             bckupBtn.panelAnswer = answer;
+            bckupBtn.panelSecret = secret;
             bckupBtn.panelName = gameObject.name;
             textSlot.GetComponent<TMP_Text>().text = symb.ToString();
             Player.Player.Instance.UnlockCursor();

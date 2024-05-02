@@ -4,8 +4,6 @@ using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace UI
-{
     public class PauseMenu : MonoBehaviour
     {
         public static bool IsPaused;
@@ -18,8 +16,31 @@ namespace UI
         private bool _optionsOn;
         private Resolution[] _resolutions;
 
+        // UI elements where saved values change
+        public Slider masterSlid;
+        public Slider musicSlid;
+        public Slider sfxSlid;
+        public Slider sensSlid;
+        public Slider fovSlid;
+
+        // these variables will be saved
+        public float masterVol;
+        public float musicVol;
+        public float sfxVol;
+        public float sensitivity;
+        public float fov0;
+
         private void Start()
         {
+            // get saved data
+            SaveData data = SaveSystem.LoadOptions();
+            masterMixer.SetFloat("MasterVol", data.masterVol);
+            masterMixer.SetFloat("MusicVol", data.musicVol);
+            masterMixer.SetFloat("SFXVol", data.sfxVol);
+            Player.Player.Instance.ChangeFOV(data.fov);
+            //playerCam.sensX = data.sensitivity;
+            //playerCam.sensY = data.sensitivity;
+
             pauseMenu.SetActive(false);
             _resolutions = Screen.resolutions;
             resolutionDropdown.ClearOptions();
@@ -63,11 +84,19 @@ namespace UI
             {
                 pauseMenu.SetActive(false);
                 options.SetActive(true);
+                //set sliders to saved
+                SaveData data = SaveSystem.LoadOptions();
+                masterSlid.value = data.masterVol;
+                musicSlid.value = data.musicVol;
+                sfxSlid.value = data.sfxVol;
+                sensSlid.value = data.sensitivity;
+                fovSlid.value = data.fov;
             }
             else
             {
                 pauseMenu.SetActive(true);
                 options.SetActive(false);
+                SaveSystem.SaveOptions(this);
             }
 
             _optionsOn = !_optionsOn;
@@ -76,16 +105,19 @@ namespace UI
         public void SetVolume(float volume)
         {
             masterMixer.SetFloat("MasterVol", volume);
+            masterVol = volume;
         }
 
         public void SetMusic(float volume)
         {
             masterMixer.SetFloat("MusicVol", volume);
+            musicVol = volume;
         }
 
         public void SetSfx(float volume)
         {
             masterMixer.SetFloat("SFXVol", volume);
+            sfxVol = volume;
         }
 
         public void SetQuality(int qualityIndex)
@@ -107,12 +139,14 @@ namespace UI
         public void SetFOV(float fov)
         {
             Player.Player.Instance.ChangeFOV(fov);
+            fov0 = fov;
         }
 
         public void SetSensitivity(float sens)
         {
             playerCam.sensX = sens;
             playerCam.sensY = sens;
+            sensitivity = sens;
         }
 
         public void PauseGame()
@@ -165,4 +199,3 @@ namespace UI
             IsPaused = false;
         }
     }
-}

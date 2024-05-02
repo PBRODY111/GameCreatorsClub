@@ -28,7 +28,7 @@ namespace Scene6
         }
 
         IEnumerator Paradoxon(){
-            yield return new WaitForSeconds(Random.Range(70, 101));
+            yield return new WaitForSeconds(Random.Range(60, 80));
             winter.Stop();
             engineer.SetActive(true);
         }

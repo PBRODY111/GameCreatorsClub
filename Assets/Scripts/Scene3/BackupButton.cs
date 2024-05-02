@@ -7,12 +7,18 @@ public class BackupButton : MonoBehaviour
 {
     [SerializeField] private TMP_InputField textBlock;
     public int panelAnswer;
+    public int panelSecret;
     public string panelName;
     [SerializeField] private GameObject panelUI;
+    [SerializeField] private GameObject secretText;
     [SerializeField] private BreakerSwitch switch1;
     [SerializeField] private BreakerSwitch switch2;
     [SerializeField] private BreakerSwitch switch3;
     [SerializeField] private BreakerSwitch switch4;
+    [SerializeField] private ImagePanel panel1;
+    [SerializeField] private ImagePanel panel2;
+    [SerializeField] private TextPanel panel3;
+    [SerializeField] private TextPanel panel4;
     [SerializeField] private AudioSource buttonAudio;
     // Start is called before the first frame update
     void Start()
@@ -21,9 +27,23 @@ public class BackupButton : MonoBehaviour
     }
 
     public void ButtonPressed(){
+        if(panel1.isSecret && panel2.isSecret && panel3.isSecret && panel4.isSecret){
+            secretText.SetActive(true);
+        }
         if(textBlock.text == ""+panelAnswer){
             StartCoroutine(correctAns());
         } else{
+            if(textBlock.text == ""+panelSecret){
+                if(panelSecret == 2){
+                    panel1.isSecret = true;
+                } else if(panelSecret == 21){
+                    panel2.isSecret = true;
+                } else if(panelSecret == 18){
+                    panel3.isSecret = true;
+                } else if(panelSecret == 14){
+                    panel4.isSecret = true;
+                }
+            }
             textBlock.text = "";
             panelUI.SetActive(false);
             Player.Player.Instance.LockCursor();
