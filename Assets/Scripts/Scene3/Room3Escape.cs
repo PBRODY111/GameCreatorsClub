@@ -31,6 +31,7 @@ public class Room3Escape : MonoBehaviour
 
         escapeAnim.SetBool(IsEscape, true);
         yield return new WaitForSeconds(1.5f);
+        SaveSystem.SaveLevel(4, Player.Player.Instance.GetTime());
         escapeText.GetComponent<TMP_Text>().text = "ESCAPED\nIn " + Player.Player.Instance.GetTime();
         escapeText.SetActive(true);
         yield return new WaitUntil(() => Input.anyKeyDown);

@@ -6190,7 +6190,12 @@ MonoBehaviour:
   click: {fileID: 0}
   mainCanvas: {fileID: 0}
   extras: {fileID: 0}
+  extraButton: {fileID: 0}
   options: {fileID: 0}
+  cont: {fileID: 0}
+  stars: {fileID: 0}
+  roomNum: {fileID: 0}
+  nextRoom: MainScene
   resolutionDropdown: {fileID: 0}
   masterMixer: {fileID: 0}
 --- !u!1 &1442278936
@@ -9652,7 +9657,12 @@ MonoBehaviour:
   click: {fileID: 1155496032}
   mainCanvas: {fileID: 1945494122}
   extras: {fileID: 906747432}
+  extraButton: {fileID: 681170622}
   options: {fileID: 989611026}
+  cont: {fileID: 1979915925}
+  stars: {fileID: 1605260347}
+  roomNum: {fileID: 1838717408}
+  nextRoom: MainScene
   resolutionDropdown: {fileID: 819496585}
   masterMixer: {fileID: 24100000, guid: e0ad90bb6b9ca475b8ce0ffef59f7f23, type: 2}
 --- !u!95 &1945494128
@@ -11021,7 +11031,12 @@ MonoBehaviour:
   click: {fileID: 0}
   mainCanvas: {fileID: 0}
   extras: {fileID: 0}
+  extraButton: {fileID: 0}
   options: {fileID: 0}
+  cont: {fileID: 0}
+  stars: {fileID: 0}
+  roomNum: {fileID: 0}
+  nextRoom: MainScene
   resolutionDropdown: {fileID: 0}
   masterMixer: {fileID: 0}
 --- !u!82 &2082412529

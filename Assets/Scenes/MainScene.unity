@@ -3293,7 +3293,7 @@ MonoBehaviour:
   intText: {fileID: 1092012639}
   reach: 2
   ui: {fileID: 1032130706}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 8174974612126707664}
   unlockAudio: {fileID: 703722771}
   isUnlocked: 0
   dialValues:
@@ -33568,7 +33568,7 @@ MonoBehaviour:
   intText: {fileID: 1092012639}
   reach: 2
   ui: {fileID: 1408479096}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 8174974612126707664}
   unlockAudio: {fileID: 1369947865}
   isUnlocked: 0
   dial: {fileID: 1369947866}
@@ -41853,7 +41853,7 @@ MonoBehaviour:
   intText: {fileID: 1092012639}
   reach: 1.5
   ui: {fileID: 1482403666}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 8174974612126707664}
   unlockAudio: {fileID: 1684759370}
   isUnlocked: 0
   dial: {fileID: 693862504}
@@ -44920,8 +44920,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intText: {fileID: 1195845257}
   reach: 1.5
-  ui: {fileID: 0}
-  pauseMenu: {fileID: 0}
+  ui: {fileID: 1482403666}
+  pauseMenu: {fileID: 8174974612126707664}
   unlockAudio: {fileID: 1812255808}
   isUnlocked: 0
 --- !u!95 &1812255806
@@ -58242,6 +58242,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 4616839975749216517, guid: d68f16fedb5544b4d9cab6eda9def2b8, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8747401175596766130, guid: d68f16fedb5544b4d9cab6eda9def2b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -58287,6 +58291,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d68f16fedb5544b4d9cab6eda9def2b8, type: 3}
+--- !u!114 &8174974612126707664 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 220775616826348353, guid: d68f16fedb5544b4d9cab6eda9def2b8, type: 3}
+  m_PrefabInstance: {fileID: 8174974612126707663}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2515687291280753534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f04e7a45db8647bbab6d138fc9b2250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8685588384368540115
 PrefabInstance:
   m_ObjectHideFlags: 0

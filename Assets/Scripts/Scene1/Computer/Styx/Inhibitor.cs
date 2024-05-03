@@ -50,6 +50,7 @@ namespace Scene1.Computer.Styx
         private IEnumerator CutScene()
         {
             yield return new WaitForSeconds(0.5f);
+            SaveSystem.SaveMinigame("styx");
             foreach (var line in _text)
             {
                 _typewriterUi.SetText(line);

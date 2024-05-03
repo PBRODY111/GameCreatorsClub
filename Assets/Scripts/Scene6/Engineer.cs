@@ -71,6 +71,7 @@ namespace Scene6
             escapeText.GetComponent<TMP_Text>().text = "";
             escapeText.SetActive(true);
             yield return new WaitForSeconds(6f);
+            SaveSystem.SaveEndings(1);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

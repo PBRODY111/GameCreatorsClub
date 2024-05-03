@@ -34,12 +34,14 @@ using UnityEngine.UI;
         {
             // get saved data
             SaveData data = SaveSystem.LoadOptions();
-            masterMixer.SetFloat("MasterVol", data.masterVol);
-            masterMixer.SetFloat("MusicVol", data.musicVol);
-            masterMixer.SetFloat("SFXVol", data.sfxVol);
-            Player.Player.Instance.ChangeFOV(data.fov);
-            //playerCam.sensX = data.sensitivity;
-            //playerCam.sensY = data.sensitivity;
+            if(data != null){
+                masterMixer.SetFloat("MasterVol", data.masterVol);
+                masterMixer.SetFloat("MusicVol", data.musicVol);
+                masterMixer.SetFloat("SFXVol", data.sfxVol);
+                Player.Player.Instance.ChangeFOV(data.fov);
+                playerCam.sensX = data.sensitivity;
+                playerCam.sensY = data.sensitivity;
+            }
 
             pauseMenu.SetActive(false);
             _resolutions = Screen.resolutions;
@@ -86,17 +88,19 @@ using UnityEngine.UI;
                 options.SetActive(true);
                 //set sliders to saved
                 SaveData data = SaveSystem.LoadOptions();
-                masterSlid.value = data.masterVol;
-                musicSlid.value = data.musicVol;
-                sfxSlid.value = data.sfxVol;
-                sensSlid.value = data.sensitivity;
-                fovSlid.value = data.fov;
+                if(data != null){
+                    masterSlid.value = data.masterVol;
+                    musicSlid.value = data.musicVol;
+                    sfxSlid.value = data.sfxVol;
+                    sensSlid.value = data.sensitivity;
+                    fovSlid.value = data.fov;
+                }
             }
             else
             {
+                SaveSystem.SaveOptions(this);
                 pauseMenu.SetActive(true);
                 options.SetActive(false);
-                SaveSystem.SaveOptions(this);
             }
 
             _optionsOn = !_optionsOn;

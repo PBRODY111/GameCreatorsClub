@@ -31,12 +31,19 @@ namespace PreCutscene
 
         private void Start()
         {
-            _typewriterUi = transform.GetComponent<TypewriterUI>();
-            StartCoroutine(CutScene());
+            SaveData data = SaveSystem.LoadLevel();
+            if(data != null){
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            } else{
+                _typewriterUi = transform.GetComponent<TypewriterUI>();
+                StartCoroutine(CutScene());
+            }
         }
 
         private IEnumerator CutScene()
         {
+            audio.Play();
+            zagreus.SetActive(true);
             yield return new WaitForSeconds(0.5f);
             foreach (var line in _text)
             {

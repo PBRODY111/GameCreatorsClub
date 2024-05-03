@@ -27,6 +27,7 @@ public class IntroCutscene : MonoBehaviour
 
     void Start()
     {
+        SaveSystem.SaveLevel(1, "0:00.00");
         intensity = Mathf.Clamp(1.2f, 0f, 1f);
         RenderSettings.ambientIntensity = intensity;
         monsters.SetActive(false);
