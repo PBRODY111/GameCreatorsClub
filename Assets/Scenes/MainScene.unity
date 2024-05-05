@@ -20579,7 +20579,7 @@ MonoBehaviour:
   intText: {fileID: 1195845257}
   reach: 2
   ui: {fileID: 1632147464}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 8174974612126707664}
   ladderObj: {fileID: 1210654107}
   screws: {fileID: 1350899385}
 --- !u!65 &833428062

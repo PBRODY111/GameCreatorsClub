@@ -34,7 +34,7 @@ namespace Scene1 {
         {
             if (!unlocked)
                 intText.GetComponent<TMP_Text>().text = (hasPoles ? "SCREWS" : "POLES") + " NEEDED TO INTERACT";
-            else intText.GetComponent<TMP_Text>().text = "PRESS E TO INTERACT";
+            else intText.GetComponent<TMP_Text>().text = "CLICK [E] TO INTERACT";
         }
 
         private new void OnMouseOver()
@@ -42,19 +42,22 @@ namespace Scene1 {
             if (unlocked) base.OnMouseOver();
             else intText.SetActive(IsWithinReach());
 
-            if (hasPoles && Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Screws"))
+            if (hasPoles && Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Screws") || Input.GetKeyDown(KeyCode.E) && unlocked)
             {
                 Inventory.Instance.RemoveSelectedItem();
                 unlocked = true;
                 intText.GetComponent<TMP_Text>().text = "";
                 OpenUI();
             }
-            else if (!hasPoles && Input.GetMouseButtonDown(1) && IsWithinReach() &&
-                     Player.Player.Instance.IsHolding("Poles"))
+            else if (!hasPoles && Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Poles"))
             {
                 Inventory.Instance.RemoveSelectedItem();
                 hasPoles = true;
                 OnMouseEnter();
+            }
+            if(Input.GetKeyDown(KeyCode.E) && unlocked){
+                intText.GetComponent<TMP_Text>().text = "";
+                OpenUI();
             }
         }
 
