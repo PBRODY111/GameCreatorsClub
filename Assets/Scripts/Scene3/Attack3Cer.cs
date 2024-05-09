@@ -74,6 +74,7 @@ public class Attack3Cer : MonoBehaviour
                 isActive = true;
                 timeToReachTarget = 1;
                 target = Player.Player.Instance.transform.position;
+                SaveSystem.SaveHint("cer","room3");
             }
         }
     }

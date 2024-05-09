@@ -25,6 +25,7 @@ namespace TitleScene
         [SerializeField] private GameObject cont;
         [SerializeField] private TMP_Text stars;
         [SerializeField] private TMP_Text roomNum;
+        [SerializeField] private TMP_Text hintText;
         [SerializeField] private string nextRoom = "MainScene";
         public Dropdown resolutionDropdown;
         public AudioMixer masterMixer;
@@ -45,10 +46,8 @@ namespace TitleScene
             }
             SaveData data1 = SaveSystem.LoadLevel();
             if(data1 == null){
-                Debug.Log("nolevel");
                 cont.SetActive(false);
             } else{
-                Debug.Log(data1.level);
                 if(data1.level == 0){
                     cont.SetActive(false);
                 } else if(data1.level == 1){
@@ -64,8 +63,10 @@ namespace TitleScene
                     roomNum.text = "Room 4";
                     nextRoom = "Room4";
                 } else if(data1.level == 5){
-                    roomNum.text = "Room 5";
-                    nextRoom = "Room5";
+                    roomNum.text = "Room 6";
+                    nextRoom = "Room6";
+                    //roomNum.text = "Room 5";
+                    //nextRoom = "Room5";
                 } else if(data1.level == 6){
                     roomNum.text = "Room 6";
                     nextRoom = "Room6";
@@ -88,6 +89,12 @@ namespace TitleScene
                 } else{
                     stars.text = "";
                 }
+            }
+            SaveData data3 = SaveSystem.LoadHint();
+            if(data3 == null){
+                hintText.text = "";
+            } else{
+                hintText.text = data3.hintString;
             }
             Cursor.lockState = CursorLockMode.None;
             _resolutions = Screen.resolutions;
@@ -221,6 +228,7 @@ namespace TitleScene
             yield return new WaitForSeconds((float)1.5);
             animator4.SetBool(IsStart, true);
             yield return new WaitForSeconds((float)2.5);
+            SaveSystem.SaveHint("","");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         private IEnumerator LoadTemp()
@@ -228,6 +236,7 @@ namespace TitleScene
             yield return new WaitForSeconds((float)1.5);
             animator4.SetBool(IsStart, true);
             yield return new WaitForSeconds((float)2.5);
+            SaveSystem.SaveHint("","");
             SceneManager.LoadScene(nextRoom);
         }
 

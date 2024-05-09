@@ -12,6 +12,7 @@ public class CerberusKill : MonoBehaviour
     [SerializeField] private AudioSource cerberusAudio;
     [SerializeField] private GameObject gameOver;
     [SerializeField] private GameObject generalUI;
+    private bool hasJumpscared = false;
     private static readonly int IsScared = Animator.StringToHash("isScared");
     private AudioSource[] _allAudioSources;
     // Start is called before the first frame update
@@ -23,13 +24,17 @@ public class CerberusKill : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.name == "Zagreus")
+        if (collision.gameObject.name == "Zagreus" && !hasJumpscared)
         {
+            hasJumpscared = true;
             StartCoroutine(JumpscareSequence());
         }
     }
     public IEnumerator JumpscareSequence()
     {
+        string sceneName = SceneManager.GetActiveScene().name;
+        string sceneNameLowercase = sceneName.ToLower();
+        SaveSystem.SaveHint("cerberus",sceneNameLowercase);
         Debug.Log("KILL!!");
         playerCam.enabled = false;
         cerberusCamera.enabled = true;

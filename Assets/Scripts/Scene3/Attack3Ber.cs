@@ -99,6 +99,7 @@ public class Attack3Ber : MonoBehaviour
 
     public IEnumerator JumpscareSequence()
     {
+        SaveSystem.SaveHint("ber","room3");
         Debug.Log("KILL!!");
         var playerPos = Player.Player.Instance.transform.position;
         transform.rotation = Quaternion.Euler(0, 0, 0);

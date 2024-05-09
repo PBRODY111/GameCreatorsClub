@@ -109,6 +109,37 @@ public class SaveSystem
         }
     }
 
+    // hints
+    public static void SaveHint (string monster, string hint){
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath+"/player.hints";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        SaveData data = new SaveData(monster, hint);
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+    public static SaveData LoadHint()
+    {
+        string path = Application.persistentDataPath + "/player.hints";
+        if (File.Exists(path))
+        {
+            Debug.Log("Hint savefile exists");
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            SaveData data = formatter.Deserialize(stream) as SaveData;
+            stream.Close();
+
+            return data;
+        }
+        else
+        {
+            Debug.Log("No hint save file.");
+            return null;
+        }
+    }
+
     // endings
     public static void SaveEndings (int ending){
         BinaryFormatter formatter = new BinaryFormatter();

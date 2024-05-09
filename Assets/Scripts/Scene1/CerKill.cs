@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Scene1
 {
@@ -12,6 +13,10 @@ namespace Scene1
             if (collision.gameObject.name == "Zagreus")
             {
                 stopAttack = true;
+                string sceneName = SceneManager.GetActiveScene().name;
+                string sceneNameLowercase = sceneName.ToLower();
+                Debug.Log(sceneNameLowercase);
+                SaveSystem.SaveHint("cer",sceneNameLowercase);
                 StartCoroutine(jumpscare.JumpscareSequence());
             }
         }

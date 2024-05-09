@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d4169c19d6cd2e47b4b4af2e495d007, type: 3}
+  m_Name: Jack
+  m_EditorClassIdentifier: 
+  itemName: Jack
+  icon: {fileID: 21300000, guid: d1b88df7c93f94c5db33d16aec5c8d07, type: 3}
+  itemType: 0
+  deselectOnUse: 0
+  modelPrefab: {fileID: 3847038892152323913, guid: 0b6e7b46c4798448a8aebe23cadd0707, type: 3}

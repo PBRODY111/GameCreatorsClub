@@ -105,6 +105,7 @@ public class LightFlicker : MonoBehaviour
     }
     public IEnumerator JumpscareSequence()
     {
+        SaveSystem.SaveHint("us","room4");
         Debug.Log("KILL!!");
         playerCam.enabled = false;
         usCamera.enabled = true;

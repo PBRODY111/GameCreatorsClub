@@ -12,6 +12,8 @@ public class SaveData
     public bool styx = false;
     public bool doublePong = false;
     public bool dashr = false;
+
+    public string hintString = " ";
     
     public string time1 = "";
     public string time2 = "";
@@ -26,6 +28,8 @@ public class SaveData
     public float sensitivity = 100;
     public float fov = 70;
 
+    // ALL SAVE FUNCTIONS HERE ON DOWN!!!!
+    
     // options menu
     public SaveData(PauseMenu pauseMenu){
         masterVol = pauseMenu.masterVol;
@@ -43,6 +47,41 @@ public class SaveData
         } else if(name == "dashr"){
             dashr = true;
         }
+    }
+    // hints
+    public SaveData(string monster, string hint){
+        Debug.Log(monster);
+        Debug.Log(hint);
+        if(monster == "cer"){
+            if(hint == "mainscene"){
+                hintString = "HINT: YOU HAVE ~2 SECONDS AFTER ALL FOUR SCREWS ARE OUT. GET THE CROWBAR READY.";
+            } else if(hint == "room2"){
+                hintString = "HINT: IT WILL ATTACK WHEN YOU'RE USING THE COMPUTER OR HOT PLATE.";
+            } else if(hint == "room3"){
+                hintString = "HINT: ALWAYS KEEP KNOCKING ON THE DOOR.";
+            } else if(hint == "room4"){
+                hintString = "HINT: STAY CLEAR OF ITS PATH.";
+            }
+        } else if(monster == "ber"){
+            if(hint == "room3"){
+                hintString = "HINT: YOU CAN ONLY SCARE IT AWAY IF IT'S CLOSE ENOUGH.";
+            } else if(hint == "room4"){
+                hintString = "HINT: DON'T STAY IN THE SAME PLACE FOR TOO LONG.";
+            }
+        } else if(monster == "us"){
+            if(hint == "room4"){
+                hintString = "HINT: THE LIGHTS MUST BE ON. FLASHLIGHT DOESN'T COUNT.";
+            }
+        } else if(monster == "cerberus"){
+            if(hint == "room5"){
+                hintString = "HINT: WEEPING ANGEL. KEEP THE MUSIC BOX WOUNDED.";
+            } else if(hint == "room6"){
+                hintString = "HINT: TURN AROUND BEFORE YOU HIT THE GROUND.";
+            }
+        } else{
+            hintString = "";
+        }
+
     }
     // level progress
     public SaveData(int lev, string time){

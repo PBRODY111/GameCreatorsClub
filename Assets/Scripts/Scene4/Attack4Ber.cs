@@ -67,6 +67,7 @@ public class Attack4Ber : MonoBehaviour
     }
     public IEnumerator JumpscareSequence()
     {
+        SaveSystem.SaveHint("ber","room4");
         Debug.Log("KILL!!");
         playerCam.enabled = false;
         berCamera.enabled = true;

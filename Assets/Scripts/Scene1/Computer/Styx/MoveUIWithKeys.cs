@@ -23,6 +23,12 @@ namespace Scene1.Computer.Styx
 
         private void Start()
         {
+            SaveData data = SaveSystem.LoadMinigame();
+            if(data != null){
+                if(data.styx){
+                    SceneManager.LoadScene("WarningScene");
+                }
+            }
             _rectTransform = GetComponent<RectTransform>();
 
             _myCollider = GetComponent<BoxCollider2D>();
