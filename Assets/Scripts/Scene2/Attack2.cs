@@ -60,12 +60,14 @@ namespace Scene2
                     target = targets[3].transform.position;
                 }
                 GetComponent<Animator>().SetBool("isLeaving", true);
-                t += Time.deltaTime / timeToReachTarget;
-                var thisTransform = transform;
-                thisTransform.position = Vector3.Lerp(startPosition, target, t);
-                startPosition = thisTransform.position;
-                _lookRotation = Quaternion.LookRotation(target);
-                thisTransform.LookAt(target);
+                if(Time.timeScale != 0){
+                    t += Time.deltaTime / timeToReachTarget;
+                    var thisTransform = transform;
+                    thisTransform.position = Vector3.Lerp(startPosition, target, t);
+                    startPosition = thisTransform.position;
+                    _lookRotation = Quaternion.LookRotation(target);
+                    thisTransform.LookAt(target);
+                }
 
                 // Check if the distance is within the threshold
                 float distance = Vector3.Distance(transform.position, target);

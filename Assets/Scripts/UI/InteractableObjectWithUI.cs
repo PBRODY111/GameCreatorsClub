@@ -12,7 +12,7 @@ namespace UI
 
         public void Update()
         {
-            if (ui.activeSelf && Input.GetKeyDown(KeyCode.E) && !uiCD) CloseUI();
+            if (ui.activeSelf && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) && !uiCD) CloseUI();
             uiCD = false;
         }
 

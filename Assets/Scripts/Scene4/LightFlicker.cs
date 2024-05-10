@@ -23,6 +23,7 @@ public class LightFlicker : MonoBehaviour
     [SerializeField] private AudioSource dividerAudio;
     [SerializeField] private bool isInTrigger = false;
     [SerializeField] private RiveraLever [] riveraLevers;
+    [SerializeField] private Attack4Cer cer;
     public bool leversOff = true;
     private static readonly int IsScared = Animator.StringToHash("isScared");
     private static readonly int IsOpen = Animator.StringToHash("isOpen");
@@ -102,6 +103,7 @@ public class LightFlicker : MonoBehaviour
         light1.SetActive(true);
         dividerAnimator.SetBool(IsOpen, true);
         dividerAudio.Play();
+        StartCoroutine(cer.ScareSequence());
     }
     public IEnumerator JumpscareSequence()
     {

@@ -24,7 +24,7 @@ namespace Scene1.Safe
         private new void OnMouseOver()
         {
             base.OnMouseOver();
-            if (!_canUnlock && Input.GetKeyDown(KeyCode.E) && IsWithinReach())
+            if (!_canUnlock && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) && IsWithinReach())
             {
                 errorAudio.Play();
                 CloseUI();

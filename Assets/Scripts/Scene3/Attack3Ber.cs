@@ -15,6 +15,7 @@ public class Attack3Ber : MonoBehaviour
     [SerializeField] private Animator berAnimator;
     [SerializeField] private AudioSource jumpscareAudio;
     [SerializeField] private AudioSource clangAudio;
+    [SerializeField] private AudioSource leaveAudio;
     private float stage1T;
     private float stage2T;
     private float stage3T;
@@ -116,6 +117,7 @@ public class Attack3Ber : MonoBehaviour
     }
 
     IEnumerator ResetTimer(){
+        leaveAudio.Play();
         Debug.Log("RESET");
         isActive = false;
         stage = 0;

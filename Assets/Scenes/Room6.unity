@@ -81866,6 +81866,8 @@ MonoBehaviour:
   chaseAudio: {fileID: 711211632}
   slamAudio: {fileID: 2080243009}
   droneAudio: {fileID: 2080243010}
+  playerCam: {fileID: 1972437052}
+  cerberusCamera: {fileID: 344821702}
 --- !u!65 &2080243008
 BoxCollider:
   m_ObjectHideFlags: 0

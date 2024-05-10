@@ -55,7 +55,7 @@ public class Attack4Ber : MonoBehaviour
     {
         while (ber.transform.position.y > 4f && isInTrigger)
         {
-            float newY = Mathf.MoveTowards(ber.transform.position.y, 3f, Time.deltaTime * 0.23f);
+            float newY = Mathf.MoveTowards(ber.transform.position.y, 3f, Time.deltaTime * 0.2f);
             ber.transform.position = new Vector3(ber.transform.position.x, newY, ber.transform.position.z);
             Debug.Log(ber.transform.position.y);
             yield return null;

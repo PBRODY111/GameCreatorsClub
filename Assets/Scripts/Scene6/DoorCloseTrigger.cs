@@ -10,6 +10,8 @@ namespace Scene6
         [SerializeField] private AudioSource chaseAudio;
         [SerializeField] private AudioSource slamAudio;
         [SerializeField] private AudioSource droneAudio;
+        [SerializeField] private Camera playerCam;
+        [SerializeField] private Camera cerberusCamera;
         private bool hasEntered = false;
         private static readonly int IsClosed = Animator.StringToHash("isClosed");
 
@@ -31,6 +33,8 @@ namespace Scene6
 
         IEnumerator CloseDoor(){
             yield return new WaitForSeconds(0.5f);
+            playerCam.enabled = true;
+            cerberusCamera.enabled = false;
             cerberus.SetActive(false);
             chaseAudio.Stop();
             droneAudio.Play();
