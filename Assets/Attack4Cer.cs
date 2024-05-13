@@ -96,7 +96,7 @@ public class Attack4Cer : MonoBehaviour
         t = 0;
         //GetComponent<Animator>().SetBool("isReturn", true);
         Debug.Log("Started");
-        yield return new WaitForSeconds(Random.Range(5f, 10f));
+        yield return new WaitForSeconds(Random.Range(8f, 12f));
         Debug.Log("moving");
         suspenseAudio.Play();
         isActive = true;

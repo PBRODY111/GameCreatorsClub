@@ -740,6 +740,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: -7515429101286732190, guid: 676fd6fafaf5c4322ba0103198fadec7, type: 3}
+      propertyPath: m_Name
+      value: thermometer
+      objectReference: {fileID: 0}
     - target: {fileID: -7271449666460269675, guid: 676fd6fafaf5c4322ba0103198fadec7, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -843,6 +847,14 @@ PrefabInstance:
     - target: {fileID: 1502877291743220047, guid: 676fd6fafaf5c4322ba0103198fadec7, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3661182023027037043, guid: 676fd6fafaf5c4322ba0103198fadec7, type: 3}
+      propertyPath: m_Name
+      value: rose
+      objectReference: {fileID: 0}
+    - target: {fileID: 3661182023027037043, guid: 676fd6fafaf5c4322ba0103198fadec7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3661182023027037043, guid: 676fd6fafaf5c4322ba0103198fadec7, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1525,7 +1537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1306677621
 Transform:
   m_ObjectHideFlags: 0

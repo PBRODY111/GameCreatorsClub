@@ -92,7 +92,8 @@ public class SaveSystem
         formatter.Serialize(filestream, data);
         filestream.Close();
     }
-    public static SaveData LoadLevel(){
+    public static SaveData LoadLevel()
+    {
         string path = Application.persistentDataPath+"/player.level";
         if(File.Exists(path)){
             Debug.Log("Level savefile exists");

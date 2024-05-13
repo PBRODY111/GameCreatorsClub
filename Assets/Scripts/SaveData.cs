@@ -50,8 +50,6 @@ public class SaveData
     }
     // hints
     public SaveData(string monster, string hint){
-        Debug.Log(monster);
-        Debug.Log(hint);
         if(monster == "cer"){
             if(hint == "mainscene"){
                 hintString = "HINT: YOU HAVE ~2 SECONDS AFTER ALL FOUR SCREWS ARE OUT. GET THE CROWBAR READY.";
@@ -95,8 +93,9 @@ public class SaveData
             if(time1 != ""){
                 TimeSpan timeSpan1 = TimeSpan.ParseExact(time1, "m':'ss'.'ff", null);
                 TimeSpan timeSpan2 = TimeSpan.ParseExact(time, "m':'ss'.'ff", null);
-                if(timeSpan2<timeSpan1){
+                if(timeSpan2<timeSpan1 || time1 == ""){
                     time1 = time;
+                    Debug.Log(time1);
                 }
             }
         }
@@ -104,8 +103,9 @@ public class SaveData
             if(time2 != ""){
                 TimeSpan timeSpan1 = TimeSpan.ParseExact(time2, "m':'ss'.'ff", null);
                 TimeSpan timeSpan2 = TimeSpan.ParseExact(time, "m':'ss'.'ff", null);
-                if(timeSpan2<timeSpan1){
+                if(timeSpan2<timeSpan1 || time2 == ""){
                     time2 = time;
+                    Debug.Log(time2);
                 }
             }
         }
@@ -113,8 +113,9 @@ public class SaveData
             if(time3 != ""){
                 TimeSpan timeSpan1 = TimeSpan.ParseExact(time3, "m':'ss'.'ff", null);
                 TimeSpan timeSpan2 = TimeSpan.ParseExact(time, "m':'ss'.'ff", null);
-                if(timeSpan2<timeSpan1){
+                if(timeSpan2<timeSpan1 || time3 == ""){
                     time3 = time;
+                    Debug.Log(time3);
                 }
             }
         }
@@ -122,8 +123,9 @@ public class SaveData
             if(time4 != ""){
                 TimeSpan timeSpan1 = TimeSpan.ParseExact(time4, "m':'ss'.'ff", null);
                 TimeSpan timeSpan2 = TimeSpan.ParseExact(time, "m':'ss'.'ff", null);
-                if(timeSpan2<timeSpan1){
+                if(timeSpan2<timeSpan1 || time4 == ""){
                     time4 = time;
+                    Debug.Log(time4);
                 }
             }
         }
@@ -131,8 +133,9 @@ public class SaveData
             if(time5 != ""){
                 TimeSpan timeSpan1 = TimeSpan.ParseExact(time5, "m':'ss'.'ff", null);
                 TimeSpan timeSpan2 = TimeSpan.ParseExact(time, "m':'ss'.'ff", null);
-                if(timeSpan2<timeSpan1){
+                if(timeSpan2<timeSpan1 || time5 == ""){
                     time5 = time;
+                    Debug.Log(time5);
                 }
             }
         }

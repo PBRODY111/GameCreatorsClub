@@ -35,6 +35,15 @@ namespace TitleScene
 
         private Resolution[] _resolutions;
 
+        // ExtrasMenu
+        [SerializeField] private GameObject charPanel;
+        [SerializeField] private GameObject roomPanel;
+        [SerializeField] private GameObject e1Panel;
+        [SerializeField] private GameObject e2Panel;
+        [SerializeField] private GameObject e2Btn;
+        [SerializeField] private GameObject e3Panel;
+        [SerializeField] private GameObject e3Btn;
+
         private void Start()
         {
             SaveSystem.SaveLevel(0, "1:00.00");
@@ -84,7 +93,10 @@ namespace TitleScene
                     stars.text = "*";
                 } else if(data2.ending == 2){
                     stars.text = "**";
+                    e2Btn.SetActive(true);
                 } else if(data2.ending == 3){
+                    e2Btn.SetActive(true);
+                    e3Btn.SetActive(true);
                     stars.text = "***";
                 } else{
                     stars.text = "";
@@ -206,6 +218,42 @@ namespace TitleScene
             }
 
             _extrasOn = !_extrasOn;
+        }
+
+        public void CharacterPanel(){
+            charPanel.SetActive(true);
+            roomPanel.SetActive(false);
+            e1Panel.SetActive(false);
+            //e2Panel.SetActive(false);
+            //e3Panel.SetActive(false);
+        }
+        public void RoomPanel(){
+            charPanel.SetActive(false);
+            roomPanel.SetActive(true);
+            e1Panel.SetActive(false);
+            //e2Panel.SetActive(false);
+            //e3Panel.SetActive(false);
+        }
+        public void E1Panel(){
+            charPanel.SetActive(false);
+            roomPanel.SetActive(false);
+            e1Panel.SetActive(true);
+            //e2Panel.SetActive(false);
+            //e3Panel.SetActive(false);
+        }
+        public void E2Panel(){
+            charPanel.SetActive(false);
+            roomPanel.SetActive(false);
+            e1Panel.SetActive(false);
+            //e2Panel.SetActive(true);
+            //e3Panel.SetActive(false);
+        }
+        public void E3Panel(){
+            charPanel.SetActive(false);
+            roomPanel.SetActive(false);
+            e1Panel.SetActive(false);
+            //e2Panel.SetActive(false);
+            //e3Panel.SetActive(true);
         }
 
         private IEnumerator FadeMusic()

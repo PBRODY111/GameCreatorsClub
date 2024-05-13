@@ -19,7 +19,7 @@ public class CharacterOptions : MonoBehaviour
 
     public void IndexUp(){
         clickAudio.Play();
-        if(index==2){
+        if(index==3){
             index=0;
             ChangeImage();
         } else{
@@ -30,7 +30,7 @@ public class CharacterOptions : MonoBehaviour
     public void IndexDown(){
         clickAudio.Play();
         if(index==0){
-            index=2;
+            index=3;
             ChangeImage();
         } else{
             index--;
@@ -46,6 +46,9 @@ public class CharacterOptions : MonoBehaviour
             charText.text = "MYRA";
         } else if(index==2){
             charImage.sprite = characters[2];
+            charText.text = "EXTRA HUMANS";
+        } else if(index==3){
+            charImage.sprite = characters[3];
             charText.text = "MISCELLANEOUS";
         }
     }
