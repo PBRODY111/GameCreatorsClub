@@ -72,9 +72,15 @@ public class SaveData
             }
         } else if(monster == "cerberus"){
             if(hint == "room5"){
-                hintString = "HINT: WEEPING ANGEL. KEEP THE MUSIC BOX WOUNDED.";
+                hintString = "HINT: WEEPING ANGEL. KEEP THE MUSIC BOX WOUND UP.";
             } else if(hint == "room6"){
                 hintString = "HINT: TURN AROUND BEFORE YOU HIT THE GROUND.";
+            }
+        } else if(monster == "paradox"){
+            if(hint == "room5"){
+                hintString = "THE ROSES SHALL BURN.";
+            } else if(hint == "room6"){
+                hintString = "PARADOXON EXCITAT.";
             }
         } else{
             hintString = "";

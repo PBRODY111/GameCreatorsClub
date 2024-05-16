@@ -53,7 +53,7 @@ public class Attack4Ber : MonoBehaviour
     }
     private IEnumerator MoveDownCoroutine()
     {
-        while (ber.transform.position.y > 4f && isInTrigger)
+        while (ber.transform.position.y > 4f && isInTrigger && Time.timeScale != 0)
         {
             float newY = Mathf.MoveTowards(ber.transform.position.y, 3f, Time.deltaTime * 0.2f);
             ber.transform.position = new Vector3(ber.transform.position.x, newY, ber.transform.position.z);
