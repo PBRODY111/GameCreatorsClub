@@ -65,6 +65,7 @@ public class MusicBox : MonoBehaviour
     }
     void OnMouseExit(){
         intText3.SetActive(false);
+        isInBox = false;
     }
 
     private IEnumerator IncreaseCount()
