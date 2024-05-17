@@ -14,6 +14,7 @@ public class Room5Start : MonoBehaviour
     [SerializeField] private GameObject myra;
     [SerializeField] private GameObject myraTarget; // Assign the target GameObject in the Inspector
     [SerializeField] private float duration = 0.5f;
+    [SerializeField] private MusicBox box;
     private static readonly int IsOpen = Animator.StringToHash("isOpen");
     private static readonly int IsDead = Animator.StringToHash("isDead");
     private static readonly int IsKill = Animator.StringToHash("isKill");
@@ -40,6 +41,7 @@ public class Room5Start : MonoBehaviour
         StartCoroutine(MoveToTargetPosition());
         blockade.SetActive(false);
         yield return new WaitForSeconds(1f);
+        box.isActive = true;
         cerberus.SetActive(true);
     }
 

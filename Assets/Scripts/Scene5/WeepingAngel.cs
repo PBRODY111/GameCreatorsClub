@@ -31,4 +31,9 @@ public class WeepingAngel : MonoBehaviour
             ai.destination = dest;
         }
     }
+
+    public IEnumerator MusicBoxJumpscare(){
+        yield return new WaitForSeconds(2f);
+        transform.position = player.position;
+    }
 }

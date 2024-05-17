@@ -12,6 +12,7 @@ public class CardReader : MonoBehaviour
     [SerializeField] private Animator sentryAnim;
     [SerializeField] private AudioSource unlockAudio;
     [SerializeField] private AudioSource sentryAudio;
+    [SerializeField] private Sentry sentry;
     private static readonly int IsOpen = Animator.StringToHash("isOpen");
     private static readonly int IsActive = Animator.StringToHash("isActive");
     private bool isIn = false;
@@ -41,6 +42,7 @@ public class CardReader : MonoBehaviour
         yield return new WaitForSeconds(3f);
         sentryAudio.Play();
         sentryAnim.SetBool(IsActive, true);
+        sentry.canInteract = true;
     }
 
     private bool IsWithinReach()
