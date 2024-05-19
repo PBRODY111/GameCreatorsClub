@@ -48,8 +48,7 @@ public class Lock : MonoBehaviour
             if (Input.GetMouseButtonDown(1) && IsWithinReach()){
                 if(Player.Player.Instance.IsHolding("Big Key")){
                     intText3.SetActive(false);
-                    Player.Player.Instance.hotbar.transform.GetChild(Player.Player.Instance.selectedslot).GetComponent<InventoryItemController>().RemoveItem();
-                    Player.Player.Instance.selectedslot = -1;
+                    Inventory.Instance.RemoveSelectedItem();
                     key.SetActive(true);
                     hasKey = true;
                 }

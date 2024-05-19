@@ -31,6 +31,7 @@ public class CardReader : MonoBehaviour
             if (Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Keycard")){
                 isIn = true;
                 doorAnim.SetBool(IsOpen, true);
+                intText3.SetActive(false);
                 StartCoroutine(SentryActive());
                 unlockAudio.Play();
                 red.SetActive(false);

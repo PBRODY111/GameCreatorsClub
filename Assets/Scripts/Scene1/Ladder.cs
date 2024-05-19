@@ -42,7 +42,7 @@ namespace Scene1 {
             if (unlocked) base.OnMouseOver();
             else intText.SetActive(IsWithinReach());
 
-            if (hasPoles && Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Screws") || Input.GetKeyDown(KeyCode.E) && unlocked)
+            if (hasPoles && Input.GetMouseButtonDown(1) && IsWithinReach() && Player.Player.Instance.IsHolding("Screws"))
             {
                 Inventory.Instance.RemoveSelectedItem();
                 unlocked = true;

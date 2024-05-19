@@ -27,8 +27,7 @@ public class MoveBookshelf : MonoBehaviour
                 isIn = true;
                 transform.position = new Vector3(transform.position.x, transform.position.y+0.2f, transform.position.z);
                 jack.SetActive(true);
-                Player.Player.Instance.hotbar.transform.GetChild(Player.Player.Instance.selectedslot).GetComponent<InventoryItemController>().RemoveItem();
-                Player.Player.Instance.selectedslot = -1;
+                Inventory.Instance.RemoveSelectedItem();
             }
 
         }
