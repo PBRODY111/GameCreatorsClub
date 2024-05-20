@@ -237,6 +237,14 @@ public class QuestionBoard : MonoBehaviour
         beepAudio.Play();
     }
 
+    private void Update(){
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            questionUI.SetActive(false);
+            Player.Player.Instance.LockCursor();
+            Player.Player.Instance.EnableMovement();
+        }
+    }
+
     private bool IsWithinReach()
     {
         return Vector3.Distance(transform.position, Player.Player.Instance.transform.position) <= reach;

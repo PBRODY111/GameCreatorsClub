@@ -77,6 +77,14 @@ public class TextPanel : MonoBehaviour
         }
     }
 
+    private void Update(){
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            panelUI.SetActive(false);
+            Player.Player.Instance.LockCursor();
+            Player.Player.Instance.EnableMovement();
+        }
+    }
+
     private bool IsWithinReach()
     {
         return Vector3.Distance(transform.position, Player.Player.Instance.transform.position) <= reach;
