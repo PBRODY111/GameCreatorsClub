@@ -18,7 +18,7 @@ namespace Scene6
 
         private void OnMouseOver()
         {
-            intText.SetActive(IsWithinReach());
+            intText.SetActive(IsWithinReach() && !activated);
             if (Input.GetKeyDown(KeyCode.E) && IsWithinReach() && !activated)
             {
                 activated = true;
