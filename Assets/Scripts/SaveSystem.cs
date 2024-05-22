@@ -92,8 +92,21 @@ public class SaveSystem
         formatter.Serialize(filestream, data);
         filestream.Close();
     }
-    public static SaveData LoadLevel()
+    /*
+    public static void SaveLevel(int level, string time)
     {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/player.level";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        SaveData data = new SaveData(level, time);
+        formatter.Serialize(stream, data);
+        stream.Close();
+
+        Debug.Log("Game saved at: " + path);
+    }
+    */
+    public static SaveData LoadLevel(){
         string path = Application.persistentDataPath+"/player.level";
         if(File.Exists(path)){
             Debug.Log("Level savefile exists");

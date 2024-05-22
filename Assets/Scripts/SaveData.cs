@@ -88,62 +88,48 @@ public class SaveData
 
     }
     // level progress
-    public SaveData(int lev, string time){
-        // save level
-        if(lev > level){
+    public SaveData(int lev, string time) {
+        // Save level
+        if (lev > level) {
             level = lev;
-            Debug.Log("level saved: "+level);
+            Debug.Log("level saved: " + level);
         }
-        // save PR (this should be optimized somehow)
-        if(lev == 2){
-            if(time1 != ""){
-                TimeSpan timeSpan1 = TimeSpan.ParseExact(time1, "m':'ss'.'ff", null);
-                TimeSpan timeSpan2 = TimeSpan.ParseExact(time, "m':'ss'.'ff", null);
-                if(timeSpan2<timeSpan1 || time1 == ""){
-                    time1 = time;
-                    Debug.Log(time1);
-                }
+
+        // Save PR (this should be optimized somehow)
+        if (lev == 2) {
+            if (string.IsNullOrEmpty(time1) || TimeSpan.ParseExact(time, "m':'ss'.'ff", null) < TimeSpan.ParseExact(time1, "m':'ss'.'ff", null)) {
+                time1 = time;
+                Debug.Log(time1);
             }
+            Debug.Log(time1);
         }
-        if(lev == 3){
-            if(time2 != ""){
-                TimeSpan timeSpan1 = TimeSpan.ParseExact(time2, "m':'ss'.'ff", null);
-                TimeSpan timeSpan2 = TimeSpan.ParseExact(time, "m':'ss'.'ff", null);
-                if(timeSpan2<timeSpan1 || time2 == ""){
-                    time2 = time;
-                    Debug.Log(time2);
-                }
+        if (lev == 3) {
+            if (string.IsNullOrEmpty(time2) || TimeSpan.ParseExact(time, "m':'ss'.'ff", null) < TimeSpan.ParseExact(time2, "m':'ss'.'ff", null)) {
+                time2 = time;
+                Debug.Log(time2);
             }
+            Debug.Log(time2);
         }
-        if(lev == 4){
-            if(time3 != ""){
-                TimeSpan timeSpan1 = TimeSpan.ParseExact(time3, "m':'ss'.'ff", null);
-                TimeSpan timeSpan2 = TimeSpan.ParseExact(time, "m':'ss'.'ff", null);
-                if(timeSpan2<timeSpan1 || time3 == ""){
-                    time3 = time;
-                    Debug.Log(time3);
-                }
+        if (lev == 4) {
+            if (string.IsNullOrEmpty(time3) || TimeSpan.ParseExact(time, "m':'ss'.'ff", null) < TimeSpan.ParseExact(time3, "m':'ss'.'ff", null)) {
+                time3 = time;
+                Debug.Log(time3);
             }
+            Debug.Log(time3);
         }
-        if(lev == 5){
-            if(time4 != ""){
-                TimeSpan timeSpan1 = TimeSpan.ParseExact(time4, "m':'ss'.'ff", null);
-                TimeSpan timeSpan2 = TimeSpan.ParseExact(time, "m':'ss'.'ff", null);
-                if(timeSpan2<timeSpan1 || time4 == ""){
-                    time4 = time;
-                    Debug.Log(time4);
-                }
+        if (lev == 5) {
+            if (string.IsNullOrEmpty(time4) || TimeSpan.ParseExact(time, "m':'ss'.'ff", null) < TimeSpan.ParseExact(time4, "m':'ss'.'ff", null)) {
+                time4 = time;
+                Debug.Log(time4);
             }
+            Debug.Log(time4);
         }
-        if(lev == 6){
-            if(time5 != ""){
-                TimeSpan timeSpan1 = TimeSpan.ParseExact(time5, "m':'ss'.'ff", null);
-                TimeSpan timeSpan2 = TimeSpan.ParseExact(time, "m':'ss'.'ff", null);
-                if(timeSpan2<timeSpan1 || time5 == ""){
-                    time5 = time;
-                    Debug.Log(time5);
-                }
+        if (lev == 6) {
+            if (string.IsNullOrEmpty(time5) || TimeSpan.ParseExact(time, "m':'ss'.'ff", null) < TimeSpan.ParseExact(time5, "m':'ss'.'ff", null)) {
+                time5 = time;
+                Debug.Log(time5);
             }
+            Debug.Log(time5);
         }
     }
     // endings

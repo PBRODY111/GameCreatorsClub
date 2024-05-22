@@ -19,6 +19,14 @@ public class RoomOptions : MonoBehaviour
     void Start()
     {
         data = SaveSystem.LoadLevel();
+        if (data != null) {
+            Debug.Log("Loaded level: " + data.level);
+            Debug.Log("Loaded time1: " + data.time1);
+            Debug.Log("Loaded time2: " + data.time2);
+            Debug.Log("Loaded time3: " + data.time3);
+            Debug.Log("Loaded time4: " + data.time4);
+            Debug.Log("Loaded time5: " + data.time5);
+        }
     }
 
     public void IndexUp(){
