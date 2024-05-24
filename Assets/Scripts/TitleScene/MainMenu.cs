@@ -26,7 +26,7 @@ namespace TitleScene
         [SerializeField] private TMP_Text stars;
         [SerializeField] private TMP_Text roomNum;
         [SerializeField] private TMP_Text hintText;
-        [SerializeField] private string nextRoom = "MainScene";
+        [SerializeField] private string nextRoom = "Room1";
         public Dropdown resolutionDropdown;
         public AudioMixer masterMixer;
         private bool _extrasOn;
@@ -61,7 +61,7 @@ namespace TitleScene
                     cont.SetActive(false);
                 } else if(data1.level == 1){
                     roomNum.text = "Room 1";
-                    nextRoom = "MainScene";
+                    nextRoom = "Room1";
                 } else if(data1.level == 2){
                     roomNum.text = "Room 2";
                     nextRoom = "Room2";
