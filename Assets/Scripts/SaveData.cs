@@ -51,7 +51,7 @@ public class SaveData
     // hints
     public SaveData(string monster, string hint){
         if(monster == "cer"){
-            if(hint == "mainscene"){
+            if(hint == "room1"){
                 hintString = "HINT: YOU HAVE ~2 SECONDS AFTER ALL FOUR SCREWS ARE OUT. GET THE CROWBAR READY.";
             } else if(hint == "room2"){
                 hintString = "HINT: IT WILL ATTACK WHEN YOU'RE USING THE COMPUTER OR HOT PLATE.";

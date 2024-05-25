@@ -13,7 +13,7 @@ public class RoomOptions : MonoBehaviour
     [SerializeField] private TMP_Text charText;
     [SerializeField] private TMP_Text prText;
     [SerializeField] private AudioSource clickAudio;
-    [SerializeField] private string levelName = "MainScene";
+    [SerializeField] private string levelName = "Room1";
     private SaveData data;
     // Start is called before the first frame update
     void Start()
@@ -53,7 +53,7 @@ public class RoomOptions : MonoBehaviour
         if(index==0){
             charImage.sprite = rooms[0];
             charText.text = "ROOM 1";
-            levelName = "MainScene";
+            levelName = "Room1";
             if(data != null && data.time1 != ""){
                 prText.text = "PR: "+data.time1;
             } else{

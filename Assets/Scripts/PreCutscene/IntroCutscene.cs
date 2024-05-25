@@ -38,7 +38,7 @@ public class IntroCutscene : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && _canSkip) SceneManager.LoadScene("MainScene");
+        if (Input.GetKeyDown(KeyCode.E) && _canSkip) SceneManager.LoadScene("Room1");
     }
 
     IEnumerator IntroClip() {
@@ -92,6 +92,6 @@ public class IntroCutscene : MonoBehaviour
         videoImg.enabled = true;
         titleVid.Play();
         yield return new WaitForSeconds(19f);
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("Room1");
     }
 }
