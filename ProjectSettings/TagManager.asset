@@ -8,6 +8,8 @@ TagManager:
   - radio
   - toxin
   - ignoreCollision
+  - GameEdge
+  - Block
   layers:
   - Default
   - TransparentFX

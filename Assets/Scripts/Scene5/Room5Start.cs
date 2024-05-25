@@ -36,8 +36,9 @@ public class Room5Start : MonoBehaviour
         armAnim.SetBool(IsKill, true);
         yield return new WaitForSeconds(0.2f);
         myraAnim.SetBool(IsDead, true);
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.5f);
         doorAnim.SetBool(IsOpen, true);
+        yield return new WaitForSeconds(0.3f);
         StartCoroutine(MoveToTargetPosition());
         blockade.SetActive(false);
         yield return new WaitForSeconds(1f);
