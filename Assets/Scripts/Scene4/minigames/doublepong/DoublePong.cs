@@ -15,6 +15,7 @@ public class DoublePong : MonoBehaviour
     [SerializeField] private GameObject level2;
     [SerializeField] private GameObject level3;
     [SerializeField] private GameObject dead;
+    [SerializeField] private GameObject overParent;
     [SerializeField] private GameObject inhibitor;
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private TMP_Text livesText;
@@ -79,14 +80,23 @@ public class DoublePong : MonoBehaviour
         Player.Player.Instance.EnableMovement();
     }
 
-    public IEnumerator GameWin(){
+    public void GameWin(){
+        ball.SetActive(false);
         dead.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        Debug.Log("GAME WIN?");
+        StartCoroutine(WinSequence());
+    }
+
+    IEnumerator WinSequence(){
+        Debug.Log("Enters Method?");
+        yield return new WaitForSeconds(5f);
+        Debug.Log("GAME WIN???");
         dpUI.SetActive(false);
         Player.Player.Instance.LockCursor();
         Player.Player.Instance.EnableMovement();
         inhibitor.SetActive(true);
-        gameObject.SetActive(false);
+        overParent.SetActive(false);
+        intText.SetActive(false);
     }
 
     private bool IsWithinReach()

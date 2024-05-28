@@ -46,7 +46,7 @@ public class Block : MonoBehaviour
                 doublePong.broken = 57;
                 level2.SetActive(false);
             } else{
-                StartCoroutine(doublePong.GameWin());
+                doublePong.GameWin();
             }
         }
         imageComponent.sprite = currentImageSprite;
