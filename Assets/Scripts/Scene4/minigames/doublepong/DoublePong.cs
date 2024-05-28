@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DoublePong : MonoBehaviour
 {
@@ -10,9 +11,16 @@ public class DoublePong : MonoBehaviour
     [SerializeField] private GameObject ball;
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject elements;
+    [SerializeField] private GameObject level1;
+    [SerializeField] private GameObject level2;
+    [SerializeField] private GameObject level3;
+    [SerializeField] private GameObject dead;
+    [SerializeField] private GameObject inhibitor;
+    [SerializeField] private TMP_Text levelText;
+    [SerializeField] private TMP_Text livesText;
     public int level;
     public int broken;
-    public int lives = 3;
+    public int lives = 5;
     // Start is called before the first frame update
     void Start(){
         level = 1;
@@ -44,6 +52,41 @@ public class DoublePong : MonoBehaviour
             Player.Player.Instance.LockCursor();
             Player.Player.Instance.EnableMovement();
         }
+    }
+
+    public void ResetGame(){
+        foreach (Transform child in level1.transform){
+            child.gameObject.SetActive(true);
+        }
+        foreach (Transform child in level2.transform){
+            child.gameObject.SetActive(true);
+        }
+        foreach (Transform child in level3.transform){
+            child.gameObject.SetActive(true);
+        }
+        level1.SetActive(true);
+        level2.SetActive(false);
+        level3.SetActive(false);
+        level = 1;
+        broken = 19;
+        lives = 5;
+        levelText.text = "LEVEL: 1";
+        livesText.text = "LIVES: 5";
+        elements.SetActive(false);
+        menu.SetActive(true);
+        dpUI.SetActive(false);
+        Player.Player.Instance.LockCursor();
+        Player.Player.Instance.EnableMovement();
+    }
+
+    public IEnumerator GameWin(){
+        dead.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        dpUI.SetActive(false);
+        Player.Player.Instance.LockCursor();
+        Player.Player.Instance.EnableMovement();
+        inhibitor.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     private bool IsWithinReach()

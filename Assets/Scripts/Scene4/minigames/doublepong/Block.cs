@@ -7,6 +7,7 @@ using TMPro;
 public class Block : MonoBehaviour
 {
     [SerializeField] private AudioSource breakAudio;
+    [SerializeField] private Sprite currentImageSprite;
     [SerializeField] private Sprite newImageSprite; // Assign the new image sprite in the Inspector
     [SerializeField] private Image imageComponent;
     [SerializeField] private DoublePong doublePong;
@@ -38,16 +39,17 @@ public class Block : MonoBehaviour
             levelText.text = "LEVEL: "+doublePong.level;
             if(doublePong.level == 2){
                 level2.SetActive(true);
-                doublePong.lives = 3;
+                doublePong.broken = 38;
                 level1.SetActive(false);
             } else if (doublePong.level == 3){
                 level3.SetActive(true);
-                doublePong.lives = 3;
+                doublePong.broken = 57;
                 level2.SetActive(false);
             } else{
-                // game win
+                StartCoroutine(doublePong.GameWin());
             }
         }
+        imageComponent.sprite = currentImageSprite;
         gameObject.SetActive(false);
     }
 }
