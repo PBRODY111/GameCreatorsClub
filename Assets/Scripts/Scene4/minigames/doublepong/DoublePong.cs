@@ -49,6 +49,7 @@ public class DoublePong : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)){
             elements.SetActive(false);
             menu.SetActive(true);
+            ResetGame();
             dpUI.SetActive(false);
             Player.Player.Instance.LockCursor();
             Player.Player.Instance.EnableMovement();
