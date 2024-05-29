@@ -2,6 +2,7 @@ using System.Collections;
 using UI;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Scene1.Safe
 {

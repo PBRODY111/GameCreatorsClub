@@ -5970,7 +5970,7 @@ MonoBehaviour:
   charText: {fileID: 638387057}
   prText: {fileID: 1658247643}
   clickAudio: {fileID: 1155496032}
-  levelName: MainScene
+  levelName: Room1
 --- !u!1 &1048923353
 GameObject:
   m_ObjectHideFlags: 0

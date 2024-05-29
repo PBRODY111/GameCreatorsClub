@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Serialization;
+using TMPro;
 
 namespace Player
 {
@@ -29,8 +31,14 @@ namespace Player
         private Light[] _lights;
         private GameObject[] _lightObj;
 
+
+        private TMP_InputField[] tmpInputFields;
+        private InputField[] inputFields;
+
         private void Start()
         {
+            tmpInputFields = FindObjectsOfType<TMP_InputField>();
+            inputFields = FindObjectsOfType<InputField>();
             _lights = new Light[lightParent.transform.childCount];
             for (var i = 0; i < _lights.Length; i++)
                 _lights[i] = lightParent.transform.GetChild(i).GetComponent<Light>();
@@ -44,6 +52,14 @@ namespace Player
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.F) && CanTurnOff()){
+                Debug.Log("headlamp");
+                _lightObj[0].SetActive(!_flashlightOn);
+                _lightObj[1].SetActive(!_flashlightOn);
+                _lightObj[2].SetActive(!_flashlightOn);
+                _flashlightOn = !_flashlightOn;
+            }
+            
             if (!_flashlightOn) return;
             if (_fullbright)
             {
@@ -63,15 +79,6 @@ namespace Player
             for (var i = 0; i < temp; i++) Destroy(canvas.transform.GetChild(0).GetChild(i).gameObject);
 
             for (var i = 0; i < lightStage + 1; i++) Instantiate(batteryBarPrefab, canvas.transform.GetChild(0));
-        }
-
-        private void FixedUpdate(){
-            if (Input.GetKeyDown(KeyCode.F)){
-                _lightObj[0].SetActive(!_flashlightOn);
-                _lightObj[1].SetActive(!_flashlightOn);
-                _lightObj[2].SetActive(!_flashlightOn);
-                _flashlightOn = !_flashlightOn;
-            }
         }
 
         public void Fullbright()
@@ -103,6 +110,26 @@ namespace Player
         {
             _batteryLife += charge;
             if (_batteryLife > 4000f) _batteryLife = 4000f;
+        }
+
+        private bool CanTurnOff(){
+            tmpInputFields = FindObjectsOfType<TMP_InputField>();
+            inputFields = FindObjectsOfType<InputField>();
+            foreach (TMP_InputField tmpInputField in tmpInputFields)
+            {
+                if (tmpInputField.isFocused)
+                {
+                    return false;
+                }
+            }
+            foreach (InputField inputField in inputFields)
+            {
+                if (inputField.isFocused)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

@@ -25,6 +25,7 @@ namespace Scene1.Safe
                 if (!isUnlocked) unlockAudio.Play();
 
                 isUnlocked = true;
+                CloseUI();
             }
 
             _colorIndex++;
