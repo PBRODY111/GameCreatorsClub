@@ -6765,7 +6765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9b41a8a3750084c9cb629bc5cb010798, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6830,6 +6830,7 @@ MonoBehaviour:
   inhibitor: {fileID: 1405115856}
   levelText: {fileID: 754526198}
   livesText: {fileID: 1950543819}
+  ballClass: {fileID: 1516883205}
   level: 0
   broken: 0
   lives: 5
@@ -56484,6 +56485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialVelocity: 500
+  isLaunched: 0
   doublePong: {fileID: 237783380}
   livesText: {fileID: 1950543819}
   bounceAudio: {fileID: 1516883206}

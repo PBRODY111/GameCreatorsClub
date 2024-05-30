@@ -19,6 +19,7 @@ public class DoublePong : MonoBehaviour
     [SerializeField] private GameObject inhibitor;
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private TMP_Text livesText;
+    [SerializeField] private Ball ballClass;
     public int level;
     public int broken;
     public int lives = 5;
@@ -49,6 +50,7 @@ public class DoublePong : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)){
             elements.SetActive(false);
             menu.SetActive(true);
+            ballClass.ResetBall();
             ResetGame();
             dpUI.SetActive(false);
             Player.Player.Instance.LockCursor();

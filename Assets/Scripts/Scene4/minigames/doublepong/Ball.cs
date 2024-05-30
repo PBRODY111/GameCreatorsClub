@@ -7,7 +7,7 @@ public class Ball : MonoBehaviour
 {
     public float initialVelocity = 8f; // Adjust the initial velocity as needed
     private Rigidbody2D rb;
-    private bool isLaunched = false;
+    public bool isLaunched = false;
     private bool direction = false;
     private RectTransform rectTransform;
     [SerializeField] private DoublePong doublePong;
@@ -112,5 +112,15 @@ public class Ball : MonoBehaviour
     public void MoveToPosition(Vector3 newPosition)
     {
         rectTransform.anchoredPosition = newPosition;
+    }
+
+    public void ResetBall(){
+        isLaunched = false;
+        direction = !direction;
+        if(direction){
+            MoveToPosition(new Vector3(0, 320, 0));
+        } else{
+            MoveToPosition(new Vector3(0, -320, 0));
+        }
     }
 }
