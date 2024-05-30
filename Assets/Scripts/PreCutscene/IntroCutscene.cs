@@ -21,6 +21,10 @@ public class IntroCutscene : MonoBehaviour
     private AudioSource[] allAudioSources;
     [SerializeField] private GameObject monsters;
     [SerializeField] private GameObject people;
+
+    [SerializeField] private Material daySkybox;
+    [SerializeField] private Material nightSkybox;
+
     private float intensity;
     
     private bool _canSkip;
@@ -32,6 +36,8 @@ public class IntroCutscene : MonoBehaviour
         RenderSettings.ambientIntensity = intensity;
         monsters.SetActive(false);
         people.SetActive(true);
+        RenderSettings.skybox = daySkybox;
+        DynamicGI.UpdateEnvironment();
         StartCoroutine(IntroClip());
         videoImg.enabled = false;
     }
@@ -63,6 +69,8 @@ public class IntroCutscene : MonoBehaviour
         dana.Play();
         yield return new WaitForSeconds(1.5f);
         // stop all sounds
+        RenderSettings.skybox = nightSkybox;
+        DynamicGI.UpdateEnvironment();
         allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
         foreach( var audioS in allAudioSources) {
             audioS.Stop();
