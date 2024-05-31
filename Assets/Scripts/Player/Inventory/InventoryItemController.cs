@@ -94,7 +94,10 @@ namespace Player.Inventory
             if (item.modelPrefab != null)
             {
                 // Drop the model of the selected item
-                Instantiate(item.modelPrefab, Player.Instance.transform.position + Player.Instance.transform.forward * 1.2f, Quaternion.identity);
+                Vector3 offset = Player.Instance.transform.forward * 0.6f + Player.Instance.transform.up * 0.5f;
+
+                // Instantiate the object with the adjusted position
+                Instantiate(item.modelPrefab, Player.Instance.transform.position + offset, Quaternion.identity);
                 RemoveItem();
                 Player.Instance.selectedslot = -1;
             }
