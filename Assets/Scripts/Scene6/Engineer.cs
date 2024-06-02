@@ -7,18 +7,23 @@ namespace Scene6
 {
     public class Engineer : MonoBehaviour
     {
-        [SerializeField] private AudioSource paradoxAudio;
-        [SerializeField] private AudioSource systemAudio;
+        public AudioSource charlieAudio;
+        public AudioSource paradoxAudio;
+        public AudioSource systemAudio;
         [SerializeField] private AudioSource jumpscareAudio;
-        [SerializeField] private AudioClip [] paradoxLines;
-        [SerializeField] private AudioClip [] systemLines;
+        public AudioSource bossFight;
+        public AudioClip [] charlieLines;
+        public AudioClip [] paradoxLines;
+        public AudioClip [] systemLines;
         [SerializeField] private Animator escapeAnim;
         [SerializeField] private Animator engineerAnim;
         [SerializeField] private GameObject escapeText;
         [SerializeField] private GameObject escapeUI;
-        [SerializeField] private bool isActive = false;
+        [SerializeField] private GameObject engineerTarget;
+        public bool isActive = false;
         [SerializeField] private Vector3 startPosition;
         [SerializeField] private float timeToReachTarget;
+        [SerializeField] private EngineerTarget targetVar;
         private Quaternion _lookRotation;
         public float t;
         public Vector3 target;
@@ -27,10 +32,22 @@ namespace Scene6
         private static readonly int IsEscape = Animator.StringToHash("isEscape");
         private static readonly int IsScared = Animator.StringToHash("isScared");
 
+        private bool hasEntered = false;
+        public bool canKill = false;
+
         private void Start()
         {
             // ENDING 1
-            StartCoroutine(Ending1());
+            StartCoroutine(Ending2());
+        }
+
+        private void OnTriggerEnter(Collider collider)
+        {
+            if (collider.gameObject.name == "Zagreus" && !hasEntered && canKill)
+            {
+                hasEntered = true;
+                StartCoroutine(Jumpscare());
+            }
         }
 
         void Update(){
@@ -45,6 +62,20 @@ namespace Scene6
 
                 // Check if the distance is within the threshold
                 float distance = Vector3.Distance(transform.position, target);
+            }
+            if(canKill && !isActive && targetVar.canAttack){
+                var thisTransform = gameObject.transform;
+                _lookRotation = Quaternion.LookRotation(new Vector3(Player.Player.Instance.transform.position.x, gameObject.transform.position.y, Player.Player.Instance.transform.position.z));
+                thisTransform.LookAt(new Vector3(Player.Player.Instance.transform.position.x, gameObject.transform.position.y, Player.Player.Instance.transform.position.z));
+                if(!isActive && targetVar.canAttack){
+                    target = new Vector3(engineerTarget.transform.position.x, gameObject.transform.position.y, engineerTarget.transform.position.z);
+                    t += Time.deltaTime / timeToReachTarget;
+                    startPosition = thisTransform.position;
+                    thisTransform.position = Vector3.Lerp(startPosition, target, t);
+
+                    // Check if the distance is within the threshold
+                    float distance = Vector3.Distance(transform.position, target);
+                }
             }
         }
 
@@ -73,6 +104,29 @@ namespace Scene6
             yield return new WaitForSeconds(6f);
             SaveSystem.SaveEndings(1);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
+        IEnumerator Ending2(){
+            bossFight.Play();
+            charlieAudio.clip = charlieLines[0];
+            charlieAudio.Play();
+            yield return new WaitForSeconds(4f);
+            paradoxAudio.clip = paradoxLines[1];
+            paradoxAudio.Play();
+            canKill = true;
+            yield return new WaitForSeconds(4f);
+            engineerTarget.SetActive(true);
+        }
+
+        IEnumerator Jumpscare(){
+            isActive = true;
+            jumpscareAudio.Play();
+            engineerAnim.SetBool(IsScared, true);
+            yield return new WaitForSeconds(1.5f);
+            SaveSystem.SaveHint("paradox","room6");
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            SceneManager.LoadScene("GameOverScene");
         }
     }
 }

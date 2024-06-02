@@ -6,7 +6,7 @@ public class CannonUse : MonoBehaviour
 {
     [SerializeField] private GameObject shockLight;
     [SerializeField] private AudioSource shockAudio;
-    [SerializeField] private bool canShock = true;
+    public bool canShock = true;
     // Start is called before the first frame update
     void Start()
     {
