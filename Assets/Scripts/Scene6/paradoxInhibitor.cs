@@ -30,10 +30,11 @@ public class paradoxInhibitor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && IsWithinReach() && canInteract)
         {
             switchAudio.Play();
-            transform.rotation = Quaternion.Euler(0, 0, -90);
+            transform.rotation = Quaternion.Euler(0, -90, -90);
             light.SetActive(false);
             canInteract = false;
             shutdownAudio.Play();
+            StartCoroutine(Escape());
         }
     }
 

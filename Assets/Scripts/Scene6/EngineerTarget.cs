@@ -17,7 +17,7 @@ public class EngineerTarget : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(7.0f); // Wait for 7 seconds
+            yield return new WaitForSeconds(6.0f); // Wait for 6 seconds
             canAttack = false;
             warningAudio.Play();
             transform.position = Player.Player.Instance.transform.position;

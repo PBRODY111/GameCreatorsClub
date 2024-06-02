@@ -48,6 +48,7 @@ namespace Scene6
 
                 if (Input.GetMouseButtonDown(1) && IsWithinReach() && cannon.canShock){
                     countDown = 45;
+                    paradox.systemAudio.Stop();
                     hits--;
                     StartCoroutine(Shock());
                     if(hits == 0){
