@@ -41,6 +41,7 @@ namespace Scene6
             StartCoroutine(Ending2());
         }
 
+        // CHANGE THIS!!!
         private void OnTriggerEnter(Collider collider)
         {
             if (collider.gameObject.name == "Zagreus" && !hasEntered && canKill)

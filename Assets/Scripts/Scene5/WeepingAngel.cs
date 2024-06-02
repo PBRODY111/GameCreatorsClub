@@ -34,6 +34,6 @@ public class WeepingAngel : MonoBehaviour
 
     public IEnumerator MusicBoxJumpscare(){
         yield return new WaitForSeconds(2f);
-        transform.position = player.position;
+        transform.position = new Vector3(Player.Player.Instance.transform.position.x, gameObject.transform.position.y, Player.Player.Instance.transform.position.z);
     }
 }

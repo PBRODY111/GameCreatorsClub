@@ -11,10 +11,12 @@ namespace Scene6
         [SerializeField] private GameObject engineer;
         [SerializeField] private GameObject intText;
         [SerializeField] private GameObject intText3;
+        [SerializeField] private GameObject engineerTarget;
+        [SerializeField] private GameObject sparks;
+        [SerializeField] private GameObject ending2UI;
+        [SerializeField] private GameObject inhibitor;
         [SerializeField] private AudioSource winter;
-        [SerializeField] private AudioSource overload;
-        [SerializeField] private AudioClip system;
-        [SerializeField] private int countDown = 65;
+        [SerializeField] private int countDown = 45;
         [SerializeField] private int hits = 26;
         [SerializeField] private CannonUse cannon;
         [SerializeField] private Engineer paradox;
@@ -45,11 +47,15 @@ namespace Scene6
                 intText3.SetActive(true);
 
                 if (Input.GetMouseButtonDown(1) && IsWithinReach() && cannon.canShock){
-                    countDown = 65;
+                    countDown = 45;
                     hits--;
+                    StartCoroutine(Shock());
                     if(hits == 0){
                         paradox.canKill = false;
                         paradox.bossFight.Stop();
+                        canShock = false;
+                        engineerTarget.SetActive(false);
+                        StartCoroutine(Inhibitor());
                     }
                 }
             }
@@ -59,6 +65,28 @@ namespace Scene6
             yield return new WaitForSeconds(Random.Range(60, 80));
             winter.Stop();
             engineer.SetActive(true);
+        }
+        IEnumerator Shock(){
+            sparks.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            sparks.SetActive(false);
+        }
+        IEnumerator Inhibitor(){
+            yield return new WaitForSeconds(1f);
+            paradox.paradoxAudio.clip = paradox.paradoxLines[2];
+            paradox.paradoxAudio.Play();
+            yield return new WaitForSeconds(3f);
+            paradox.charlieAudio.clip = paradox.charlieLines[2];
+            paradox.charlieAudio.Play();
+            yield return new WaitForSeconds(1f);
+            paradox.paradoxAudio.clip = paradox.paradoxLines[3];
+            paradox.paradoxAudio.Play();
+            yield return new WaitForSeconds(1f);
+            ending2UI.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            engineer.SetActive(false);
+            inhibitor.SetActive(true);
+            gameObject.SetActive(false);
         }
 
         IEnumerator Excitat(){
@@ -73,7 +101,7 @@ namespace Scene6
 
         private IEnumerator DecreaseCount()
         {
-            while (true)
+            while (canShock)
             {
                 if (countDown > 0)
                 {

@@ -97,7 +97,7 @@ namespace Player.Inventory
                 Vector3 offset = Player.Instance.transform.forward * 0.6f + Player.Instance.transform.up * 0.5f;
 
                 // Instantiate the object with the adjusted position
-                Instantiate(item.modelPrefab, Player.Instance.transform.position + offset, Quaternion.Euler(-90f, 0f, 0f));
+                Instantiate(item.modelPrefab, Player.Instance.transform.position + offset, Quaternion.identity);
                 RemoveItem();
                 Player.Instance.selectedslot = -1;
             }
