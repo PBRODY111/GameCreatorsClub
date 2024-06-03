@@ -29661,7 +29661,7 @@ MonoBehaviour:
   reach: 1
   intText: {fileID: 1092012639}
   escapeAnim: {fileID: 135085726}
-  cer: {fileID: 0}
+  cer: {fileID: 555492526}
   escapeText: {fileID: 756901892}
   escapeUI: {fileID: 523287750}
 --- !u!1001 &822772417
