@@ -15,16 +15,27 @@ public class dpInhibitor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SaveData data2 = SaveSystem.LoadEndings();
         SaveData data = SaveSystem.LoadMinigame();
-        if(data != null){
-            if(!data.doublePong){
-                booth.SetActive(true);
+        if(data2 == null){
+            booth.SetActive(false);
+            inhibitor.SetActive(false);
+        } else{
+            if(data2.ending == 0){
+                booth.SetActive(false);
                 inhibitor.SetActive(false);
             } else{
-                booth.SetActive(false);
-                light.SetActive(false);
-                transform.rotation = Quaternion.Euler(0, 0, -90);
-                canInteract = false;
+                if(data != null){
+                    if(!data.doublePong){
+                        booth.SetActive(true);
+                        inhibitor.SetActive(false);
+                    } else{
+                        booth.SetActive(false);
+                        light.SetActive(false);
+                        transform.rotation = Quaternion.Euler(0, 0, -90);
+                        canInteract = false;
+                    }
+                }
             }
         }
     }

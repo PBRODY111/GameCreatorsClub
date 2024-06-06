@@ -43,11 +43,22 @@ namespace Scene6
             } catch (System.Exception e){
                 Debug.Log("Cannot connect to Steam");
             }
-            // ENDING 1
-            StartCoroutine(Ending2());
+
+            SaveData data2 = SaveSystem.LoadEndings();
+            if(data2 == null){
+                StartCoroutine(Ending1());
+            } else{
+                Debug.Log(data2.ending);
+                Debug.Log(HasMinigames());
+                if(data2.ending >= 1 && HasMinigames()){
+                    StartCoroutine(Ending2());
+                } else{
+                    StartCoroutine(Ending1());
+                }
+            }
         }
 
-        // CHANGE THIS!!!
+        // KILL MECHANIC!!!
         private void OnTriggerEnter(Collider collider)
         {
             if (collider.gameObject.name == "Zagreus" && !hasEntered && canKill)
@@ -110,8 +121,10 @@ namespace Scene6
             escapeText.SetActive(true);
             yield return new WaitForSeconds(6f);
             SaveSystem.SaveEndings(1);
+            /*
             var ach = new Steamworks.Data.Achievement("ENDING_1");
             ach.Trigger();
+            */
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
@@ -136,6 +149,18 @@ namespace Scene6
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             SceneManager.LoadScene("GameOverScene");
+        }
+
+        private bool HasMinigames(){
+            SaveData data = SaveSystem.LoadMinigame();
+            if(data != null){
+                Debug.Log(data.styx);
+                Debug.Log(data.doublePong);
+                if(data.styx && data.doublePong){
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

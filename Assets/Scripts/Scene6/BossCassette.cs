@@ -15,6 +15,7 @@ namespace Scene6
         [SerializeField] private GameObject sparks;
         [SerializeField] private GameObject ending2UI;
         [SerializeField] private GameObject inhibitor;
+        [SerializeField] private GameObject playerCheckpoint;
         [SerializeField] private AudioSource winter;
         [SerializeField] private int countDown = 45;
         [SerializeField] private int hits = 26;
@@ -22,6 +23,14 @@ namespace Scene6
         [SerializeField] private Engineer paradox;
         private bool canShock = false;
         // Start is called before the first frame update
+        private void Start(){
+            SaveData data3 = SaveSystem.LoadHint();
+            if(data3 != null){
+                if(data3.hintString == "PARADOXON EXCITAT."){
+                    Player.Player.Instance.transform.position = playerCheckpoint.transform.position;
+                }
+            }
+        }
         private void OnMouseExit()
         {
             intText.SetActive(false);
