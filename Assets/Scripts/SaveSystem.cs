@@ -34,6 +34,7 @@ public class SaveSystem
     }
 
     // minigames
+    /*
     public static void SaveMinigame (string name){
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath+"/player.minigames";
@@ -55,6 +56,48 @@ public class SaveSystem
 
             return data;
         } else{
+            Debug.Log("No minigame save file.");
+            return null;
+        }
+    }*/
+    public static void SaveMinigame(string name){
+        string path = Application.persistentDataPath + "/player.minigames";
+        SaveData data = LoadMinigame() ?? new SaveData(name); // Load existing data or create a new instance with default values
+
+        // Update the specific minigame state
+        if (name == "styx")
+        {
+            data.styx = true;
+        }
+        else if (name == "doublePong")
+        {
+            data.doublePong = true;
+        }
+        else if (name == "dashr")
+        {
+            data.dashr = true;
+        }
+
+        // Save the updated data
+        BinaryFormatter formatter = new BinaryFormatter();
+        using (FileStream stream = new FileStream(path, FileMode.Create))
+        {
+            formatter.Serialize(stream, data);
+        }
+    }
+    public static SaveData LoadMinigame(){
+        string path = Application.persistentDataPath + "/player.minigames";
+        if (File.Exists(path))
+        {
+            Debug.Log("Minigame savefile exists");
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream stream = new FileStream(path, FileMode.Open))
+            {
+                return formatter.Deserialize(stream) as SaveData;
+            }
+        }
+        else
+        {
             Debug.Log("No minigame save file.");
             return null;
         }

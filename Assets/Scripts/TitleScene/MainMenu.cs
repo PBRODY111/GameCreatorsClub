@@ -284,7 +284,6 @@ namespace TitleScene
             yield return new WaitForSeconds((float)1.5);
             animator4.SetBool(IsStart, true);
             yield return new WaitForSeconds((float)2.5);
-            SaveSystem.SaveHint("","");
             SceneManager.LoadScene(nextRoom);
         }
 

@@ -16,11 +16,13 @@ namespace Scene6
         [SerializeField] private GameObject ending2UI;
         [SerializeField] private GameObject inhibitor;
         [SerializeField] private GameObject playerCheckpoint;
+        [SerializeField] private GameObject arms;
         [SerializeField] private AudioSource winter;
         [SerializeField] private int countDown = 45;
         [SerializeField] private int hits = 26;
         [SerializeField] private CannonUse cannon;
         [SerializeField] private Engineer paradox;
+        [SerializeField] private EngineerTarget targetVar;
         private bool canShock = false;
         // Start is called before the first frame update
         private void Start(){
@@ -60,7 +62,11 @@ namespace Scene6
                     paradox.systemAudio.Stop();
                     hits--;
                     StartCoroutine(Shock());
-                    if(hits == 0){
+                    if(hits == 13){
+                        arms.SetActive(true);
+                    } else if(hits == 4){
+                        targetVar.finalStage = true;
+                    } else if(hits == 0){
                         paradox.canKill = false;
                         paradox.bossFight.Stop();
                         canShock = false;
@@ -72,7 +78,7 @@ namespace Scene6
         }
 
         IEnumerator Paradoxon(){
-            yield return new WaitForSeconds(Random.Range(60, 80));
+            yield return new WaitForSeconds(Random.Range(45, 55));
             winter.Stop();
             engineer.SetActive(true);
         }

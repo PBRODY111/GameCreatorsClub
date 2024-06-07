@@ -424,6 +424,9 @@ MonoBehaviour:
   img2: {fileID: 835946313}
   img3: {fileID: 1711153315}
   skipText: {fileID: 1585640631}
+  rose: {fileID: 336853946}
+  thermometer: {fileID: 336853945}
+  wallText: {fileID: 1306677620}
 --- !u!82 &149238478
 AudioSource:
   m_ObjectHideFlags: 0
@@ -917,6 +920,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 676fd6fafaf5c4322ba0103198fadec7, type: 3}
+--- !u!1 &336853945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7515429101286732190, guid: 676fd6fafaf5c4322ba0103198fadec7, type: 3}
+  m_PrefabInstance: {fileID: 336853944}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &336853946 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3661182023027037043, guid: 676fd6fafaf5c4322ba0103198fadec7, type: 3}
+  m_PrefabInstance: {fileID: 336853944}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &411362677
 GameObject:
   m_ObjectHideFlags: 0
