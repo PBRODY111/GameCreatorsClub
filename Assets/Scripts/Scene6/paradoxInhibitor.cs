@@ -50,7 +50,7 @@ public class paradoxInhibitor : MonoBehaviour
         escapeText.GetComponent<TMP_Text>().text = "";
         escapeText.SetActive(true);
         yield return new WaitForSeconds(6f);
-        //SaveSystem.SaveEndings(2);
+        SaveSystem.SaveEndings(2);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

@@ -67,6 +67,7 @@ namespace Scene6
                     } else if(hits == 4){
                         targetVar.finalStage = true;
                     } else if(hits == 0){
+                        arms.SetActive(false);
                         paradox.canKill = false;
                         paradox.bossFight.Stop();
                         canShock = false;
