@@ -20,6 +20,7 @@ namespace Scene2
         private Quaternion _lookRotation;
         [SerializeField] private GameObject computerUI;
         [SerializeField] private GameObject hotplateUI;
+        [SerializeField] private GameObject portals;
         [SerializeField] private AudioSource suspenseAudio;
         [SerializeField] private AudioSource computerAudio;
         [SerializeField] private AudioSource leaveAudio;
@@ -95,6 +96,7 @@ namespace Scene2
                             }
                             target = targets[0].transform.position;
                         }
+                        portals.SetActive(false);
                         Debug.Log("Close");
                         StartCoroutine(ScareSequence());
                     }
@@ -110,6 +112,7 @@ namespace Scene2
             //GetComponent<Animator>().SetBool("isReturn", true);
             Debug.Log("Started");
             yield return new WaitForSeconds(Random.Range(30f, 40f));
+            portals.SetActive(true);
             Debug.Log("moving");
             suspenseAudio.Play();
             isActive = true;

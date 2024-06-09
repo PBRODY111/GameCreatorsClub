@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -226}
+  m_AnchoredPosition: {x: 0, y: -38}
   m_SizeDelta: {x: 1500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &115876394
@@ -202,24 +202,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'caution:
-
-    mid-level progress does not save. finish the level or pause
-    and leave the game open.
-
-
-
-    click to continue
-
-
-
-
-
-
-
-
-    this is an audio-based
-    game best played with headphones.'
+  m_text: "Congratulations! After numerous failed attempts and trial and error, you
+    finally have beaten the entirety of Fear Calibration. As the head developer,
+    I know that is no easy task, but that didn't stop you from giving up. \n\nAlso,
+    thanks for not skipping credits.\n\nCreating Fear Calibration was no easy task.
+    I, personally, had to learn Unity (along with C#) from scratch. For many others,
+    it was their first time publicly \"giving\" me their voices. For all of us, it
+    was our first time putting a game on Steam \u2013 amidst all the exams and assessments
+    that we have as high schoolers.\n\nSo I want to say, thank you to everyone who
+    made this game possible. Thank you to the entirety of NeoCOMS entertainment for
+    putting in your work and effort. Thank you to those who spent countless hours
+    playing through each level, finding bugs, then having to replay those levels
+    to make sure that they were gone.\n\nBut finally, thank you, the player, for
+    sticking with us to the end.\n\n- James Song (The Engineer)\n\n\nclick to continue"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -246,8 +241,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -673,10 +668,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1288045857}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c938e805e4b74d08874ec3f2dc29911, type: 3}
+  m_Script: {fileID: 11500000, guid: 368fd5311d90d41b886c3b2ced52b46e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splashAnim: {fileID: 115876394}
+  chance: 0
 --- !u!1 &1923829424
 GameObject:
   m_ObjectHideFlags: 0

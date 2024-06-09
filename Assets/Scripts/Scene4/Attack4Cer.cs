@@ -18,6 +18,7 @@ public class Attack4Cer : MonoBehaviour
     private Quaternion _lookRotation;
     [SerializeField] private AudioSource suspenseAudio;
     [SerializeField] private AudioSource leaveAudio;
+    [SerializeField] private GameObject portals;
     [SerializeField] private CerKill cerKill;
     public string tagToIgnore = "ignoreCollision";
 
@@ -82,6 +83,7 @@ public class Attack4Cer : MonoBehaviour
                     } else{
                         target = targets[0].transform.position;
                     }
+                    portals.SetActive(false);
                     Debug.Log("Close");
                     StartCoroutine(ScareSequence());
                 }
@@ -97,6 +99,7 @@ public class Attack4Cer : MonoBehaviour
         //GetComponent<Animator>().SetBool("isReturn", true);
         Debug.Log("Started");
         yield return new WaitForSeconds(Random.Range(8f, 12f));
+        portals.SetActive(true);
         Debug.Log("moving");
         suspenseAudio.Play();
         isActive = true;
