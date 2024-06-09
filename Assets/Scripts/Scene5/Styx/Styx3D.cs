@@ -14,6 +14,14 @@ public class Styx3D : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SaveData data2 = SaveSystem.LoadEndings();
+        if(data2 != null){
+            if(data2.ending < 2){
+                gameObject.SetActive(false);
+            }
+        } else{
+            gameObject.SetActive(false);
+        }
         // if already got second ending
         textObject.SetActive(true);
 
