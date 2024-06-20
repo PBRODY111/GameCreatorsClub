@@ -21,6 +21,8 @@ public class Mask : MonoBehaviour
                 StartCoroutine(RemoveMaskObject());
             }
         }
+        if (Input.GetKeyDown(KeyCode.Q) && Player.Player.Instance.IsHolding("Mask") && isMoving)
+            StartCoroutine(RemoveMaskObject());
     }
 
     IEnumerator MoveMaskObject()
