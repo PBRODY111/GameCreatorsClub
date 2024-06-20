@@ -11,6 +11,9 @@ public class Styx3D : MonoBehaviour
     public AudioSource pointAudio;
     public AudioSource styxAudio;
     [SerializeField] private GameObject persephone;
+    [SerializeField] private GameObject board1;
+    [SerializeField] private GameObject board2;
+    private bool isDone = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +41,7 @@ public class Styx3D : MonoBehaviour
         }
         if (pointValue == 15){
             styxAudio.Stop();
-            persephone.SetActive(true);
+            isDone = true;
             pointsText.text = "0/1";
         }
     }
@@ -46,5 +49,11 @@ public class Styx3D : MonoBehaviour
     private void UpdatePointsText()
     {
         if (pointsText != null) pointsText.text = "" + pointValue + "/15";
+    }
+
+    void Update(){
+        if(isDone && !board1.activeSelf && !board2.activeSelf && !persephone.activeSelf){
+            persephone.SetActive(true);
+        }
     }
 }

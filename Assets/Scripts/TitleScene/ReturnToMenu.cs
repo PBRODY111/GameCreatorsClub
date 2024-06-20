@@ -6,14 +6,13 @@ namespace TitleScene
     public class ReturnToMenu : MonoBehaviour
     {
         [SerializeField] private int chance;
-        private SaveData data = SaveSystem.LoadMinigame();
         void Start(){
             Cursor.lockState = CursorLockMode.None;
-            data = SaveSystem.LoadMinigame();
         }
         private void Update()
         {
             if (Input.GetMouseButtonDown(0)){
+                SaveData data = SaveSystem.LoadMinigame();
                 chance = Random.Range(0, 3);
                 Cursor.lockState = CursorLockMode.None;
                 if(data != null){

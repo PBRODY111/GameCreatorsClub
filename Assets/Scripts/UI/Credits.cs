@@ -52,22 +52,24 @@ namespace UI
                     img1.SetActive(true);
                     yield return new WaitForSeconds(1f);
                     img1.SetActive(false);
+                    SceneManager.LoadScene("TitleScene");
                 } else if(data2.ending == 2){
                     img2.SetActive(true);
                     yield return new WaitForSeconds(1f);
                     img2.SetActive(false);
+                    SceneManager.LoadScene("TitleScene");
                 } else if(data2.ending == 3){
                     img3.SetActive(true);
                     yield return new WaitForSeconds(1f);
                     img3.SetActive(false);
+                    SceneManager.LoadScene("ThanksScene");
                 }
             } else{
                 img1.SetActive(true);
                 yield return new WaitForSeconds(1f);
                 img1.SetActive(false);
+                SceneManager.LoadScene("TitleScene");
             }
-            
-            SceneManager.LoadScene("TitleScene");
         }
     }
 }

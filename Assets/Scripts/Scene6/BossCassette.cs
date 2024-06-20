@@ -32,6 +32,12 @@ namespace Scene6
                     Player.Player.Instance.transform.position = playerCheckpoint.transform.position;
                 }
             }
+            SaveData data2 = SaveSystem.LoadEndings();
+            if(data2 != null){
+                if(data2.ending >= 2){
+                    gameObject.SetActive(false);
+                }
+            }
         }
         private void OnMouseExit()
         {

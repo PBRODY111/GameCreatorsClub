@@ -225,35 +225,35 @@ namespace TitleScene
             roomPanel.SetActive(false);
             e1Panel.SetActive(false);
             e2Panel.SetActive(false);
-            //e3Panel.SetActive(false);
+            e3Panel.SetActive(false);
         }
         public void RoomPanel(){
             charPanel.SetActive(false);
             roomPanel.SetActive(true);
             e1Panel.SetActive(false);
             e2Panel.SetActive(false);
-            //e3Panel.SetActive(false);
+            e3Panel.SetActive(false);
         }
         public void E1Panel(){
             charPanel.SetActive(false);
             roomPanel.SetActive(false);
             e1Panel.SetActive(true);
             e2Panel.SetActive(false);
-            //e3Panel.SetActive(false);
+            e3Panel.SetActive(false);
         }
         public void E2Panel(){
             charPanel.SetActive(false);
             roomPanel.SetActive(false);
             e1Panel.SetActive(false);
             e2Panel.SetActive(true);
-            //e3Panel.SetActive(false);
+            e3Panel.SetActive(false);
         }
         public void E3Panel(){
             charPanel.SetActive(false);
             roomPanel.SetActive(false);
             e1Panel.SetActive(false);
             e2Panel.SetActive(false);
-            //e3Panel.SetActive(true);
+            e3Panel.SetActive(true);
         }
 
         private IEnumerator FadeMusic()
