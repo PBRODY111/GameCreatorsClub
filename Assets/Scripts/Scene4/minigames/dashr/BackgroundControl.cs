@@ -21,7 +21,7 @@ public class BackgroundControl : MonoBehaviour
             Debug.Log("tree adding");
             Debug.Log("Time scale: " + Time.timeScale);
             Instantiate(tree, treeParent);
-            yield return new WaitForSeconds(Random.Range(3f, 6f));
+            yield return new WaitForSeconds(Random.Range(3f, 5f));
             
             Debug.Log("tree added");
         }
@@ -29,7 +29,7 @@ public class BackgroundControl : MonoBehaviour
     IEnumerator AddCloud(){
         while (true){
             Instantiate(cloud, cloudParent);
-            yield return new WaitForSeconds(Random.Range(3f, 6f));
+            yield return new WaitForSeconds(Random.Range(4f, 6f));
         }
     }
 }

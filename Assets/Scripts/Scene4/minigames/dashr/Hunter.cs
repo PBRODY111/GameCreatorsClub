@@ -10,6 +10,12 @@ public class Hunter : MonoBehaviour
 
     [SerializeField] private Sprite[] sprites;      // Array of sprites to cycle through
 
+    // Shooting
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform bulletParent; 
+    [SerializeField] private GameObject flash;
+    [SerializeField] private Transform flashParent; 
+
     private Image imageComponent;  // The UI Image component to change
     private int currentSpriteIndex = 0; 
 
@@ -36,6 +42,10 @@ public class Hunter : MonoBehaviour
         Move();
         Jump();
         LockRotation();
+        if (Input.GetKeyDown(KeyCode.Space)){
+            Instantiate(bullet, bulletParent);
+            Instantiate(flash, flashParent);
+        }
     }
 
     private void Move()
@@ -60,7 +70,7 @@ public class Hunter : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
-    private IEnumerator SwitchImage()
+    public IEnumerator SwitchImage()
     {
         while (true)
         {

@@ -97,5 +97,10 @@ namespace UI
             Player.Player.Instance.ResetTimer();
             Time.timeScale = 1f;
         }
+
+        private void Update(){
+            if (Input.GetKeyDown(KeyCode.Escape))
+                Hide();
+        }
     }
 }
