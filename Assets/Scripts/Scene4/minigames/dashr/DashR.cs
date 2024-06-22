@@ -10,6 +10,9 @@ public class DashR : MonoBehaviour
     [SerializeField] private GameObject dashrUI;
     [SerializeField] private GameObject gameElements;
     [SerializeField] private GameObject menu;
+    [SerializeField] private GameObject spider;
+    [SerializeField] private GameObject bat;
+    [SerializeField] private GameObject troll;
     public int level = 1;
     public int points = 0;
     [SerializeField] private TMP_Text levelText;
@@ -34,11 +37,7 @@ public class DashR : MonoBehaviour
     // Update is called once per frame
     private void Update(){
         if (Input.GetKeyDown(KeyCode.Escape)){
-            gameElements.SetActive(false);
-            menu.SetActive(true);
-            dashrUI.SetActive(false);
-            Player.Player.Instance.LockCursor();
-            Player.Player.Instance.EnableMovement();
+            Reset();
         }
     }
 
@@ -50,6 +49,53 @@ public class DashR : MonoBehaviour
             pointsText.text = ""+points+"/15";
             level++;
             levelText.text = "LEVEL "+level;
+            if(level == 2){
+                spider.SetActive(true);
+            } else if (level == 3){
+                bat.SetActive(true);
+            } else if (level == 4){
+                bat.SetActive(false);
+                spider.SetActive(false);
+                troll.SetActive(false);
+            }
+        }
+    }
+
+    public void Reset(){
+        level = 1;
+        points = 0;
+        pointsText.text = "0/15";
+        levelText.text = "LEVEL 1";
+        DestroyChildren("Bullets");
+        DestroyChildren("Spider");
+        DestroyChildren("Troll");
+        DestroyChildren("Bat");
+        troll.SetActive(false);
+        spider.SetActive(false);
+        bat.SetActive(false);
+        gameElements.SetActive(false);
+        menu.SetActive(true);
+        dashrUI.SetActive(false);
+        Player.Player.Instance.LockCursor();
+        Player.Player.Instance.EnableMovement();
+    }
+
+    private void DestroyChildren(string targetObjectName)
+    {
+        GameObject parentObject = GameObject.Find(targetObjectName);
+        if (parentObject != null)
+        {
+            // Iterate through all children and destroy them
+            foreach (Transform child in parentObject.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            Debug.Log("All children of " + targetObjectName + " have been destroyed.");
+        }
+        else
+        {
+            Debug.LogWarning("GameObject with name " + targetObjectName + " not found.");
         }
     }
 

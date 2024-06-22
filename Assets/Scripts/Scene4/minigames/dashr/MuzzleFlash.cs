@@ -9,7 +9,7 @@ public class MuzzleFlash : MonoBehaviour
     [SerializeField] private Sprite[] sprites;    // Array of sprites to cycle through
     [SerializeField] private float delay = 0.1f;  // Delay between sprite changes
 
-    private void Start()
+    private void OnEnable()
     {
         if (uiImage == null)
         {

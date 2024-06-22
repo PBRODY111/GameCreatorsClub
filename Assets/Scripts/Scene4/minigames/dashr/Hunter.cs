@@ -30,7 +30,7 @@ public class Hunter : MonoBehaviour
         coll = GetComponent<BoxCollider2D>();
     }
 
-    private void Start(){
+    private void OnEnable(){
         if (sprites.Length > 0)
         {
             StartCoroutine(SwitchImage());

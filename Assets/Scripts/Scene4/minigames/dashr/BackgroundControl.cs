@@ -9,7 +9,7 @@ public class BackgroundControl : MonoBehaviour
     [SerializeField] private GameObject cloud;
     [SerializeField] private Transform cloudParent; 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         StartCoroutine(AddTree());
         StartCoroutine(AddCloud());
