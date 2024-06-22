@@ -11,19 +11,15 @@ public class BackgroundControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("DASHR HIDE ITEMS");
         StartCoroutine(AddTree());
         StartCoroutine(AddCloud());
     }
 
     IEnumerator AddTree(){
         while (true){
-            Debug.Log("tree adding");
-            Debug.Log("Time scale: " + Time.timeScale);
             Instantiate(tree, treeParent);
             yield return new WaitForSeconds(Random.Range(3f, 5f));
             
-            Debug.Log("tree added");
         }
     }
     IEnumerator AddCloud(){

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DashR : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class DashR : MonoBehaviour
     [SerializeField] private GameObject dashrUI;
     [SerializeField] private GameObject gameElements;
     [SerializeField] private GameObject menu;
+    public int level = 1;
+    public int points = 0;
+    [SerializeField] private TMP_Text levelText;
+    [SerializeField] private TMP_Text pointsText;
     
     private void OnMouseExit()
     {
@@ -34,6 +39,17 @@ public class DashR : MonoBehaviour
             dashrUI.SetActive(false);
             Player.Player.Instance.LockCursor();
             Player.Player.Instance.EnableMovement();
+        }
+    }
+
+    public void IncreasePoint(){
+        points++;
+        pointsText.text = ""+points+"/15";
+        if(points >= 15){
+            points = 0;
+            pointsText.text = ""+points+"/15";
+            level++;
+            levelText.text = "LEVEL "+level;
         }
     }
 

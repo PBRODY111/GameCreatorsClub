@@ -27,10 +27,11 @@ public class Bullet : MonoBehaviour
         rectTransform.anchoredPosition += new Vector2(moveSpeed * Time.deltaTime, 0);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Bullet Collided");
         // Check if the collided object has the tag "GameEdge"
-        if (collision.CompareTag("GameEdge") || collision.CompareTag("Respawn"))
+        if (collision.gameObject.CompareTag("GameEdge") || collision.gameObject.CompareTag("Respawn"))
         {
             Destroy(gameObject);
         }
