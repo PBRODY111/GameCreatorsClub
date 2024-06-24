@@ -13,6 +13,11 @@ public class DashR : MonoBehaviour
     [SerializeField] private GameObject spider;
     [SerializeField] private GameObject bat;
     [SerializeField] private GameObject troll;
+    [SerializeField] private GameObject amalg;
+    [SerializeField] private GameObject hand;
+    [SerializeField] private GameObject inhibitor;
+    [SerializeField] private GameObject cabinet;
+    [SerializeField] private AudioSource subft;
     public int level = 1;
     public int points = 0;
     [SerializeField] private TMP_Text levelText;
@@ -57,6 +62,17 @@ public class DashR : MonoBehaviour
                 bat.SetActive(false);
                 spider.SetActive(false);
                 troll.SetActive(false);
+                amalg.SetActive(true);
+                amalg.transform.localPosition = new Vector3(640f, -310f, 0f);
+            } else if(level == 5){
+                bat.SetActive(false);
+                spider.SetActive(false);
+                troll.SetActive(false);
+                amalg.SetActive(false);
+                gameElements.SetActive(false);
+                subft.Stop();
+                hand.SetActive(true);
+                StartCoroutine(EndGame());
             }
         }
     }
@@ -70,9 +86,13 @@ public class DashR : MonoBehaviour
         DestroyChildren("Spider");
         DestroyChildren("Troll");
         DestroyChildren("Bat");
+        DestroyChildren("FastBat");
+        DestroyChildren("FastSpider");
+        amalg.transform.localPosition = new Vector3(640f, -310f, 0f);
         troll.SetActive(false);
         spider.SetActive(false);
         bat.SetActive(false);
+        amalg.SetActive(false);
         gameElements.SetActive(false);
         menu.SetActive(true);
         dashrUI.SetActive(false);
@@ -97,6 +117,14 @@ public class DashR : MonoBehaviour
         {
             Debug.LogWarning("GameObject with name " + targetObjectName + " not found.");
         }
+    }
+
+    IEnumerator EndGame(){
+        yield return new WaitForSeconds(3f);
+        inhibitor.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        Reset();
+        cabinet.SetActive(false);
     }
 
     private bool IsWithinReach()

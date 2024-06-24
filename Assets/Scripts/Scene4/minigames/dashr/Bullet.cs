@@ -29,7 +29,6 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Bullet Collided");
         // Check if the collided object has the tag "GameEdge"
         if (collision.gameObject.CompareTag("GameEdge") || collision.gameObject.CompareTag("Respawn"))
         {

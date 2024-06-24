@@ -156,7 +156,8 @@ namespace Scene6
             if(data != null){
                 Debug.Log(data.styx);
                 Debug.Log(data.doublePong);
-                if(data.styx && data.doublePong){
+                Debug.Log(data.dashr);
+                if(data.styx && data.doublePong && data.dashr){
                     return true;
                 }
             }
