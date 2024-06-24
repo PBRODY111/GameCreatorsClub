@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using PreCutscene;
+using Steamworks;
 
 namespace Scene1.Computer.Styx
 {
@@ -58,6 +59,11 @@ namespace Scene1.Computer.Styx
                 yield return new WaitForSeconds(_typewriterUi.GetTimeBetween() * line.Length + 1f);
             }
             yield return new WaitForSeconds(2f);
+            //STEAM ACHIEVEMENTS
+            if(SteamManager.Initialized){
+                SteamUserStats.SetAchievement("STYX");
+                SteamUserStats.StoreStats();
+            }
             SceneManager.LoadScene("WarningScene");
         }
     }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using Scene1;
 using Scene1.Safe;
 using TMPro;
+using Steamworks;
 
 public class KeypadDoor : Safe
 {
@@ -56,6 +57,13 @@ public class KeypadDoor : Safe
             {
                 if(_entered == "2211814#"){
                     morseAudio.Play();
+
+                    //STEAM ACHIEVEMENTS
+                    if(SteamManager.Initialized){
+                        SteamUserStats.SetAchievement("LOREKEEPER_4");
+                        SteamUserStats.StoreStats();
+                    }
+
                 }
                 _incorrectTrials++;
                 if (_incorrectTrials >= 3)

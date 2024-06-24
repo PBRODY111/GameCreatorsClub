@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Steamworks;
 
 public class Cellphone : MonoBehaviour
 {
@@ -53,6 +54,11 @@ public class Cellphone : MonoBehaviour
         calling.Play();
         yield return new WaitForSeconds(8.0f);
         message.Play();
+        //STEAM ACHIEVEMENTS
+        if(SteamManager.Initialized){
+            SteamUserStats.SetAchievement("LOREKEEPER_5");
+            SteamUserStats.StoreStats();
+        }
     }
 
     private void Update()

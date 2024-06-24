@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Steamworks;
 
 public class BackupButton : MonoBehaviour
 {
@@ -29,6 +30,12 @@ public class BackupButton : MonoBehaviour
     public void ButtonPressed(){
         if(panel1.isSecret && panel2.isSecret && panel3.isSecret && panel4.isSecret){
             secretText.SetActive(true);
+
+            //STEAM ACHIEVEMENTS
+            if(SteamManager.Initialized){
+                SteamUserStats.SetAchievement("LOREKEEPER_3");
+                SteamUserStats.StoreStats();
+            }
         }
         if(textBlock.text == ""+panelAnswer){
             StartCoroutine(correctAns());

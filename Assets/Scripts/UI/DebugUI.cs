@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Steamworks;
 
 
 namespace UI
@@ -96,6 +97,11 @@ namespace UI
                 {
                     debugActive = true;
                     ToggleDebug();
+                    //STEAM ACHIEVEMENTS
+                    if(SteamManager.Initialized){
+                        SteamUserStats.SetAchievement("EPIC_MODE");
+                        SteamUserStats.StoreStats();
+                    }
                 }
             }
             

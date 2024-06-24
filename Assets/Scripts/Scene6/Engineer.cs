@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-//using Steamworks;
+using Steamworks;
 
 namespace Scene6
 {
@@ -38,11 +38,6 @@ namespace Scene6
 
         private void Start()
         {
-            try{
-                Steamworks.SteamClient.Init(3004570);
-            } catch (System.Exception e){
-                Debug.Log("Cannot connect to Steam");
-            }
 
             SaveData data2 = SaveSystem.LoadEndings();
             if(data2 == null){
@@ -121,10 +116,13 @@ namespace Scene6
             escapeText.SetActive(true);
             yield return new WaitForSeconds(6f);
             SaveSystem.SaveEndings(1);
-            /*
-            var ach = new Steamworks.Data.Achievement("ENDING_1");
-            ach.Trigger();
-            */
+
+            //STEAM ACHIEVEMENTS
+            if(SteamManager.Initialized){
+                SteamUserStats.SetAchievement("ENDING_1");
+                SteamUserStats.StoreStats();
+            }
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 

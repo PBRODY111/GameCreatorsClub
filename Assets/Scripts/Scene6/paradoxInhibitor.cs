@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Steamworks;
 
 public class paradoxInhibitor : MonoBehaviour
 {
@@ -51,6 +52,13 @@ public class paradoxInhibitor : MonoBehaviour
         escapeText.SetActive(true);
         yield return new WaitForSeconds(6f);
         SaveSystem.SaveEndings(2);
+
+        //STEAM ACHIEVEMENTS
+        if(SteamManager.Initialized){
+            SteamUserStats.SetAchievement("ENDING_2");
+            SteamUserStats.StoreStats();
+        }
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

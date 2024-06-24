@@ -6,6 +6,7 @@ using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Steamworks;
 
 namespace Scene1
 {
@@ -136,6 +137,12 @@ namespace Scene1
             {
                 numbAudio.clip = numbers[3];
                 numbAudio.Play();
+
+                //STEAM ACHIEVEMENTS
+                if(SteamManager.Initialized){
+                    SteamUserStats.SetAchievement("LOREKEEPER_1");
+                    SteamUserStats.StoreStats();
+                }
             }
             else
             {

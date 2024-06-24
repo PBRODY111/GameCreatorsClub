@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using Steamworks;
 
 public class ElementController : MonoBehaviour
 {
@@ -65,6 +66,13 @@ public class ElementController : MonoBehaviour
                 secretItem++;
                 if(secretItem == 4){
                     secretPoster.SetActive(true);
+
+                    //STEAM ACHIEVEMENTS
+                    if(SteamManager.Initialized){
+                        SteamUserStats.SetAchievement("LOREKEEPER_2");
+                        SteamUserStats.StoreStats();
+                    }
+
                     yield return new WaitForSeconds(4f);
                     beaker.StartCoroutine(beaker.CerKilled());
                 }
