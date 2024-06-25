@@ -10,9 +10,13 @@ public class Styx3D : MonoBehaviour
     public TextMeshProUGUI pointsText;
     public AudioSource pointAudio;
     public AudioSource styxAudio;
+    [SerializeField] private GameObject cerberus;
+    [SerializeField] private GameObject box;
     [SerializeField] private GameObject persephone;
     [SerializeField] private GameObject board1;
     [SerializeField] private GameObject board2;
+    [SerializeField] private GameObject padlock;
+    [SerializeField] private GameObject endHall;
     private bool isDone = false;
     // Start is called before the first frame update
     void Start()
@@ -21,6 +25,9 @@ public class Styx3D : MonoBehaviour
         if(data2 != null){
             if(data2.ending < 2){
                 gameObject.SetActive(false);
+            } else{
+                padlock.SetActive(false);
+                endHall.SetActive(false);
             }
         } else{
             gameObject.SetActive(false);
@@ -42,6 +49,8 @@ public class Styx3D : MonoBehaviour
         if (pointValue == 15){
             styxAudio.Stop();
             isDone = true;
+            cerberus.SetActive(false);
+            box.SetActive(false);
             pointsText.text = "0/1";
         }
     }
