@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Serialization;
 using TMPro;
+using Steamworks;
 
 namespace Player
 {
@@ -58,6 +59,11 @@ namespace Player
                 _lightObj[1].SetActive(!_flashlightOn);
                 _lightObj[2].SetActive(!_flashlightOn);
                 _flashlightOn = !_flashlightOn;
+                //STEAM ACHIEVEMENTS
+                if(SteamManager.Initialized){
+                    SteamUserStats.SetAchievement("ECO");
+                    SteamUserStats.StoreStats();
+                }
             }
             
             if (!_flashlightOn) return;

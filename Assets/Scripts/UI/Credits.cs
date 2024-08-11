@@ -7,13 +7,16 @@ namespace UI
     public class Credits : MonoBehaviour
     {
         [SerializeField] private AudioSource creditsAudio;
+        [SerializeField] private AudioClip journeys;
         [SerializeField] private GameObject img1;
         [SerializeField] private GameObject img2;
         [SerializeField] private GameObject img3;
         [SerializeField] private GameObject skipText;
         [SerializeField] private GameObject rose;
         [SerializeField] private GameObject thermometer;
+        [SerializeField] private GameObject pictureframe;
         [SerializeField] private GameObject wallText;
+        [SerializeField] private int chance;
 
         private bool _canSkip;
 
@@ -33,10 +36,16 @@ namespace UI
             if(data2 != null){
                 if(data2.ending == 2){
                     thermometer.SetActive(false);
+                    pictureframe.SetActive(false);
                 } else if(data2.ending == 3){
                     rose.SetActive(false);
                     thermometer.SetActive(false);
                     wallText.SetActive(true);
+                    pictureframe.SetActive(true);
+                    chance = Random.Range(0, 2);
+                    if(chance == 0){
+                        creditsAudio.clip = journeys;
+                    }
                 }
             }
             // if first two endings wait 22 seconds, third ending on start, may have to change animations

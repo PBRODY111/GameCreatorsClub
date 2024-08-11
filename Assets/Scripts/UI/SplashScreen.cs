@@ -12,6 +12,7 @@ namespace UI
         
         private void Start()
         {
+            Screen.fullScreen = true;
             QualitySettings.vSyncCount = 1;
         }
         
